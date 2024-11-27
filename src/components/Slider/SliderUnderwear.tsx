@@ -11,12 +11,12 @@ const SliderUnderwear = () => {
                 <div className="slider-main h-full w-full flex items-center justify-center gap-10">
                     <div className="sub-img w-[440px] max-md:w-1/2 rounded-b-full overflow-hidden max-md:hidden">
                         <Image
-                            src={'/images/slider/bg-underwear1.png'}
+                            src={'/images/slider/bg-underwear1.jpg'}
                             width={2000}
                             height={1936}
                             alt='bg-underwear1'
                             priority={true}
-                            className='w-full'
+                            className='w-full '
                         />
                     </div>
                     <div className="text-content w-fit">
@@ -28,7 +28,7 @@ const SliderUnderwear = () => {
                     </div>
                     <div className="sub-img w-[440px] max-md:w-1/2 rounded-t-full overflow-hidden">
                         <Image
-                            src={'/images/slider/bg-underwear2.png'}
+                            src={'/images/slider/image2.jpg'}
                             width={2000}
                             height={1936}
                             alt='bg-underwear2'

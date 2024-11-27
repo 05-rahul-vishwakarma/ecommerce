@@ -78,7 +78,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
 
     return (
         <>
-            <div className="featured-product underwear md:py-20 py-14">
+            <div className="featured-product underwear md:py-20 py-14 ">
                 <div className="container flex lg:items-center justify-between gap-y-6 flex-wrap">
                     <div className="list-img md:w-1/2 md:pr-4 w-full">
                         <Swiper
@@ -90,7 +90,8 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                         >
                             <SwiperSlide>
                                 <Image
-                                    src={productMain.images[0]}
+                                    // src={productMain.images[0]}
+                                    src={'/image3.png'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -99,7 +100,19 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <Image
-                                    src={productMain.images[1]}
+                                    // src={productMain.images[1]}
+                                    src={'/image4.png'}
+                                    width={1000}
+                                    height={1000}
+                                    alt='prd-img'
+                                    className='w-full aspect-[3/4] object-cover'
+                                />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                            
+                                <Image
+                                    // src={productMain.images[2]}
+                                    src={'/image5.jpeg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -108,16 +121,8 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <Image
-                                    src={productMain.images[2]}
-                                    width={1000}
-                                    height={1000}
-                                    alt='prd-img'
-                                    className='w-full aspect-[3/4] object-cover'
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Image
-                                    src={productMain.images[3]}
+                                    // src={productMain.images[3]}
+                                    src={'/image6.jpeg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -136,7 +141,8 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                         >
                             <SwiperSlide>
                                 <Image
-                                    src={productMain.images[0]}
+                                    // src={productMain.images[0]}
+                                    src={'/image3.png'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -145,7 +151,8 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <Image
-                                    src={productMain.images[1]}
+                                    // src={productMain.images[1]}
+                                    src={'/image4.png'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -154,7 +161,8 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <Image
-                                    src={productMain.images[2]}
+                                    // src={productMain.images[2]}
+                                    src={'/image5.jpeg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -163,7 +171,8 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <Image
-                                    src={productMain.images[3]}
+                                    // src={productMain.images[3]}
+                                    src={'/image6.jpeg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'

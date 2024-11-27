@@ -12,7 +12,7 @@ const Brand = () => {
         <>
             <div className="brand-block py-[60px] mt-20 bg-surface">
                 <div className="container">
-                    <div className="list-brand">
+                    <div className="list-brand ">
                         <Swiper
                             spaceBetween={12}
                             slidesPerView={2}

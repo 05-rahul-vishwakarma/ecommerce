@@ -10,7 +10,7 @@ import 'swiper/css/bundle';
 const Instagram = () => {
     return (
         <>
-            <div className="instagram-block">
+            <div className="instagram-block ">
                 <div className="list-instagram">
                     <Swiper
                         slidesPerView={2}
@@ -37,7 +37,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/6.png'}
+                                    src={'/images/instagram/i6.png'}
                                     width={300}
                                     height={300}
                                     alt='1'
@@ -51,7 +51,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/7.png'}
+                                    src={'/images/instagram/i7.png'}
                                     width={300}
                                     height={300}
                                     alt='1'

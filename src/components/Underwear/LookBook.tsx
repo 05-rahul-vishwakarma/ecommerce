@@ -31,7 +31,7 @@ const LookBook: React.FC<Props> = ({ data }) => {
                 <div className="container h-full">
                     <div className="left hide-product-sold  md:w-1/2 py-10 h-full flex flex-col items-center justify-center">
                         <div className="heading3 md:pb-10 pb-5">The Summer Look book</div>
-                        <div className="w-1/2">
+                        <div className="w-1/2 border-red border-2">
                             {data.slice(Number(prd), Number(prd) + 1).map((product, index) => (
                                 <Product key={index} data={product} type='grid' />
                             ))}
@@ -51,8 +51,9 @@ const LookBook: React.FC<Props> = ({ data }) => {
                     >
                         <SwiperSlide>
                             <div className="item h-full">
+                                
                                 <Image
-                                    src={'/images/banner/15.png'}
+                                    src={'/images/banner/b15.png'}
                                     width={2000}
                                     height={1000}
                                     alt='/images/banner/15.png'
@@ -73,7 +74,7 @@ const LookBook: React.FC<Props> = ({ data }) => {
                         <SwiperSlide>
                             <div className="item h-full">
                                 <Image
-                                    src={'/images/banner/16.png'}
+                                    src={'/images/banner/b16.png'}
                                     width={2000}
                                     height={1000}
                                     alt='/images/banner/16.png'
@@ -94,7 +95,7 @@ const LookBook: React.FC<Props> = ({ data }) => {
                         <SwiperSlide>
                             <div className="item h-full">
                                 <Image
-                                    src={'/images/banner/17.png'}
+                                    src={'/images/banner/b17.png'}
                                     width={2000}
                                     height={1000}
                                     alt='/images/banner/17.png'

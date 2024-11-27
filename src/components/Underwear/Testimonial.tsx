@@ -48,6 +48,7 @@ const Testimonial: React.FC<Props> = ({ data, limit }) => {
                                 key={index}
                                 data-item={prd.id}
                             >
+                                monika
                                 <Image
                                     src={prd.avatar}
                                     width={1000}
