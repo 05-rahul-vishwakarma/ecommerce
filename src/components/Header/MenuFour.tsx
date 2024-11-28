@@ -76,7 +76,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
       <div
         className={`header-menu style-one ${
           fixedHeader ? " fixed" : "relative"
-        } w-full bg-[#fd7e14] md:h-[74px] h-[56px] ${props}`}
+        } w-full bg-[#fd7e14] md:h-[75px] h-[56px] ${props}`}
       >
         <div className="container mx-auto h-full">
           <div className="header-main flex items-center justify-between h-full">
