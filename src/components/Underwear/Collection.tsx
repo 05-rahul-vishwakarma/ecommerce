@@ -19,7 +19,8 @@ const Collection = () => {
                 <div className="container">
                     <div className="heading text-center">
                         <div className="heading3 text-center">Explore Collections</div>
-                        <div className="heading6 font-normal normal-case text-secondary md:mt-4 mt-2">Highly recommended. The quality of the products is exceptional, and the prices are very reasonable!</div>
+                        <div className="heading6 text-center md:mt-2 mt-2">Discover Our Stunning Ribbon Collections</div>
+                        <div className="heading6 font-normal normal-case text-secondary md:mt-4 mt-2">Perfect for every occasion – From elegant gifts to creative crafts, our ribbons bring beauty and quality to your projects at affordable prices!</div>
                     </div>
                     <div className="list-collection grid lg:grid-cols-4 grid-cols-2 gap-8 md:mt-10 mt-6">
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('swimwear')}>

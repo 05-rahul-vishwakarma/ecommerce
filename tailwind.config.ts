@@ -38,6 +38,8 @@ const config: Config = {
       'outline': 'rgba(0, 0, 0, 0.15)',
       'surface2': 'rgba(255, 255, 255, 0.2)',
       'surface1': 'rgba(255, 255, 255, 0.1)',
+
+      'custom-orange': '#FFA50F',
     },
   },
   plugins: [],

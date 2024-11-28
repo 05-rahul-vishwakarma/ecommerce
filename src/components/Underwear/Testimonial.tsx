@@ -7,6 +7,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/bundle';
 import TestimonialItem from '../Testimonial/TestimonialItem';
+import data from '../../data/Testimonial.json';
+
 import { TestimonialType } from '@/type/TestimonialType'
 
 interface Props {
@@ -23,7 +25,7 @@ const Testimonial: React.FC<Props> = ({ data, limit }) => {
 
     return (
         <>
-            <div className="testimonial-block style-four bg-surface md:mt-20 mt-10 md:py-20 py-14">
+            <div className="testimonial-block style-four bg-[#fffdfd] md:mt-20 mt-10    md:py-20 py-14">
                 <div className="container flex items-center justify-between flex-wrap gap-y-6 max-md:flex-col-reverse">
                     <div className="md:w-1/2 w-full list-testimonial section-swiper-navigation style-small-border">
                         <div className="heading3 md:pb-10 pb-5">What People Say</div>
@@ -48,7 +50,7 @@ const Testimonial: React.FC<Props> = ({ data, limit }) => {
                                 key={index}
                                 data-item={prd.id}
                             >
-                                monika
+                               
                                 <Image
                                     src={prd.avatar}
                                     width={1000}
