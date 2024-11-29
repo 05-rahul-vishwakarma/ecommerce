@@ -1,10 +1,2 @@
-PS D:\Desktop\ecommerce-main\ecommerce-main> git pull origin main --allow-unrelated-histories
->>
-From https://github.com/05-rahul-vishwakarma/ecommerce
- * branch            main       -> FETCH_HEAD
-Auto-merging .gitignore
-CONFLICT (add/add): Merge conflict in .gitignore
-Auto-merging src/components/Underwear/Testimonial.tsx
-CONFLICT (add/add): Merge conflict in src/components/Underwear/Testimonial.tsx
-Automatic merge failed; fix conflicts and then commit the result.    
-PS D:\Desktop\ecommerce-main\ecommerce-main>
+node_modules
+node_modules
