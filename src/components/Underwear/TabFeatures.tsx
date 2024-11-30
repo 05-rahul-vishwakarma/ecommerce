@@ -41,20 +41,21 @@ const TabFeatures: React.FC<Props> = ({ data, start, limit }) => {
 
     return (
         <>
-            <div className="tab-features-block style-underwear md:py-20 py-10 bg-surface md:mt-20 mt-10">
-                <div className="container">
-                    <div className="heading flex flex-col items-center text-center">
-                        <div className="menu-tab flex items-center gap-2 p-1 bg-white rounded-2xl">
+            {/* <div className="tab-features-block style-underwear md:py-20 py-10 bg-surface md:mt-20 mt-10 border-2 "> */}
+            <div className="tab-features-block style-underwear md:py-20 py-10 bg-[#faf6ff] md:mt-20 mt-10 ">
+                <div className="container ">
+                    <div className=" flex flex-col items-center text-center">
+                        <div className="menu-tab flex items-center gap-2  py-2 px-1 bg-purple rounded-2xl text-white">
                             {['best sellers', 'on sale', 'new arrivals'].map((item, index) => (
                                 <div
                                     key={index}
-                                    className={`tab-item relative text-secondary heading5 py-2 px-5 cursor-pointer duration-500 hover:text-black ${activeTab === item ? 'active' : ''}`}
+                                    className={`tab-item relative text-lg leading-normal tracking-[0.5px] py-2 px-5 cursor-pointer duration-500 hover:text-white ${activeTab === item ? 'active' : ''}`}
                                     onClick={() => handleTabClick(item)}
                                 >
                                     {activeTab === item && (
-                                        <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-black'></motion.div>
+                                        <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-[#9e5eff]'></motion.div>
                                     )}
-                                    <span className='relative heading5 z-[1]'>
+                                    <span className='relative text-2xl tracking-[0.5px] leading-normal line-clamp-1 z-[1]'>
                                         {item}
                                     </span>
                                 </div>

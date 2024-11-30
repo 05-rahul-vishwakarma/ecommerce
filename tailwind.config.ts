@@ -30,7 +30,7 @@ const config: Config = {
       'white': '#ffffff',
       'surface': '#F7F7F7',
       'red': '#DB4444',
-      'purple': '#8684D4',
+      'purple': '#a394ea',
       'success': '#3DAB25',
       'yellow': '#ECB018',
       'pink': '#F4407D',
@@ -39,7 +39,8 @@ const config: Config = {
       'surface2': 'rgba(255, 255, 255, 0.2)',
       'surface1': 'rgba(255, 255, 255, 0.1)',
 
-      'custom-orange': '#FFA50F',
+      'custom-orange': '#d24e01',
+
     },
   },
   plugins: [],

@@ -261,7 +261,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                                     />
                                 </div>
                                 <div
-                                    className="button-main w-full text-center bg-white text-black border border-black"
+                                    className="button-main w-full text-center bg-white text-purple border border-purple"
                                     onClick={handleAddToCart}
                                 >
                                     Add To Cart
