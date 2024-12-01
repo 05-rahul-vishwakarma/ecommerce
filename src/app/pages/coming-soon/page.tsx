@@ -21,7 +21,7 @@ const ComingSoon = () => {
         <>
             <div className="coming-soon relative w-screen h-screen">
                 <Image
-                    src={'/images/other/bg-coming-soon.png'}
+                    src={'/images/other/bgCommingSoon.png'}
                     width={4000}
                     height={3000}
                     alt='bg'
@@ -30,9 +30,9 @@ const ComingSoon = () => {
                 <div className="container w-full h-full">
                     <div className="text-content w-full h-full flex items-center justify-center relative">
                         <div className="content-main flex flex-col items-center lg:w-1/2 sm:w-3/5 w-full">
-                            <div className="text-display">Coming Soon</div>
-                            <div className="countdown-time flex items-center gap-5 lg:mt-[60px] md:mt-10 mt-6">
-                                <div className="item flex flex-col items-center">
+                            <div className="text-display text-white">Coming Soon</div>
+                            <div className="countdown-time flex items-center gap-5 lg:mt-[60px] md:mt-10 mt-6 text-white">
+                                <div className="item flex flex-col items-center  ">
                                     <div className="days time heading1">{timeLeft.days < 10 ? `0${timeLeft.days}` : timeLeft.days}</div>
                                     <div className='text-button-uppercase font-medium'>Days</div>
                                 </div>
@@ -54,31 +54,31 @@ const ComingSoon = () => {
                             </div>
                             <div className="input-block w-full h-[52px] mt-6">
                                 <form className='w-full h-full relative' action="post">
-                                    <input type="email" placeholder='Enter your e-mail' className='caption1 w-full h-full pl-4 pr-14 rounded-xl border border-line' required />
-                                    <button className='bg-black text-white absolute top-1 bottom-1 right-1 aspect-square rounded-xl flex items-center justify-center'>
+                                    <input type="email" placeholder='Enter your e-mail' className='caption1 w-full h-full pl-4 pr-14 rounded-xl border border-purple' required />
+                                    <button className='bg-purple text-white absolute top-1 bottom-1 right-1 aspect-square rounded-xl flex items-center justify-center'>
                                         <Icon.ArrowRight className='text-white heading5' />
                                     </button>
                                 </form>
                             </div>
-                            <div className="list-link flex items-center gap-6 justify-center mt-6">
+                            <div className="list-link flex items-center gap-6 justify-center mt-6 text-[18px] text-white">
                                 <Link href={'https://www.facebook.com/'} target='_blank'>
-                                    <div className="icon-facebook text-xl"></div>
+                                    <div className="icon-facebook text-xl hover:text-purple"></div>
                                 </Link>
                                 <Link href={'https://www.instagram.com/'} target='_blank'>
-                                    <div className="icon-instagram text-xl"></div>
+                                    <div className="icon-instagram text-xl hover:text-purple"></div>
                                 </Link>
                                 <Link href={'https://www.youtube.com/'} target='_blank'>
-                                    <div className="icon-youtube text-xl"></div>
+                                    <div className="icon-youtube text-xl hover:text-purple"></div>
                                 </Link>
                                 <Link href={'https://www.twitter.com/'} target='_blank'>
-                                    <div className="icon-twitter text-xl"></div>
+                                    <div className="icon-twitter text-xl hover:text-purple"></div>
                                 </Link>
                                 <Link href={'https://www.pinterest.com/'} target='_blank'>
-                                    <div className="icon-pinterest text-xl"></div>
+                                    <div className="icon-pinterest text-xl hover:text-purple"></div>
                                 </Link>
                             </div>
                         </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </>

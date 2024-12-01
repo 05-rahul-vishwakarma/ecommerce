@@ -188,7 +188,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                             )}
                             <div className="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
                                 <div
-                                    className="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-full duration-300 bg-white hover:bg-black hover:text-white"
+                                    className="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-full duration-300 bg-white hover:bg-purple hover:text-white"
                                     onClick={(e) => {
                                         e.stopPropagation()
                                         handleQuickviewOpen()
@@ -198,7 +198,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                 </div>
                                 {data.action === 'add to cart' ? (
                                     <div
-                                        className="add-cart-btn w-full text-button-uppercase py-2 text-center rounded-full duration-500 bg-white hover:bg-black hover:text-white"
+                                        className="add-cart-btn w-full text-button-uppercase py-2 text-center rounded-full duration-500 bg-white hover:bg-purple hover:text-white"
                                         onClick={e => {
                                             e.stopPropagation();
                                             handleAddToCart()
@@ -209,7 +209,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                 ) : (
                                     <>
                                         <div
-                                            className="quick-shop-btn text-button-uppercase py-2 text-center rounded-full duration-500 bg-white hover:bg-black hover:text-white"
+                                            className="quick-shop-btn text-button-uppercase py-2 text-center rounded-full duration-500 bg-white hover:bg-purple hover:text-white"
                                             onClick={e => {
                                                 e.stopPropagation();
                                                 setOpenQuickShop(!openQuickShop)
@@ -249,7 +249,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                             </div>
                             <div className="list-action-icon flex items-center justify-center gap-2 absolute w-full bottom-3 z-[1] lg:hidden">
                                 <div
-                                    className="quick-view-btn w-9 h-9 flex items-center justify-center rounded-lg duration-300 bg-white hover:bg-black hover:text-white"
+                                    className="quick-view-btn w-9 h-9 flex items-center justify-center rounded-lg duration-300 bg-white hover:bg-purple hover:text-white"
                                     onClick={(e) => {
                                         e.stopPropagation()
                                         handleQuickviewOpen()
@@ -258,7 +258,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                     <Icon.Eye className='text-lg' />
                                 </div>
                                 <div
-                                    className="add-cart-btn w-9 h-9 flex items-center justify-center rounded-lg duration-300 bg-white hover:bg-black hover:text-white"
+                                    className="add-cart-btn w-9 h-9 flex items-center justify-center rounded-lg duration-300 bg-white hover:bg-purple hover:text-white"
                                     onClick={e => {
                                         e.stopPropagation();
                                         handleAddToCart()
@@ -306,7 +306,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                 </div>
                             )}
                             {data.variation.length > 0 && data.action === 'quick shop' && (
-                                <div className="list-color-image max-md:hidden flex items-center gap-3 flex-wrap duration-500">
+                                <div className="list-color-image max-md:hidden flex items-center gap-3 flex-wrap duration-500 border-2">
                                     {data.variation.map((item, index) => (
                                         <div
                                             className={`color-item w-12 h-12 rounded-xl duration-300 relative ${activeColor === item.color ? 'active' : ''}`}
@@ -466,7 +466,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                         </div>
                                         <div className="action w-fit flex flex-col items-center justify-center">
                                             <div
-                                                className="quick-shop-btn button-main whitespace-nowrap py-2 px-9 max-lg:px-5 rounded-full bg-white text-black border border-black hover:bg-black hover:text-white"
+                                                className="quick-shop-btn button-main whitespace-nowrap py-2 px-9 max-lg:px-5 rounded-full bg-white text-black border border-black hover:bg-purple hover:text-white"
                                                 onClick={e => {
                                                     e.stopPropagation();
                                                     setOpenQuickShop(!openQuickShop)

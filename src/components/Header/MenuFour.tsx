@@ -170,6 +170,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     <ul className="w-full">
                       <li>
                         <Link
+                        
                           href="/pages/about"
                           className={`text-secondary duration-300 ${pathname === "/pages/about" ? "active" : ""
                             }`}

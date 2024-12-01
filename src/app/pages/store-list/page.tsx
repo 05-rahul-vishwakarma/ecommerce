@@ -11,23 +11,23 @@ const StoreList = () => {
     return (
         <>
             <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
-            <div id="header" className='relative w-full'>
+            <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='Store list' subHeading='Store list' />
             </div>
             <div className='store-list md:py-20 py-10'>
                 <div className="container">
                     <div className="item bg-surface overflow-hidden rounded-[20px]">
-                        <div className="flex items-center lg:justify-end relative max-lg:flex-col">
+                        <div className="flex items-center lg:justify-end relative max-lg:flex-col bg-[#f9f5ff]">
                             <Image
-                                src={'/images/other/store-list-office1.png'}
+                                src={'/images/other/storelistoffice1.png'}
                                 width={3000}
                                 height={2000}
                                 alt='bg-img'
                                 className='lg:absolute relative top-0 left-0 lg:bottom-0 lg:w-1/2 w-full h-full object-cover'
                             />
                             <div className="text-content lg:w-1/2 lg:pr-20 lg:pl-[100px] lg:py-14 sm:py-10 py-6 max-lg:px-6">
-                                <div className="heading3">New York Office</div>
+                                <div className="heading3 text-secondary text-start">New York Office</div>
                                 <div className="list-featrue lg:mt-10 mt-6">
                                     <div className="item flex lg:gap-10 gap-6">
                                         <div className='w-1/2'>
@@ -70,9 +70,9 @@ const StoreList = () => {
                         </div>
                     </div>
                     <div className="item bg-surface overflow-hidden rounded-[20px] md:mt-20 mt-10">
-                        <div className="flex items-center justify-start relative max-lg:flex-col-reverse">
+                        <div className="flex items-center justify-start relative max-lg:flex-col-reverse bg-[#f9f5ff]">
                             <div className="text-content lg:w-1/2 w-full lg:pl-20 lg:pr-[100px] lg:py-14 sm:py-10 py-6 max-lg:px-6">
-                                <div className="heading3">Chicago Office</div>
+                                <div className="heading3 text-secondary">Chicago Office</div>
                                 <div className="list-featrue lg:mt-10 mt-6">
                                     <div className="item flex lg:gap-10 gap-6">
                                         <div className='w-1/2'>
@@ -113,7 +113,7 @@ const StoreList = () => {
                                 </div>
                             </div>
                             <Image
-                                src={'/images/other/store-list-office2.png'}
+                                src={'/images/other/storelistoffice2.png'}
                                 width={3000}
                                 height={2000}
                                 alt='bg-img'
@@ -122,16 +122,16 @@ const StoreList = () => {
                         </div>
                     </div>
                     <div className="item bg-surface overflow-hidden rounded-[20px] md:mt-20 mt-10">
-                        <div className="flex items-center lg:justify-end relative max-lg:flex-col">
+                        <div className="flex items-center lg:justify-end relative max-lg:flex-col bg-[#f9f5ff]">
                             <Image
-                                src={'/images/other/store-list-office3.png'}
+                                src={'/images/other/storelistoffice3.png'}
                                 width={3000}
                                 height={2000}
                                 alt='bg-img'
                                 className='lg:absolute relative top-0 left-0 lg:bottom-0 lg:w-1/2 w-full h-full object-cover'
                             />
-                            <div className="text-content lg:w-1/2 lg:pr-20 lg:pl-[100px] lg:py-14 sm:py-10 py-6 max-lg:px-6">
-                                <div className="heading3">San Francisco Office</div>
+                            <div className="text-content lg:w-1/2 lg:pr-20 lg:pl-[100px] lg:py-14 sm:py-10 py-6 max-lg:px-6 bg">
+                                <div className="heading3 text-secondary">San Francisco Office</div>
                                 <div className="list-featrue lg:mt-10 mt-6">
                                     <div className="item flex lg:gap-10 gap-6">
                                         <div className='w-1/2'>
