@@ -171,7 +171,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                 )}
                             </div>
                             {data.sale && (
-                                <>
+                                <div className='hidden'>
                                     <Marquee className='banner-sale-auto bg-black absolute bottom-0 left-0 w-full py-1.5'>
                                         <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
                                         <Icon.Lightning weight='fill' className='text-red' />
@@ -184,7 +184,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                         <div className={`caption2 font-semibold uppercase text-white px-2.5`}>Hot Sale {percentSale}% OFF</div>
                                         <Icon.Lightning weight='fill' className='text-red' />
                                     </Marquee>
-                                </>
+                                </div>
                             )}
                             <div className="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
                                 <div

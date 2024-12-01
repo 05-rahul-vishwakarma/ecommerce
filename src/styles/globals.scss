@@ -223,13 +223,12 @@ input[type="file"] {
   font-weight: 600;
   text-transform: uppercase;
   color: var(--white);
-  background-color: var(--#9e5eff);
   padding: 16px 40px;
   border-radius: 12px;
   display: inline-block;
   cursor: pointer;
   transition: all ease 0.4s;
-
+  background-color: #592dbb;
   &:hover {
     background-color: var(--purple);
     color: var(--white);
