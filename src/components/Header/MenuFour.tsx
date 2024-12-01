@@ -81,13 +81,13 @@ const MenuFour: React.FC<Props> = ({ props }) => {
         <div className="container mx-auto h-full">
           <div className="header-main flex items-center justify-between h-full">
             <div
-              className="menu-mobile-icon lg:hidden flex items-center"
+              className="menu-mobile-icon lg:hidden flex items-center text-white"
               onClick={handleMenuMobile}
             >
               <i className="icon-category text-2xl"></i>
             </div>
             <Link href={"/"} className="flex items-center lg:hidden">
-              <div className="heading4">Anvogue</div>
+              <div className="heading4 text-white">Anvogue</div>
             </Link>
             <div className="form-search relative max-lg:hidden z-[1]">
               <Icon.MagnifyingGlass

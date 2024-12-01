@@ -14,10 +14,10 @@ const TestimonialItem: React.FC<TestimonialProps> = ({ data, type }) => {
     <>
       {type === "style-one" ? (
         <div className="testimonial-item style-one h-full">
-          <div className="testimonial-main bg-white p-8 rounded-2xl h-full">
+          <div className="testimonial-main bg-white p-8 rounded-2xl h-full border-2">
             <Rate currentRate={data.star} size={14} />
             <div className="heading6 title mt-4">{data.title}</div>
-            <div className="desc mt-2">{data.description}</div>
+            <div className="desc mt-2 text-lg">{data.description}</div>
             <div className="text-button name mt-4">{data.name}</div>
             <div className="caption2 date text-secondary2 mt-1">
               {data.date}
@@ -33,7 +33,7 @@ const TestimonialItem: React.FC<TestimonialProps> = ({ data, type }) => {
                 <div className="text-button-uppercase text-secondary mt-4">
                   Customer reviews
                 </div>
-                <div className="heading4 normal-case desc font-normal mt-2">
+                <div className="text-lg font-[600] normal-case desc  mt-2">
                   {data.description}
                 </div>
                 <div className="text-button name mt-4">{data.name}</div>

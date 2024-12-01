@@ -32,40 +32,40 @@ const Collection = () => {
                                     alt='underwear1'
                                 />
                             </div>
-                            <div className="collection-name heading5 text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-custom-orange rounded-xl duration-500 text-white">lingerie</div>
+                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-violet rounded-xl duration-500 bg-[#9e5eff] text-white">lingerie</div>
                         </div>
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('underwear')}>
                             <div className="bg-img">
-                            <Image
+                                <Image
                                     src={'/ribbon.webp'}
                                     width={1000}
                                     height={600}
                                     alt='underwear1'
                                 />
                             </div>
-                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-custom-orange rounded-xl duration-500  text-white">Beach Wear</div>
+                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-[#9e5eff] rounded-xl duration-500  text-white">Beach Wear</div>
                         </div>
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('swimwear')}>
                             <div className="bg-img">
-                            <Image
+                                <Image
                                     src={'/ribbon.webp'}
                                     width={1000}
                                     height={600}
                                     alt='underwear1'
                                 />
                             </div>
-                            <div className="collection-name heading5 text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-[#9e5eff] rounded-xl duration-500 text-white">Sport Active</div>
+                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-[#9e5eff] rounded-xl duration-500 text-white">Sport Active</div>
                         </div>
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('underwear')}>
                             <div className="bg-img">
-                            <Image
+                                <Image
                                     src={'/ribbon.webp'}
                                     width={1000}
                                     height={600}
                                     alt='underwear1'
                                 />
                             </div>
-                            <div className="collection-name heading5 text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-[#9e5eff] rounded-xl duration-500 text-white">Swim wear</div>
+                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-[#9e5eff] rounded-xl duration-500 text-white">Swim wear</div>
                         </div>
                     </div>
                 </div>

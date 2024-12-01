@@ -27,11 +27,11 @@ const LookBook: React.FC<Props> = ({ data }) => {
 
     return (
         <>
-            <div className="lookbook bg-surface xl:h-[780px] lg:h-[600px] md:h-[500px] relative">
+            <div className="lookbook bg-[#faf6ff] xl:h-[780px] lg:h-[600px] md:h-[500px] relative">
                 <div className="container h-full">
                     <div className="left hide-product-sold  md:w-1/2 py-10 h-full flex flex-col items-center justify-center">
-                        <div className="heading3 md:pb-10 pb-5">The Summer Look book uwlookbook</div>
-                        <div className="w-1/2 border-red border-2">
+                        <div className="heading3 md:pb-10 pb-5 text-secondary">The Summer Look book uwlookbook</div>
+                        <div className="w-1/2">
                             {data.slice(Number(prd), Number(prd) + 1).map((product, index) => (
                                 <Product key={index} data={product} type='grid' />
                             ))}
@@ -60,7 +60,7 @@ const LookBook: React.FC<Props> = ({ data }) => {
                                     className='h-full w-full object-cover'
                                 />
                                 <div className="dots absolute top-[40%] left-[60%] cursor-pointer">
-                                    <div className="top-dot w-8 h-8 rounded-full bg-outline flex items-center justify-center" onClick={() => setPrd('28')}>
+                                    <div className="top-dot w-8 h-8 rounded-full bg-outline flex items-center justify-center " onClick={() => setPrd('28')}>
                                         <span className="bg-white w-3 h-3 rounded-full duration-300"></span>
                                     </div>
                                 </div>

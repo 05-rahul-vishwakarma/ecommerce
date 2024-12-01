@@ -268,7 +268,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                                 </div>
                             </div>
                             <div className="button-block mt-5">
-                                <div className="button-main w-full text-center">Buy It Now</div>
+                                <div className="button-main w-full text-center text-purple">Buy It Now</div>
                             </div>
                         </div>
                     </div>
