@@ -25,16 +25,16 @@ const TrendingProduct: React.FC<Props> = ({ data, start, limit }) => {
             <div className="tab-features-block style-underwear md:pt-20 pt-10">
                 <div className="container">
                     <div className="heading flex flex-col items-center text-center">
-                        <div className="heading3 text-center">Trending Products</div>
+                        <div className="heading3 text-center text-secondary">Trending Products</div>
                         <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl mt-6">
                             {['top', 'swimwear', 'underwear', 'sets', 't-shirt'].map((type) => (
                                 <div
                                     key={type}
-                                    className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-black ${activeTab === type ? 'active' : ''}`}
+                                    className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-purple ${activeTab === type ? 'active' : ''}`}
                                     onClick={() => handleTabClick(type)}
                                 >
                                     {activeTab === type && (
-                                        <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-black'></motion.div>
+                                        <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-purple'></motion.div>
                                     )}
                                     <span className='relative text-button-uppercase z-[1]'>
                                         {type}

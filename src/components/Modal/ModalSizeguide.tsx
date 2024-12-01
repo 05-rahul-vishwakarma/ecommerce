@@ -76,6 +76,7 @@ const ModalSizeguide: React.FC<Props> = ({ data, isOpen, onClose }) => {
                                 defaultValue={[100, 200]}
                                 min={100}
                                 max={200}
+                                className='text-purple'
                                 onChange={handleHeightChange}
                             />
                         </div>

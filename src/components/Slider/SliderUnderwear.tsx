@@ -34,7 +34,7 @@ const SliderUnderwear = () => {
               <Link
                 href="/shop/breadcrumb-img"
                 // where does it comming from
-                className="button-main md:mt-8 mt-3"
+                className="button-main md:mt-8 mt-3 "
               >
                 Shop Now
               </Link>

@@ -11,13 +11,13 @@ const CustomerFeedbacks = () => {
     return (
         <>
             <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
-            <div id="header" className='relative w-full'>
+            <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='Customer Feedbacks' subHeading='Customer Feedbacks' />
             </div>
             <div className='customer-feedbacks md:py-20 py-10'>
                 <div className="container">
-                    <div className="list-review grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-[30px] gap-5">
+                    <div className="list-review grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-[30px] gap-5 ">
                         {reviewData.map(item => (
                             <TestimonialItem key={item.id} data={item} type='style-one' />
                         ))}

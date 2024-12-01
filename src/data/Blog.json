@@ -14,8 +14,7 @@
             "/images/blog/2.png"
         ],
         "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
-        "slug": "fashion-news"
+        "description": "Our ribbons are the perfect choice for adding charm and elegance to your crafts, gifts, and home décor. With a wide variety of colors, patterns, and textures, you’ll find the perfect ribbon for any occasion. Whether you're creating handmade cards, decorating events, or adding a special touch to a gift, our collection will inspire endless possibilities."
     },
     {
         "id": "2",
@@ -31,9 +30,8 @@
             "/images/blog/1.png",
             "/images/blog/3.png"
         ],
-        "shortDesc": "Build a versatile and timeless wardrobe with our list of must-have fashion staples. From the classic little black dress to the perfect pair of jeans.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
-        "slug": "fashion-news"
+        "shortDesc": "Elevate your creativity with our premium ribbons. From crafting to gift wrapping, explore versatile designs perfect for every project",
+        "description": "Our ribbons are the perfect choice for adding charm and elegance to your crafts, gifts, and home décor. With a wide variety of colors, patterns, and textures, you’ll find the perfect ribbon for any occasion. Whether you're creating handmade cards, decorating events, or adding a special touch to a gift, our collection will inspire endless possibilities."
     },
     {
         "id": "3",
@@ -49,62 +47,61 @@
             "/images/blog/1.png",
             "/images/blog/2.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
-        "slug": "fashion-news"
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "Our ribbons are the perfect choice for adding charm and elegance to your crafts, gifts, and home décor. With a wide variety of colors, patterns, and textures, you’ll find the perfect ribbon for any occasion. Whether you're creating handmade cards, decorating events, or adding a special touch to a gift, our collection will inspire endless possibilities."
     },
     {
-        "id": "4",
+        "id": "blog4",
         "category": "underwear",
         "tag": "underwear",
         "title": "The Art of Makeup: Mastering the Perfect Everyday Look",
-        "date": "Dec 24, 2023",
+        "date": "Dec 2blog4, 2023",
         "author": "Christina Smith",
-        "avatar": "/images/avatar/4.png",
-        "thumbImg": "/images/blog/4.png",
-        "coverImg": "/images/blog/4.png",
+        "avatar": "/images/avatar/blog4.png",
+        "thumbImg": "/images/blog/blog4.png",
+        "coverImg": "/images/blog/blog4.png",
         "subImg": [
-            "/images/blog/6.png",
-            "/images/blog/5.png"
+            "/images/blog/blog6.png",
+            "/images/blog/blog5.png"
         ],
         "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "underwear-blog"
     },
     {
-        "id": "5",
+        "id": "blog5",
         "category": "underwear",
         "tag": "underwear",
         "title": "Unlocking the Secrets of Anti-Aging: Effective Strategies and Products",
-        "date": "Dec 26, 2023",
+        "date": "Dec 2blog6, 2023",
         "author": "Louis Ancelotti",
-        "avatar": "/images/avatar/5.png",
-        "thumbImg": "/images/blog/5.png",
-        "coverImg": "/images/blog/5.png",
+        "avatar": "/images/avatar/blog5.png",
+        "thumbImg": "/images/blog/blog5.png",
+        "coverImg": "/images/blog/blog5.png",
         "subImg": [
-            "/images/blog/4.png",
-            "/images/blog/6.png"
+            "/images/blog/blog4.png",
+            "/images/blog/blog6.png"
         ],
-        "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "shortDesc": "Transform your projects with our stunning ribbons. Add color, texture, and elegance to crafts, gifts, and décor..",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "underwear-blog"
     },
     {
-        "id": "6",
+        "id": "blog6",
         "category": "underwear",
         "tag": "underwear",
         "title": "Exploring the World of Fragrances: How to Find Your Signature Scent",
-        "date": "Dec 26, 2023",
+        "date": "Dec 2blog6, 2023",
         "author": "Davide Alvaro",
-        "avatar": "/images/avatar/6.png",
-        "thumbImg": "/images/blog/6.png",
-        "coverImg": "/images/blog/6.png",
+        "avatar": "/images/avatar/blog6.png",
+        "thumbImg": "/images/blog/blog6.png",
+        "coverImg": "/images/blog/blog6.png",
         "subImg": [
-            "/images/blog/5.png",
-            "/images/blog/4.png"
+            "/images/blog/blog5.png",
+            "/images/blog/blog4.png"
         ],
         "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "underwear-blog"
     },
     {
@@ -122,7 +119,7 @@
             "/images/blog/8.png"
         ],
         "shortDesc": "Discover the latest cosmetic trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles, stay ahead of the cosmetic curve with our comprehensive guide.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "cosmetic-news"
     },
     {
@@ -140,7 +137,7 @@
             "/images/blog/9.png"
         ],
         "shortDesc": "Build a versatile and timeless wardrobe with our list of must-have cosmetic staples. From the classic little black dress to the perfect pair of jeans.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "cosmetic-news"
     },
     {
@@ -157,8 +154,8 @@
             "/images/blog/8.png",
             "/images/blog/7.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "cosmetic-news"
     },
     {
@@ -175,8 +172,8 @@
             "/images/blog/toys3.png",
             "/images/blog/toys2.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "toys-kid-news"
     },
     {
@@ -186,7 +183,7 @@
         "title": "How to Build a Sustainable and Stylish Wardrobe",
         "date": "Dec 21, 2023",
         "author": "Alex Balde",
-        "avatar": "/images/avatar/4.png",
+        "avatar": "/images/avatar/blog4.png",
         "thumbImg": "/images/blog/toys2.png",
         "coverImg": "/images/blog/toys2.png",
         "subImg": [
@@ -194,7 +191,7 @@
             "/images/blog/toys3.png"
         ],
         "shortDesc": "Build a versatile and timeless wardrobe with our list of must-have toys-kid staples. From the classic little black dress to the perfect pair of jeans.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "toys-kid-news"
     },
     {
@@ -204,15 +201,15 @@
         "title": "toys kid and Beauty Tips for Busy Professionals",
         "date": "Dec 22, 2023",
         "author": "Leona Pablo",
-        "avatar": "/images/avatar/5.png",
+        "avatar": "/images/avatar/blog5.png",
         "thumbImg": "/images/blog/toys3.png",
         "coverImg": "/images/blog/toys3.png",
         "subImg": [
             "/images/blog/toys2.png",
             "/images/blog/toys1.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "toys-kid-news"
     },
     {
@@ -222,19 +219,19 @@
         "title": "Mastering the Perfect Everyday Look",
         "date": "Dec 22, 2023",
         "author": "Leona Pablo",
-        "avatar": "/images/avatar/6.png",
+        "avatar": "/images/avatar/blog6.png",
         "thumbImg": "/images/blog/yoga1.png",
         "coverImg": "/images/blog/yoga1.png",
         "subImg": [
             "/images/blog/yoga2.png",
             "/images/blog/yoga3.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "yoga-news"
     },
     {
-        "id": "14",
+        "id": "1blog4",
         "category": "yoga",
         "tag": "nourishing mask",
         "title": "How to Build a Sustainable",
@@ -248,11 +245,11 @@
             "/images/blog/yoga3.png"
         ],
         "shortDesc": "Build a versatile and timeless wardrobe with our list of must-have yoga staples. From the classic little black dress to the perfect pair of jeans.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "yoga-news"
     },
     {
-        "id": "15",
+        "id": "1blog5",
         "category": "yoga",
         "tag": "body lotion",
         "title": "Beauty Tips for Busy Professionals",
@@ -265,12 +262,12 @@
             "/images/blog/yoga2.png",
             "/images/blog/yoga1.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "yoga-news"
     },
     {
-        "id": "16",
+        "id": "1blog6",
         "category": "organic",
         "tag": "body lotion",
         "title": "The Art of Makeup: Mastering the Perfect Everyday Look",
@@ -283,8 +280,8 @@
             "/images/blog/organic3.png",
             "/images/blog/organic2.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "organic-news"
     },
     {
@@ -302,7 +299,7 @@
             "/images/blog/organic3.png"
         ],
         "shortDesc": "Build a versatile and timeless wardrobe with our list of must-have organic staples. From the classic little black dress to the perfect pair of jeans.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "organic-news"
     },
     {
@@ -312,22 +309,22 @@
         "title": "toys kid and Beauty Tips for Busy Professionals",
         "date": "Dec 22, 2023",
         "author": "Leona Pablo",
-        "avatar": "/images/avatar/4.png",
+        "avatar": "/images/avatar/blog4.png",
         "thumbImg": "/images/blog/organic3.png",
         "coverImg": "/images/blog/organic3.png",
         "subImg": [
             "/images/blog/organic2.png",
             "/images/blog/organic1.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "shortDesc": "Discover the charm of our exquisite ribbons and learn how to add elegance to your crafts, gifts, and décor with ease. From vibrant designs to luxurious textures, find the perfect ribbon for every occasion.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "organic-news"
     },
     {
         "id": "19",
         "category": "marketplace",
         "tag": "Apple, headphone",
-        "title": "quality Headphone models worth buying in 2024",
+        "title": "quality Headphone models worth buying in 202blog4",
         "date": "Dec 22, 2023",
         "author": "Leona Pablo",
         "avatar": "/images/avatar/2.png",
@@ -337,8 +334,8 @@
             "/images/blog/marketplace1.png",
             "/images/blog/marketplace2.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "shortDesc": "Discover the charm of our exquisite ribbons and learn how to add elegance to your crafts, gifts, and décor with ease. From vibrant designs to luxurious textures, find the perfect ribbon for every occasion.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
         "slug": "organic-news"
     },
     {
@@ -355,9 +352,8 @@
             "/images/blog/marketplace1.png",
             "/images/blog/marketplace2.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
-        "slug": "organic-news"
+        "shortDesc": "Discover the charm of our exquisite ribbons and learn how to add elegance to your crafts, gifts, and décor with ease. From vibrant designs to luxurious textures, find the perfect ribbon for every occasion.",
+        "description": "Our carefully curated collection of ribbons is designed to inspire creativity and add a touch of elegance to any project. Whether you're wrapping gifts, embellishing crafts, or creating beautiful decorations, our ribbons come in a variety of colors, patterns, and textures to suit your needs. Explore endless possibilities and transform ordinary moments into extraordinary memories with our premium-quality ribbons."
     },
     {
         "id": "21",
@@ -373,8 +369,8 @@
             "/images/blog/marketplace1.png",
             "/images/blog/marketplace2.png"
         ],
-        "shortDesc": "Explore the power of accessories and learn how to effortlessly transform your outfits. From statement jewelry to stylish handbags and chic scarves.",
-        "description": "The poblano yogurt is a key component here, but I totally understand if you want to skip out on it because of time, lack of poblanos, or you're anti-chile. No problem, just about any flavor-forward yogurt slather will do in its place. You could simply crush a clove of garlic into some paste with a pinch of salt, and stir that in your favorite plain yogurt - also delicious. Or, whisk a tablespoon of harissa paste into your yogurt.",
+        "shortDesc": "Discover the charm of our exquisite ribbons and learn how to add elegance to your crafts, gifts, and décor with ease. From vibrant designs to luxurious textures, find the perfect ribbon for every occasion.",
+        "description": "Our carefully curated collection of ribbons is designed to inspire creativity and add a touch of elegance to any project. Whether you're wrapping gifts, embellishing crafts, or creating beautiful decorations, our ribbons come in a variety of colors, patterns, and textures to suit your needs. Explore endless possibilities and transform ordinary moments into extraordinary memories with our premium-quality ribbons.",
         "slug": "organic-news"
     }
 ]

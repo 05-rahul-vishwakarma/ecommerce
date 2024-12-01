@@ -37,7 +37,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/i6.png'}
+                                    src={'/images/instagram/i9.png'}
                                     width={300}
                                     height={300}
                                     alt='1'
@@ -65,7 +65,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/8.png'}
+                                    src={'/images/instagram/i8.png'}
                                     width={300}
                                     height={300}
                                     alt='1'
@@ -79,7 +79,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/9.png'}
+                                    src={'/images/instagram/i6.png'}
                                     width={300}
                                     height={300}
                                     alt='1'
@@ -93,7 +93,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/10.png'}
+                                    src={'/images/instagram/i10.png'}
                                     width={300}
                                     height={300}
                                     alt='1'

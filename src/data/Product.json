@@ -3,7 +3,7 @@
     "id": "1",
     "category": "fashion",
     "type": "top",
-    "name": "mesh shirt",
+    "name": "Traditional Ribbon& bling",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -51,8 +51,8 @@
   {
     "id": "2",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "Raglan Sleeve T-shirt",
+    "type": "Golden Traditional Ribbon",
+    "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -73,10 +73,10 @@
     ],
     "variation": [
       {
-        "color": "white",
-        "colorCode": "#F6EFDD",
+        "color": "yellow",
+        "colorCode": "#ECB018",
         "colorImage": "/images/product/color/48x48.png",
-        "image": "/images/product/1000x1002.png"
+        "image": "/images/product/1000x1000.png"
       },
       {
         "color": "purple",
@@ -103,7 +103,7 @@
     "id": "3",
     "category": "fashion",
     "type": "dress",
-    "name": "Off-the-Shoulder Blouse",
+    "name": "Red Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -154,8 +154,8 @@
   {
     "id": "4",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "Kimono sleeve top",
+    "type": "Golden Traditional Ribbon",
+    "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -209,7 +209,7 @@
     "id": "5",
     "category": "fashion",
     "type": "dress",
-    "name": "mesh shirt",
+    "name": "Traditional Ribbon& bling",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -263,7 +263,7 @@
     "id": "6",
     "category": "fashion",
     "type": "sets",
-    "name": "Raglan Sleeve T-shirt",
+    "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -320,7 +320,7 @@
     "id": "7",
     "category": "fashion",
     "type": "shirt",
-    "name": "Off-the-Shoulder Blouse",
+    "name": "Red Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -378,7 +378,7 @@
     "id": "8",
     "category": "fashion",
     "type": "sets",
-    "name": "Kimono sleeve top",
+    "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -438,8 +438,8 @@
   {
     "id": "9",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "mesh shirt",
+    "type": "Golden Traditional Ribbon",
+    "name": "Traditional Ribbon& bling",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -493,8 +493,8 @@
   {
     "id": "10",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "Raglan Sleeve T-shirt",
+    "type": "Golden Traditional Ribbon",
+    "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -556,8 +556,8 @@
   {
     "id": "11",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "Off-the-Shoulder Blouse",
+    "type": "Golden Traditional Ribbon",
+    "name": "Red Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -609,7 +609,7 @@
     "id": "12",
     "category": "fashion",
     "type": "sets",
-    "name": "Kimono sleeve top",
+    "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -669,8 +669,8 @@
   {
     "id": "13",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "mesh shirt",
+    "type": "Golden Traditional Ribbon",
+    "name": "Traditional Ribbon& bling",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -730,7 +730,7 @@
     "id": "14",
     "category": "fashion",
     "type": "sets",
-    "name": "Raglan Sleeve T-shirt",
+    "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -793,7 +793,7 @@
     "id": "15",
     "category": "fashion",
     "type": "top",
-    "name": "Off-the-Shoulder Blouse",
+    "name": "Red Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -851,7 +851,7 @@
     "id": "16",
     "category": "fashion",
     "type": "top",
-    "name": "Kimono sleeve top",
+    "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -911,8 +911,8 @@
   {
     "id": "22",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "T-shirt Pockets",
+    "type": "Golden Traditional Ribbon",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "men",
     "new": false,
     "sale": true,
@@ -967,13 +967,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "add to cart",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "23",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "T-shirt Pockets",
+    "type": "Golden Traditional Ribbon",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "men",
     "new": false,
     "sale": true,
@@ -1029,13 +1029,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "quick shop",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "17",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "mesh shirt",
+    "type": "Golden Traditional Ribbon",
+    "name": "Traditional Ribbon& bling",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -1096,7 +1096,7 @@
     "id": "18",
     "category": "fashion",
     "type": "shirt",
-    "name": "Raglan Sleeve T-shirt",
+    "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -1159,7 +1159,7 @@
     "id": "19",
     "category": "fashion",
     "type": "dress",
-    "name": "Off-the-Shoulder Blouse",
+    "name": "Red Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -1217,7 +1217,7 @@
     "id": "20",
     "category": "fashion",
     "type": "top",
-    "name": "Kimono sleeve top",
+    "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -1277,8 +1277,8 @@
   {
     "id": "21",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "T-shirt Pockets",
+    "type": "Golden Traditional Ribbon",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "men",
     "new": false,
     "sale": true,
@@ -1334,13 +1334,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "add to cart",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "24",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "T-shirt Pockets",
+    "type": "Golden Traditional Ribbon",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "men",
     "new": false,
     "sale": true,
@@ -1396,13 +1396,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "quick shop",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "241",
     "category": "fashion",
-    "type": "t-shirt",
-    "name": "T-shirt Pockets",
+    "type": "Golden Traditional Ribbon",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "men",
     "new": false,
     "sale": true,
@@ -1444,7 +1444,7 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "add to cart",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "25",
@@ -1506,13 +1506,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "add to cart",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "26",
     "category": "fashion",
     "type": "shirt",
-    "name": "T-shirt Pockets",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "men",
     "new": false,
     "sale": true,
@@ -1568,13 +1568,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "quick shop",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "27",
     "category": "fashion",
     "type": "shirt",
-    "name": "T-shirt Pockets",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "men",
     "new": false,
     "sale": true,
@@ -1630,13 +1630,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "quick shop",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "28",
     "category": "fashion",
     "type": "underwear",
-    "name": "Kimono sleeve top",
+    "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -1697,7 +1697,7 @@
     "id": "29",
     "category": "fashion",
     "type": "swimwear",
-    "name": "mesh shirt",
+    "name": "Traditional Ribbon& bling",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -1758,7 +1758,7 @@
     "id": "30",
     "category": "fashion",
     "type": "swimwear",
-    "name": "Raglan Sleeve T-shirt",
+    "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -1821,7 +1821,7 @@
     "id": "31",
     "category": "fashion",
     "type": "underwear",
-    "name": "Off-the-Shoulder Blouse",
+    "name": "Red Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -1879,7 +1879,7 @@
     "id": "32",
     "category": "fashion",
     "type": "swimwear",
-    "name": "Kimono sleeve top",
+    "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -1940,7 +1940,7 @@
     "id": "33",
     "category": "fashion",
     "type": "underwear",
-    "name": "T-shirt Pockets",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -1996,13 +1996,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "add to cart",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "34",
     "category": "fashion",
     "type": "underwear",
-    "name": "T-shirt Pockets",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -2051,13 +2051,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "add to cart",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "35",
     "category": "fashion",
     "type": "swimwear",
-    "name": "T-shirt Pockets",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -2107,13 +2107,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "add to cart",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "36",
     "category": "fashion",
     "type": "swimwear",
-    "name": "T-shirt Pockets",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -2157,7 +2157,7 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "add to cart",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "37",
@@ -2213,13 +2213,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "add to cart",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "38",
     "category": "fashion",
     "type": "swimwear",
-    "name": "T-shirt Pockets",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -2263,13 +2263,13 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "add to cart",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "39",
     "category": "fashion",
     "type": "swimwear",
-    "name": "T-shirt Pockets",
+    "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -2319,7 +2319,7 @@
     ],
     "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
     "action": "quick shop",
-    "slug": "t-shirt"
+    "slug": "Golden Traditional Ribbon"
   },
   {
     "id": "391",
@@ -2500,7 +2500,7 @@
     "id": "396",
     "category": "fashion",
     "type": "accessories",
-    "name": "T-shirt",
+    "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
@@ -7075,7 +7075,7 @@
     "id": "143",
     "category": "fashion",
     "type": "dress",
-    "name": "Off-the-Shoulder Blouse",
+    "name": "Red Ribbon",
     "gender": "women",
     "new": false,
     "sale": true,
