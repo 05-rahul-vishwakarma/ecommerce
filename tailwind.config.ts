@@ -30,7 +30,7 @@ const config: Config = {
       'white': '#ffffff',
       'surface': '#F7F7F7',
       'red': '#DB4444',
-      'purple': '#a394ea',
+      'purple': '#5a2dbbc5',
       'success': '#3DAB25',
       'yellow': '#ECB018',
       'pink': '#F4407D',

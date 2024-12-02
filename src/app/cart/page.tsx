@@ -18,7 +18,7 @@ const Cart = () => {
     useEffect(() => {
         const timer = setInterval(() => {
             setTimeLeft(countdownTime());
-        }, 1000);
+        }, 500);
 
         return () => clearInterval(timer);
     }, []);

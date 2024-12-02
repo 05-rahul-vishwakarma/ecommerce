@@ -52,8 +52,8 @@
     },
     {
         "id": "blog4",
-        "category": "underwear",
-        "tag": "underwear",
+        "category": "ribbons",
+        "tag": "ribbons",
         "title": "The Art of Makeup: Mastering the Perfect Everyday Look",
         "date": "Dec 2blog4, 2023",
         "author": "Christina Smith",
@@ -66,12 +66,12 @@
         ],
         "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
         "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
-        "slug": "underwear-blog"
+        "slug": "ribbons-blog"
     },
     {
         "id": "blog5",
-        "category": "underwear",
-        "tag": "underwear",
+        "category": "ribbons",
+        "tag": "ribbons",
         "title": "Unlocking the Secrets of Anti-Aging: Effective Strategies and Products",
         "date": "Dec 2blog6, 2023",
         "author": "Louis Ancelotti",
@@ -84,12 +84,12 @@
         ],
         "shortDesc": "Transform your projects with our stunning ribbons. Add color, texture, and elegance to crafts, gifts, and décor..",
         "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
-        "slug": "underwear-blog"
+        "slug": "ribbons-blog"
     },
     {
         "id": "blog6",
-        "category": "underwear",
-        "tag": "underwear",
+        "category": "ribbons",
+        "tag": "ribbons",
         "title": "Exploring the World of Fragrances: How to Find Your Signature Scent",
         "date": "Dec 2blog6, 2023",
         "author": "Davide Alvaro",
@@ -102,7 +102,7 @@
         ],
         "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
         "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
-        "slug": "underwear-blog"
+        "slug": "ribbons-blog"
     },
     {
         "id": "7",

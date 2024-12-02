@@ -1,41 +1,37 @@
-// 'use client'
+'use client';
 
-// import React, { useState, useEffect } from 'react'
-// import { useRouter, useSearchParams } from 'next/navigation';
-// import TopNavOne from '@/components/Header/TopNav/TopNavOne'
-// import ShopBreadCrumb1 from '@/components/Shop/ShopBreadCrumb1'
-// import productData from '@/data/Product.json'
-// import Footer from '@/components/Footer/Footer'
-// import MenuFour from '@/components/Header/MenuFour';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import TopNavOne from '@/components/Header/TopNav/TopNavOne';
+import ShopBreadCrumb1 from '@/components/Shop/ShopBreadCrumb1';
+import productData from '@/data/Product.json';
+import Footer from '@/components/Footer/Footer';
+import MenuFour from '@/components/Header/MenuFour';
 
-// export default function BreadCrumb1() {
-//     const searchParams = useSearchParams()
-//     let [type,setType] = useState<string | null | undefined>()
-//     let datatype = searchParams.get('type')
-//     let gender = searchParams.get('gender')
-//     let category = searchParams.get('category')
+export default function BreadCrumb1() {
+  const [type, setType] = useState<string | null>(null);
+  const [gender, setGender] = useState<string | null>(null);
+  const [category, setCategory] = useState<string | null>(null);
 
-//     useEffect(() => {
-//         setType(datatype);
-//     }, [datatype]);
-    
+  // Use useSearchParams within useEffect to avoid issues with SSR
+  // const searchParams = useSearchParams();
 
-//     return (
-//         <>
-//             <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
-//             <div id="header" className='relative w-full'>
-//                 <MenuFour props="bg-transparent" />
-//             </div>
-//             <ShopBreadCrumb1 data={productData} productPerPage={9} dataType={type} gender={gender} category={category} />
-//             <Footer />      
-//         </>
-//     )
-// }
+  // useEffect(() => {
+    // const datatype = searchParams.get('type');
+    // const genderParam = searchParams.get('gender');
+    // const categoryParam = searchParams.get('category');
+    // setType(datatype);
+    // setGender(genderParam);
+    // setCategory(categoryParam);
+  // }, [searchParams]);
 
-import React from 'react'
-
-export default function page() {
   return (
-    <div>page</div>
-  )
+    <>
+      <div id="header" className="relative w-full">
+        <MenuFour props="bg-transparent" />
+      </div>
+      <ShopBreadCrumb1 data={productData} productPerPage={9} dataType={type} gender={gender} category={category} />
+      <Footer />
+    </>
+  );
 }
