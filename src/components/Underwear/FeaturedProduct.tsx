@@ -237,7 +237,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                                 <div className="list-size flex items-center gap-2 flex-wrap mt-3">
                                     {productMain.sizes.map((item, index) => (
                                         <div
-                                            className={`size-item w-12 h-12 flex items-center justify-center text-button rounded-full bg-white border border-line ${activeSize === item ? 'active' : ''}`}
+                                            className={`size-item w-12 h-12 flex items-center justify-center text-button rounded-full bg-white border border-purple ${activeSize === item ? 'active' : ''}`}
                                             key={index}
                                             onClick={() => handleActiveSize(item)}
                                         >
@@ -268,7 +268,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                                 </div>
                             </div>
                             <div className="button-block mt-5">
-                                <div className="button-main w-full text-center text-purple">Buy It Now</div>
+                                <div className="button-main w-full text-center text-white">Buy It Now</div>
                             </div>
                         </div>
                     </div>

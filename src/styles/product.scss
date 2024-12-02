@@ -38,7 +38,7 @@
     .add-wishlist-btn,
     .quick-view-btn-list {
         &:hover {
-            background-color: var(--black);
+            background-color: var(--purple);
             color: var(--white);
             cursor: pointer;
 
@@ -220,7 +220,7 @@
             transform: translateX(50px);
 
             &:hover {
-                background-color: var(--black);
+                background-color: var(--purple);
                 color: var(--white);
             }
         }

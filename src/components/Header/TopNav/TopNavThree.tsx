@@ -19,7 +19,7 @@ const TopNavThree: React.FC<Props> = ({ props }) => {
             <div className={`top-nav md:h-[44px] h-[30px] border-b border-line ${props}`}>
                 <div className="container mx-auto h-full">
                     <div className="top-nav-main flex justify-between max-md:justify-center h-full">
-                        <div className="left-content flex items-center">
+                        <div className="left-content flex items-center text-purple font-semibold">
                             <ul className='flex items-center gap-5'>
                                 <li>
                                     <Link href={'/pages/about'} className='caption2 hover:underline'>
@@ -52,8 +52,8 @@ const TopNavThree: React.FC<Props> = ({ props }) => {
                                 }}
                             >
                                 <div className="select relative">
-                                    <p className="selected caption2">{language}</p>
-                                    <ul className={`list-option  bg-[#9e5eff]  ${isOpenLanguage ? 'open' : ''}`}>
+                                    <p className="selected caption2 text-purple">{language}</p>
+                                    <ul className={`list-option  bg-white text-purple ${isOpenLanguage ? 'open' : ''}`}>
                                         {
                                             ['English', 'Espana', 'France'].map((item, index) => (
                                                 <li key={index} className="caption2" onClick={() => setLanguage(item)}>{item}</li>
@@ -71,8 +71,8 @@ const TopNavThree: React.FC<Props> = ({ props }) => {
                                 }}
                             >
                                 <div className="select relative">
-                                    <p className="selected caption2">{currence}</p>
-                                    <ul className={`list-option  bg-[#9e5eff]  ${isOpenCurrence ? 'open' : ''}`}>
+                                    <p className="selected caption2 text-purple">{currence}</p>
+                                    <ul className={`list-option  bg-white text-purple ${isOpenCurrence ? 'open' : ''}`}>
                                         {
                                             ['USD', 'EUR', 'GBP'].map((item, index) => (
                                                 <li key={index} className="caption2" onClick={() => setCurrence(item)}>{item}</li>
@@ -83,19 +83,19 @@ const TopNavThree: React.FC<Props> = ({ props }) => {
                                 <Icon.CaretDown size={12} />
                             </div>
                             <Link href={'https://www.facebook.com/'} target='_blank'>
-                                <i className="icon-facebook text-black"></i>
+                                <i className="icon-facebook text-purple"></i>
                             </Link>
                             <Link href={'https://www.instagram.com/'} target='_blank'>
-                                <i className="icon-instagram text-black"></i>
+                                <i className="icon-instagram text-purple"></i>
                             </Link>
                             <Link href={'https://www.youtube.com/'} target='_blank'>
-                                <i className="icon-youtube text-black"></i>
+                                <i className="icon-youtube text-purple"></i>
                             </Link>
                             <Link href={'https://twitter.com/'} target='_blank'>
-                                <i className="icon-twitter text-black"></i>
+                                <i className="icon-twitter text-purple"></i>
                             </Link>
                             <Link href={'https://pinterest.com/'} target='_blank'>
-                                <i className="icon-pinterest text-black"></i>
+                                <i className="icon-pinterest text-purple"></i>
                             </Link>
                         </div>
 

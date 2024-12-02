@@ -76,7 +76,7 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                                         </div>
                                     </div>
                                     <div
-                                        className="text-xl bg-white w-10 h-10 rounded-xl border border-black flex items-center justify-center duration-300 cursor-pointer hover:bg-black hover:text-white"
+                                        className="text-xl bg-white w-10 h-10 rounded-xl border border-purple flex items-center justify-center duration-300 cursor-pointer hover:bg-purple hover:text-white"
                                         onClick={e => {
                                             e.stopPropagation();
                                             handleAddToCart(product)
@@ -154,21 +154,21 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                         <div className="footer-modal bg-white absolute bottom-0 left-0 w-full">
                             <div className="flex items-center justify-center lg:gap-14 gap-8 px-6 py-4 border-b border-line">
                                 <div
-                                    className="item flex items-center gap-3 cursor-pointer"
+                                    className="item flex items-center gap-3 cursor-pointer  hover:text-purple"
                                     onClick={() => handleActiveTab('note')}
                                 >
                                     <Icon.NotePencil className='text-xl' />
                                     <div className="caption1">Note</div>
                                 </div>
                                 <div
-                                    className="item flex items-center gap-3 cursor-pointer"
+                                    className="item flex items-center gap-3 cursor-pointer  hover:text-purple"
                                     onClick={() => handleActiveTab('shipping')}
                                 >
                                     <Icon.Truck className='text-xl' />
                                     <div className="caption1">Shipping</div>
                                 </div>
                                 <div
-                                    className="item flex items-center gap-3 cursor-pointer"
+                                    className="item flex items-center gap-3 cursor-pointer  hover:text-purple"
                                     onClick={() => handleActiveTab('coupon')}
                                 >
                                     <Icon.Tag className='text-xl' />
