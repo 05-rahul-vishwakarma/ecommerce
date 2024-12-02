@@ -45,7 +45,7 @@ const TabFeatures: React.FC<Props> = ({ data, start, limit }) => {
             <div className="tab-features-block style-underwear md:py-20 py-10 bg-[#f9f5ff] md:mt-20 mt-10 ">
                 <div className="container ">
                     <div className=" flex flex-col items-center text-center">
-                        <div className="menu-tab flex items-center gap-2  py-2 px-1 bg-purple rounded-2xl text-white">
+                        <div className="menu-tab flex items-center gap-2  py-2 px-1 bg-custom-purple-color rounded-2xl text-white">
                             {['best sellers', 'on sale', 'new arrivals'].map((item, index) => (
                                 <div
                                     key={index}

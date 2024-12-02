@@ -32,7 +32,7 @@ const Collection = () => {
                                     alt='underwear1'
                                 />
                             </div>
-                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-violet rounded-xl duration-500 bg-[#9e5eff] text-white">lingerie</div>
+                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-violet rounded-xl duration-500 bg-custom-purple-color text-white">Silk Ribbon</div>
                         </div>
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('underwear')}>
                             <div className="bg-img">
@@ -43,7 +43,7 @@ const Collection = () => {
                                     alt='underwear1'
                                 />
                             </div>
-                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-[#9e5eff] rounded-xl duration-500  text-white">Beach Wear</div>
+                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-custom-purple-color rounded-xl duration-500  text-white">Traditional Ribbon</div>
                         </div>
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('swimwear')}>
                             <div className="bg-img">
@@ -54,7 +54,7 @@ const Collection = () => {
                                     alt='underwear1'
                                 />
                             </div>
-                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-[#9e5eff] rounded-xl duration-500 text-white">Sport Active</div>
+                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-custom-purple-color rounded-xl duration-500 text-white">Golden Ribbon</div>
                         </div>
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('underwear')}>
                             <div className="bg-img">
@@ -65,7 +65,7 @@ const Collection = () => {
                                     alt='underwear1'
                                 />
                             </div>
-                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-[#9e5eff] rounded-xl duration-500 text-white">Swim wear</div>
+                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-custom-purple-color rounded-xl duration-500 text-white">Custom Ribbon</div>
                         </div>
                     </div>
                 </div>

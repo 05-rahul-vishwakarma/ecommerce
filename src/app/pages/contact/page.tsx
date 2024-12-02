@@ -10,7 +10,7 @@ import MenuFour from '@/components/Header/MenuFour';
 const ContactUs = () => {
     return (
         <>
-            <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
+            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
             <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='Contact us' subHeading='Contact us' />

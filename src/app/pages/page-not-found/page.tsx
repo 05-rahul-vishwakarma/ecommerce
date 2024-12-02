@@ -10,7 +10,7 @@ import MenuFour from '@/components/Header/MenuFour';
 const PageNotFound = () => {
     return (
         <>
-            <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
+            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
             <div id="header" className='relative w-full'>
                 <MenuFour props="bg-white" />
             </div>

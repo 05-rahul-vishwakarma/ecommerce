@@ -30,7 +30,7 @@ const TopNavOne: React.FC<Props> = ({ props, slogan }) => {
                                 }}
                             >
                                 <div className="select relative">
-                                    <p className="selected caption2 text-white">{language}</p>
+                                    <p className="selected caption2 text-purple">{language}</p>
                                     <ul className={`list-option bg-white ${isOpenLanguage ? 'open' : ''}`}>
                                         {
                                             ['English', 'Espana', 'France'].map((item, index) => (
@@ -49,7 +49,7 @@ const TopNavOne: React.FC<Props> = ({ props, slogan }) => {
                                 }}
                             >
                                 <div className="select relative">
-                                    <p className="selected caption2 text-white">{currence}</p>
+                                    <p className="selected caption2 text-purple">{currence}</p>
                                     <ul className={`list-option bg-white ${isOpenCurrence ? 'open' : ''}`}>
                                         {
                                             ['USD', 'EUR', 'GBP'].map((item, index) => (
@@ -61,24 +61,24 @@ const TopNavOne: React.FC<Props> = ({ props, slogan }) => {
                                 <Icon.CaretDown size={12} color='#fff' />
                             </div>
                         </div>
-                        <div className="text-center text-button-uppercase text-white flex items-center">
+                        <div className="text-center text-button-uppercase text-purple flex items-center">
                             {slogan}
                         </div>
                         <div className="right-content flex items-center gap-5 max-md:hidden">
                             <Link href={'https://www.facebook.com/'} target='_blank'>
-                                <i className="icon-facebook text-white"></i>
+                                <i className="icon-facebook text-purple "></i>
                             </Link>
                             <Link href={'https://www.instagram.com/'} target='_blank'>
-                                <i className="icon-instagram text-white"></i>
+                                <i className="icon-instagram text-purple "></i>
                             </Link>
                             <Link href={'https://www.youtube.com/'} target='_blank'>
-                                <i className="icon-youtube text-white"></i>
+                                <i className="icon-youtube text-purple "></i>
                             </Link>
                             <Link href={'https://twitter.com/'} target='_blank'>
-                                <i className="icon-twitter text-white"></i>
+                                <i className="icon-twitter text-purple "></i>
                             </Link>
                             <Link href={'https://pinterest.com/'} target='_blank'>
-                                <i className="icon-pinterest text-white"></i>
+                                <i className="icon-pinterest text-purple "></i>
                             </Link>
                         </div>
 

@@ -131,7 +131,7 @@ const ModalQuickview = () => {
                             <div className="heading pb-6 px-4 flex items-center justify-between relative">
                                 <div className="heading5">Quick View</div>
                                 <div
-                                    className="close-btn absolute right-0 top-0 w-6 h-6 rounded-full bg-surface flex items-center justify-center duration-300 cursor-pointer hover:bg-black hover:text-white"
+                                    className="close-btn absolute right-0 top-0 w-6 h-6 rounded-full bg-surface flex items-center justify-center duration-300 cursor-pointer hover:bg-purple hover:text-white"
                                     onClick={closeQuickview}
                                 >
                                     <Icon.X size={14} />
@@ -144,7 +144,7 @@ const ModalQuickview = () => {
                                         <div className="heading4 mt-1">{selectedProduct?.name}</div>
                                     </div>
                                     <div
-                                        className={`add-wishlist-btn w-10 h-10 flex items-center justify-center border border-line cursor-pointer rounded-lg duration-300 flex-shrink-0 hover:bg-black hover:text-white ${wishlistState.wishlistArray.some(item => item.id === selectedProduct?.id) ? 'active' : ''}`}
+                                        className={`add-wishlist-btn w-10 h-10 flex items-center justify-center border border-line cursor-pointer rounded-lg duration-300 flex-shrink-0 hover:bg-purple hover:text-white ${wishlistState.wishlistArray.some(item => item.id === selectedProduct?.id) ? 'active' : ''}`}
                                         onClick={handleAddToWishlist}
                                     >
                                         {wishlistState.wishlistArray.some(item => item.id === selectedProduct?.id) ? (
@@ -214,7 +214,7 @@ const ModalQuickview = () => {
                                         <div className="list-size flex items-center gap-2 flex-wrap mt-3">
                                             {selectedProduct?.sizes.map((item, index) => (
                                                 <div
-                                                    className={`size-item ${item === 'freesize' ? 'px-3 py-2' : 'w-12 h-12'} flex items-center justify-center text-button rounded-full bg-white border border-line ${activeSize === item ? 'active' : ''}`}
+                                                    className={`size-item ${item === 'freesize' ? 'px-3 py-2' : 'w-12 h-12'} flex items-center justify-center text-button rounded-full bg-white border border-purple ${activeSize === item ? 'active' : ''}`}
                                                     key={index}
                                                     onClick={() => handleActiveSize(item)}
                                                 >
@@ -236,7 +236,7 @@ const ModalQuickview = () => {
                                                 className='cursor-pointer body1'
                                             />
                                         </div>
-                                        <div onClick={handleAddToCart} className="button-main w-full text-center bg-white text-black border border-black">Add To Cart</div>
+                                        <div onClick={handleAddToCart} className="button-main w-full text-center bg-white text-purple border border-purple">Add To Cart</div>
                                     </div>
                                     <div className="button-block mt-5">
                                         <div className="button-main w-full text-center">Buy It Now</div>
@@ -244,14 +244,14 @@ const ModalQuickview = () => {
                                     <div className="flex items-center flex-wrap lg:gap-20 gap-8 gap-y-4 mt-5">
                                         <div className="compare flex items-center gap-3 cursor-pointer" onClick={handleAddToCompare}>
                                             <div
-                                                className="compare-btn md:w-12 md:h-12 w-10 h-10 flex items-center justify-center border border-line cursor-pointer rounded-xl duration-300 hover:bg-black hover:text-white"
+                                                className="compare-btn md:w-12 md:h-12 w-10 h-10 flex items-center justify-center text-purple cursor-pointer rounded-xl duration-300 hover:bg-purple hover:text-white"
                                             >
                                                 <Icon.ArrowsCounterClockwise className='heading6' />
                                             </div>
                                             <span>Compare</span>
                                         </div>
                                         <div className="share flex items-center gap-3 cursor-pointer">
-                                            <div className="share-btn md:w-12 md:h-12 w-10 h-10 flex items-center justify-center border border-line cursor-pointer rounded-xl duration-300 hover:bg-black hover:text-white">
+                                            <div className="share-btn md:w-12 md:h-12 w-10 h-10 flex items-center text-purple justify-center cursor-pointer rounded-xl duration-300 hover:bg-purple hover:text-white">
                                                 <Icon.ShareNetwork weight='fill' className='heading6' />
                                             </div>
                                             <span>Share Products</span>

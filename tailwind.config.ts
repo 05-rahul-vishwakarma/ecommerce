@@ -40,6 +40,7 @@ const config: Config = {
       'surface1': 'rgba(255, 255, 255, 0.1)',
 
       'custom-orange': '#d24e01',
+      'custom-purple-color': '#592dbb',
 
     },
   },

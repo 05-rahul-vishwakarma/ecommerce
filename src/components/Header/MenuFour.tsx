@@ -74,9 +74,9 @@ const MenuFour: React.FC<Props> = ({ props }) => {
   return (
     <>
       <div
-        style={{ backgroundColor: "#a394ea" }}
+        style={{ backgroundColor: "#592dbb" }}
         className={`header-menu style-one ${fixedHeader ? " fixed" : "relative"
-          } w-full bg--purple md:h-[74px] h-[56px] ${props}`}
+          } w-full  md:h-[74px] h-[56px] ${props}`}
       >
         <div className="container mx-auto h-full">
           <div className="header-main flex items-center justify-between h-full">
@@ -170,7 +170,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     <ul className="w-full">
                       <li>
                         <Link
-                        
+
                           href="/pages/about"
                           className={`text-secondary duration-300 ${pathname === "/pages/about" ? "active" : ""
                             }`}
@@ -227,8 +227,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         <Link
                           href="/pages/customer-feedbacks"
                           className={`text-secondary duration-300 ${pathname === "/pages/customer-feedbacks"
-                              ? "active"
-                              : ""
+                            ? "active"
+                            : ""
                             }`}
                         >
                           Customer Feedbacks
@@ -244,7 +244,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                 <div className="user-icon flex items-center justify-center cursor-pointer">
                   <Icon.User
                     size={24}
-                    color="black"
+                    color="white"
                     onClick={handleLoginPopup}
                   />
                   <div
@@ -276,14 +276,14 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   className="max-md:hidden wishlist-icon flex items-center cursor-pointer"
                   onClick={openModalWishlist}
                 >
-                  <Icon.Heart size={24} color="black" />
+                  <Icon.Heart size={24} color="white" />
                 </div>
                 <div
                   className="cart-icon flex items-center relative cursor-pointer"
                   onClick={openModalCart}
                 >
-                  <Icon.Handbag size={24} color="black" />
-                  <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-white bg-black w-4 h-4 flex items-center justify-center rounded-full">
+                  <Icon.Handbag size={24} color="white" />
+                  <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-black bg-white w-4 h-4 flex items-center justify-center rounded-full">
                     {cartState.cartArray.length}
                   </span>
                 </div>
@@ -360,8 +360,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/fashion2"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/fashion2"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Fashion 2
@@ -371,8 +371,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/fashion3"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/fashion3"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Fashion 3
@@ -382,8 +382,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/fashion4"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/fashion4"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Fashion 4
@@ -393,8 +393,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/fashion5"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/fashion5"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Fashion 5
@@ -404,8 +404,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/fashion6"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/fashion6"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Fashion 6
@@ -415,8 +415,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/fashion7"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/fashion7"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Fashion 7
@@ -426,8 +426,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/fashion8"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/fashion8"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Fashion 8
@@ -437,8 +437,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/fashion9"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/fashion9"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Fashion 9
@@ -448,8 +448,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/fashion10"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/fashion10"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Fashion 10
@@ -459,8 +459,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/fashion11"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/fashion11"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Fashion 11
@@ -472,8 +472,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/underwear"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/underwear"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Underwear
@@ -483,8 +483,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/cosmetic1"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/cosmetic1"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Cosmetic 1
@@ -494,8 +494,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/cosmetic2"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/cosmetic2"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Cosmetic 2
@@ -505,8 +505,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/cosmetic3"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/cosmetic3"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Cosmetic 3
@@ -525,8 +525,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/jewelry"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/jewelry"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Jewelry
@@ -536,8 +536,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/furniture"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/furniture"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Furniture
@@ -574,8 +574,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/organic"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/organic"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Organic
@@ -585,8 +585,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/homepages/marketplace"
                               className={`nav-item-mobile text-secondary duration-300 ${pathname === "/homepages/marketplace"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Home Marketplace
@@ -998,8 +998,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/breadcrumb-img"}
                                     className={`text-secondary duration-300 ${pathname === "/shop/breadcrumb-img"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Breadcrumb IMG
@@ -1009,8 +1009,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/breadcrumb1"}
                                     className={`text-secondary duration-300 ${pathname === "/shop/breadcrumb1"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Breadcrumb 1
@@ -1020,8 +1020,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/breadcrumb2"}
                                     className={`text-secondary duration-300 ${pathname === "/shop/breadcrumb2"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Breadcrumb 2
@@ -1031,8 +1031,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/collection"}
                                     className={`text-secondary duration-300 ${pathname === "/shop/collection"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Collection
@@ -1049,8 +1049,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/filter-canvas"}
                                     className={`text-secondary duration-300 ${pathname === "/shop/filter-canvas"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Filter Canvas
@@ -1060,8 +1060,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/filter-options"}
                                     className={`text-secondary duration-300 ${pathname === "/shop/filter-options"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Filter Options
@@ -1071,8 +1071,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/filter-dropdown"}
                                     className={`text-secondary duration-300 ${pathname === "/shop/filter-dropdown"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Filter Dropdown
@@ -1082,8 +1082,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/sidebar-list"}
                                     className={`text-secondary duration-300 ${pathname === "/shop/sidebar-list"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Sidebar List
@@ -1100,8 +1100,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/default"}
                                     className={`link text-secondary duration-300 cursor-pointer ${pathname === "/shop/default"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Default
@@ -1111,8 +1111,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/default-grid"}
                                     className={`link text-secondary duration-300 cursor-pointer ${pathname === "/shop/default-grid"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Default Grid
@@ -1122,8 +1122,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/default-list"}
                                     className={`link text-secondary duration-300 cursor-pointer ${pathname === "/shop/default-list"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Default List
@@ -1133,8 +1133,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/fullwidth"}
                                     className={`link text-secondary duration-300 cursor-pointer ${pathname === "/shop/fullwidth"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Full Width
@@ -1144,8 +1144,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/shop/square"}
                                     className={`link text-secondary duration-300 ${pathname === "/shop/square"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Shop Square
@@ -1171,8 +1171,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/search-result"}
                                     className={`text-secondary duration-300 ${pathname === "/search-result"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Search Result
@@ -1200,8 +1200,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/forgot-password"}
                                     className={`text-secondary duration-300 ${pathname === "/forgot-password"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Forgot Password
@@ -1211,8 +1211,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/order-tracking"}
                                     className={`text-secondary duration-300 ${pathname === "/order-tracking"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Order Tracking
@@ -1277,8 +1277,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/default"}
                                     className={`text-secondary duration-300 ${pathname === "/product/default"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Defaults
@@ -1288,8 +1288,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/sale"}
                                     className={`text-secondary duration-300 ${pathname === "/product/sale"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Sale
@@ -1299,8 +1299,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/countdown-timer"}
                                     className={`text-secondary duration-300 ${pathname === "/product/countdown-timer"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Countdown Timer
@@ -1310,8 +1310,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/grouped"}
                                     className={`text-secondary duration-300 ${pathname === "/product/grouped"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Grouped
@@ -1321,8 +1321,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/bought-together"}
                                     className={`text-secondary duration-300 ${pathname === "/product/bought-together"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Frequently Bought Together
@@ -1332,8 +1332,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/out-of-stock"}
                                     className={`text-secondary duration-300 ${pathname === "/product/out-of-stock"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Out Of Stock
@@ -1343,8 +1343,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/variable"}
                                     className={`text-secondary duration-300 ${pathname === "/product/variable"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Variable
@@ -1361,8 +1361,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/external"}
                                     className={`text-secondary duration-300 ${pathname === "/product/external"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products External
@@ -1372,8 +1372,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/on-sale"}
                                     className={`text-secondary duration-300 ${pathname === "/product/on-sale"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products On Sale
@@ -1383,8 +1383,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/discount"}
                                     className={`text-secondary duration-300 ${pathname === "/product/discount"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products With Discount
@@ -1394,8 +1394,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/sidebar"}
                                     className={`text-secondary duration-300 ${pathname === "/product/sidebar"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products With Sidebar
@@ -1405,8 +1405,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/fixed-price"}
                                     className={`text-secondary duration-300 ${pathname === "/product/fixed-price"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Fixed Price
@@ -1423,8 +1423,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/thumbnail-left"}
                                     className={`link text-secondary duration-300 ${pathname === "/product/thumbnail-left"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Thumbnails Left
@@ -1434,8 +1434,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/thumbnail-bottom"}
                                     className={`link text-secondary duration-300 ${pathname === "/product/thumbnail-bottom"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Thumbnails Bottom
@@ -1445,8 +1445,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/one-scrolling"}
                                     className={`link text-secondary duration-300 ${pathname === "/product/one-scrolling"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Grid 1 Scrolling
@@ -1456,8 +1456,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/two-scrolling"}
                                     className={`link text-secondary duration-300 ${pathname === "/product/two-scrolling"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Grid 2 Scrolling
@@ -1467,8 +1467,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/combined-one"}
                                     className={`link text-secondary duration-300 ${pathname === "/product/combined-one"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Combined 1
@@ -1478,8 +1478,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                                   <Link
                                     href={"/product/combined-two"}
                                     className={`link text-secondary duration-300 ${pathname === "/product/combined-two"
-                                        ? "active"
-                                        : ""
+                                      ? "active"
+                                      : ""
                                       }`}
                                   >
                                     Products Combined 2
@@ -1628,8 +1628,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/pages/page-not-found"
                               className={`text-secondary duration-300 ${pathname === "/pages/page-not-found"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               404
@@ -1648,8 +1648,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/pages/coming-soon"
                               className={`text-secondary duration-300 ${pathname === "/pages/coming-soon"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Coming Soon
@@ -1659,8 +1659,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Link
                               href="/pages/customer-feedbacks"
                               className={`text-secondary duration-300 ${pathname === "/pages/customer-feedbacks"
-                                  ? "active"
-                                  : ""
+                                ? "active"
+                                : ""
                                 }`}
                             >
                               Customer Feedbacks
