@@ -328,12 +328,12 @@
         cursor: pointer;
 
         &:hover {
-            border-color: var(--black);
+            border-color: var(--purple);
         }
 
         &.active {
-            border-color: var(--black);
-            background-color: var(--black);
+            border-color: var(--purple);
+            background-color: var(--purple);
             color: var(--white);
         }
     }
@@ -537,7 +537,7 @@
             .rate {
                 svg {
                     path {
-                        fill: var(--black);
+                        fill: var(--purple);
                     }
                 }
             }

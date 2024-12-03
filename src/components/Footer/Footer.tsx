@@ -39,9 +39,9 @@ const Footer = () => {
                                     </div>
                                     <div className="item flex flex-col basis-1/3 ">
                                         <div className="text-button-uppercase pb-3">Quick Shop</div>
-                                        <Link className='caption1 has-line-before duration-300 w-fit' href={'/shop/breadcrumb1'}>Women</Link>
-                                        <Link className='caption1 has-line-before duration-300 w-fit pt-2' href={'/shop/breadcrumb1'}>Men</Link>
-                                        <Link className='caption1 has-line-before duration-300 w-fit pt-2' href={'/shop/breadcrumb1'}>Clothes</Link>
+                                        <Link className='caption1 has-line-before duration-300 w-fit' href={'/shop/breadcrumb1'}>Custom Printed Ribbon</Link>
+                                        <Link className='caption1 has-line-before duration-300 w-fit pt-2' href={'/shop/breadcrumb1'}>Premium Satin Ribbon</Link>
+                                        <Link className='caption1 has-line-before duration-300 w-fit pt-2' href={'/shop/breadcrumb1'}>Foil Printed</Link>
                                         <Link className='caption1 has-line-before duration-300 w-fit pt-2' href={'/shop/breadcrumb1'}>Accessories</Link>
                                         <Link className='caption1 has-line-before duration-300 w-fit pt-2' href={'/blog'}>Blog</Link>
                                     </div>
@@ -54,31 +54,31 @@ const Footer = () => {
                                     </div>
                                 </div>
                                 <div className="newsletter basis-1/3 pl-7 max-md:basis-full max-md:pl-0">
-                                    <div className="text-button-uppercase">Newletter</div>
-                                    <div className="caption1 mt-3">Sign up for our newsletter and get 10% off your first purchase</div>
-                                    <div className="input-block w-full h-[52px] mt-4">
+                                    {/* <div className="text-button-uppercase">Newletter</div>
+                                    <div className="caption1 mt-3">Sign up for our newsletter and get 10% off your first purchase</div> */}
+                                    <div className="input-block w-full h-[52px] ">
                                         <form className='w-full h-full relative' action="post">
                                             <input type="email" placeholder='Enter your e-mail' className='caption1 w-full h-full pl-4 pr-14 rounded-xl border border-line' required />
-                                            <button className='w-[44px] h-[44px] bg-black flex items-center justify-center rounded-xl absolute top-1 right-1'>
+                                            <button className='w-[44px] h-[44px] bg-purple flex items-center justify-center rounded-xl absolute top-1 right-1'>
                                                 <Icon.ArrowRight size={24} color='#fff' />
                                             </button>
                                         </form>
                                     </div>
                                     <div className="list-social flex items-center gap-6 mt-4">
                                         <Link href={'https://www.facebook.com/'} target='_blank'>
-                                            <div className="icon-facebook text-2xl text-black"></div>
+                                            <div className="icon-facebook text-2xl text-purple"></div>
                                         </Link>
                                         <Link href={'https://www.instagram.com/'} target='_blank'>
-                                            <div className="icon-instagram text-2xl text-black"></div>
+                                            <div className="icon-instagram text-2xl text-purple"></div>
                                         </Link>
                                         <Link href={'https://www.twitter.com/'} target='_blank'>
-                                            <div className="icon-twitter text-2xl text-black"></div>
+                                            <div className="icon-twitter text-2xl text-purple"></div>
                                         </Link>
                                         <Link href={'https://www.youtube.com/'} target='_blank'>
-                                            <div className="icon-youtube text-2xl text-black"></div>
+                                            <div className="icon-youtube text-2xl text-purple"></div>
                                         </Link>
                                         <Link href={'https://www.pinterest.com/'} target='_blank'>
-                                            <div className="icon-pinterest text-2xl text-black"></div>
+                                            <div className="icon-pinterest text-2xl text-purple"></div>
                                         </Link>
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@ const Footer = () => {
                                 <div className="caption1 text-secondary">Payment:</div>
                                 <div className="payment-img">
                                     <Image
-                                        src={'/images/payment/Frame-0.png'}
+                                        src={'/images/payment/payment1.png'}
                                         width={500}
                                         height={500}
                                         alt={'payment'}
@@ -119,7 +119,7 @@ const Footer = () => {
                                 </div>
                                 <div className="payment-img">
                                     <Image
-                                        src={'/images/payment/Frame-1.png'}
+                                        src={'/images/payment/payment1.png'}
                                         width={500}
                                         height={500}
                                         alt={'payment'}
@@ -128,7 +128,7 @@ const Footer = () => {
                                 </div>
                                 <div className="payment-img">
                                     <Image
-                                        src={'/images/payment/Frame-2.png'}
+                                        src={'/images/payment/payment1.png'}
                                         width={500}
                                         height={500}
                                         alt={'payment'}
@@ -137,7 +137,7 @@ const Footer = () => {
                                 </div>
                                 <div className="payment-img">
                                     <Image
-                                        src={'/images/payment/Frame-3.png'}
+                                        src={'/images/payment/payment1.png'}
                                         width={500}
                                         height={500}
                                         alt={'payment'}
@@ -146,7 +146,7 @@ const Footer = () => {
                                 </div>
                                 <div className="payment-img">
                                     <Image
-                                        src={'/images/payment/Frame-4.png'}
+                                        src={'/images/payment/payment1.png'}
                                         width={500}
                                         height={500}
                                         alt={'payment'}
@@ -155,7 +155,7 @@ const Footer = () => {
                                 </div>
                                 <div className="payment-img">
                                     <Image
-                                        src={'/images/payment/Frame-5.png'}
+                                        src={'/images/payment/payment1.png'}
                                         width={500}
                                         height={500}
                                         alt={'payment'}

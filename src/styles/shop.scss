@@ -66,15 +66,15 @@
         transition: all ease 0.4s;
 
         &:hover {
-            border-color: var(--black);
+            border-color: var(--purple);
         }
 
         &.active {
-            background-color: var(--black);
-            border-color: var(--black);
+            background-color: var(--purple);
+            border-color: var(--purple);
 
             >div>span {
-                background-color: var(--white);
+                background-color: var(--purple);
             }
         }
     }
@@ -126,7 +126,7 @@
             .text-secondary,
             .text-secondary2 {
                 transition: all ease 0.3s;
-                color: var(--black);
+                color: var(--purple);
             }
         }
     }
@@ -140,20 +140,20 @@
 
     .rc-slider-track,
     .rc-slider-tracks {
-        background-color: var(--black);
+        background-color: var(--purple);
     }
 
     .rc-slider-handle,
     .rc-slider-handle:hover,
     .rc-slider-handle.active {
         background-color: var(--white);
-        border-color: var(--black);
+        border-color: var(--purple);
         border-width: 3px;
         opacity: 1;
     }
 
     .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
-        border-color: var(--black);
+        border-color: var(--purple);
         box-shadow: none;
     }
 }

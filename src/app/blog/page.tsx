@@ -67,7 +67,7 @@ export default function page() {
                         {/* Featured Image */}
                         <figure className="mb-6">
                             <img
-                                src="https://via.placeholder.com/600x300"
+                                src="/images/blg.png"
                                 alt="Yoga"
                                 className="rounded-lg"
                             />

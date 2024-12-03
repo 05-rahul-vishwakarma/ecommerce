@@ -56,7 +56,7 @@ const ModalSizeguide: React.FC<Props> = ({ data, isOpen, onClose }) => {
                     onClick={(e) => { e.stopPropagation() }}
                 >
                     <div
-                        className="close-btn absolute right-5 top-5 w-6 h-6 rounded-full bg-surface flex items-center justify-center duration-300 cursor-pointer hover:bg-black hover:text-white"
+                        className="close-btn absolute right-5 top-5 w-6 h-6 rounded-full bg-surface flex items-center justify-center duration-300 cursor-pointer hover:bg-purple hover:text-white"
                         onClick={onClose}
                     >
                         <Icon.X size={14} />

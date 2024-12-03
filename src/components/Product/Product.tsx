@@ -466,7 +466,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                         </div>
                                         <div className="action w-fit flex flex-col items-center justify-center">
                                             <div
-                                                className="quick-shop-btn button-main whitespace-nowrap py-2 px-9 max-lg:px-5 rounded-[10px] bg-white text-black border border-black hover:bg-purple hover:text-white"
+                                                className="quick-shop-btn button-main whitespace-nowrap py-2 px-9 max-lg:px-5 rounded-[10px] bg-white text-black border border-purple hover:bg-purple hover:text-white"
                                                 onClick={e => {
                                                     e.stopPropagation();
                                                     setOpenQuickShop(!openQuickShop)

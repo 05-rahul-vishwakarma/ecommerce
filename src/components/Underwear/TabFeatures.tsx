@@ -53,7 +53,7 @@ const TabFeatures: React.FC<Props> = ({ data, start, limit }) => {
                                     onClick={() => handleTabClick(item)}
                                 >
                                     {activeTab === item && (
-                                        <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-[#9e5eff]'></motion.div>
+                                        <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-[#f7f6f9] text-purple'></motion.div>
                                     )}
                                     <span className='relative text-2xl tracking-[0.5px] leading-normal line-clamp-1 z-[1]'>
                                         {item}
