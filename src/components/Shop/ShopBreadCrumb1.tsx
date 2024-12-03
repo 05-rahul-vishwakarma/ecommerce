@@ -386,7 +386,8 @@ const ShopBreadCrumb1: React.FC<Props> = ({ data, productPerPage, dataType, gend
                             </div> */}
                         </div>
                         <div className="list-product-block lg:w-3/4 md:w-2/3 w-full md:pl-3">
-                            <div className="filter-heading flex items-center justify-between gap-5 flex-wrap">
+                        <div className='hidden'> 
+                        <div className="filter-heading flex items-center justify-between gap-5 flex-wrap">
                                 <div className="left flex has-line items-center flex-wrap gap-5">
                                     <div className="choose-layout flex items-center gap-2">
                                         <div className="item three-col w-8 h-8 border border-line rounded flex items-center justify-center cursor-pointer active">
@@ -434,6 +435,8 @@ const ShopBreadCrumb1: React.FC<Props> = ({ data, productPerPage, dataType, gend
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                           
 
                             <div className="list-filtered flex items-center gap-3 mt-4">
                                 <div className="total-product">
