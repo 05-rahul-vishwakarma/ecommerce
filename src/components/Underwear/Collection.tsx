@@ -26,21 +26,21 @@ const Collection = () => {
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('swimwear')}>
                             <div className="bg-img">
                                 <Image
-                                    src={'/ribbon.webp'}
+                                    src={'/ribbon.png'}
                                     width={1000}
                                     height={600}
-                                    alt='underwear1'
+                                    alt='Silk Ribon'
                                 />
                             </div>
-                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-violet rounded-xl duration-500 bg-custom-purple-color text-white">Silk Ribbon</div>
+                            <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2  rounded-xl duration-500 bg-custom-purple-color  hover:bg-purple text-white">Silk Ribbon</div>
                         </div>
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('underwear')}>
                             <div className="bg-img">
                                 <Image
-                                    src={'/ribbon.webp'}
+                                    src={'/ribbon.png'}
                                     width={1000}
                                     height={600}
-                                    alt='underwear1'
+                                    alt='Traditional Ribbon'
                                 />
                             </div>
                             <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-custom-purple-color rounded-xl duration-500  text-white">Traditional Ribbon</div>
@@ -48,10 +48,10 @@ const Collection = () => {
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('swimwear')}>
                             <div className="bg-img">
                                 <Image
-                                    src={'/ribbon.webp'}
+                                    src={'/ribbon.png'}
                                     width={1000}
                                     height={600}
-                                    alt='underwear1'
+                                    alt='Golden Ribbon'
                                 />
                             </div>
                             <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-custom-purple-color rounded-xl duration-500 text-white">Golden Ribbon</div>
@@ -59,10 +59,10 @@ const Collection = () => {
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('underwear')}>
                             <div className="bg-img">
                                 <Image
-                                    src={'/ribbon.webp'}
+                                    src={'/ribbon.png'}
                                     width={1000}
                                     height={600}
-                                    alt='underwear1'
+                                    alt='custom Ribbon'
                                 />
                             </div>
                             <div className="collection-name text-lg font-[600] text-center sm:bottom-5 bottom-3 md:w-[200px] max-md:px-4 max-md:whitespace-nowrap md:py-3 py-2 bg-custom-purple-color rounded-xl duration-500 text-white">Custom Ribbon</div>

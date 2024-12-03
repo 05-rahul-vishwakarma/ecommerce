@@ -336,7 +336,7 @@ const ShopFilterDropdown: React.FC<Props> = ({ data, productPerPage, dataType })
                                             className={`item flex items-center justify-between cursor-pointer ${dataType === item ? 'active' : ''}`}
                                             onClick={() => handleType(item)}
                                         >
-                                            <div className='text-secondary has-line-before hover:text-black capitalize'>{item}</div>
+                                            <div className='text-secondary has-line-before hover:text-purple capitalize'>{item}</div>
                                             <div className='text-secondary2'>
                                                 ({data.filter(dataItem => dataItem.type === item && dataItem.category === 'fashion').length})
                                             </div>

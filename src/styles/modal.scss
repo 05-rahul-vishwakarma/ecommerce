@@ -202,7 +202,7 @@
 
         .list-img::-webkit-scrollbar-thumb,
         .product-infor::-webkit-scrollbar-thumb {
-            background-color: var(--secondary2);
+            background-color: var(--purple);
             border-radius: 4px;
         }
 
@@ -228,7 +228,7 @@
                 }
 
                 &::-webkit-scrollbar-thumb {
-                    background-color: var(--secondary2);
+                    background-color: var(--purple);
                     border-radius: 4px;
                 }
             }

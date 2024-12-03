@@ -2,7 +2,7 @@
   {
     "id": "1",
     "category": "fashion",
-    "type": "top",
+    "type": "Custom Printed Ribbon",
     "name": "Traditional Ribbon& bling",
     "gender": "women",
     "new": true,
@@ -102,7 +102,7 @@
   {
     "id": "3",
     "category": "fashion",
-    "type": "dress",
+    "type": "embossed satin ribbon",
     "name": "Red Ribbon",
     "gender": "women",
     "new": false,
@@ -208,7 +208,7 @@
   {
     "id": "5",
     "category": "fashion",
-    "type": "dress",
+    "type": "embossed satin ribbon",
     "name": "Traditional Ribbon& bling",
     "gender": "women",
     "new": true,
@@ -262,7 +262,7 @@
   {
     "id": "6",
     "category": "fashion",
-    "type": "sets",
+    "type": "Grossgrain Printed Ribbon",
     "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": true,
@@ -319,7 +319,7 @@
   {
     "id": "7",
     "category": "fashion",
-    "type": "shirt",
+    "type": "digital printed ribbon",
     "name": "Red Ribbon",
     "gender": "women",
     "new": false,
@@ -377,7 +377,7 @@
   {
     "id": "8",
     "category": "fashion",
-    "type": "sets",
+    "type": "Grossgrain Printed Ribbon",
     "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
@@ -608,7 +608,7 @@
   {
     "id": "12",
     "category": "fashion",
-    "type": "sets",
+    "type": "Grossgrain Printed Ribbon",
     "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
@@ -729,7 +729,7 @@
   {
     "id": "14",
     "category": "fashion",
-    "type": "sets",
+    "type": "Grossgrain Printed Ribbon",
     "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": true,
@@ -792,7 +792,7 @@
   {
     "id": "15",
     "category": "fashion",
-    "type": "top",
+    "type": "Custom Printed Ribbon",
     "name": "Red Ribbon",
     "gender": "women",
     "new": false,
@@ -850,7 +850,7 @@
   {
     "id": "16",
     "category": "fashion",
-    "type": "top",
+    "type": "Custom Printed Ribbon",
     "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
@@ -1095,7 +1095,7 @@
   {
     "id": "18",
     "category": "fashion",
-    "type": "shirt",
+    "type": "digital printed ribbon",
     "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": true,
@@ -1158,7 +1158,7 @@
   {
     "id": "19",
     "category": "fashion",
-    "type": "dress",
+    "type": "embossed satin ribbon",
     "name": "Red Ribbon",
     "gender": "women",
     "new": false,
@@ -1216,7 +1216,7 @@
   {
     "id": "20",
     "category": "fashion",
-    "type": "top",
+    "type": "Custom Printed Ribbon",
     "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
@@ -1449,7 +1449,7 @@
   {
     "id": "25",
     "category": "fashion",
-    "type": "shirt",
+    "type": "digital printed ribbon",
     "name": "Shirt Pockets",
     "gender": "men",
     "new": false,
@@ -1511,7 +1511,7 @@
   {
     "id": "26",
     "category": "fashion",
-    "type": "shirt",
+    "type": "digital printed ribbon",
     "name": "Golden Traditional Ribbon Pockets",
     "gender": "men",
     "new": false,
@@ -1573,7 +1573,7 @@
   {
     "id": "27",
     "category": "fashion",
-    "type": "shirt",
+    "type": "digital printed ribbon",
     "name": "Golden Traditional Ribbon Pockets",
     "gender": "men",
     "new": false,
@@ -1635,7 +1635,7 @@
   {
     "id": "28",
     "category": "fashion",
-    "type": "underwear",
+    "type": "Primium Satin Ribbon",
     "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
@@ -1696,7 +1696,7 @@
   {
     "id": "29",
     "category": "fashion",
-    "type": "swimwear",
+    "type": "Cotton Printed Ribbon",
     "name": "Traditional Ribbon& bling",
     "gender": "women",
     "new": true,
@@ -1757,7 +1757,7 @@
   {
     "id": "30",
     "category": "fashion",
-    "type": "swimwear",
+    "type": "Cotton Printed Ribbon",
     "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": true,
@@ -1820,7 +1820,7 @@
   {
     "id": "31",
     "category": "fashion",
-    "type": "underwear",
+    "type": "Primium Satin Ribbon",
     "name": "Red Ribbon",
     "gender": "women",
     "new": false,
@@ -1878,7 +1878,7 @@
   {
     "id": "32",
     "category": "fashion",
-    "type": "swimwear",
+    "type": "Cotton Printed Ribbon",
     "name": "Traditional Ribbon",
     "gender": "women",
     "new": false,
@@ -1939,7 +1939,7 @@
   {
     "id": "33",
     "category": "fashion",
-    "type": "underwear",
+    "type": "Primium Satin Ribbon",
     "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": true,
@@ -2001,7 +2001,7 @@
   {
     "id": "34",
     "category": "fashion",
-    "type": "underwear",
+    "type": "Primium Satin Ribbon",
     "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": true,
@@ -2056,7 +2056,7 @@
   {
     "id": "35",
     "category": "fashion",
-    "type": "swimwear",
+    "type": "Cotton Printed Ribbon",
     "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": true,
@@ -2112,7 +2112,7 @@
   {
     "id": "36",
     "category": "fashion",
-    "type": "swimwear",
+    "type": "Cotton Printed Ribbon",
     "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": false,
@@ -2162,7 +2162,7 @@
   {
     "id": "37",
     "category": "fashion",
-    "type": "swimwear",
+    "type": "Cotton Printed Ribbon",
     "name": "Shirt Pockets",
     "gender": "women",
     "new": true,
@@ -2218,7 +2218,7 @@
   {
     "id": "38",
     "category": "fashion",
-    "type": "swimwear",
+    "type": "Cotton Printed Ribbon",
     "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": false,
@@ -2268,7 +2268,7 @@
   {
     "id": "39",
     "category": "fashion",
-    "type": "swimwear",
+    "type": "Cotton Printed Ribbon",
     "name": "Golden Traditional Ribbon Pockets",
     "gender": "women",
     "new": false,
@@ -2324,7 +2324,7 @@
   {
     "id": "391",
     "category": "fashion",
-    "type": "accessories",
+    "type": "Traditional Ribbon",
     "name": "gucci sunglasses",
     "gender": "women",
     "new": false,
@@ -2359,7 +2359,7 @@
   {
     "id": "392",
     "category": "fashion",
-    "type": "accessories",
+    "type": "Traditional Ribbon",
     "name": "women handbag",
     "gender": "women",
     "new": true,
@@ -2394,7 +2394,7 @@
   {
     "id": "393",
     "category": "fashion",
-    "type": "accessories",
+    "type": "Traditional Ribbon",
     "name": "camouflage hat",
     "gender": "women",
     "new": true,
@@ -2429,7 +2429,7 @@
   {
     "id": "394",
     "category": "fashion",
-    "type": "accessories",
+    "type": "Traditional Ribbon",
     "name": "leather belts",
     "gender": "women",
     "new": false,
@@ -2464,7 +2464,7 @@
   {
     "id": "395",
     "category": "fashion",
-    "type": "accessories",
+    "type": "Traditional Ribbon",
     "name": "one-piece pants",
     "gender": "women",
     "new": true,
@@ -2499,7 +2499,7 @@
   {
     "id": "396",
     "category": "fashion",
-    "type": "accessories",
+    "type": "Traditional Ribbon",
     "name": "Golden Traditional Ribbon",
     "gender": "women",
     "new": false,
@@ -2902,7 +2902,7 @@
     "id": "50",
     "category": "cosmetic",
     "type": "lip",
-    "name": "Lip Top Treatment",
+    "name": "Lip Custom Printed Ribbon Treatment",
     "gender": "women",
     "new": true,
     "sale": false,
@@ -7074,7 +7074,7 @@
   {
     "id": "143",
     "category": "fashion",
-    "type": "dress",
+    "type": "embossed satin ribbon",
     "name": "Red Ribbon",
     "gender": "women",
     "new": false,

@@ -27,7 +27,7 @@ const BlogItem: React.FC<BlogProps> = ({ data, type }) => {
                     onClick={() => handleBlogClick()}
                 >
                     <div className="blog-main h-full block">
-                        <div className="blog-thumb rounded-[20px] overflow-hidden">
+                        <div className="blog-thumb rounded-[20px] overflow-hidden  border-2">
                             <Image
                                 src={data.thumbImg}
                                 width={2000}

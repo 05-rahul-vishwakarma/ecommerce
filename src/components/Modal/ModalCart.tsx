@@ -76,7 +76,7 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                                         </div>
                                     </div>
                                     <div
-                                        className="text-xl bg-white w-10 h-10 rounded-xl border border-purple flex items-center justify-center duration-300 cursor-pointer hover:bg-purple hover:text-white"
+                                        className="text-xl text-purple  w-10 h-10 rounded-xl border border-purple flex items-center justify-center duration-300 cursor-pointer hover:bg-purple hover:text-white"
                                         onClick={e => {
                                             e.stopPropagation();
                                             handleAddToCart(product)
@@ -92,7 +92,7 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                         <div className="heading px-6 pb-3 flex items-center justify-between relative">
                             <div className="heading5">Shopping Cart</div>
                             <div
-                                className="close-btn absolute right-6 top-0 w-6 h-6 rounded-full bg-surface flex items-center justify-center duration-300 cursor-pointer hover:bg-black hover:text-white"
+                                className="close-btn absolute right-6 top-0 w-6 h-6 rounded-full bg-surface flex items-center justify-center duration-300 cursor-pointer hover:bg-purple hover:text-white"
                                 onClick={closeModalCart}
                             >
                                 <Icon.X size={14} />
@@ -183,7 +183,7 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                                 <div className="flex items-center gap-4">
                                     <Link
                                         href={'/cart'}
-                                        className='button-main basis-1/2 bg-white border border-black text-black text-center uppercase'
+                                        className='button-main basis-1/2 bg-white border border-purple text-purple text-center uppercase'
                                         onClick={closeModalCart}
                                     >
                                         View cart
@@ -196,7 +196,7 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                                         Check Out
                                     </Link>
                                 </div>
-                                <div onClick={closeModalCart} className="text-button-uppercase mt-4 text-center has-line-before cursor-pointer inline-block">Or continue shopping</div>
+                                <div onClick={closeModalCart} className="text-button-uppercase mt-4 text-center has-line-before cursor-pointer inline-block hover:text-purple">Or continue shopping</div>
                             </div>
                             <div className={`tab-item note-block ${activeTab === 'note' ? 'active' : ''}`}>
                                 <div className="px-6 py-4 border-b border-line">

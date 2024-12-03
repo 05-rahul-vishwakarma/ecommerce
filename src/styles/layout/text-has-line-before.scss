@@ -8,7 +8,7 @@
         bottom: 0px;
         width: 0;
         height: 1px;
-        background-color: var(--black);
+        background-color: var(--purple);
         transition: all ease 0.3s;
     }
 
@@ -22,6 +22,7 @@
     &:hover {
         &::before {
             width: 100%;
+            background-color: var(--purple);
         }
     }
 

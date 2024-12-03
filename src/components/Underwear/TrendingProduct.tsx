@@ -12,7 +12,7 @@ interface Props {
 }
 
 const TrendingProduct: React.FC<Props> = ({ data, start, limit }) => {
-    const [activeTab, setActiveTab] = useState<string>('swimwear');
+    const [activeTab, setActiveTab] = useState<string>('Cotton Printed Ribbon');
 
     const handleTabClick = (type: string) => {
         setActiveTab(type);
@@ -27,7 +27,7 @@ const TrendingProduct: React.FC<Props> = ({ data, start, limit }) => {
                     <div className="heading flex flex-col items-center text-center">
                         <div className="heading3 text-center text-secondary">Trending Products</div>
                         <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl mt-6">
-                            {['top', 'swimwear', 'underwear', 'sets', 't-shirt'].map((type) => (
+                            {['Custom Printed Ribbon', 'Cotton Printed Ribbon', 'Primium Satin Ribbon', 'Grossgrain Printed Ribbon', 'Foiled Printed Ribbon'].map((type) => (
                                 <div
                                     key={type}
                                     className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-purple ${activeTab === type ? 'active' : ''}`}
