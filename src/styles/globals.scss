@@ -394,13 +394,12 @@ input[type="file"] {
 }
 
 .toasts_toastContainer__HBhip {
-	width: 420px;
+	width: 0;
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	box-shadow: var(--ds-shadow-menu);
 	border-radius: 12px;
-	background: var(--geist-background);
+	background: none !important;
 	color: var(--ds-gray-1000);
 	line-height: 21px;
 	padding: 16px;
