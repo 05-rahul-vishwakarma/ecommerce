@@ -306,7 +306,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                 </div>
                             )}
                             {data.variation.length > 0 && data.action === 'quick shop' && (
-                                <div className="list-color-image max-md:hidden flex items-center gap-3 flex-wrap duration-500 border-2">
+                                <div className="list-color-image max-md:hidden flex items-center gap-3 flex-wrap duration-500">
                                     {data.variation.map((item, index) => (
                                         <div
                                             className={`color-item w-12 h-12 rounded-xl duration-300 relative ${activeColor === item.color ? 'active' : ''}`}

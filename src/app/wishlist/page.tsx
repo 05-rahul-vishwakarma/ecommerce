@@ -118,7 +118,7 @@ const Wishlist = () => {
 
     return (
         <>
-            <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
+            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
             <div id="header" className='relative w-full'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='Wish list' subHeading='Wish list' />
@@ -174,7 +174,7 @@ const Wishlist = () => {
                                         value={type === undefined ? 'Type' : type}
                                     >
                                         <option value="Type" disabled>Type</option>
-                                        {['t-shirt', 'dress', 'top', 'swimwear', 'shirt', 'underwear', 'sets', 'accessories'].map((item, index) => (
+                                        {['Foil Printed Ribbon', 'Embossed Satin Ribbon', 'Custom Printed Ribbon', 'Cotton Printed Ribbon', 'Digital Printed Ribbon', 'Premium Satin Ribbon', 'Grossgrain Printed Ribbon', 'accessories'].map((item, index) => (
                                             <option
                                                 key={index}
                                                 className={`item cursor-pointer ${type === item ? 'active' : ''}`}

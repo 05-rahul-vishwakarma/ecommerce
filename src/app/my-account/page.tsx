@@ -25,8 +25,8 @@ const MyAccount = () => {
 
     return (
         <>
-            <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
-            <div id="header" className='relative w-full'>
+            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
+            <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='My Account' subHeading='My Account' />
             </div>
@@ -143,7 +143,7 @@ const MyAccount = () => {
                                                     </td>
                                                     <td className="py-3 price">$45.00</td>
                                                     <td className="py-3 text-right">
-                                                        <span className="tag px-4 py-1.5 rounded-full bg-opacity-10 bg-purple text-purple caption1 font-semibold">Delivery</span>
+                                                        <span className="tag px-4 py-1.5 rounded-full bg-opacity-10 bg-purple text-white caption1 font-semibold">Delivery</span>
                                                     </td>
                                                 </tr>
                                                 <tr className="item duration-300 border-b border-line">
@@ -197,7 +197,7 @@ const MyAccount = () => {
                                                     </td>
                                                     <td className="py-3 price">$45.00</td>
                                                     <td className="py-3 text-right">
-                                                        <span className="tag px-4 py-1.5 rounded-full bg-opacity-10 bg-purple text-purple caption1 font-semibold">Delivery</span>
+                                                        <span className="tag px-4 py-1.5 rounded-full bg-opacity-10 bg-purple text-white caption1 font-semibold">Delivery</span>
                                                     </td>
                                                 </tr>
                                                 <tr className="item duration-300">
@@ -252,7 +252,7 @@ const MyAccount = () => {
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 <strong className="text-title">Order status:</strong>
-                                                <span className="tag px-4 py-1.5 rounded-full bg-opacity-10 bg-purple text-purple caption1 font-semibold">Delivery</span>
+                                                <span className="tag px-4 py-1.5 rounded-full bg-opacity-10 bg-purple text-white caption1 font-semibold">Delivery</span>
                                             </div>
                                         </div>
                                         <div className="list_prd px-5">

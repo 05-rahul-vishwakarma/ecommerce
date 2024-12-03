@@ -411,3 +411,42 @@ input[type="file"] {
 	max-width: min(420px, calc(100vw - 2 * var(--geist-gap)));
 	display: none !important;
 }
+
+/* Apply custom styles globally to all scrollable elements */
+* {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #592dbb lightgray; /* For Firefox */
+}
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+  width: 8px; /* Width of vertical scrollbar */
+  height: 8px; /* Height of horizontal scrollbar */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #592dbb; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #592dbb; /* Darker color on hover */
+}
+
+*::-webkit-scrollbar-track {
+  background-color: lightgray; /* Background color of the scrollbar track */
+  border-radius: 4px; /* Optional rounded corners for the track */
+}
+
+/* For Internet Explorer (Fallback styling) */
+* {
+  -ms-overflow-style: scrollbar; /* Show a custom scrollbar */
+}
+
+/* Additional Styling for Edge (Legacy) */
+@supports (-ms-ime-align: auto) {
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #592dbb lightgray;
+  }
+}

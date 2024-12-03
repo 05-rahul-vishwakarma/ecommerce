@@ -22,8 +22,8 @@ const Checkout = () => {
                                 <div className="heading4">Anvogue</div>
                             </Link>
                             <button className="max-md:hidden cart-icon flex items-center relative h-fit cursor-pointer" onClick={openModalCart}>
-                                <Icon.Handbag size={24} color='black' />
-                                <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-white bg-black w-4 h-4 flex items-center justify-center rounded-full">{cartState.cartArray.length}</span>
+                                <Icon.Handbag size={24} color='black' className='text-purple'/>
+                                <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-white bg-purple w-4 h-4 flex items-center justify-center rounded-full">{cartState.cartArray.length}</span>
                             </button>
                         </div>
                     </div>
@@ -36,7 +36,7 @@ const Checkout = () => {
                             <form>
                                 <div className="login flex justify-between gap-4">
                                     <h4 className="heading4">Contact</h4>
-                                    <Link href={"/login"} className="text-button underline">Login here</Link>
+                                    <Link href={"/login"} className="text-button underline hover:text-purple">Login here</Link>
                                 </div>
                                 <div>
                                     <input type="text" className="border-line mt-5 px-4 py-3 w-full rounded-lg" placeholder="Email or mobile phone number" required />
