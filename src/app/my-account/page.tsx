@@ -119,7 +119,7 @@ const MyAccount = () => {
                                                             <Image src={'/images/product/1000x1000.png'} width={400} height={400} alt='Contrasting sweatshirt' className="flex-shrink-0 w-12 h-12 rounded" />
                                                             <div className="info flex flex-col">
                                                                 <strong className="product_name text-button">Contrasting sweatshirt</strong>
-                                                                <span className="product_tag caption1 text-secondary">Women, Clothing</span>
+                                                                <span className="product_tag caption1 text-secondary">Foil Printed Ribbon, Ribbon</span>
                                                             </div>
                                                         </Link>
                                                     </td>
@@ -137,7 +137,7 @@ const MyAccount = () => {
                                                             <Image src={'/images/product/1000x1000.png'} width={400} height={400} alt='Faux-leather trousers' className="flex-shrink-0 w-12 h-12 rounded" />
                                                             <div className="info flex flex-col">
                                                                 <strong className="product_name text-button">Faux-leather trousers</strong>
-                                                                <span className="product_tag caption1 text-secondary">Women, Clothing</span>
+                                                                <span className="product_tag caption1 text-secondary">Foil Printed Ribbon, Ribbon</span>
                                                             </div>
                                                         </Link>
                                                     </td>
@@ -155,7 +155,7 @@ const MyAccount = () => {
                                                             <Image src={'/images/product/1000x1000.png'} width={400} height={400} alt='V-neck knitted top' className="flex-shrink-0 w-12 h-12 rounded" />
                                                             <div className="info flex flex-col">
                                                                 <strong className="product_name text-button">V-neck knitted top</strong>
-                                                                <span className="product_tag caption1 text-secondary">Women, Clothing</span>
+                                                                <span className="product_tag caption1 text-secondary">Foil Printed Ribbon, Ribbon</span>
                                                             </div>
                                                         </Link>
                                                     </td>
@@ -173,7 +173,7 @@ const MyAccount = () => {
                                                             <Image src={'/images/product/1000x1000.png'} width={400} height={400} alt='Contrasting sweatshirt' className="flex-shrink-0 w-12 h-12 rounded" />
                                                             <div className="info flex flex-col">
                                                                 <strong className="product_name text-button">Contrasting sweatshirt</strong>
-                                                                <span className="product_tag caption1 text-secondary">Women, Clothing</span>
+                                                                <span className="product_tag caption1 text-secondary">Foil Printed Ribbon, Ribbon</span>
                                                             </div>
                                                         </Link>
                                                     </td>
@@ -191,7 +191,7 @@ const MyAccount = () => {
                                                             <Image src={'/images/product/1000x1000.png'} width={400} height={400} alt='Faux-leather trousers' className="flex-shrink-0 w-12 h-12 rounded" />
                                                             <div className="info flex flex-col">
                                                                 <strong className="product_name text-button">Faux-leather trousers</strong>
-                                                                <span className="product_tag caption1 text-secondary">Women, Clothing</span>
+                                                                <span className="product_tag caption1 text-secondary">Foil Printed Ribbon, Ribbon</span>
                                                             </div>
                                                         </Link>
                                                     </td>
@@ -209,7 +209,7 @@ const MyAccount = () => {
                                                             <Image src={'/images/product/1000x1000.png'} width={400} height={400} alt='V-neck knitted top' className="flex-shrink-0 w-12 h-12 rounded" />
                                                             <div className="info flex flex-col">
                                                                 <strong className="product_name text-button">V-neck knitted top</strong>
-                                                                <span className="product_tag caption1 text-secondary">Women, Clothing</span>
+                                                                <span className="product_tag caption1 text-secondary">Foil Printed Ribbon, Ribbon</span>
                                                             </div>
                                                         </Link>
                                                     </td>
@@ -606,9 +606,9 @@ const MyAccount = () => {
                                             <label htmlFor="gender" className='caption1 capitalize'>Gender <span className='text-red'>*</span></label>
                                             <div className="select-block mt-2">
                                                 <select className="border border-line px-4 py-3 w-full rounded-lg" id="gender" name="gender" defaultValue={'default'}>
-                                                    <option value="default" disabled>Choose Gender</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
+                                                    <option value="default" disabled>Choose Ribbon</option>
+                                                    <option value="Male">Foil Printed Ribbon</option>
+                                                    <option value="Female">Premium Printed Ribbon</option>
                                                     <option value="Other">Other</option>
                                                 </select>
                                                 <Icon.CaretDown className='arrow-down text-lg' />

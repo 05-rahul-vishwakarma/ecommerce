@@ -59,7 +59,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
     };
   }, [lastScrollPosition]);
 
- 
+
   return (
     <>
       <div
@@ -293,7 +293,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                 </div>
                 <Link
                   href={"/"}
-                  className="logo text-3xl font-semibold text-center"
+                  className="logo text-3xl text-white font-semibold text-center"
                 >
                   Anvogue
                 </Link>
@@ -317,7 +317,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   >
                     <a
                       href={"/"}
-                      className={`text-xl font-semibold flex items-center justify-between`}
+                      className={`text-xl text-white font-semibold flex items-center justify-between`}
                     >
                       Home
                       <span className="text-right">
@@ -332,7 +332,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   >
                     <a
                       href={"#!"}
-                      className="text-xl font-semibold flex items-center justify-between mt-5"
+                      className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
                       Features
                       <span className="text-right">
@@ -346,8 +346,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     onClick={() => handleOpenSubNavMobile(3)}
                   >
                     <a
-                      href={"#!"}
-                      className="text-xl font-semibold flex items-center justify-between mt-5"
+                      href={"/shop/breadcrumb1"}
+                      className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
                       Shop
                       <span className="text-right">
@@ -361,8 +361,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     onClick={() => handleOpenSubNavMobile(4)}
                   >
                     <a
-                      href={"#!"}
-                      className="text-xl font-semibold flex items-center justify-between mt-5"
+                      href={"/product"}
+                      className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
                       Product
                       <span className="text-right">
@@ -376,8 +376,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     onClick={() => handleOpenSubNavMobile(5)}
                   >
                     <a
-                      href={"#!"}
-                      className="text-xl font-semibold flex items-center justify-between mt-5"
+                      href={"/blog"}
+                      className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
                       Blog
                       <span className="text-right">
@@ -391,8 +391,9 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     onClick={() => handleOpenSubNavMobile(6)}
                   >
                     <a
-                      href={"#!"}
-                      className="text-xl font-semibold flex items-center justify-between mt-5"
+                      href={"/"}
+                      // /pages/store-list
+                      className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
                       Pages
                       <span className="text-right">

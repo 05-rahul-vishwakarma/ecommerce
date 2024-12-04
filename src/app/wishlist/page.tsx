@@ -119,7 +119,7 @@ const Wishlist = () => {
     return (
         <>
             <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
-            <div id="header" className='relative w-full'>
+            <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='Wish list' subHeading='Wish list' />
             </div>
@@ -130,7 +130,7 @@ const Wishlist = () => {
                             <div className="left flex has-line items-center flex-wrap gap-5">
                                 <div className="choose-layout flex items-center gap-2">
                                     <div
-                                        className={`item three-col p-2 border border-line rounded flex items-center justify-center cursor-pointer ${layoutCol === 3 ? 'active' : ''}`}
+                                        className={` three-col p-2 border border-line rounded flex items-center justify-center cursor-pointer ${layoutCol === 3 ? 'active' : ''}`}
                                         onClick={() => handleLayoutCol(3)}
                                     >
                                         <div className='flex items-center gap-0.5'>
@@ -140,7 +140,7 @@ const Wishlist = () => {
                                         </div>
                                     </div>
                                     <div
-                                        className={`item four-col p-2 border border-line rounded flex items-center justify-center cursor-pointer ${layoutCol === 4 ? 'active' : ''}`}
+                                        className={` four-col p-2 border border-line rounded flex items-center justify-center cursor-pointer ${layoutCol === 4 ? 'active' : ''}`}
                                         onClick={() => handleLayoutCol(4)}
                                     >
                                         <div className='flex items-center gap-0.5'>
@@ -151,7 +151,7 @@ const Wishlist = () => {
                                         </div>
                                     </div>
                                     <div
-                                        className={`item five-col p-2 border border-line rounded flex items-center justify-center cursor-pointer ${layoutCol === 5 ? 'active' : ''}`}
+                                        className={` five-col p-2 border border-line rounded flex items-center justify-center cursor-pointer ${layoutCol === 5 ? 'active' : ''}`}
                                         onClick={() => handleLayoutCol(5)}
                                     >
                                         <div className='flex items-center gap-0.5'>

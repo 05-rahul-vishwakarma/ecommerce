@@ -99,7 +99,7 @@
             }
 
             &.active {
-                color: var(--black);
+                color: var(--white);
             }
 
             &.view-all-btn::before {
@@ -148,7 +148,7 @@
 
         li:hover a,
         li:hover .link {
-            color: var(--black);
+            color: var(--purple);
 
             &::before {
                 width: 100%;
@@ -683,7 +683,7 @@
     .button-main {
         &:hover {
             background-color:rgb(58, 22, 126);
-            color: var(--black);
+            color: var(--purple);
         }
     }
 }

@@ -12,7 +12,7 @@ const OrderTracking = () => {
     return (
         <>
             <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
-            <div id="header" className='relative w-full'>
+            <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='Order Tracking' subHeading='Order Tracking' />
             </div>

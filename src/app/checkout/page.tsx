@@ -16,6 +16,7 @@ import MenuFour from '@/components/Header/MenuFour'
 const Checkout = () => {
   const searchParams = useSearchParams()
   let discount = searchParams.get('discount')
+ discount = "1";
   let ship = searchParams.get('ship')
 
   const { cartState } = useCart();
