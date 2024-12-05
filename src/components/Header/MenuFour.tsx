@@ -110,14 +110,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   </Link>
                 </li>
 
-                <li className="h-full">
-                  <Link
-                    href="/features"
-                    className="text-white text-button-uppercase duration-300 h-full flex items-center justify-center"
-                  >
-                    Features
-                  </Link>
-                </li>
+                
 
                 <li className="h-full">
                   <Link
@@ -248,7 +241,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       Don’t have an account?
                       <Link
                         href={"/register"}
-                        className="text-black pl-1 hover:underline"
+                        className="text-black pl-1 hover:underline hover:text-purple"
                       >
                         Register
                       </Link>
@@ -295,7 +288,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   href={"/"}
                   className="logo text-3xl text-white font-semibold text-center"
                 >
-                  Anvogue
+                The Ribbon Pack
                 </Link>
               </div>
               <div className="form-search relative mt-2">
@@ -326,20 +319,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     </a>
                   </li>
 
-                  <li
-                    className={`${openSubNavMobile === 2 ? "open" : ""}`}
-                    onClick={() => handleOpenSubNavMobile(2)}
-                  >
-                    <a
-                      href={"#!"}
-                      className="text-xl text-white font-semibold flex items-center justify-between mt-5"
-                    >
-                      Features
-                      <span className="text-right">
-                        <Icon.CaretRight size={20} />
-                      </span>
-                    </a>
-                  </li>
+                  
 
                   <li
                     className={`${openSubNavMobile === 3 ? "open" : ""}`}
