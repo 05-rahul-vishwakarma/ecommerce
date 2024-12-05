@@ -5,22 +5,24 @@ import Link from 'next/link'
 import TopNavOne from '@/components/Header/TopNav/TopNavOne'
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
 import Footer from '@/components/Footer/Footer'
-import { ProductType } from '@/type/ProductType'
-import productData from '@/data/Product.json'
-import Product from '@/components/Product/Product'
+// import { ProductType } from '@/type/ProductType'
+// import productData from '@/data/Product.json'
+// import Product from '@/components/Product/Product'
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { useCart } from '@/context/CartContext'
-import { useSearchParams } from 'next/navigation';
+// import { useSearchParams } from 'next/navigation';
 import MenuFour from '@/components/Header/MenuFour'
 
+
 const Checkout = () => {
-  const searchParams = useSearchParams()
-  let discount = searchParams.get('discount')
- discount = "1";
-  let ship = searchParams.get('ship')
+  // const searchParams = useSearchParams()
+  // let discount = searchParams.get('discount')
+  let discount = 1;
+  // let ship = searchParams.get('ship')
+  let ship = 2;
 
   const { cartState } = useCart();
-  let [totalCart, setTotalCart] = useState<number>(0)
+  let [totalCart] = useState<number>(0)
   const [activePayment, setActivePayment] = useState<string>('credit-card')
 
   cartState.cartArray.map(item => totalCart += item.price * item.quantity)
