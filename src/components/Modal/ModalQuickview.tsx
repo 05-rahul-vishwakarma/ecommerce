@@ -3,6 +3,7 @@
 // Quickview.tsx
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link'
 import { ProductType } from '@/type/ProductType';
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { useModalQuickviewContext } from '@/context/ModalQuickviewContext';
@@ -238,9 +239,11 @@ const ModalQuickview = () => {
                                         </div>
                                         <div onClick={handleAddToCart} className="button-main w-full text-center bg-white text-purple border border-purple">Add To Cart</div>
                                     </div>
-                                    <div className="button-block mt-5">
+                                    <Link 
+                                    href='/checkout'
+                                    className="button-block mt-5">
                                         <div className="button-main w-full text-center">Buy It Now</div>
-                                    </div>
+                                    </Link>
                                     <div className="flex items-center flex-wrap lg:gap-20 gap-8 gap-y-4 mt-5">
                                         <div className="compare flex items-center gap-3 cursor-pointer" onClick={handleAddToCompare}>
                                             <div
