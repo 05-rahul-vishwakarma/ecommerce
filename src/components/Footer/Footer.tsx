@@ -59,26 +59,26 @@ const Footer = () => {
                                     <div className="input-block w-full h-[52px] ">
                                         <form className='w-full h-full relative' action="post">
                                             <input type="email" placeholder='Enter your e-mail' className='caption1 w-full h-full pl-4 pr-14 rounded-xl border border-line' required />
-                                            <button className='w-[44px] h-[44px] bg-purple flex items-center justify-center rounded-xl absolute top-1 right-1'>
+                                            <button className='w-[44px] h-[44px]  flex items-center justify-center bg-custom-purple-color hover:bg-purple rounded-xl absolute top-1 right-1'>
                                                 <Icon.ArrowRight size={24} color='#fff' />
                                             </button>
                                         </form>
                                     </div>
                                     <div className="list-social flex items-center gap-6 mt-4">
                                         <Link href={'https://www.facebook.com/'} target='_blank'>
-                                            <div className="icon-facebook text-2xl text-purple"></div>
+                                            <div className="icon-facebook text-2xl text-custom-purple-color"></div>
                                         </Link>
                                         <Link href={'https://www.instagram.com/'} target='_blank'>
-                                            <div className="icon-instagram text-2xl text-purple"></div>
+                                            <div className="icon-instagram text-2xl text-custom-purple-color"></div>
                                         </Link>
                                         <Link href={'https://www.twitter.com/'} target='_blank'>
-                                            <div className="icon-twitter text-2xl text-purple"></div>
+                                            <div className="icon-twitter text-2xl text-custom-purple-color"></div>
                                         </Link>
                                         <Link href={'https://www.youtube.com/'} target='_blank'>
-                                            <div className="icon-youtube text-2xl text-purple"></div>
+                                            <div className="icon-youtube text-2xl text-custom-purple-color"></div>
                                         </Link>
                                         <Link href={'https://www.pinterest.com/'} target='_blank'>
-                                            <div className="icon-pinterest text-2xl text-purple"></div>
+                                            <div className="icon-pinterest text-2xl text-custom-purple-color"></div>
                                         </Link>
                                     </div>
                                 </div>

@@ -34,7 +34,7 @@ const TrendingProduct: React.FC<Props> = ({ data, start, limit }) => {
                                     onClick={() => handleTabClick(type)}
                                 >
                                     {activeTab === type && (
-                                        <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-purple'></motion.div>
+                                        <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-custom-purple-color'></motion.div>
                                     )}
                                     <span className='relative text-button-uppercase z-[1]'>
                                         {type}

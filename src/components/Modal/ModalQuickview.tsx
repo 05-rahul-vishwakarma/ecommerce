@@ -237,7 +237,7 @@ const ModalQuickview = () => {
                                                 className='cursor-pointer body1'
                                             />
                                         </div>
-                                        <div onClick={handleAddToCart} className="button-main w-full text-center bg-white text-purple border border-purple">Add To Cart</div>
+                                        <div onClick={handleAddToCart} className="button-main w-full text-center bg-white text-purple border border-purple mb-3">Add To Cart</div>
                                     </div>
                                     <Link 
                                     href='/checkout'

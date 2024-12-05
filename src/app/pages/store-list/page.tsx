@@ -53,13 +53,13 @@ const StoreList = () => {
                                         <div className='w-1/2'>
                                             <div className="heading6">Our social media:</div>
                                             <div className="flex items-center sm:gap-4 gap-2 mt-2">
-                                                <Link href={'https://www.facebook.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black hover:text-white duration-300">
+                                                <Link href={'https://www.facebook.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center text-custom-purple-color hover:bg-purple hover:text-white duration-300">
                                                     <div className="icon-facebook"></div>
                                                 </Link>
-                                                <Link href={'https://www.instagram.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black hover:text-white duration-300">
+                                                <Link href={'https://www.instagram.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center text-custom-purple-color hover:bg-purple  hover:text-white duration-300">
                                                     <div className="icon-instagram"></div>
                                                 </Link>
-                                                <Link href={'https://www.youtube.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black hover:text-white duration-300">
+                                                <Link href={'https://www.youtube.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center text-custom-purple-color hover:bg-purple  hover:text-white duration-300">
                                                     <div className="icon-youtube"></div>
                                                 </Link>
                                             </div>
@@ -98,13 +98,13 @@ const StoreList = () => {
                                         <div className='w-1/2'>
                                             <div className="heading6">Our social media:</div>
                                             <div className="flex items-center sm:gap-4 gap-2 mt-2">
-                                                <Link href={'https://www.facebook.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black hover:text-white duration-300">
+                                                <Link href={'https://www.facebook.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center text-custom-purple-color hover:bg-purple  hover:text-white duration-300">
                                                     <div className="icon-facebook"></div>
                                                 </Link>
-                                                <Link href={'https://www.instagram.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black hover:text-white duration-300">
+                                                <Link href={'https://www.instagram.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center text-custom-purple-color hover:bg-purple  hover:text-white duration-300">
                                                     <div className="icon-instagram"></div>
                                                 </Link>
-                                                <Link href={'https://www.youtube.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black hover:text-white duration-300">
+                                                <Link href={'https://www.youtube.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center text-custom-purple-color hover:bg-purple  hover:text-white duration-300">
                                                     <div className="icon-youtube"></div>
                                                 </Link>
                                             </div>
@@ -157,13 +157,13 @@ const StoreList = () => {
                                         <div className='w-1/2'>
                                             <div className="heading6">Our social media:</div>
                                             <div className="flex items-center sm:gap-4 gap-2 mt-2">
-                                                <Link href={'https://www.facebook.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black hover:text-white duration-300">
+                                                <Link href={'https://www.facebook.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center text-custom-purple-color hover:bg-purple  hover:text-white duration-300">
                                                     <div className="icon-facebook"></div>
                                                 </Link>
-                                                <Link href={'https://www.instagram.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black hover:text-white duration-300">
+                                                <Link href={'https://www.instagram.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center text-custom-purple-color hover:bg-purple  hover:text-white duration-300">
                                                     <div className="icon-instagram"></div>
                                                 </Link>
-                                                <Link href={'https://www.youtube.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black hover:text-white duration-300">
+                                                <Link href={'https://www.youtube.com/'} target='_blank' className="item bg-white w-10 h-10 rounded-full flex items-center justify-center text-custom-purple-color hover:bg-purple  hover:text-white duration-300">
                                                     <div className="icon-youtube"></div>
                                                 </Link>
                                             </div>

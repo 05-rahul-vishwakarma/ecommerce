@@ -274,7 +274,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
       </div>
 
       <div id="menu-mobile" className={`${openMenuMobile ? "open" : ""}`}>
-        <div className="menu-container  bg-[#9e5eff]  h-full" style={{ borderBottomRightRadius: '600px' }}>
+        <div className="menu-container  bg-custom-purple-color h-full" style={{ borderBottomRightRadius: '600px' }}>
           <div className="container h-full">
             <div className="menu-main h-full overflow-hidden">
               <div className="heading py-2 relative flex items-center justify-center">
