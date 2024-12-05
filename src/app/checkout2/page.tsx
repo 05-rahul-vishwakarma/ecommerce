@@ -105,7 +105,7 @@ const Checkout = () => {
                                         <h4 className="heading4 md:mt-10 mt-6">Shipping method</h4>
                                         <div className="body1 text-secondary2 py-6 px-5 border border-line rounded-lg bg-surface mt-5">Enter your shipping address to view available shipping methods</div>
                                         <div className="payment-block md:mt-10 mt-6">
-                                            <h4 className="heading4">Payment</h4>
+                                            <h4 className="heading4">Payments</h4>
                                             <p className="body1 text-secondary2 mt-3">All transactions are secure and encrypted.</p>
                                             <div className="list-payment mt-5">
                                                 <div className="item">
