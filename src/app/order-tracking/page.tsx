@@ -11,15 +11,15 @@ const OrderTracking = () => {
 
     return (
         <>
-            <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
-            <div id="header" className='relative w-full'>
+            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
+            <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='Order Tracking' subHeading='Order Tracking' />
             </div>
             <div className="order-tracking md:py-20 py-10">
                 <div className="container">
                     <div className="content-main flex gap-y-8 max-md:flex-col">
-                        <div className="left md:w-1/2 w-full lg:pr-[60px] md:pr-[40px] md:border-r border-line">
+                        <div className="left md:w-1/2 w-full lg:pr-[60px] md:pr-[40px] md:border-r border-line p-5 bg-[#f6efff]">
                             <div className="heading4">Order Tracking</div>
                             <div className="mt-2">To track your order please enter your Order ID in the box below and press the {String.raw`"`}Track{String.raw`"`} button. This was given to you on your receipt and in the confirmation email you should have received.</div>
                             <form className="md:mt-7 mt-4">

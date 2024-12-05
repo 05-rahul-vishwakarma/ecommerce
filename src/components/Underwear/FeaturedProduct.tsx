@@ -12,6 +12,7 @@ import SwiperCore from 'swiper/core';
 import { useCart } from '@/context/CartContext'
 import { useModalCartContext } from '@/context/ModalCartContext'
 import ModalSizeguide from '../Modal/ModalSizeguide'
+import Link from 'next/link'
 
 SwiperCore.use([Navigation, Thumbs]);
 
@@ -268,7 +269,9 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                                 </div>
                             </div>
                             <div className="button-block mt-5">
-                                <div className="button-main w-full text-center text-white">Buy It Now</div>
+                                <Link 
+                               href={'/checkout'}
+                                className="button-main w-full text-center text-white">Buy It Now</Link>
                             </div>
                         </div>
                     </div>

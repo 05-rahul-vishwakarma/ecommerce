@@ -11,15 +11,15 @@ const ForgotPassword = () => {
 
     return (
         <>
-            <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
-            <div id="header" className='relative w-full'>
+            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
+            <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='Forget your password' subHeading='Forget your password' />
             </div>
             <div className="forgot-pass md:py-20 py-10">
                 <div className="container">
                     <div className="content-main flex gap-y-8 max-md:flex-col">
-                        <div className="left md:w-1/2 w-full lg:pr-[60px] md:pr-[40px] md:border-r border-line">
+                        <div className="left md:w-1/2 w-full lg:pr-[60px] md:pr-[40px] md:border-r border-line bg-[#f6efff] p-5">
                             <div className="heading4">Reset your password</div>
                             <div className="body1 mt-2">We will send you an email to reset your password</div>
                             <form className="md:mt-7 mt-4">

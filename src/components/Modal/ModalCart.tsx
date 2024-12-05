@@ -213,7 +213,7 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                                     <div onClick={() => setActiveTab('')} className="text-button-uppercase mt-4 text-center has-line-before cursor-pointer inline-block">Cancel</div>
                                 </div>
                             </div>
-                            <div className={`tab-item note-block ${activeTab === 'shipping' ? 'active' : ''}`}>
+                            <div className={` tab-item note-block ${activeTab === 'shipping' ? 'active' : ''}`}>
                                 <div className="px-6 py-4 border-b border-line">
                                     <div className="item flex items-center gap-3 cursor-pointer">
                                         <Icon.Truck className='text-xl' />

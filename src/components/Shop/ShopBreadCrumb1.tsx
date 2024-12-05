@@ -222,17 +222,25 @@ const ShopBreadCrumb1: React.FC<Props> = ({ data, productPerPage, dataType, gend
                                     <div className='text-secondary2 capitalize'>{dataType === null ? 'Shop' : dataType}</div>
                                 </div>
                             </div>
-                            <div className="list-tab flex flex-wrap items-center justify-center gap-y-5 gap-8 lg:mt-[70px] mt-12 overflow-hidden ">
-                                {['Foil Printed Ribbon', 'Embossed Satin Ribbon', 'Custom Printed Ribbon', 'Cotton Printed Ribbon', 'Digital Printed Ribbon'].map((item, index) => (
+                            <div className="list-tab flex flex-wrap items-center justify-center gap-y-5 gap-8 lg:mt-[70px] mt-12 overflow-hidden">
+                                {[
+                                    'Foil Printed Ribbon',
+                                    'Embossed Satin Ribbon',
+                                    'Custom Printed Ribbon',
+                                    'Cotton Printed Ribbon',
+                                    'Digital Printed Ribbon',
+                                ].map((item, index) => (
                                     <div
                                         key={index}
-                                        className={`tab-item text-button-uppercase hover:text-purple cursor-pointer has-line-before line-2px ${dataType === item ? 'active' : ''}`}
+                                        className={`tab-item text-button-uppercase cursor-pointer has-line-before line-2px 
+                                          ${dataType === item ? 'text-purple active' : 'hover:text-purple'}`}
                                         onClick={() => handleType(item)}
                                     >
                                         {item}
                                     </div>
                                 ))}
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -386,57 +394,57 @@ const ShopBreadCrumb1: React.FC<Props> = ({ data, productPerPage, dataType, gend
                             </div> */}
                         </div>
                         <div className="list-product-block lg:w-3/4 md:w-2/3 w-full md:pl-3">
-                        <div className='hidden'> 
-                        <div className="filter-heading flex items-center justify-between gap-5 flex-wrap">
-                                <div className="left flex has-line items-center flex-wrap gap-5">
-                                    <div className="choose-layout flex items-center gap-2">
-                                        <div className="item three-col w-8 h-8 border border-line rounded flex items-center justify-center cursor-pointer active">
-                                            <div className='flex items-center gap-0.5'>
-                                                <span className='w-[3px] h-4 bg-secondary2 rounded-sm'></span>
-                                                <span className='w-[3px] h-4 bg-secondary2 rounded-sm'></span>
-                                                <span className='w-[3px] h-4 bg-secondary2 rounded-sm'></span>
+                            <div className='hidden'>
+                                <div className="filter-heading flex items-center justify-between gap-5 flex-wrap">
+                                    <div className="left flex has-line items-center flex-wrap gap-5">
+                                        <div className="choose-layout flex items-center gap-2">
+                                            <div className="item three-col w-8 h-8 border border-line rounded flex items-center justify-center cursor-pointer active">
+                                                <div className='flex items-center gap-0.5'>
+                                                    <span className='w-[3px] h-4 bg-secondary2 rounded-sm'></span>
+                                                    <span className='w-[3px] h-4 bg-secondary2 rounded-sm'></span>
+                                                    <span className='w-[3px] h-4 bg-secondary2 rounded-sm'></span>
+                                                </div>
                                             </div>
+                                            <Link href={'/shop/sidebar-list'} className="item row w-8 h-8 border border-line rounded flex items-center justify-center cursor-pointer">
+                                                <div className='flex flex-col items-center gap-0.5'>
+                                                    <span className='w-4 h-[3px] bg-secondary2 rounded-sm'></span>
+                                                    <span className='w-4 h-[3px] bg-secondary2 rounded-sm'></span>
+                                                    <span className='w-4 h-[3px] bg-secondary2 rounded-sm'></span>
+                                                </div>
+                                            </Link>
                                         </div>
-                                        <Link href={'/shop/sidebar-list'} className="item row w-8 h-8 border border-line rounded flex items-center justify-center cursor-pointer">
-                                            <div className='flex flex-col items-center gap-0.5'>
-                                                <span className='w-4 h-[3px] bg-secondary2 rounded-sm'></span>
-                                                <span className='w-4 h-[3px] bg-secondary2 rounded-sm'></span>
-                                                <span className='w-4 h-[3px] bg-secondary2 rounded-sm'></span>
-                                            </div>
-                                        </Link>
+                                        <div className="check-sale flex items-center gap-2">
+                                            <input
+                                                type="checkbox"
+                                                name="filterSale"
+                                                id="filter-sale"
+                                                className='border-line'
+                                                onChange={handleShowOnlySale}
+                                            />
+                                            <label htmlFor="filter-sale" className='cation1 cursor-pointer'>Show only products on sale</label>
+                                        </div>
                                     </div>
-                                    <div className="check-sale flex items-center gap-2">
-                                        <input
-                                            type="checkbox"
-                                            name="filterSale"
-                                            id="filter-sale"
-                                            className='border-line'
-                                            onChange={handleShowOnlySale}
-                                        />
-                                        <label htmlFor="filter-sale" className='cation1 cursor-pointer'>Show only products on sale</label>
-                                    </div>
-                                </div>
-                                <div className="right flex items-center gap-3">
-                                    <div className="select-block relative">
-                                        <select
-                                            id="select-filter"
-                                            name="select-filter"
-                                            className='caption1 py-2 pl-3 md:pr-20 pr-10 rounded-lg border border-line'
-                                            onChange={(e) => { handleSortChange(e.target.value) }}
-                                            defaultValue={'Sorting'}
-                                        >
-                                            <option value="Sorting" disabled>Sorting</option>
-                                            <option value="soldQuantityHighToLow">Best Selling</option>
-                                            <option value="discountHighToLow">Best Discount</option>
-                                            <option value="priceHighToLow">Price High To Low</option>
-                                            <option value="priceLowToHigh">Price Low To High</option>
-                                        </select>
-                                        <Icon.CaretDown size={12} className='absolute top-1/2 -translate-y-1/2 md:right-4 right-2' />
+                                    <div className="right flex items-center gap-3">
+                                        <div className="select-block relative">
+                                            <select
+                                                id="select-filter"
+                                                name="select-filter"
+                                                className='caption1 py-2 pl-3 md:pr-20 pr-10 rounded-lg border border-line'
+                                                onChange={(e) => { handleSortChange(e.target.value) }}
+                                                defaultValue={'Sorting'}
+                                            >
+                                                <option value="Sorting" disabled>Sorting</option>
+                                                <option value="soldQuantityHighToLow">Best Selling</option>
+                                                <option value="discountHighToLow">Best Discount</option>
+                                                <option value="priceHighToLow">Price High To Low</option>
+                                                <option value="priceLowToHigh">Price Low To High</option>
+                                            </select>
+                                            <Icon.CaretDown size={12} className='absolute top-1/2 -translate-y-1/2 md:right-4 right-2' />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                           
+
 
                             <div className="list-filtered flex items-center gap-3 mt-4">
                                 <div className="total-product">

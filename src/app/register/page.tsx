@@ -11,15 +11,15 @@ const Register = () => {
 
     return (
         <>
-            <TopNavOne props="style-one bg-black" slogan="New customers save 10% with the code GET10" />
-            <div id="header" className='relative w-full'>
+            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
+            <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='Create An Account' subHeading='Create An Account' />
             </div>
             <div className="register-block md:py-20 py-10">
                 <div className="container">
                     <div className="content-main flex gap-y-8 max-md:flex-col">
-                        <div className="left md:w-1/2 w-full lg:pr-[60px] md:pr-[40px] md:border-r border-line">
+                        <div className="left md:w-1/2 w-full lg:pr-[60px] md:pr-[40px] md:border-r p-5 border-line bg-[#f6efff]">
                             <div className="heading4">Register</div>
                             <form className="md:mt-7 mt-4">
                                 <div className="email ">
