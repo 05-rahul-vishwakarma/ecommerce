@@ -22,7 +22,7 @@
 //                                 <div className="heading4">The Ribbon Pack</div>
 //                             </Link>
 //                             <button className="max-md:hidden cart-icon flex items-center relative h-fit cursor-pointer" onClick={openModalCart}>
-//                                 <Icon.Handbag size={24} color='black' className='text-purple' />
+//                                 <Icon.Handbag size={24} color='black' className='text-purple'/>
 //                                 <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-white bg-purple w-4 h-4 flex items-center justify-center rounded-full">{cartState.cartArray.length}</span>
 //                             </button>
 //                         </div>
