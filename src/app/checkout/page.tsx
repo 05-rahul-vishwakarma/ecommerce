@@ -50,7 +50,7 @@ const Checkout = () => {
               </Link>
               <div className="form-login-block mt-3 bg-[#f6efff] ">
                 <form className="p-5 border border-line rounded-lg">
-                  <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="grid sm:grid-cols-2 gap-5 md:grid-cols-2 ">
                     <div className="email ">
                       <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="username" type="email" placeholder="Username or email" required />
                     </div>
@@ -226,7 +226,7 @@ const Checkout = () => {
               </div>
 
             </div>
-            <div className="right w-5/12">
+            <div className="right md:w-5/12 w-full ml-5">
               <div className="checkout-block">
                 <div className="heading5 pb-3">Your Order</div>
                 <div className="list-product-checkout">
@@ -235,7 +235,7 @@ const Checkout = () => {
                   ) : (
                     cartState.cartArray.map((product) => (
                       <>
-                        <div className="item flex items-center justify-between w-full pb-5 border-b border-line gap-6 mt-5">
+                        <div className="item flex flex-col md:flex-row  items-center justify-between w-full pb-5 border-b border-line gap-6 mt-5">
                           <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden">
                             <Image
                               src={product.thumbImage[0]}

@@ -247,7 +247,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                     </>
                                 )}
                             </div>
-                            <div className="list-action-icon flex items-center justify-center gap-2 absolute w-full bottom-3 z-[1] lg:hidden">
+                            <div className="list-action-icon flex items-center justify-center gap-10 absolute w-full bottom-3 z-[1] lg:hidden">
                                 <div
                                     className="quick-view-btn w-9 h-9 flex items-center justify-center rounded-lg duration-300 bg-white hover:bg-purple hover:text-white"
                                     onClick={(e) => {
