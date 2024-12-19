@@ -12,7 +12,7 @@ interface BlogProps {
     type: string
 }
 
-const BlogItem: React.FC<BlogProps> = ({ data, type }) => {
+const   BlogItem: React.FC<BlogProps> = ({ data, type }) => {
     const router = useRouter()
 
     const handleBlogClick = () => {

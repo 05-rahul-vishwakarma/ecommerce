@@ -53,7 +53,8 @@ const LookBook: React.FC<Props> = ({ data }) => {
                             <div className="item h-full">
                                 
                                 <Image
-                                    src={'/images/banner/b15.png'}
+                                    // src={'/images/banner/b15.png'}
+                                    src={'/18mm Orgnza Ribon Red Color.jpg'}
                                     width={2000}
                                     height={1000}
                                     alt='/images/banner/15.png'
@@ -74,7 +75,7 @@ const LookBook: React.FC<Props> = ({ data }) => {
                         <SwiperSlide>
                             <div className="item h-full">
                                 <Image
-                                    src={'/images/banner/b16.png'}
+                                    src={'/18mmGrossGrainBabyPinkColorRibbonimported2.jpg'}
                                     width={2000}
                                     height={1000}
                                     alt='/images/banner/16.png'
@@ -95,7 +96,7 @@ const LookBook: React.FC<Props> = ({ data }) => {
                         <SwiperSlide>
                             <div className="item h-full">
                                 <Image
-                                    src={'/images/banner/b17.png'}
+                                    src={'/12mm Orgnza Black color Ribbon 2.jpg'}
                                     width={2000}
                                     height={1000}
                                     alt='/images/banner/17.png'

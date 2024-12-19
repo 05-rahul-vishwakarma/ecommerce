@@ -12,7 +12,7 @@ const SliderUnderwear = () => {
             
           <div className="sub-img w-[440px] max-md:w-1/2 rounded-b-full overflow-hidden max-md:hidden">
             <Image
-              src={"/images/slider/bg-underwear1.jpg"}
+              src={"/images/slider/bg-image1.jpg"}
               width={2000}
               height={1936}
               alt="bg-underwear1"
@@ -42,7 +42,7 @@ const SliderUnderwear = () => {
           </div>
           <div className="sub-img w-[440px] max-md:w-1/2 rounded-t-full overflow-hidden">
             <Image
-              src={"/images/slider/image2.jpg"}
+              src={"/images/slider/bg-image2.jpg"}
               width={2000}
               height={1936}
               alt="bg-underwear2"
