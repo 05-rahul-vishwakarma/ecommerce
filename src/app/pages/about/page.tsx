@@ -30,7 +30,8 @@ const AboutUs = () => {
                         <div className="list-img grid sm:grid-cols-3 gap-[30px] md:pt-20 pt-10">
                             <div className="bg-img">
                                 <Image
-                                    src={'/images/other/aboutus-3.png'}
+                                     src={'/images/other/storelistoffice1.jpg'}
+                                    
                                     width={2000}
                                     height={3000}
                                     alt='bg-img'
@@ -39,7 +40,8 @@ const AboutUs = () => {
                             </div>
                             <div className="bg-img">
                                 <Image
-                                    src={'/images/other/aboutus-2.png'}
+                                    // src={'/images/other/aboutus-2.png'}
+                                    src={'/images/other/storelistoffice2.jpg'}
                                     width={2000}
                                     height={3000}
                                     alt='bg-img'
@@ -48,7 +50,7 @@ const AboutUs = () => {
                             </div>
                             <div className="bg-img">
                                 <Image
-                                    src={'/images/other/aboutus-4.png'}
+                                    src={'/images/other/storelistoffice3.jpg'}
                                     width={2000}
                                     height={3000}
                                     alt='bg-img'

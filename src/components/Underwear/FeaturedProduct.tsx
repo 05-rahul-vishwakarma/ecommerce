@@ -92,7 +92,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             <SwiperSlide>
                                 <Image
                                     // src={productMain.images[0]}
-                                    src={'/image3.png'}
+                                    src={'/6mmSingleSatinIndianQualitycoperColor.jpg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -102,7 +102,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             <SwiperSlide>
                                 <Image
                                     // src={productMain.images[1]}
-                                    src={'/image4.png'}
+                                    src={'/6mmSingleSatinIndianQualityLemonYellowColor.jpg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -113,7 +113,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             
                                 <Image
                                     // src={productMain.images[2]}
-                                    src={'/image5.jpeg'}
+                                    src={'/6mmSingleSatinIndianQualityBrownorCoffeeColor.jpg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -123,7 +123,8 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             <SwiperSlide>
                                 <Image
                                     // src={productMain.images[3]}
-                                    src={'/image6.jpeg'}
+                                    src={'/6mmSingleSatinIndianQualityRaniorDarkPinkColorhotPinkColor.jpg'}
+
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -143,7 +144,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             <SwiperSlide>
                                 <Image
                                     // src={productMain.images[0]}
-                                    src={'/image3.png'}
+                                    src={'/6mmSingleSatinIndianQualitycoperColor.jpg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -153,7 +154,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             <SwiperSlide>
                                 <Image
                                     // src={productMain.images[1]}
-                                    src={'/image4.png'}
+                                    src={'/6mmSingleSatinIndianQualityLemonYellowColor.jpg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -163,7 +164,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             <SwiperSlide>
                                 <Image
                                     // src={productMain.images[2]}
-                                    src={'/image5.jpeg'}
+                                    src={'/6mmSingleSatinIndianQualityBrownorCoffeeColor.jpg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'
@@ -173,7 +174,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                             <SwiperSlide>
                                 <Image
                                     // src={productMain.images[3]}
-                                    src={'/image6.jpeg'}
+                                    src={'/6mmSingleSatinIndianQualityRaniorDarkPinkColorhotPinkColor.jpg'}
                                     width={1000}
                                     height={1000}
                                     alt='prd-img'

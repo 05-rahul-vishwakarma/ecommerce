@@ -26,7 +26,7 @@ const Collection = () => {
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('swimwear')}>
                             <div className="bg-img">
                                 <Image
-                                    src={'/ribbon.png'}
+                                    src={'/blog6.jpg'}
                                     width={1000}
                                     height={600}
                                     alt='Silk Ribon'
@@ -37,7 +37,7 @@ const Collection = () => {
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('underwear')}>
                             <div className="bg-img">
                                 <Image
-                                    src={'/ribbon.png'}
+                                    src={'/blog5.jpg'}
                                     width={1000}
                                     height={600}
                                     alt='Traditional Ribbon'
@@ -48,7 +48,7 @@ const Collection = () => {
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('swimwear')}>
                             <div className="bg-img">
                                 <Image
-                                    src={'/ribbon.png'}
+                                    src={'/6mmSingleSatinIndianQualityOliveGreenColor .jpg'}
                                     width={1000}
                                     height={600}
                                     alt='Golden Ribbon'
@@ -59,7 +59,7 @@ const Collection = () => {
                         <div className="collection-item block relative rounded-t-full overflow-hidden cursor-pointer" onClick={() => handleTypeClick('underwear')}>
                             <div className="bg-img">
                                 <Image
-                                    src={'/ribbon.png'}
+                                    src={'/18mm Orgnza Ribon Red Color.jpg'}
                                     width={1000}
                                     height={600}
                                     alt='custom Ribbon'

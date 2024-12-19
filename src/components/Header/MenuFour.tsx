@@ -110,7 +110,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   </Link>
                 </li>
 
-                
+
 
                 <li className="h-full">
                   <Link
@@ -146,7 +146,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   >
                     Pages
                   </Link>
-                  <div className="sub-menu py-3 px-5 -left-10 absolute bg-white rounded-b-xl">
+                  <div className="sub-menu py-3 px-5 -left-10 absolute  rounded-b-xl">
                     <ul className="w-full">
                       <li>
                         <Link
@@ -288,7 +288,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   href={"/"}
                   className="logo text-3xl text-white font-semibold text-center"
                 >
-                The Ribbon Pack
+                  The Ribbon Pack
                 </Link>
               </div>
               <div className="form-search relative mt-2">
@@ -319,7 +319,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     </a>
                   </li>
 
-                  
+
 
                   <li
                     className={`${openSubNavMobile === 3 ? "open" : ""}`}
