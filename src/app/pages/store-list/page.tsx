@@ -20,7 +20,7 @@ const StoreList = () => {
                     <div className="item bg-surface overflow-hidden rounded-[20px]">
                         <div className="flex items-center lg:justify-end relative max-lg:flex-col bg-[#f9f5ff]">
                             <Image
-                                src={'/images/other/storelistoffice1.png'}
+                                src={'/images/other/storelistoffice1.jpg'}
                                 width={3000}
                                 height={2000}
                                 alt='bg-img'
@@ -113,7 +113,7 @@ const StoreList = () => {
                                 </div>
                             </div>
                             <Image
-                                src={'/images/other/storelistoffice2.png'}
+                                src={'/images/other/storelistoffice2.jpg'}
                                 width={3000}
                                 height={2000}
                                 alt='bg-img'
@@ -124,7 +124,7 @@ const StoreList = () => {
                     <div className="item bg-surface overflow-hidden rounded-[20px] md:mt-20 mt-10">
                         <div className="flex items-center lg:justify-end relative max-lg:flex-col bg-[#f9f5ff]">
                             <Image
-                                src={'/images/other/storelistoffice3.png'}
+                                src={'/images/other/storelistoffice3.jpg'}
                                 width={3000}
                                 height={2000}
                                 alt='bg-img'
