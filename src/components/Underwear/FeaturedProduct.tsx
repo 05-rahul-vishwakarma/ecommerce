@@ -13,6 +13,9 @@ import { useCart } from '@/context/CartContext'
 import { useModalCartContext } from '@/context/ModalCartContext'
 import ModalSizeguide from '../Modal/ModalSizeguide'
 import Link from 'next/link'
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify'
 
 SwiperCore.use([Navigation, Thumbs]);
 
@@ -29,6 +32,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
     const [activeSize, setActiveSize] = useState<string>('')
     const { addToCart, updateCart, cartState } = useCart()
     const { openModalCart } = useModalCartContext()
+    const router = useRouter();
 
     const handleOpenSizeGuide = () => {
         setOpenSizeGuide(true);
@@ -64,6 +68,14 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
     };
 
     const handleAddToCart = () => {
+        const accessToken = Cookies.get("accessToken");
+        console.log(accessToken,'access token');
+        
+        if (!accessToken) {
+            toast.error("Please log in to add items to the cart.");
+            router.push("/login"); // Redirect to login page
+            return;
+        }
         if (!cartState.cartArray.find(item => item.id === productMain.id)) {
             addToCart({ ...productMain });
             updateCart(productMain.id, productMain.quantityPurchase, activeSize, activeColor)
@@ -110,7 +122,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                                 />
                             </SwiperSlide>
                             <SwiperSlide>
-                            
+
                                 <Image
                                     // src={productMain.images[2]}
                                     src={'/6mmSingleSatinIndianQualityBrownorCoffeeColor.jpg'}
@@ -270,9 +282,9 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                                 </div>
                             </div>
                             <div className="button-block mt-5">
-                                <Link 
-                               href={'/checkout'}
-                                className="button-main w-full text-center text-white">Buy It Now</Link>
+                                <Link
+                                    href={'/checkout'}
+                                    className="button-main w-full text-center text-white">Buy It Now</Link>
                             </div>
                         </div>
                     </div>

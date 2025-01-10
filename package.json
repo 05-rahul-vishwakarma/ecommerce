@@ -12,6 +12,7 @@
     "@phosphor-icons/react": "^2.0.14",
     "axios": "^1.7.9",
     "framer-motion": "^10.17.4",
+    "js-cookie": "^3.0.5",
     "next": "^14.2.18",
     "nprogress": "^0.2.0",
     "rc-slider": "^10.5.0",
@@ -22,11 +23,13 @@
     "react-paginate": "^8.2.0",
     "react-slick": "^0.29.0",
     "react-slider": "^2.0.6",
+    "react-toastify": "^11.0.2",
     "sass": "^1.69.5",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.0.4"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

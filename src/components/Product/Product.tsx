@@ -12,9 +12,11 @@ import { useModalWishlistContext } from '@/context/ModalWishlistContext'
 import { useCompare } from '@/context/CompareContext'
 import { useModalCompareContext } from '@/context/ModalCompareContext'
 import { useModalQuickviewContext } from '@/context/ModalQuickviewContext'
-import { useRouter } from 'next/navigation'
 import Marquee from 'react-fast-marquee'
 import Rate from '../Other/Rate'
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify'
 
 interface ProductProps {
     data: ProductType
@@ -43,6 +45,16 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
     }
 
     const handleAddToCart = () => {
+        console.log('yes working');
+        
+        const accessToken = Cookies.get("accessToken");
+        console.log(accessToken,'access token');
+        
+        if (!accessToken) {
+            toast.error("Please log in to add items to the cart.");
+            router.push("/login"); // Redirect to login page
+            return;
+        }
         if (!cartState.cartArray.find(item => item.id === data.id)) {
             addToCart({ ...data });
             updateCart(data.id, data.quantityPurchase, activeSize, activeColor)

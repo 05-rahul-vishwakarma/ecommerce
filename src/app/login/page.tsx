@@ -7,44 +7,72 @@ import Footer from '@/components/Footer/Footer';
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import MenuFour from '@/components/Header/MenuFour';
 import axios from 'axios';
-
-// Fetch data function outside the component
-const fetchData = async (phoneNo, otp) => {
-    try {
-        const response = await axios.post(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/user/verifyOtp`, 
-            { phoneNo, otp } // Pass parameters as needed
-        );
-        return response.data; // Return the response data
-    } catch (error) {
-        console.error("Error verifying OTP:", error);
-        throw error; // Rethrow error for further handling
-    }
-};
+import { toast } from 'react-toastify';
+import Cookies from "js-cookie";
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
-    const [phoneNo, setPhoneNo] = useState('');
-    const [otp, setOtp] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
+    const [phoneNo, setPhoneNo] = useState<string>("");
+    const [otp, setOtp] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
+    const [otpSent, setOtpSent] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState<string | null>(null);
+    const router = useRouter();
 
-    // Handle form submission
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
-        setLoading(true);
-        setError('');
-        setSuccess('');
-        
-        try {
-            const data = await fetchData(phoneNo, otp); // Call fetchData with inputs
-            setSuccess("OTP Verified Successfully!"); // Display success message
-            console.log("Response Data:", data);
-        } catch (err) {
-            setError("Failed to verify OTP. Please try again."); // Display error message
-        } finally {
-            setLoading(false);
+    const otpSend = async () => {
+        const payload = {
+            phoneNo: phoneNo,
+            businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
         }
+        console.log(payload);
+
+        try {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/user/login`, payload)
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+
+    const verifyOtp = async () => {
+        const payload = {
+            phoneNo: phoneNo,
+            otp: otp
+        }
+        try {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/user/verifyOtp`, payload)
+            toast.success('User Loged In')
+            Cookies.set("accessToken", response?.data?.data?.accessToken, { expires: 1 }); // Expires in 7 days
+        } catch (error: unknown) {
+            const errorMessage = (error as { message?: string })?.message || "An unexpected error occurred.";
+            toast.error(errorMessage);
+        }
+
+    }
+
+    const handleSendOtp = (): void => {
+        if (phoneNo.length === 10) {
+            otpSend();
+            toast.success("OTP sent successfully!");
+            setOtpSent(true);
+            setSuccess("OTP sent successfully!");
+            setError(null);
+        } else {
+            setError("Please enter a valid 10-digit number.");
+            setSuccess(null);
+        }
+    };
+
+    const handleSubmit = (e: any): void => {
+        e.preventDefault();
+        setLoading(true);
+        verifyOtp();
+        setLoading(false);
+        setSuccess("OTP verified successfully!");
+        setPhoneNo('');
+        setOtp('');
+        router.push('/')
     };
 
     return (
@@ -61,39 +89,66 @@ const Login = () => {
                             <div className="heading4">Login</div>
                             <form className="md:mt-7 mt-4" onSubmit={handleSubmit}>
                                 <div className="email">
-                                    <input 
-                                        className="border-line px-4 pt-3 pb-3 w-full rounded-lg"
-                                        id="username"
-                                        type="number"
-                                        placeholder="Enter Registered Number *"
-                                        value={phoneNo}
-                                        onChange={(e) => setPhoneNo(e.target.value)} // Update phoneNo
-                                        required 
-                                    />
-                                </div>
-                                <div className="pass mt-5">
-                                    <input 
-                                        className="border-line px-4 pt-3 pb-3 w-full rounded-lg"
-                                        id="password"
-                                        type="password"
-                                        placeholder="OTP *"
-                                        value={otp}
-                                        onChange={(e) => setOtp(e.target.value)} // Update OTP
-                                        required 
-                                    />
-                                </div>
-                                <div className="flex items-center justify-between mt-5">
-                                    <div className='flex items-center'>
-                                        <div className="block-input">
-                                            <input type="checkbox" name='remember' id='remember' />
-                                            <Icon.CheckSquare size={20} weight='fill' className='icon-checkbox' />
-                                        </div>
-                                        <label htmlFor='remember' className="pl-2 cursor-pointer">Remember me</label>
+                                    <div className="relative">
+                                        <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">+91</span>
+                                        <input
+                                            className="border-line px-4 pl-12 pt-3 pb-3 w-full rounded-lg"
+                                            id="number"
+                                            type="tel"
+                                            placeholder="Enter Registered Number *"
+                                            value={phoneNo}
+                                            onChange={(e) => {
+                                                const value = e.target.value.slice(0, 10); // Limit to 10 digits
+                                                if (/^\d*$/.test(value)) {
+                                                    setPhoneNo(value);
+                                                    setError(null);
+                                                } else {
+                                                    setError("Only numbers are allowed.");
+                                                    setSuccess(null);
+                                                }
+                                            }}
+                                            required
+                                        />
                                     </div>
-                                    <Link href={'/forgot-password'} className='font-semibold hover:underline'>Forgot Your Password?</Link>
+                                    {phoneNo.length === 10 && !otpSent && (
+                                        <button
+                                            type="button"
+                                            className="mt-3 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 button-main bg-custom-purple-color "
+                                            onClick={handleSendOtp}
+                                        >
+                                            Send OTP
+                                        </button>
+                                    )}
+                                </div>
+                                {otpSent && (
+                                    <div className="pass mt-5">
+                                        <input
+                                            className="border-line px-4 pt-3 pb-3 w-full rounded-lg"
+                                            id="otp"
+                                            type="number"
+                                            placeholder="Enter OTP *"
+                                            value={otp}
+                                            onChange={(e) => setOtp(e.target.value)}
+                                            required
+                                        />
+                                    </div>
+                                )}
+                                <div className="flex items-center justify-between mt-5">
+                                    <div className="flex items-center">
+                                        <div className="block-input">
+                                            <input type="checkbox" name="remember" id="remember" />
+                                            <Icon.CheckSquare size={20} weight="fill" className="icon-checkbox" />
+                                        </div>
+                                        <label htmlFor="remember" className="pl-2 cursor-pointer">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    <Link href={"/forgot-password"} className="font-semibold hover:underline">
+                                        Forgot Your Password?
+                                    </Link>
                                 </div>
                                 <div className="block-button md:mt-7 mt-4">
-                                    <button className="button-main" disabled={loading}>
+                                    <button className="button-main" disabled={loading || !otpSent}>
                                         {loading ? "Verifying..." : "Login"}
                                     </button>
                                 </div>
