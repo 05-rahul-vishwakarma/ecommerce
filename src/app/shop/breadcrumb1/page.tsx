@@ -1,36 +1,38 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import TopNavOne from '@/components/Header/TopNav/TopNavOne';
+import React, { useEffect, useState } from 'react';
 import ShopBreadCrumb1 from '@/components/Shop/ShopBreadCrumb1';
 import productData from '@/data/Product.json';
 import Footer from '@/components/Footer/Footer';
 import MenuFour from '@/components/Header/MenuFour';
+import axios from 'axios';
 
 export default function BreadCrumb1() {
+  const [products, setProducts] = useState([])
   const [type, setType] = useState<string | null>(null);
   const [gender, setGender] = useState<string | null>(null);
   const [category, setCategory] = useState<string | null>(null);
 
-  // Use useSearchParams within useEffect to avoid issues with SSR
-  // const searchParams = useSearchParams();
-
-  // useEffect(() => {
-    // const datatype = searchParams.get('type');
-    // const genderParam = searchParams.get('gender');
-    // const categoryParam = searchParams.get('category');
-    // setType(datatype);
-    // setGender(genderParam);
-    // setCategory(categoryParam);
-  // }, [searchParams]);
+ const getProduct = async () => {
+  try {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`)
+    console.log(response?.data?.data?.items);
+    setProducts(response?.data?.data?.items)
+    
+  } catch (error) {
+    console.error("Error on Fetching Products ", error)
+  }
+ }
+ useEffect(() => {
+  getProduct()
+ },[])
 
   return (
     <>
       <div id="header" className="relative w-full">
         <MenuFour props="bg-transparent" />
       </div>
-      <ShopBreadCrumb1 data={productData} productPerPage={9} dataType={type} gender={gender} category={category} />
+      <ShopBreadCrumb1 data={products} productPerPage={9} dataType={type} gender={gender} category={category} />
       <Footer />
     </>
   );
