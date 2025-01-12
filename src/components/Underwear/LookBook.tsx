@@ -27,7 +27,6 @@ const LookBook: React.FC<Props> = ({ data }) => {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`
       );
-      console.log("lookbook: ", response?.data?.data?.items);
       const data = response?.data?.data?.items;
       setProducts(data);
     } catch (error) {
@@ -66,7 +65,7 @@ const LookBook: React.FC<Props> = ({ data }) => {
             <div
             key={index}
             className="right list-img h-full md:w-1/2 md:absolute top-0 right-0 bottom-0">
-              <Swiper
+              {/* <Swiper
                 slidesPerView={1}
                 pagination={{ clickable: true }}
                 modules={[Pagination]}
@@ -158,7 +157,7 @@ const LookBook: React.FC<Props> = ({ data }) => {
                     </div>
                   </div>
                 </SwiperSlide>
-              </Swiper>
+              </Swiper> */}
             </div>
           );
         })}

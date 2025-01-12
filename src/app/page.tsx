@@ -28,7 +28,7 @@ export default function Home() {
             </div>
             <Collection />
             <TabFeatures data={productData} start={0} limit={4} />
-            <FeaturedProduct data={productData} />
+            <FeaturedProduct />
             <LookBook data={productData} />
             <TrendingProduct data={productData} start={0} limit={8} />
             <Testimonial data={testimonialData} limit={6} />

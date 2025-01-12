@@ -27,7 +27,7 @@ interface Props {
   name: string;
 }
 
-const FeaturedProduct: React.FC<Props> = ({ data }) => {
+const FeaturedProduct = () => {
   const [products, setProducts] = useState<Props[]>([]);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [openPopupImg, setOpenPopupImg] = useState(false);
@@ -44,14 +44,13 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`
       );
-      // console.log("Featured Products", response?.data?.data?.items);
-      
       const data = response?.data?.data?.items;
       setProducts(data);
     } catch (error) {
       console.error("Error on Fetching Products ", error);
     }
   };
+
   useEffect(() => {
     getProduct();
   }, []);
@@ -73,65 +72,37 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
   };
 
   const handleSwiper = (swiper: SwiperCore) => {
-    // Do something with the thumbsSwiper instance
     setThumbsSwiper(swiper);
   };
 
-  const handleIncreaseQuantity = () => {
-    productMain.quantityPurchase += 1;
-    updateCart(
-      productMain.id,
-      productMain.quantityPurchase + 1,
-      activeSize,
-      activeColor
-    );
-  };
 
-  const handleDecreaseQuantity = () => {
-    if (productMain.quantityPurchase > 1) {
-      productMain.quantityPurchase -= 1;
-      updateCart(
-        productMain.id,
-        productMain.quantityPurchase - 1,
-        activeSize,
-        activeColor
-      );
-    }
-  };
+  // const handleAddToCart = () => {
+  //   const accessToken = Cookies.get("accessToken");
+  //   console.log(accessToken, "access token");
 
-  const handleAddToCart = () => {
-    const accessToken = Cookies.get("accessToken");
-    console.log(accessToken, "access token");
-
-    if (!accessToken) {
-      toast.error("Please log in to add items to the cart.");
-      router.push("/login"); // Redirect to login page
-      return;
-    }
-    if (!cartState.cartArray.find((item) => item.id === productMain.id)) {
-      addToCart({ ...productMain });
-      updateCart(
-        productMain.id,
-        productMain.quantityPurchase,
-        activeSize,
-        activeColor
-      );
-    } else {
-      updateCart(
-        productMain.id,
-        productMain.quantityPurchase,
-        activeSize,
-        activeColor
-      );
-    }
-    openModalCart();
-  };
-
-  // Infor product 39th in data
-  const productMain = data[39];
-  const percentSale = Math.floor(
-    100 - (productMain.price / productMain.originPrice) * 100
-  );
+  //   if (!accessToken) {
+  //     toast.error("Please log in to add items to the cart.");
+  //     router.push("/login"); // Redirect to login page
+  //     return;
+  //   }
+  //   if (!cartState.cartArray.find((item) => item.id === productMain.id)) {
+  //     addToCart({ ...productMain });
+  //     updateCart(
+  //       productMain.id,
+  //       productMain.quantityPurchase,
+  //       activeSize,
+  //       activeColor
+  //     );
+  //   } else {
+  //     updateCart(
+  //       productMain.id,
+  //       productMain.quantityPurchase,
+  //       activeSize,
+  //       activeColor
+  //     );
+  //   }
+  //   openModalCart();
+  // };
 
   return (
     <>
@@ -147,7 +118,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                 modules={[Thumbs]}
                 className="mySwiper2 rounded-2xl overflow-hidden"
               >
-                {products[0].imageURLs.map((image, idx) => (
+                {/* {products[0].imageURLs.map((image: any, idx: any) => (
                   <SwiperSlide key={`main-0-${idx}`}>
                     <Image
                       src={image?.img} // Assuming 'img' is the correct key
@@ -157,7 +128,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                       className="w-full aspect-[3/4] object-cover"
                     />
                   </SwiperSlide>
-                ))}
+                ))} */}
               </Swiper>
 
               {/* Thumbnail Swiper - For small images */}
@@ -170,7 +141,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                 modules={[Navigation, Thumbs, FreeMode]}
                 className="mySwiper"
               >
-                {products[0].imageURLs.map((image, idx) => (
+                {/* {products[0].imageURLs.map((image: any, idx: any) => (
                   <SwiperSlide key={`thumb-0-${idx}`}>
                     <Image
                       src={image?.img} // Assuming 'img' is the correct key
@@ -180,38 +151,38 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                       className="w-full aspect-[3/4] object-cover rounded-xl "
                     />
                   </SwiperSlide>
-                ))}
+                ))} */}
               </Swiper>
             </div>
           )}
 
 
-{/* right section */}
+          {/* right section */}
 
           <div className="product-infor md:w-1/2 w-full lg:pl-16 md:pl-6">
             <div className="caption2 text-secondary font-semibold uppercase">
-              {productMain.type}
+              {/* {products?.type} */}
             </div>
-            <div className="heading4 mt-1">{productMain.name}</div>
+            {/* <div className="heading4 mt-1">{productMain.name}</div> */}
             <div className="flex items-center mt-3">
-              <Rate currentRate={productMain.rate} size={14} />
+              {/* <Rate currentRate={productMain.rate} size={14} /> */}
               <span className="caption1 text-secondary">(1.234 reviews)</span>
             </div>
             <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
               <div className="product-price heading5">
-                ${productMain.price}.00
+                {/* ${productMain.price}.00 */}
               </div>
               <div className="w-px h-4 bg-line"></div>
               <div className="product-origin-price font-normal text-secondary2">
-                <del>${productMain.originPrice}.00</del>
+                {/* <del>${productMain.originPrice}.00</del> */}
               </div>
-              {productMain.originPrice && (
+              {/* {productMain.originPrice && (
                 <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
                   -{percentSale}%
                 </div>
-              )}
+              )} */}
               <div className="desc text-secondary mt-3">
-                {productMain.description}
+                {/* {productMain.description} */}
               </div>
             </div>
             <div className="list-action mt-6">
@@ -220,12 +191,11 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                   Colors:{" "}
                   <span className="text-title color">{activeColor}</span>
                 </div>
-                <div className="list-color flex items-center gap-2 flex-wrap mt-3">
+                {/* <div className="list-color flex items-center gap-2 flex-wrap mt-3">
                   {productMain.variation.map((item, index) => (
                     <div
-                      className={`color-item w-12 h-12 rounded-xl duration-300 relative ${
-                        activeColor === item.color ? "active" : ""
-                      }`}
+                      className={`color-item w-12 h-12 rounded-xl duration-300 relative ${activeColor === item.color ? "active" : ""
+                        }`}
                       key={index}
                       onClick={() => handleActiveColor(item.color)}
                     >
@@ -241,7 +211,7 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                       </div>
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
               <div className="choose-size mt-5">
                 <div className="heading flex items-center justify-between">
@@ -254,47 +224,45 @@ const FeaturedProduct: React.FC<Props> = ({ data }) => {
                   >
                     Size Guide
                   </div>
-                  <ModalSizeguide
+                  {/* <ModalSizeguide
                     data={productMain}
                     isOpen={openSizeGuide}
                     onClose={handleCloseSizeGuide}
-                  />
+                  /> */}
                 </div>
                 <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                  {productMain.sizes.map((item, index) => (
+                  {/* {productMain.sizes.map((item, index) => (
                     <div
-                      className={`size-item w-12 h-12 flex items-center justify-center text-button rounded-full bg-white border border-purple ${
-                        activeSize === item ? "active" : ""
-                      }`}
+                      className={`size-item w-12 h-12 flex items-center justify-center text-button rounded-full bg-white border border-purple ${activeSize === item ? "active" : ""
+                        }`}
                       key={index}
                       onClick={() => handleActiveSize(item)}
                     >
                       {item}
                     </div>
-                  ))}
+                  ))} */}
                 </div>
               </div>
               <div className="choose-quantity flex items-center lg:justify-between gap-5 gap-y-3 mt-5">
                 <div className="quantity-block md:p-3 p-2 flex items-center justify-between rounded-lg border border-line w-[140px] flex-shrink-0">
-                  <Icon.Minus
+                  {/* <Icon.Minus
                     size={20}
                     onClick={handleDecreaseQuantity}
-                    className={`${
-                      productMain.quantityPurchase === 1 ? "disabled" : ""
-                    } cursor-pointer`}
-                  />
+                    className={`${productMain.quantityPurchase === 1 ? "disabled" : ""
+                      } cursor-pointer`}
+                  /> */}
                   <div className="body1 font-semibold">
-                    {productMain.quantityPurchase}
+                    {/* {productMain.quantityPurchase} */}
                   </div>
-                  <Icon.Plus
+                  {/* <Icon.Plus
                     size={20}
                     onClick={handleIncreaseQuantity}
                     className="cursor-pointer"
-                  />
+                  /> */}
                 </div>
                 <div
                   className="button-main w-full text-center bg-white text-purple border border-purple"
-                  onClick={handleAddToCart}
+                  // onClick={handleAddToCart}
                 >
                   Add To Cart
                 </div>
