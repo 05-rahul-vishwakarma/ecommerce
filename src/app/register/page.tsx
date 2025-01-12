@@ -10,8 +10,6 @@ import MenuFour from '@/components/Header/MenuFour';
 
 
 const Register = () => {
-  
-
   return (
     <>
       <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
