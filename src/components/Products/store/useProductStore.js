@@ -3,10 +3,10 @@ import { create } from 'zustand';
 export const useProductStore = create((set, get) => ({
     productName: '',
     productTitle: '',
-    unit: 0,
-    productPrice: 0,
-    productDiscount: 0,
-    quantity: 0,
+    unit: '',
+    productPrice: '',
+    productDiscount: '',
+    quantity: '',
     productBrand: '',
     productCategory: '',
     status: 'in-stock',
@@ -19,7 +19,7 @@ export const useProductStore = create((set, get) => ({
     graphics: '',
     wirelessType: '',
     tags: '',
-    sellCount: 0,
+    sellCount: '',
     isFeatured: false,
     productImage: null, // Store the product image URL or file
     imageURLs: [ // Store the default color-image mappings
