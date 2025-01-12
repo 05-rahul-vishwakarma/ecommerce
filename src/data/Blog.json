@@ -7,8 +7,8 @@
         "date": "Dec 20, 2023",
         "author": "Chris Evans",
         "avatar": "/images/avatar/avatar1.png",
-        "thumbImg": "/images/blog/1.png",
-        "coverImg": "/images/blog/1.png",
+        "thumbImg": "/images/blog/blog6.png",
+        "coverImg": "/images/blog/blog6.png",
         "subImg": [
             "/images/blog/3.png",
             "/images/blog/2.png"
@@ -27,7 +27,7 @@
         "thumbImg": "/images/blog/2.png",
         "coverImg": "/images/blog/2.png",
         "subImg": [
-            "/images/blog/1.png",
+            "/images/blog/blog6.png",
             "/images/blog/3.png"
         ],
         "shortDesc": "Elevate your creativity with our premium ribbons. From crafting to gift wrapping, explore versatile designs perfect for every project",
@@ -44,7 +44,7 @@
         "thumbImg": "/images/blog/3.png",
         "coverImg": "/images/blog/3.png",
         "subImg": [
-            "/images/blog/1.png",
+            "/images/blog/blog6.png",
             "/images/blog/2.png"
         ],
         "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
@@ -58,10 +58,10 @@
         "date": "Dec 2blog4, 2023",
         "author": "Christina Smith",
         "avatar": "/images/avatar/avatar14.png",
-        "thumbImg": "/images/blog/blog7.jpg",
-        "coverImg": "/images/blog/blog7.jpg",
+        "thumbImg": "/images/blog/blog7.png",
+        "coverImg": "/images/blog/blog7.png",
         "subImg": [
-            "/images/blog/blog6.jpg",
+            "/images/blog/blog6.png",
             "/images/blog/blog5.jpg"
         ],
         "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
@@ -76,10 +76,10 @@
         "date": "Dec 2blog6, 2023",
         "author": "Louis Ancelotti",
         "avatar": "/images/avatar/avatar2.png",
-        "thumbImg": "/images/blog/blog5.jpg",
-        "coverImg": "/images/blog/blog5.jpg",
+        "thumbImg": "/images/blog/blog4.png",
+        "coverImg": "/images/blog/blog4.png",
         "subImg": [
-            "/images/blog/blog7.jpg",
+            "/images/blog/blog7.png",
             "/images/blog/blog6.jpg"
         ],
         "shortDesc": "Transform your projects with our stunning ribbons. Add color, texture, and elegance to crafts, gifts, and décor..",
@@ -94,10 +94,10 @@
         "date": "Dec 2blog6, 2023",
         "author": "Davide Alvaro",
         "avatar": "/images/avatar/avatar3.png",
-        "thumbImg": "/images/blog/blog6.jpg",
-        "coverImg": "/images/blog/blog6.jpg",
+        "thumbImg": "/images/blog/blog6.png",
+        "coverImg": "/images/blog/blog6.png",
         "subImg": [
-            "/images/blog/blog5.jpg",
+            "/images/blog/blog4.png",
             "/images/blog/blog7.jpg"
         ],
         "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
