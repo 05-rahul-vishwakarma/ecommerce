@@ -6,52 +6,11 @@ import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 import Footer from '@/components/Footer/Footer';
 import * as Icon from '@phosphor-icons/react/dist/ssr';
 import MenuFour from '@/components/Header/MenuFour';
-import axios from 'axios';
 
-const fetchData = async (email, password, name) => {
-  try {
-    const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/user/signup`, { email, password, name });
-    return response;
-  } catch (error) {
-    console.error('Error registering new user: ', error);
-    throw error;
-  }
-};
+
 
 const Register = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-    name: '',
-  });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match.');
-      return;
-    }
-
-    try {
-      const data = await fetchData(formData.email, formData.password, formData.name);
-      console.log('Response Data:', data);
-
-      if (data.status === 200) {
-        setSuccess('Registration successful! You can now log in.');
-        setFormData({ email: '', password: '', confirmPassword: '', name: '' });
-      }
-    } catch (error) {
-      setError(error.response?.data?.message || 'An error occurred during registration.');
-    }
-  };
+  
 
   return (
     <>
@@ -65,15 +24,13 @@ const Register = () => {
           <div className="content-main flex gap-y-8 max-md:flex-col">
             <div className="left md:w-1/2 w-full lg:pr-[60px] md:pr-[40px] md:border-r p-5 border-line bg-[#f6efff]">
               <div className="heading4">Register</div>
-              <form className="md:mt-7 mt-4" onSubmit={handleSubmit}>
+              <form className="md:mt-7 mt-4">
                 <div className="name mb-5">
                   <input
                     className="border-line px-4 pt-3 pb-3 w-full rounded-lg"
                     id="name"
                     type="text"
                     placeholder="Full Name *"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -83,8 +40,6 @@ const Register = () => {
                     id="email"
                     type="email"
                     placeholder="Username or email address *"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -94,8 +49,6 @@ const Register = () => {
                     id="password"
                     type="password"
                     placeholder="Password *"
-                    value={formData.password}
-                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -105,8 +58,6 @@ const Register = () => {
                     id="confirmPassword"
                     type="password"
                     placeholder="Confirm Password *"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -122,8 +73,6 @@ const Register = () => {
                     </Link>
                   </label>
                 </div>
-                {error && <p className="text-red-500 mb-3">{error}</p>}
-                {success && <p className="text-green-500 mb-3">{success}</p>}
                 <div className="block-button md:mt-7 mt-4">
                   <button className="button-main" type="submit">
                     Register
