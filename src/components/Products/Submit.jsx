@@ -93,7 +93,7 @@ export default function Submit() {
             tags: tags.split(','), // Assuming tags are comma-separated
         };
         try {
-            const response = await axios.post(`${NEXT_PUBLIC_API_URL}/product}`)
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/product}`,payload);
         } catch (error) {
         }
     };
