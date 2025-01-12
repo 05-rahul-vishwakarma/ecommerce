@@ -3,6 +3,7 @@
 import React from 'react'
 import { useProductStore } from './store/useProductStore'
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function Submit() {
 
@@ -10,16 +11,14 @@ export default function Submit() {
         // Take the first three characters of the product name and category, make them uppercase
         const namePart = productName.slice(0, 3).toUpperCase();
         const categoryPart = category.slice(0, 3).toUpperCase();
-    
+
         // Generate a unique identifier using the current timestamp or a random number
         const uniquePart = timestamp ? Date.now() : Math.floor(Math.random() * 10000);
-    
+
         return `${namePart}-${categoryPart}-${uniquePart}`;
     }
 
     const sendProductData = async () => {
-        console.log('yes working');
-        
         const {
             productType,
             productName,
@@ -49,7 +48,7 @@ export default function Submit() {
         // Construct the payload
         const payload = {
             businessType: process.env.NEXT_PUBLIC_BUSINESS_TYPE,
-            sku:generateSKU(productName, productCategory, true),
+            sku: generateSKU(productName, productCategory, true),
             img: productImage || imageURLs[0].img, // Assuming productImage or fallback to default image
             title: productTitle,
             name: productName,
@@ -79,24 +78,30 @@ export default function Submit() {
             reviews: ['6461c46a9154b65448da799f'], // Example review ID
             productType: productType,
             description: description,
-            // additionalInformation: [
-            //     { key: 'Standing screen display size', value: screenSize },
-            //     { key: 'Colors', value: colors.name },
-            //     { key: 'Screen Resolution', value: screenResolution },
-            //     { key: 'Max Screen Resolution', value: maxResolution },
-            //     { key: 'Processor', value: processor },
-            //     { key: 'Graphics Coprocessor', value: graphics },
-            //     { key: 'Wireless Type', value: wirelessType }
-            // ],
             featured: isFeatured,
             sellCount: sellCount,
             tags: tags.split(','), // Assuming tags are comma-separated
         };
+
+        // Token you provided
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQSyI6IlNVQkhJX0VfTFREX1VTRVIjMGZiZjUxOTYtYjM4MC00M2NmLTk2OTgtYTAxZGFjMDkzYjcxIiwiU0siOiJQUk9GSUxFIzBmYmY1MTk2LWIzODAtNDNjZi05Njk4LWEwMWRhYzA5M2I3MSIsImlhdCI6MTczNTI5MTExNywiZXhwIjoxNzM3ODgzMTE3fQ.rBSa6aGtLzQYzn6R_7tSinYzwamqli-C7ZIN2s8a3lg";
+
         try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/product`,payload);
+            const response = await axios.post(
+                `${process.env.NEXT_PUBLIC_API_URL}/product`,
+                payload,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}` // Sending token in the headers
+                    }
+                }
+            );
+            toast.success('Successfully uploaded');
         } catch (error) {
+            toast.error('Something went wrong');
         }
     };
+
 
     return (
         <button onClick={sendProductData} className="w-[40%] justify-self-end flex justify-center mr-4 text-center mb-4 rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90">
