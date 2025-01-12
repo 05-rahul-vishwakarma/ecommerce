@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useProductStore } from './store/useProductStore'
+import axios from 'axios';
 
 export default function Submit() {
 
@@ -47,7 +48,7 @@ export default function Submit() {
 
         // Construct the payload
         const payload = {
-            businessType: 'SUBHI_E_LTD',
+            businessType: process.env.NEXT_PUBLIC_BUSINESS_TYPE,
             sku:generateSKU(productName, productCategory, true),
             img: productImage || imageURLs[0].img, // Assuming productImage or fallback to default image
             title: productTitle,
@@ -91,12 +92,8 @@ export default function Submit() {
             sellCount: sellCount,
             tags: tags.split(','), // Assuming tags are comma-separated
         };
-
-        console.log(payload);
-        
-
-        // Send the request
         try {
+            const response = await axios.post(`${NEXT_PUBLIC_API_URL}/product}`)
         } catch (error) {
         }
     };
