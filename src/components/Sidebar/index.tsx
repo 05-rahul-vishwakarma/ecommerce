@@ -42,7 +42,10 @@ const menuGroups = [
         label: "Dashboard",
         route: "#",
         children: [
-          { label: "eCommerce", route: "/" },
+          { label: "Analytics", route: "/" },
+          { label: "Product List", route: "/Products/products-list"},
+          { label: "Product Add", route: "/Products/add-product"},
+          { label: "Product Ordered", route: "/Products/orderd-products"},
         ],
       },
       {

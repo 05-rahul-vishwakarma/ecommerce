@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const Alerts = () => {
   return (
-    <DefaultLayout>
+    <>
       <Breadcrumb pageName="Alerts" />
 
       <div className="rounded-[10px] bg-white p-4 shadow-1 dark:bg-gray-dark dark:shadow-card md:p-6 xl:p-9">
@@ -23,7 +23,7 @@ const Alerts = () => {
           <AlertError />
         </div>
       </div>
-    </DefaultLayout>
+    </>
   );
 };
 

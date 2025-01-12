@@ -12,7 +12,7 @@ const SelectGroupTwo: React.FC = () => {
   return (
     <div>
       <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-        Select Country
+        Status
       </label>
 
       <div className="relative z-20 rounded-[7px] bg-white dark:bg-dark-2">
@@ -49,14 +49,12 @@ const SelectGroupTwo: React.FC = () => {
           }`}
         >
           <option value="UnitedStates" className="text-dark-5 dark:text-dark-6">
-            United States
+           In Stocl
           </option>
           <option value="UK" className="text-dark-5 dark:text-dark-6">
-            UK
+            Out Of Stock
           </option>
-          <option value="Canada" className="text-dark-5 dark:text-dark-6">
-            Canada
-          </option>
+        
         </select>
 
         <span className="absolute right-4.5 top-1/2 z-10 -translate-y-1/2 text-dark-4 dark:text-dark-6">

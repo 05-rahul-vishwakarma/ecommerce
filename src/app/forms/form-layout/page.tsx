@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const FormLayout = () => {
   return (
-    <DefaultLayout>
+    <>
       <Breadcrumb pageName="Form Layout" />
 
       <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
@@ -193,7 +193,7 @@ const FormLayout = () => {
           </div>
         </div>
       </div>
-    </DefaultLayout>
+    </>
   );
 };
 
