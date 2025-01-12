@@ -45,11 +45,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
     }
 
     const handleAddToCart = () => {
-        console.log('yes working');
-        
         const accessToken = Cookies.get("accessToken");
-        console.log(accessToken,'access token');
-        
         if (!accessToken) {
             toast.error("Please log in to add items to the cart.");
             router.push("/login"); // Redirect to login page
