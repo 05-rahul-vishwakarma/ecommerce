@@ -18,6 +18,13 @@ const ProductDefault = () => {
     // if (productId === null) {
         // productId = '1'
     // }
+    const getProduct = async () => {
+        try {
+            
+        } catch (error) {
+            console.error("Error on Fetching Data ", error)
+        }
+    }
 
     return (
         <>
