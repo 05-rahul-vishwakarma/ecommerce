@@ -4,6 +4,8 @@ export const useProductStore = create((set, get) => ({
     productName: '',
     productTitle: '',
     unit: '',
+    subType:'',
+    setSubType:(state) => set({subType:state}),
     productPrice: '',
     productDiscount: '',
     quantity: '',
@@ -41,6 +43,12 @@ export const useProductStore = create((set, get) => ({
         },
     ],
     productType: '',
+
+    productWidth: '',
+    productMeter: '',
+    setProductWidth: (state) => set({ productWidth: state }),
+    setProductMeter: (state) => set({ productMeter: state }),
+
     setProductType: (value) => set({ productType: value }),
     setProductName: (value) => set({ productName: value }),
     setProductTitle: (value) => set({ productTitle: value }),

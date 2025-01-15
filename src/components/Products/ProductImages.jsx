@@ -1,27 +1,47 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
-import { useProductStore } from '@/components/Products/store/useProductStore'; // Import your store hook
+import { useProductStore } from "@/components/Products/store/useProductStore";
+import axios from "axios";
 
 const ProductImages = () => {
   const { setProductImage, setColors, imageURLs, setImageURLs } = useProductStore();
 
-  const handleImageUpload = (e, color) => {
+  const handleImageUpload = async (e, color) => {
     const file = e.target.files[0];
-    if (file) {
-      const imageURL = URL.createObjectURL(file); // Generate a file URL
-      // Set the uploaded image and its corresponding color
-      setProductImage(imageURL); // Set the image URL
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("Blog", file);
+
+    try {
+
+      const response = await axios.post(
+        `https://dietghar.in/api/v1/file/ImageUpload`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      console.log(response?.data?.data[0], 'response');
+
+
+
+
+      // Update the store
+      setProductImage(response?.data?.data[0]);
       setColors({ name: color.name, code: color.clrCode });
 
-      // Update the imageURLs array in the store with the new image
       const updatedImageURLs = imageURLs.map((item) =>
-        item.color.name === color.name
-          ? { ...item, img: imageURL } // Update the image with the file URL
-          : item
+        item.color.name === color.name ? { ...item, img: response?.data?.data[0] } : item
       );
-      setImageURLs(updatedImageURLs); // Set updated image URLs in the store
+      setImageURLs(updatedImageURLs);
+    } catch (error) {
+      console.error("Error uploading image:", error.message);
     }
   };
 
@@ -29,7 +49,7 @@ const ProductImages = () => {
     const newColorCode = e.target.value;
     const updatedImageURLs = imageURLs.map((item) =>
       item.color.name === colorName
-        ? { ...item, color: { ...item.color, clrCode: newColorCode } } // Update the color code
+        ? { ...item, color: { ...item.color, clrCode: newColorCode } }
         : item
     );
     setImageURLs(updatedImageURLs);
@@ -39,7 +59,7 @@ const ProductImages = () => {
     const newColorName = e.target.value;
     const updatedImageURLs = imageURLs.map((item) =>
       item.color.name === colorName
-        ? { ...item, color: { ...item.color, name: newColorName } } // Update the color name
+        ? { ...item, color: { ...item.color, name: newColorName } }
         : item
     );
     setImageURLs(updatedImageURLs);
@@ -47,10 +67,15 @@ const ProductImages = () => {
 
   return (
     <div className="m-4">
-      <h3 className="text-lg font-semibold text-dark dark:text-white mb-4">Available Colors & Images</h3>
+      <h3 className="text-lg font-semibold text-dark dark:text-white mb-4">
+        Available Colors & Images
+      </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
         {imageURLs.map((item, index) => (
-          <div key={index} className="relative border rounded-lg overflow-hidden shadow-lg group">
+          <div
+            key={index}
+            className="relative border rounded-lg overflow-hidden shadow-lg group"
+          >
             <div className="relative">
               <div
                 className="absolute top-2 left-2 px-2 py-0.5 text-xs font-medium bg-white dark:bg-gray-700 shadow rounded-full"
@@ -65,6 +90,7 @@ const ProductImages = () => {
                 width={200}
                 height={200}
                 className="w-full h-48 object-contain rounded-t-lg group-hover:scale-105 transition-all duration-300"
+                unoptimized
               />
             </div>
 
@@ -75,33 +101,32 @@ const ProductImages = () => {
                   type="file"
                   accept="image/*"
                   className="hidden"
-                  onChange={(e) => handleImageUpload(e, item.color)} // Handle image upload
+                  onChange={(e) => handleImageUpload(e, item.color)}
                 />
               </label>
 
-              {/* Color Picker */}
               <input
                 type="color"
                 className="w-8 h-8 border-2 border-gray-300 dark:border-gray-600 rounded-full cursor-pointer"
                 value={item.color.clrCode}
-                onChange={(e) => handleColorChange(e, item.color.name)} // Handle color change
+                onChange={(e) => handleColorChange(e, item.color.name)}
               />
             </div>
 
-            <div className="w-[60%] absolute right-1 bottom-1 flex gap-2">
+            <div className="absolute bottom-1 right-2 flex gap-2 w-full max-w-xs">
               <input
                 type="text"
-                placeholder="Product Color Name"
-                className="w-full rounded-[7px] border-[1.5px] bg-gray-100 border-stroke bg-transparent px-5.5 py-1.5 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-                value={item.color.name} // Display the current color name
-                onChange={(e) => handleColorNameChange(e, item.color.name)} // Handle color name change
+                placeholder="Color Name"
+                className="flex-1 rounded-lg border bg-gray-100 px-3 py-1.5 text-xs text-gray-800 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                value={item.color.name}
+                onChange={(e) => handleColorNameChange(e, item.color.name)}
               />
               <input
                 type="text"
                 placeholder="Color Code"
-                className="w-24 rounded-[7px] border-[1.5px] bg-gray-100 border-stroke bg-transparent px-5.5 py-1.5 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-                value={item.color.clrCode} // Display the current color code
-                onChange={(e) => handleColorChange(e, item.color.name)} // Handle color code change
+                className="w-24 rounded-lg border bg-gray-100 px-3 py-1.5 text-xs text-gray-800 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                value={item.color.clrCode}
+                onChange={(e) => handleColorChange(e, item.color.name)}
               />
             </div>
           </div>

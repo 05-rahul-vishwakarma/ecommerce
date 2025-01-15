@@ -41,7 +41,7 @@ export default function Submit() {
             tags,
             sellCount,
             isFeatured,
-            productImage,
+            productImage,subType,productWidth,productMeter,
             imageURLs
         } = useProductStore.getState();
 
@@ -61,25 +61,27 @@ export default function Submit() {
                 },
                 img
             })),
+            // size:{
+            //    width:productWidth,
+            //    meter:productMeter,
+            // },
             parent: 'Ribbons',
-            children: 'Ribbons',
+            children: subType,
             price: productPrice,
             discount: productDiscount,
             quantity: quantity,
             brand: {
                 name: productBrand,
-                id: '6412eae89c2275a25d09541d', // Ensure you have the correct brand ID
+                id:'9999999'
             },
             category: {
                 name: productCategory,
-                id: '6419723bd7dc5155c04350d3', // Ensure you have the correct category ID
+                id:'88888'
             },
             status: status,
-            reviews: ['6461c46a9154b65448da799f'], // Example review ID
             productType: productType,
             description: description,
             featured: isFeatured,
-            sellCount: sellCount,
             tags: tags.split(','), // Assuming tags are comma-separated
         };
 
