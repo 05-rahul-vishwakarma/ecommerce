@@ -1,7 +1,27 @@
-import React from 'react'
+'use client';
+import axios from 'axios';
+import React, { useState } from 'react';
 
+const ProductTable = ({ data: initialData }) => {
+    const [datas, setData] = useState(initialData); // Manage data with state
 
-const ProductTable = ({ data }) => {
+    const handleDelete = async (PK, SK) => {
+        try {
+            const encodedPK = encodeURIComponent(PK);
+            const encodedSK = encodeURIComponent(SK);
+
+            const response = await axios.delete(
+                `${process.env.NEXT_PUBLIC_API_URL}/product/delete?PK=${encodedPK}&SK=${encodedSK}`
+            );
+
+            if (response.status === 200) {
+                setData((prevData) => prevData.filter(item => item.PK !== PK || item.SK !== SK));
+            }
+        } catch (error) {
+            console.error('Error deleting item:', error);
+        }
+    };
+
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">Product List</h1>
@@ -20,7 +40,7 @@ const ProductTable = ({ data }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data?.map((item, index) => (
+                        {datas?.map((item, index) => (
                             <tr
                                 key={item.sku}
                                 className="dark:bg-[#0000002a] dark:shadow-card hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300"
@@ -33,12 +53,27 @@ const ProductTable = ({ data }) => {
                                 <td className="px-4 py-2 text-center">{item.discount}%</td>
                                 <td className="px-4 py-2 text-center">{item.status}</td>
                                 <td className="px-4 py-2 text-center">
-                                    <button className="bg-blue-500 text-white px-2 py-1 rounded">
-                                        View
-                                    </button>
+                                    <div className='flex space-x-4'>
+                                        <button className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded">
+                                            View
+                                        </button>
+                                        <button
+                                            onClick={() => handleDelete(item?.PK, item?.SK)}
+                                            className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
+                        {datas?.length === 0 && (
+                            <tr>
+                                <td colSpan="8" className="text-center py-4 text-gray-500">
+                                    No products available.
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>
