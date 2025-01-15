@@ -13,10 +13,7 @@ const ProductTable = ({ data: initialData }) => {
             const response = await axios.delete(
                 `${process.env.NEXT_PUBLIC_API_URL}/product/delete?PK=${encodedPK}&SK=${encodedSK}`
             );
-
-            if (response.status === 200) {
-                setData((prevData) => prevData.filter(item => item.PK !== PK || item.SK !== SK));
-            }
+            setData((prevData) => prevData.filter(item => item.PK !== PK || item.SK !== SK));
         } catch (error) {
             console.error('Error deleting item:', error);
         }
