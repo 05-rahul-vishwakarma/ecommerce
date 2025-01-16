@@ -9,46 +9,43 @@ const BasicProductsDetails = () => {
         setProductName,
         setProductTitle,
         setUnit,
-        setProductImage, setSubType, subType
+        setProductImage, setSubType, subType, setDesign, design
     } = useProductStore();
 
-    // State to hold the image preview
     const [imagePreview, setImagePreview] = useState(null);
 
-    // Handle image change
     const handleImageChange = async (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-            
+
             const formData = new FormData();
-            formData.append("Blog", file);
+            formData.append('ecommerce', file);
 
-            const response = await axios.post(
-                `https://dietghar.in/api/v1/file/ImageUpload`,
-                formData,
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                }
-            );
+            const response = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData,
+            });
 
-            console.log(response?.data?.data[0], 'response');
-
+            const data = await response.json();
 
             reader.onloadend = () => {
                 const imageUrl = reader.result;
-                setImagePreview(imageUrl); // Set the preview of the image
-                setProductImage(response?.data?.data[0]); // Set the image URL in the store
+                setImagePreview(imageUrl); 
+                setProductImage(data?.imageUrl); 
             };
             reader.readAsDataURL(file); // Read the file as a data URL (base64 string)
         }
     };
 
+
+    const handleChangeDesign = (e) => {
+        setDesign(e.target.value)
+    }
+
     return (
         <div>
-            <div className='flex space-x-2 m-4 ' >
+            <div className='grid grid-cols-3 space-x-2 m-4 ' >
                 <div>
                     <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
                         {'Product Name'}
@@ -101,6 +98,21 @@ const BasicProductsDetails = () => {
                         className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         onChange={(e) => setSubType(e.target.value)}
                     />
+                </div>
+
+                <div>
+                    <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+                        {'Card Design'}
+                        <span className="text-red">*</span>
+                    </label>
+                    <select
+                        value={design}
+                        onChange={handleChangeDesign}
+                        className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                    >
+                        <option value="in-stock">round</option>
+                        <option value="out-of-stock">simple</option>
+                    </select>
                 </div>
             </div>
 

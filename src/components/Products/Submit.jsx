@@ -38,10 +38,10 @@ export default function Submit() {
             processor,
             graphics,
             wirelessType,
-            tags,
+            tags,design,
             sellCount,
             isFeatured,
-            productImage,subType,productWidth,productMeter,
+            productImage, subType, productWidth, productMeter,
             imageURLs
         } = useProductStore.getState();
 
@@ -65,18 +65,18 @@ export default function Submit() {
             //    width:productWidth,
             //    meter:productMeter,
             // },
-            parent: 'Ribbons',
+            parent: design === 'plain' ? 'design' : 'round',
             children: subType,
             price: productPrice,
             discount: productDiscount,
             quantity: quantity,
             brand: {
                 name: productBrand,
-                id:'9999999'
+                id: '9999999'
             },
             category: {
                 name: productCategory,
-                id:'88888'
+                id: '88888'
             },
             status: status,
             productType: productType,
@@ -106,7 +106,7 @@ export default function Submit() {
 
 
     return (
-        <button onClick={sendProductData} className="w-[40%] justify-self-end flex justify-center mr-4 text-center mb-4 rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90">
+        <button onClick={sendProductData} className="w-[40%] justify-self-end flex justify-center mr-4 text-center mb-4 rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90  m-4 ">
             Add Product
         </button>
     )

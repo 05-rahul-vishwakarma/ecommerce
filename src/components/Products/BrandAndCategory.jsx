@@ -4,10 +4,10 @@ import React, { useEffect } from 'react';
 import { useProductStore } from './store/useProductStore';
 
 const BrandAndCategory = () => {
-    const { 
-        productBrand, setProductBrand, 
-        productCategory, setProductCategory, 
-        status, setStatus 
+    const {
+        productBrand, setProductBrand,
+        productCategory, setProductCategory,
+        status, setStatus, 
     } = useProductStore();
 
     const handleBrandChange = (e) => {
@@ -21,6 +21,7 @@ const BrandAndCategory = () => {
     const handleStatusChange = (e) => {
         setStatus(e.target.value);
     };
+
 
     return (
         <div className='flex space-x-3 m-4'>
@@ -63,6 +64,8 @@ const BrandAndCategory = () => {
                     <option value="out-of-stock">Out of Stock</option>
                 </select>
             </div>
+
+        
         </div>
     );
 };

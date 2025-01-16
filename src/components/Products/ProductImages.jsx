@@ -12,32 +12,24 @@ const ProductImages = () => {
     const file = e.target.files[0];
     if (!file) return;
 
+
     const formData = new FormData();
-    formData.append("Blog", file);
+    formData.append('ecommerce', file);
 
     try {
 
-      const response = await axios.post(
-        `https://dietghar.in/api/v1/file/ImageUpload`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
 
-      console.log(response?.data?.data[0], 'response');
+      const data = await response.json();
 
-
-
-
-      // Update the store
-      setProductImage(response?.data?.data[0]);
+      setProductImage(data?.imageUrl);
       setColors({ name: color.name, code: color.clrCode });
 
       const updatedImageURLs = imageURLs.map((item) =>
-        item.color.name === color.name ? { ...item, img: response?.data?.data[0] } : item
+        item.color.name === color.name ? { ...item, img: data?.imageUrl } : item
       );
       setImageURLs(updatedImageURLs);
     } catch (error) {

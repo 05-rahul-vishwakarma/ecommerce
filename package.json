@@ -11,10 +11,13 @@
   "dependencies": {
     "apexcharts": "^3.45.2",
     "axios": "^1.7.9",
+    "cloudinary": "^2.5.1",
     "fast-average-color": "^9.4.0",
     "flatpickr": "^4.6.13",
+    "formidable": "^3.5.2",
     "jsvectormap": "^1.5.3",
     "next": "^14.1.4",
+    "next-cloudinary": "^6.16.0",
     "react": "^18",
     "react-apexcharts": "^1.4.1",
     "react-dom": "^18",
