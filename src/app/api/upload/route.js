@@ -1,7 +1,9 @@
 import { IncomingForm } from 'formidable';
 import fs from 'fs';
+import path from 'path';
 import { v2 as cloudinary } from 'cloudinary';
 
+// Cloudinary config
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -20,24 +22,28 @@ export async function POST(request) {
       });
     }
 
-    // Save the file temporarily
-    const tempFilePath = `/tmp/${file.name}`;
+    // Define temporary file path (Windows-compatible)
+    const tempDir = path.join(__dirname, 'tmp'); // or use a platform-specific directory
+    if (!fs.existsSync(tempDir)) {
+      fs.mkdirSync(tempDir, { recursive: true }); // Create the directory if it doesn't exist
+    }
+
+    const tempFilePath = path.join(tempDir, file.name);
     const fileBuffer = await file.arrayBuffer();
     fs.writeFileSync(tempFilePath, Buffer.from(fileBuffer));
 
     // Upload the file to Cloudinary
     try {
       const cloudinaryResponse = await cloudinary.uploader.upload(tempFilePath, {
-        folder: 'uploads', // Optional: Organize files into a folder
-        public_id: `${Date.now()}_${file.name}`, // Unique file name
+        folder: 'uploads',
+        public_id: `${Date.now()}_${file.name}`,
       });
 
-      const imageUrl = cloudinaryResponse.secure_url; // URL of the uploaded file
+      const imageUrl = cloudinaryResponse.secure_url;
 
       // Delete the temporary file
       fs.unlinkSync(tempFilePath);
 
-      // Return the image URL to the client
       return new Response(JSON.stringify({ imageUrl }), { status: 200 });
     } catch (cloudinaryError) {
       console.error('Error uploading to Cloudinary:', cloudinaryError);
@@ -54,6 +60,3 @@ export async function POST(request) {
     );
   }
 }
-
-// Updated configuration approach
-export const dynamic = 'force-dynamic'; // Forces the API route to always be dynamically evaluated
