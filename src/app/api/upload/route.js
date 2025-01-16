@@ -2,25 +2,15 @@ import { IncomingForm } from 'formidable';
 import fs from 'fs';
 import { v2 as cloudinary } from 'cloudinary';
 
-// Configure Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export const config = {
-  api: {
-    bodyParser: false, // Disable the default body parser to handle multipart/form-data
-  },
-};
-
-// Define the POST method
 export async function POST(request) {
   try {
     const form = new IncomingForm();
-
-    // Convert the Next.js request to a readable stream
     const data = await request.formData();
     const file = data.get('ecommerce'); // Assuming the file input name is 'ecommerce'
 
@@ -64,3 +54,6 @@ export async function POST(request) {
     );
   }
 }
+
+// Updated configuration approach
+export const dynamic = 'force-dynamic'; // Forces the API route to always be dynamically evaluated
