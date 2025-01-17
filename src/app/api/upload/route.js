@@ -32,7 +32,7 @@ export async function POST(request) {
     const fileBuffer = await file.arrayBuffer();
     fs.writeFileSync(tempFilePath, Buffer.from(fileBuffer));
 
-    // Upload the file to Cloudinary
+    // Upload the file to Cloudinary 
     try {
       const cloudinaryResponse = await cloudinary.uploader.upload(tempFilePath, {
         folder: 'uploads',
