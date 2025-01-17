@@ -65,7 +65,7 @@ export default function Submit() {
             //    width:productWidth,
             //    meter:productMeter,
             // },
-            parent: design === 'plain' ? 'design' : 'round',
+            parent: design === 'plain' ? design : 'round',
             children: subType,
             price: productPrice,
             discount: productDiscount,

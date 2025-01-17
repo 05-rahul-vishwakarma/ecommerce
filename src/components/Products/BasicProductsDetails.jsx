@@ -43,6 +43,9 @@ const BasicProductsDetails = () => {
         setDesign(e.target.value)
     }
 
+    console.log(design);
+    
+
     return (
         <div>
             <div className='grid grid-cols-3 space-x-2 m-4 ' >
@@ -110,8 +113,8 @@ const BasicProductsDetails = () => {
                         onChange={handleChangeDesign}
                         className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                     >
-                        <option value="in-stock">round</option>
-                        <option value="out-of-stock">simple</option>
+                        <option value="in-stock">simple</option>
+                        <option value="out-of-stock">round</option>
                     </select>
                 </div>
             </div>
