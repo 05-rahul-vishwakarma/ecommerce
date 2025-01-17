@@ -14,30 +14,20 @@ const fetchProductsLists = async () => {
   }
 };
 
-// This is your async component that will be lazy-loaded
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading products...</div>}>
+      <section className="rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
+        <ProductList />
+      </section>
+    </Suspense>
+  );
+}
+
+
 const ProductList = async () => {
   const data = await fetchProductsLists();
   return (
     <ProductTable data={data} />
   );
 };
-
-export async function generateStaticParams() {
-  const data = await fetchProductsLists();
-
-  return data.map(item => ({
-    id: item.id.toString(),
-  }));
-}
-
-// Page Component wrapped with Suspense
-export default function Page() {
-  return (
-    <Suspense fallback={<div>Loading products...</div>}>
-      <section className="rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
-        {/* Lazy load ProductList component */}
-        <ProductList />
-      </section>
-    </Suspense>
-  );
-}
