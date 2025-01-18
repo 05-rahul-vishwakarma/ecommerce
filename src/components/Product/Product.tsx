@@ -101,7 +101,7 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
 
     return (
         <>
-            {type === "grid" ? (
+            {/* {type === "grid" ? (
                 <div className="product-item grid-type">
                     <div onClick={() => handleDetailProduct(data.id)} className="product-main cursor-pointer block">
                         <div className="product-thumb bg-white relative overflow-hidden rounded-2xl">
@@ -161,21 +161,22 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                                         }
                                     </>
                                 ) : (
-                                    <>
-                                        {
-                                            data.thumbImage.map((img, index) => (
-                                                <Image
-                                                    key={index}
-                                                    src={img}
-                                                    width={500}
-                                                    height={500}
-                                                    priority={true}
-                                                    alt={data.name}
-                                                    className='w-full h-full object-cover duration-700'
-                                                />
-                                            ))
-                                        }
-                                    </>
+                                    // <>
+                                    //     {
+                                    //         data.thumbImage.map((img, index) => (
+                                    //             <Image
+                                    //                 key={index}
+                                    //                 src={img}
+                                    //                 width={500}
+                                    //                 height={500}
+                                    //                 priority={true}
+                                    //                 alt={data.name}
+                                    //                 className='w-full h-full object-cover duration-700'
+                                    //             />
+                                    //         ))
+                                    //     }
+                                    // </>
+                                    <></>
                                 )}
                             </div>
                             {data.sale && (
@@ -597,7 +598,8 @@ const Product: React.FC<ProductProps> = ({ data, type }) => {
                 </div>
             ) : (
                 <></>
-            )}
+            )} */}
+            hii
         </>
     )
 }
