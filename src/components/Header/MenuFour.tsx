@@ -63,9 +63,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
     <>
       <div
         style={{ backgroundColor: "#592dbb" }}
-        className={`header-menu style-one ${
-          fixedHeader ? " fixed" : "relative"
-        } w-full  md:h-[74px] h-[56px] ${props}`}
+        className={`header-menu style-one ${fixedHeader ? " fixed" : "relative"
+          } w-full  md:h-[74px] h-[56px] ${props}`}
       >
         <div className="container mx-auto h-full">
           <div className="header-main flex items-center justify-between h-full">
@@ -101,11 +100,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   <Link
                     href="/"
                     className={` text-white text-button-uppercase duration-300 h-full flex items-center justify-center gap-1 
-                                            ${
-                                              pathname.includes("/homepages")
-                                                ? "active"
-                                                : ""
-                                            }`}
+                                            ${pathname.includes("/homepages")
+                        ? "active"
+                        : ""
+                      }`}
                   >
                     Home
                   </Link>
@@ -145,14 +143,13 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   >
                     Pages
                   </Link>
-                  <div className="sub-menu py-3 px-5 -left-10 absolute  rounded-b-xl">
+                  <div className="sub-menu py-3 px-5 -left-10 absolute  rounded-b-xl backdrop-blur">
                     <ul className="w-full">
                       <li>
                         <Link
                           href="/pages/about"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/about" ? "active" : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/about" ? "active" : ""
+                            }`}
                         >
                           About Us
                         </Link>
@@ -160,9 +157,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/contact"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/contact" ? "active" : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/contact" ? "active" : ""
+                            }`}
                         >
                           Contact Us
                         </Link>
@@ -170,9 +166,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/client-contact"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/client-contact" ? "active" : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/client-contact" ? "active" : ""
+                            }`}
                         >
                           Client Contact
                         </Link>
@@ -216,11 +211,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/customer-feedbacks"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/customer-feedbacks"
+                          className={`text-secondary duration-300 ${pathname === "/pages/customer-feedbacks"
                               ? "active"
                               : ""
-                          }`}
+                            }`}
                         >
                           Customer Feedbacks
                         </Link>
@@ -388,9 +382,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     >
                       Pages
                       <span
-                        className={`${
-                          openMenuMobile ? "open" : ""
-                        } tesxt-right`}
+                        className={`${openMenuMobile ? "open" : ""
+                          } tesxt-right`}
                       >
                         <Icon.CaretRight size={20} />
                       </span>

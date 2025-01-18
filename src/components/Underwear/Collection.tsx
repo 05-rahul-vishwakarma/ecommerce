@@ -15,7 +15,7 @@ const Collection = async () => {
     const data = response?.data?.data?.items;
     
     return (
-        <div className="list-collection grid lg:grid-cols-4 grid-cols-2 gap-8 md:mt-10 mt-6">
+        <div className="list-collection grid lg:grid-cols-4 grid-cols-2 gap-8 md:mt-20 mt-20 px-20">
             {data.map((product: any, index: any) => (
                 <div
                     key={index}
