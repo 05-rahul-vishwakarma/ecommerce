@@ -28,3 +28,4 @@ export interface ProductType {
     action: string,
     slug: string
 }
+

@@ -12,12 +12,6 @@ import Default from '@/components/Product/Detail/Default';
 import BreadcrumbProduct from '@/components/Breadcrumb/BreadcrumbProduct'
 
 const ProductDefault = () => {
-    // const searchParams = useSearchParams()
-    // let productId = searchParams.get('id')
-
-    // if (productId === null) {
-        // productId = '1'
-    // }
     const getProduct = async () => {
         try {
             

@@ -13,19 +13,19 @@ export default function BreadCrumb1() {
   const [gender, setGender] = useState<string | null>(null);
   const [category, setCategory] = useState<string | null>(null);
 
- const getProduct = async () => {
-  try {
-    const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`)
-    console.log(response?.data?.data?.items);
-    setProducts(response?.data?.data?.items)
-    
-  } catch (error) {
-    console.error("Error on Fetching Products ", error)
+  const getProduct = async () => {
+    try {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`)
+      console.log(response?.data?.data?.items);
+      setProducts(response?.data?.data?.items)
+
+    } catch (error) {
+      console.error("Error on Fetching Products ", error)
+    }
   }
- }
- useEffect(() => {
-  getProduct()
- },[])
+  useEffect(() => {
+    getProduct()
+  }, [])
 
   return (
     <>

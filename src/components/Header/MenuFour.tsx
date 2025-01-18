@@ -59,13 +59,13 @@ const MenuFour: React.FC<Props> = ({ props }) => {
     };
   }, [lastScrollPosition]);
 
-
   return (
     <>
       <div
         style={{ backgroundColor: "#592dbb" }}
-        className={`header-menu style-one ${fixedHeader ? " fixed" : "relative"
-          } w-full  md:h-[74px] h-[56px] ${props}`}
+        className={`header-menu style-one ${
+          fixedHeader ? " fixed" : "relative"
+        } w-full  md:h-[74px] h-[56px] ${props}`}
       >
         <div className="container mx-auto h-full">
           <div className="header-main flex items-center justify-between h-full">
@@ -101,16 +101,15 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   <Link
                     href="/"
                     className={` text-white text-button-uppercase duration-300 h-full flex items-center justify-center gap-1 
-                                            ${pathname.includes("/homepages")
-                        ? "active"
-                        : ""
-                      }`}
+                                            ${
+                                              pathname.includes("/homepages")
+                                                ? "active"
+                                                : ""
+                                            }`}
                   >
                     Home
                   </Link>
                 </li>
-
-
 
                 <li className="h-full">
                   <Link
@@ -150,10 +149,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     <ul className="w-full">
                       <li>
                         <Link
-
                           href="/pages/about"
-                          className={`text-secondary duration-300 ${pathname === "/pages/about" ? "active" : ""
-                            }`}
+                          className={`text-secondary duration-300 ${
+                            pathname === "/pages/about" ? "active" : ""
+                          }`}
                         >
                           About Us
                         </Link>
@@ -161,13 +160,24 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/contact"
-                          className={`text-secondary duration-300 ${pathname === "/pages/contact" ? "active" : ""
-                            }`}
+                          className={`text-secondary duration-300 ${
+                            pathname === "/pages/contact" ? "active" : ""
+                          }`}
                         >
                           Contact Us
                         </Link>
                       </li>
                       <li>
+                        <Link
+                          href="/pages/client-contact"
+                          className={`text-secondary duration-300 ${
+                            pathname === "/pages/client-contact" ? "active" : ""
+                          }`}
+                        >
+                          Client Contact
+                        </Link>
+                      </li>
+                      {/* <li>
                         <Link
                           href="/pages/store-list"
                           className={`text-secondary duration-300 ${pathname === "/pages/store-list" ? "active" : ""
@@ -175,8 +185,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         >
                           Store List
                         </Link>
-                      </li>
-                      <li>
+                      </li> */}
+                      {/* <li>
                         <Link
                           href="/pages/page-not-found"
                           className={`text-secondary duration-300 ${pathname === "/pages/page-not-found" ? "active" : ""
@@ -184,8 +194,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         >
                           404
                         </Link>
-                      </li>
-                      <li>
+                      </li> */}
+                      {/* <li>
                         <Link
                           href="/pages/faqs"
                           className={`text-secondary duration-300 ${pathname === "/pages/faqs" ? "active" : ""
@@ -193,8 +203,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         >
                           FAQs
                         </Link>
-                      </li>
-                      <li>
+                      </li> */}
+                      {/* <li>
                         <Link
                           href="/pages/coming-soon"
                           className={`text-secondary duration-300 ${pathname === "/pages/coming-soon" ? "active" : ""
@@ -202,14 +212,15 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         >
                           Coming Soon
                         </Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link
                           href="/pages/customer-feedbacks"
-                          className={`text-secondary duration-300 ${pathname === "/pages/customer-feedbacks"
-                            ? "active"
-                            : ""
-                            }`}
+                          className={`text-secondary duration-300 ${
+                            pathname === "/pages/customer-feedbacks"
+                              ? "active"
+                              : ""
+                          }`}
                         >
                           Customer Feedbacks
                         </Link>
@@ -274,7 +285,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
       </div>
 
       <div id="menu-mobile" className={`${openMenuMobile ? "open" : ""}`}>
-        <div className="menu-container  bg-custom-purple-color h-full" style={{ borderBottomRightRadius: '600px' }}>
+        <div
+          className="menu-container  bg-custom-purple-color h-full"
+          style={{ borderBottomRightRadius: "400px" }}
+        >
           <div className="container h-full">
             <div className="menu-main h-full overflow-hidden">
               <div className="heading py-2 relative flex items-center justify-center">
@@ -318,8 +332,6 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       </span>
                     </a>
                   </li>
-
-
 
                   <li
                     className={`${openSubNavMobile === 3 ? "open" : ""}`}
@@ -371,15 +383,54 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     onClick={() => handleOpenSubNavMobile(6)}
                   >
                     <a
-                      href={"/"}
-                      // /pages/store-list
+                      href={"#!"}
                       className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
                       Pages
-                      <span className="text-right">
+                      <span
+                        className={`${
+                          openMenuMobile ? "open" : ""
+                        } tesxt-right`}
+                      >
                         <Icon.CaretRight size={20} />
                       </span>
                     </a>
+                    {openSubNavMobile === 6 && (
+                      <ul className="mt-2 pl-10">
+                        <li className="mt-2">
+                          <a
+                            href="/pages/about"
+                            className="text-lg text-white font-semibold flex items-center justify-between mt-5"
+                          >
+                            About Us
+                          </a>
+                        </li>
+                        <li className="mt-2">
+                          <a
+                            href="/pages/contact"
+                            className="text-lg text-white font-semibold flex items-center justify-between mt-3"
+                          >
+                            Contact Us
+                          </a>
+                        </li>
+                        <li className="mt-2">
+                          <a
+                            href="/pages/client-contact"
+                            className="text-lg text-white font-semibold flex items-center justify-between mt-3"
+                          >
+                            Client Contact
+                          </a>
+                        </li>
+                        <li className="mt-2">
+                          <a
+                            href="/pages/customer-feedbacks"
+                            className="text-lg text-white font-semibold flex items-center justify-between mt-3"
+                          >
+                            Customer Feedback
+                          </a>
+                        </li>
+                      </ul>
+                    )}
                   </li>
                 </ul>
               </div>
