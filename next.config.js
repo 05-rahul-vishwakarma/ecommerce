@@ -2,8 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['i.ibb.co', 'www.google.com', 'i.pinimg.com', 'th.bing.com','dietghar.in'],
-    // Add your allowed external image domains here
+    domains: ['i.ibb.co', 'www.google.com', 'i.pinimg.com', 'th.bing.com','dietghar.in','res.cloudinary.com'],
   },
 };
 
