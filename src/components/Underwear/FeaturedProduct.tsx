@@ -2,285 +2,227 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { ProductType } from "@/type/ProductType";
-import Rate from "../Other/Rate";
-import { Swiper, SwiperSlide } from "swiper/react";
+import axios from "axios";
+import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
 import { Navigation, Thumbs, FreeMode } from "swiper/modules";
 import "swiper/css/bundle";
-import * as Icon from "@phosphor-icons/react/dist/ssr";
-import SwiperCore from "swiper/core";
 import { useCart } from "@/context/CartContext";
 import { useModalCartContext } from "@/context/ModalCartContext";
-import ModalSizeguide from "../Modal/ModalSizeguide";
-import Link from "next/link";
-import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 import { toast } from "react-toastify";
-import axios from "axios";
 
-SwiperCore.use([Navigation, Thumbs]);
-
-interface Props {
-  data: Array<ProductType>;
-  imageURLs: string;
+interface ImageURL {
   img: string;
-  name: string;
+  color: {
+    name: string;
+  };
 }
 
-const FeaturedProduct = () => {
-  const [products, setProducts] = useState<Props[]>([]);
-  const [photoIndex, setPhotoIndex] = useState(0);
-  const [openPopupImg, setOpenPopupImg] = useState(false);
-  const [openSizeGuide, setOpenSizeGuide] = useState<boolean>(false);
-  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null);
+interface Product {
+  id: string;
+  name: string;
+  productType: string;
+  price: number;
+  discount: number;
+  description: string;
+  quantity: number;
+  imageURLs: ImageURL[];
+}
+
+const FeaturedProduct: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const [activeColor, setActiveColor] = useState<string>("");
+  const [activeImage, setActiveImage] = useState<string>(""); 
   const [activeSize, setActiveSize] = useState<string>("");
+  const [itemQty, setItemQty] = useState<number>(0);
   const { addToCart, updateCart, cartState } = useCart();
   const { openModalCart } = useModalCartContext();
   const router = useRouter();
 
-  const getProduct = async () => {
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`
-      );
-      const data = response?.data?.data?.items;
-      setProducts(data);
-    } catch (error) {
-      console.error("Error on Fetching Products ", error);
-    }
-  };
-
   useEffect(() => {
-    getProduct();
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`
+        );
+        setProducts(response?.data?.data?.items || []);
+      } catch (error) {
+        console.error("Error fetching products", error);
+      }
+    };
+    fetchProducts();
   }, []);
 
-  const handleOpenSizeGuide = () => {
-    setOpenSizeGuide(true);
+  useEffect(() => {
+    if (products.length > 0) {
+      setActiveImage(products[1]?.imageURLs[0]?.img);
+      setActiveColor(products[1]?.imageURLs[0]?.color?.name);
+    }
+  }, [products]);
+
+  const handleActiveColor = (color: string) => {
+    setActiveColor(color);
+    const selectedImage = products[1]?.imageURLs.find(
+      (item) => item.color.name === color
+    )?.img;
+    setActiveImage(selectedImage || ""); // Update the main image based on color selection
   };
 
-  const handleCloseSizeGuide = () => {
-    setOpenSizeGuide(false);
+  const handleAddToCart = (product: Product) => {
+    const accessToken = Cookies.get("accessToken");
+    if (!accessToken) {
+      toast.error("Please log in to add items to the cart.");
+      router.push("/login");
+      return;
+    }
+    const existingProduct = cartState.cartArray.find((item) => item.id === product.id);
+    if (!existingProduct) {
+      // addToCart(product);
+    }
+    updateCart(product.id, product.quantity, activeSize, activeColor);
+    openModalCart();
   };
 
-  const handleActiveColor = (item: string) => {
-    setActiveColor(item);
-  };
+  if (!products.length) return null;
 
-  const handleActiveSize = (item: string) => {
-    setActiveSize(item);
-  };
-
-  const handleSwiper = (swiper: SwiperCore) => {
-    setThumbsSwiper(swiper);
-  };
-
-
-  // const handleAddToCart = () => {
-  //   const accessToken = Cookies.get("accessToken");
-  //   console.log(accessToken, "access token");
-
-  //   if (!accessToken) {
-  //     toast.error("Please log in to add items to the cart.");
-  //     router.push("/login"); // Redirect to login page
-  //     return;
-  //   }
-  //   if (!cartState.cartArray.find((item) => item.id === productMain.id)) {
-  //     addToCart({ ...productMain });
-  //     updateCart(
-  //       productMain.id,
-  //       productMain.quantityPurchase,
-  //       activeSize,
-  //       activeColor
-  //     );
-  //   } else {
-  //     updateCart(
-  //       productMain.id,
-  //       productMain.quantityPurchase,
-  //       activeSize,
-  //       activeColor
-  //     );
-  //   }
-  //   openModalCart();
-  // };
+  const product = products[1]; 
 
   return (
-    <>
-      <div className="featured-product underwear md:py-20 py-14 ">
-        <div className="container flex lg:items-center justify-between gap-y-6 flex-wrap">
-          {products.length > 0 && (
-            <div className="list-img md:w-1/2 w-full lg:pl-16 md:pl-6">
-              {/* Main Swiper - For large images */}
-              <Swiper
-                slidesPerView={1}
-                spaceBetween={0}
-                thumbs={{ swiper: thumbsSwiper }}
-                modules={[Thumbs]}
-                className="mySwiper2 rounded-2xl overflow-hidden"
-              >
-                {/* {products[0].imageURLs.map((image: any, idx: any) => (
-                  <SwiperSlide key={`main-0-${idx}`}>
-                    <Image
-                      src={image?.img} // Assuming 'img' is the correct key
-                      width={1000}
-                      height={1000}
-                      alt={`Image ${idx + 1}`}
-                      className="w-full aspect-[3/4] object-cover"
-                    />
-                  </SwiperSlide>
-                ))} */}
-              </Swiper>
+    <div className="featured-product underwear md:py-20 py-14">
+      <div className="container flex lg:items-center justify-between gap-y-6 flex-wrap">
+        <div className="list-img md:w-1/2 w-full p-4 ">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={0}
+            thumbs={{ swiper: thumbsSwiper }}
+            modules={[Thumbs]}
+            className="mySwiper2 rounded-2xl overflow-hidden"
+          >
+            {/* Change the main image when a color is clicked */}
+            <SwiperSlide>
+              <Image
+                src={activeImage || product.imageURLs[0]?.img}
+                width={1000}
+                height={1000}
+                alt={`Product Image`}
+                className="w-full aspect-[3/4] object-cover "
+              />
+            </SwiperSlide>
+          </Swiper>
 
-              {/* Thumbnail Swiper - For small images */}
-              <Swiper
-                onSwiper={handleSwiper}
-                spaceBetween={0}
-                slidesPerView={4}
-                freeMode={true}
-                watchSlidesProgress={true}
-                modules={[Navigation, Thumbs, FreeMode]}
-                className="mySwiper"
-              >
-                {/* {products[0].imageURLs.map((image: any, idx: any) => (
-                  <SwiperSlide key={`thumb-0-${idx}`}>
-                    <Image
-                      src={image?.img} // Assuming 'img' is the correct key
-                      width={1000}
-                      height={1000}
-                      alt={`Thumbnail ${idx + 1}`}
-                      className="w-full aspect-[3/4] object-cover rounded-xl "
-                    />
-                  </SwiperSlide>
-                ))} */}
-              </Swiper>
-            </div>
-          )}
+          <div className="z-[1] " >
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              spaceBetween={0}
+              slidesPerView={4}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[Navigation, Thumbs, FreeMode]}
+              className="mySwiper"
+            >
+              {product.imageURLs.map((image, idx) => (
+                <SwiperSlide key={`thumb-${idx}`}>
+                  <Image
+                    src={image.img}
+                    width={1000}
+                    height={1000}
+                    alt={`Thumbnail ${idx + 1}`}
+                    className="w-full aspect-[3/4] object-cover rounded-xl"
+                    onClick={() => setActiveImage(image.img)}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
 
+        {/* Right Section: Product Info */}
+        <div className="product-info md:w-1/2 w-full lg:pl-16 md:pl-6">
+          <div className="caption2 text-secondary font-semibold uppercase">
+            {product.productType}
+          </div>
+          <h2 className="heading4 mt-1">{product.name}</h2>
+          <div className="flex items-center mt-3">
+            <span className="caption1 text-secondary">(45 reviews)</span>
+          </div>
 
-          {/* right section */}
+          <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
+            <div className="product-price heading5">${product.price.toFixed(2)}</div>
+            <div className="w-px h-4 bg-line"></div>
+            <div className="product-origin-price font-normal text-secondary2">
+              <del>
+                ${((product.price / (1 - product.discount / 100)).toFixed(2))}
+              </del>
+            </div>
+            <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
+              -{product.discount}%
+            </div>
+          </div>
 
-          <div className="product-infor md:w-1/2 w-full lg:pl-16 md:pl-6">
-            <div className="caption2 text-secondary font-semibold uppercase">
-              {/* {products?.type} */}
-            </div>
-            {/* <div className="heading4 mt-1">{productMain.name}</div> */}
-            <div className="flex items-center mt-3">
-              {/* <Rate currentRate={productMain.rate} size={14} /> */}
-              <span className="caption1 text-secondary">(1.234 reviews)</span>
-            </div>
-            <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
-              <div className="product-price heading5">
-                {/* ${productMain.price}.00 */}
-              </div>
-              <div className="w-px h-4 bg-line"></div>
-              <div className="product-origin-price font-normal text-secondary2">
-                {/* <del>${productMain.originPrice}.00</del> */}
-              </div>
-              {/* {productMain.originPrice && (
-                <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
-                  -{percentSale}%
-                </div>
-              )} */}
-              <div className="desc text-secondary mt-3">
-                {/* {productMain.description} */}
-              </div>
-            </div>
-            <div className="list-action mt-6">
-              <div className="choose-color">
-                <div className="text-title">
-                  Colors:{" "}
-                  <span className="text-title color">{activeColor}</span>
-                </div>
-                {/* <div className="list-color flex items-center gap-2 flex-wrap mt-3">
-                  {productMain.variation.map((item, index) => (
-                    <div
-                      className={`color-item w-12 h-12 rounded-xl duration-300 relative ${activeColor === item.color ? "active" : ""
-                        }`}
-                      key={index}
-                      onClick={() => handleActiveColor(item.color)}
-                    >
-                      <Image
-                        src={item.colorImage}
-                        width={100}
-                        height={100}
-                        alt="color"
-                        className="rounded-xl"
-                      />
-                      <div className="tag-action bg-black text-white caption2 capitalize px-1.5 py-0.5 rounded-sm">
-                        {item.color}
-                      </div>
-                    </div>
-                  ))}
-                </div> */}
-              </div>
-              <div className="choose-size mt-5">
-                <div className="heading flex items-center justify-between">
-                  <div className="text-title">
-                    Size: <span className="text-title size">{activeSize}</span>
-                  </div>
-                  <div
-                    className="caption1 size-guide text-red underline cursor-pointer"
-                    onClick={handleOpenSizeGuide}
+          <p className="desc text-secondary mt-3">{product.description}</p>
+
+          <div className="list-action mt-6">
+            <div className="choose-color">
+              <p className="text-title">
+                Colors: <span className="text-title color">{activeColor || product.imageURLs[0]?.color?.name}</span>
+              </p>
+              <div className="list-color flex items-center gap-2 flex-wrap mt-3">
+                {product.imageURLs.map((item, index) => (
+                  <button
+                    key={index}
+                    className="color-item w-12 h-12 rounded-xl duration-300 relative"
+                    onClick={() => handleActiveColor(item.color.name)}
                   >
-                    Size Guide
-                  </div>
-                  {/* <ModalSizeguide
-                    data={productMain}
-                    isOpen={openSizeGuide}
-                    onClose={handleCloseSizeGuide}
-                  /> */}
-                </div>
-                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                  {/* {productMain.sizes.map((item, index) => (
-                    <div
-                      className={`size-item w-12 h-12 flex items-center justify-center text-button rounded-full bg-white border border-purple ${activeSize === item ? "active" : ""
-                        }`}
-                      key={index}
-                      onClick={() => handleActiveSize(item)}
-                    >
-                      {item}
-                    </div>
-                  ))} */}
-                </div>
+                    <Image
+                      src={item.img}
+                      alt={item.color.name}
+                      width={48}
+                      height={48}
+                      className="rounded-xl object-cover"
+                    />
+                  </button>
+                ))}
               </div>
-              <div className="choose-quantity flex items-center lg:justify-between gap-5 gap-y-3 mt-5">
-                <div className="quantity-block md:p-3 p-2 flex items-center justify-between rounded-lg border border-line w-[140px] flex-shrink-0">
-                  {/* <Icon.Minus
-                    size={20}
-                    onClick={handleDecreaseQuantity}
-                    className={`${productMain.quantityPurchase === 1 ? "disabled" : ""
-                      } cursor-pointer`}
-                  /> */}
-                  <div className="body1 font-semibold">
-                    {/* {productMain.quantityPurchase} */}
-                  </div>
-                  {/* <Icon.Plus
-                    size={20}
-                    onClick={handleIncreaseQuantity}
-                    className="cursor-pointer"
-                  /> */}
-                </div>
-                <div
-                  className="button-main w-full text-center bg-white text-purple border border-purple"
-                  // onClick={handleAddToCart}
+            </div>
+
+            <div className="choose-quantity flex items-center lg:justify-between gap-5 gap-y-3 mt-5">
+              <div className="quantity-block md:p-3 p-2 flex items-center justify-between rounded-lg border border-line w-[140px] flex-shrink-0">
+                <button
+                  onClick={() => itemQty > 0 && setItemQty(itemQty - 1)}  // Prevent going below 0
+                  className="cursor-pointer"
                 >
-                  Add To Cart
-                </div>
+                  -
+                </button>
+                <span className="body1 font-semibold">
+                  {itemQty}
+                </span>
+                <button onClick={() => setItemQty(itemQty + 1)} className="cursor-pointer">
+                  +
+                </button>
               </div>
-              <div className="button-block mt-5">
-                <Link
-                  href={"/checkout"}
-                  className="button-main w-full text-center text-white"
-                >
-                  Buy It Now
-                </Link>
-              </div>
+              <button
+                className="button-main w-full text-center bg-white text-purple border border-purple"
+                onClick={() => handleAddToCart(product)}
+              >
+                Add To Cart
+              </button>
+            </div>
+
+            <div className="button-block mt-5">
+              <a href="/checkout" className="button-main w-full text-center text-white">
+                Buy It Now
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
 export default FeaturedProduct;
+
+
+
