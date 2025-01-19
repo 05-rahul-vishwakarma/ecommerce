@@ -16,7 +16,7 @@ export default function ClientContact() {
         <div className="container">
           <div className="flex justify-between max-lg:flex-col gap-y-10">
             <h1>Address:- Shop No-105 1st Floor Aggarwal Tower Pocket O & P Dilshad Garden
-              Near in font of Punjab National Bank  Delhi 110095 </h1>
+              Near in front of Punjab National Bank  Delhi 110095 </h1>
           </div>
           <div>
             <h2>Contact No. 9821472627</h2>
