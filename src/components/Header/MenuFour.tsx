@@ -172,15 +172,15 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                           Client Contact
                         </Link>
                       </li>
-                      {/* <li>
+                       <li>
                         <Link
-                          href="/pages/store-list"
-                          className={`text-secondary duration-300 ${pathname === "/pages/store-list" ? "active" : ""
+                          href="/pages/privacy-policy"
+                          className={`text-secondary duration-300 ${pathname === "/pages/privacy-policy" ? "active" : ""
                             }`}
                         >
-                          Store List
+                          Privacy Policy
                         </Link>
-                      </li> */}
+                      </li> 
                       {/* <li>
                         <Link
                           href="/pages/page-not-found"

@@ -10,13 +10,16 @@ import ShopBreadCrumb from '@/components/Shop/ShopBreadCrumb';
 
 export default function BreadCrumb1() {
   const [products, setProducts] = useState([])
+
   const [type, setType] = useState<string | null>(null);
   const [gender, setGender] = useState<string | null>(null);
   const [category, setCategory] = useState<string | null>(null);
 
   const getProduct = async () => {
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`)
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`, {
+        "keys": ["productType", "price", "category"]
+      })
       setProducts(response?.data?.data?.items)
 
     } catch (error) {
@@ -26,6 +29,9 @@ export default function BreadCrumb1() {
   useEffect(() => {
     getProduct()
   }, [])
+
+  console.log(products);
+  
 
   return (
     <>
