@@ -23,12 +23,12 @@ const Footer = () => {
                   <div className="flex flex-col ">
                     <span className="pt-px caption1">
                       <a
-                        href="https://mail.google.com/mail/?view=cm&fs=1&to=rahul930vishwakarma@gmail.com"
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=salestheribbonpack@gmail.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: "blue", textDecoration: "underline" }}
+                     className="has-line-before text-purple"
                       >
-                        rahul930vishwakarma@gmail.com
+                        salestheribbonpack@gmail.com
                       </a>
                     </span>
                     <span className="mt-3 caption1">1-333-345-6868</span>
@@ -143,7 +143,17 @@ const Footer = () => {
                                             </button>
                                         </form>
                                     </div> */}
+                                    
                   <div className="list-social flex items-center gap-6 mt-4">
+                    <div> <Link href="/">  <Image
+                                    src="/CompanyLogo.png" // Path relative to the public folder
+                                    alt="Company Logo"
+                                    width={80} // Specify width (optional for fixed sizes)
+                                    height={80} // Specify height (optional for fixed sizes)
+                                    className="h-full w-auto mr-3" // Additional styling if needed
+                                  />
+                                  </Link></div>
+                 
                     <Link href={"https://www.facebook.com/"} target="_blank">
                       <div className="icon-facebook text-2xl text-custom-purple-color"></div>
                     </Link>
@@ -151,9 +161,7 @@ const Footer = () => {
                       <div className="icon-instagram text-2xl text-custom-purple-color"></div>
                     </Link>
 
-                    <Link href={"https://www.youtube.com/"} target="_blank">
-                      <div className="icon-youtube text-2xl text-custom-purple-color"></div>
-                    </Link>
+                    
                     {/*  */}
                   </div>
                 </div>
@@ -162,9 +170,17 @@ const Footer = () => {
             <div className="footer-bottom py-3 flex items-center justify-between gap-5 max-lg:justify-center max-lg:flex-col border-t border-line">
               <div className="left flex items-center gap-8">
                 <div className="copyright caption1 text-secondary">
-                  ©2023The Ribbon Pack. All Rights Reserved.
+                  <span>Developer Email: -  </span>
+                <a
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=rahul930vishwakarma@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                       className="has-line-before text-purple"
+                      >
+                        rahul930vishwakarma@gmail.com
+                      </a>
                 </div>
-                <div className="select-block flex items-center gap-5 max-md:hidden">
+                {/* <div className="select-block flex items-center gap-5 max-md:hidden">
                   <div className="choose-language flex items-center gap-1.5">
                     <select
                       name="language"
@@ -189,7 +205,7 @@ const Footer = () => {
                     </select>
                     <Icon.CaretDown size={12} color="#1F1F1F" />
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="right flex items-center gap-2">
                 <div className="caption1 text-secondary">Payment:</div>

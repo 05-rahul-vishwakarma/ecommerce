@@ -76,22 +76,12 @@ const MenuFour: React.FC<Props> = ({ props }) => {
             </div>
 
             <div className="form-search relative max-lg:hidden z-[1]">
-              <Icon.MagnifyingGlass
-                size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                onClick={() => {
-                  handleSearch(searchKeyword);
-                }}
-              />
-              <input
-                type="text"
-                placeholder="What are you looking for?"
-                className=" h-10 rounded-lg border border-line caption2 w-full pl-9 pr-4"
-                value={searchKeyword}
-                onChange={(e) => setSearchKeyword(e.target.value)}
-                onKeyDown={(e) =>
-                  e.key === "Enter" && handleSearch(searchKeyword)
-                }
+              <Image
+                src="/CompanyLogoHeader.png" // Path relative to the public folder
+                alt="Company Logo"
+                width={60} // Specify width (optional for fixed sizes)
+                height={60} // Specify height (optional for fixed sizes)
+                className="h-full w-auto mr-3" // Additional styling if needed
               />
             </div>
             <div className="menu-main h-full xl:w-full flex items-center justify-center max-lg:hidden xl:absolute xl:top-1/2 xl:left-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2">
@@ -111,7 +101,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
 
                 <li className="h-full">
                   <Link
-                    href="/shop/breadcrumb1"
+                    href="/shop"
                     className="text-white text-button-uppercase duration-300 h-full flex items-center justify-center"
                   >
                     Shop
@@ -172,7 +162,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                           Client Contact
                         </Link>
                       </li>
-                       <li>
+                      <li>
                         <Link
                           href="/pages/privacy-policy"
                           className={`text-secondary duration-300 ${pathname === "/pages/privacy-policy" ? "active" : ""
@@ -180,7 +170,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         >
                           Privacy Policy
                         </Link>
-                      </li> 
+                      </li>
                       {/* <li>
                         <Link
                           href="/pages/page-not-found"
@@ -279,13 +269,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
       </div>
 
       <div id="menu-mobile" className={`${openMenuMobile ? "open" : ""}`}>
-        <div
-          className="menu-container  bg-custom-purple-color h-full"
-          style={{ borderBottomRightRadius: "400px" }}
-        >
+        <div className="menu-container  bg-custom-purple-color h-full w-9/12 ">
           <div className="container h-full">
             <div className="menu-main h-full overflow-hidden">
-              <div className="heading py-2 relative flex items-center justify-center">
+              <div className="heading py-2 relative flex items-center justify-center mt-5">
                 <div
                   className="close-menu-mobile-btn absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-surface flex items-center justify-center"
                   onClick={handleMenuMobile}
@@ -299,16 +286,16 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   The Ribbon Pack
                 </Link>
               </div>
+
+              {/* Logo */}
               <div className="form-search relative mt-2">
-                <Icon.MagnifyingGlass
-                  size={20}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                />
-                <input
-                  type="text"
-                  placeholder="What are you looking for?"
-                  className=" h-12 rounded-lg border border-line text-sm w-full pl-10 pr-4"
-                />
+              <Image
+                src="/CompanyLogoHeader.png" // Path relative to the public folder
+                alt="Company Logo"
+                width={60} // Specify width (optional for fixed sizes)
+                height={60} // Specify height (optional for fixed sizes)
+                className="h-full w-auto rounded-lg flex items-center" // Additional styling if needed
+              />
               </div>
               <div className="list-nav mt-6">
                 <ul>
@@ -332,7 +319,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     onClick={() => handleOpenSubNavMobile(3)}
                   >
                     <a
-                      href={"/shop/breadcrumb1"}
+                      href={"/shop"}
                       className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
                       Shop
@@ -406,14 +393,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             Contact Us
                           </a>
                         </li>
-                        <li className="mt-2">
-                          <a
-                            href="/pages/client-contact"
-                            className="text-lg text-white font-semibold flex items-center justify-between mt-3"
-                          >
-                            Client Contact
-                          </a>
-                        </li>
+
                         <li className="mt-2">
                           <a
                             href="/pages/customer-feedbacks"
