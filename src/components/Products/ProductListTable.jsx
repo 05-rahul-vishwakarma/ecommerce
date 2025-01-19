@@ -1,10 +1,30 @@
 'use client';
 import axios from 'axios';
+import { useRouter } from 'next/navigation'; 
 import React, { useState } from 'react';
 
 const ProductTable = ({ data: initialData }) => {
+    const router = useRouter();
     const [datas, setData] = useState(initialData); // Manage data with state
 
+    const handleViewProduct = async (Pk, SK) => {
+        console.log("clicked");
+        const encodedPK = encodeURIComponent(Pk);
+        const encodedSK = encodeURIComponent(SK);
+
+        try {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/product/get?PK=${encodedPK}&SK=${encodedSK}`)
+            const productData = response.data;
+           console.log(productData);
+           router.push(`/Products/add-product/:id`,{
+            query: {data: JSON.stringify(productData)},
+           })
+            
+        } catch (error) {
+            console.error('Error retriving product ', error);
+            
+        }
+    }
     const handleDelete = async (PK, SK) => {
         try {
             const encodedPK = encodeURIComponent(PK);
@@ -51,7 +71,9 @@ const ProductTable = ({ data: initialData }) => {
                                 <td className="px-4 py-2 text-center">{item.status}</td>
                                 <td className="px-4 py-2 text-center">
                                     <div className='flex space-x-4'>
-                                        <button className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded">
+                                        <button
+                                        onClick={() => handleViewProduct(item?.PK, item?.SK)}
+                                        className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded">
                                             View
                                         </button>
                                         <button

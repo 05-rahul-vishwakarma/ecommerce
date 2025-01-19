@@ -54,6 +54,9 @@ export default function SubmitTestimonial() {
         } catch (error) {
             toast.error('Something went wrong');
         }
+        set({name: ""})
+        set({description: ""})
+        
     };
 
 
