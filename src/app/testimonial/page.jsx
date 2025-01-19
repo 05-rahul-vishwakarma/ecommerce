@@ -87,7 +87,7 @@ export default function Testimonial() {
             <span className="text-red">*</span>
           </label>
           <input
-            type="number"
+            type="number" 
             step="0.1"
             placeholder={"Enter ratings"}
             className="w-[45%] mb-4 rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
