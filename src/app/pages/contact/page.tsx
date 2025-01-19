@@ -6,6 +6,7 @@ import TopNavOne from '@/components/Header/TopNav/TopNavOne'
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 import Footer from '@/components/Footer/Footer'
 import MenuFour from '@/components/Header/MenuFour';
+import ContactForm from '@/components/Form/ContactForm';
 
 const ContactUs = () => {
     return (
@@ -21,7 +22,7 @@ const ContactUs = () => {
                         <div className="left lg:w-2/3 lg:pr-4">
                             <div className="heading3 text-secondary">Drop Us A Line</div>
                             <div className="body1 text-secondary2 mt-3">Use the form below to get in touch with the sales team</div>
-                            <form className="md:mt-6 mt-4">
+                            {/* <form className="md:mt-6 mt-4">
                                 <div className='grid sm:grid-cols-2 grid-cols-1 gap-4 gap-y-5'>
                                     <div className="name ">
                                         <input className="border-line  hover:border-purple px-4 py-3 w-full rounded-lg" id="username" type="text" placeholder="Your Name *" required />
@@ -36,7 +37,8 @@ const ContactUs = () => {
                                 <div className="block-button md:mt-6 mt-4">
                                     <button className="button-main">Send message</button>
                                 </div>
-                            </form>
+                            </form> */}
+                            <ContactForm />
                         </div>
                         <div className="right lg:w-1/4 lg:pl-4">
                             <div className="item">
