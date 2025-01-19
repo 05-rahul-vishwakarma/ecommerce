@@ -6,6 +6,7 @@ import TopNavOne from '@/components/Header/TopNav/TopNavOne';
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 import Footer from '@/components/Footer/Footer';
 import MenuFour from '@/components/Header/MenuFour';
+import Link from "next/link";
 
 const AboutUs = () => {
   return (
@@ -100,12 +101,12 @@ const AboutUs = () => {
 
           {/* Call to Action */}
           <div className="text-center">
-            <a
-              href="#"
+            <Link
+              href={'/pages/contact'}
               className="inline-block bg-purple text-white font-semibold py-3 px-6 rounded-full shadow-md hover:bg-purple-700 transition-colors duration-300"
             >
               Contact Us Today
-            </a>
+            </Link>
           </div>
         </div>
       </div>
