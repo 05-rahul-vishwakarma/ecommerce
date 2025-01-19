@@ -43,6 +43,7 @@ const menuGroups = [
         route: "#",
         children: [
           { label: "Analytics", route: "/" },
+          { label: "Testimonial", route: "/testimonial" },
           { label: "Product List", route: "/Products/products-list"},
           { label: "Product Add", route: "/Products/add-product"},
           { label: "Product Ordered", route: "/Products/orderd-products"},
