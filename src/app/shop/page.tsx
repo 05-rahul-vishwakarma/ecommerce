@@ -1,45 +1,51 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import ShopBreadCrumb1 from '@/components/Shop/ShopBreadCrumb1';
-import productData from '@/data/Product.json';
-import Footer from '@/components/Footer/Footer';
-import MenuFour from '@/components/Header/MenuFour';
-import axios from 'axios';
+import Footer from "@/components/Footer/Footer";
+import MenuFour from "@/components/Header/MenuFour";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import ShopBreadCrumb from '@/components/Shop/ShopBreadCrumb';
+import { useProductStore } from "@/components/Product/store/useProduct";
+
+interface Category {
+  name: string;
+}
+
+interface Brand {
+  name: string;
+}
+
+interface Product {
+  category: Category;
+  productType: string;
+  price: number;
+  brand: Brand;
+  imageURLs: { color: { name: string; clrCode: string }; img: string }[];
+}
+
+interface ProductDetail {
+  category: string;
+  productType: string;
+  price: number;
+  brand: string;
+}
 
 export default function BreadCrumb1() {
-  const [products, setProducts] = useState([])
+  const { products, productDetails, fetchProducts } = useProductStore();
 
-  const [type, setType] = useState<string | null>(null);
-  const [gender, setGender] = useState<string | null>(null);
-  const [category, setCategory] = useState<string | null>(null);
-
-  const getProduct = async () => {
-    try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`, {
-        "keys": ["productType", "price", "category"]
-      })
-      setProducts(response?.data?.data?.items)
-
-    } catch (error) {
-      console.error("Error on Fetching Products ", error)
-    }
-  }
   useEffect(() => {
-    getProduct()
-  }, [])
+    fetchProducts();
+  }, [fetchProducts]);
 
-  console.log(products);
-  
+ 
+
 
   return (
     <>
       <div id="header" className="relative w-full">
         <MenuFour props="bg-transparent" />
       </div>
-      {/* <ShopBreadCrumb1 data={products} productPerPage={9} dataType={type} gender={gender} category={category} /> */}
-      <ShopBreadCrumb />
+      <ShopBreadCrumb products={products} productDetails={productDetails} />
       <Footer />
     </>
   );

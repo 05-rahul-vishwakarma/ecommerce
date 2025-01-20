@@ -1,58 +1,89 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import Product from '../Product/Product'
-import { ProductType } from '@/type/ProductType'
-import { motion } from 'framer-motion'
+import React, { useEffect, useState, useMemo } from 'react';
+import Product from '../Product/Product';
+import { motion } from 'framer-motion';
+import { useProductStore } from '../Product/store/useProduct';
 
 interface Props {
-    data: Array<ProductType>;
-    start: number;
-    limit: number;
+  start: number;
+  limit: number;
 }
 
-const TrendingProduct: React.FC<Props> = ({ data, start, limit }) => {
-    const [activeTab, setActiveTab] = useState<string>('Cotton Printed Ribbon');
+const TrendingProduct: React.FC<Props> = ({ start, limit }) => {
+  const { products, fetchProducts } = useProductStore();
+  const [activeTab, setActiveTab] = useState<string>('');
 
-    const handleTabClick = (type: string) => {
-        setActiveTab(type);
-    };
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
-    const filteredProducts = data.filter((product) => product.type === activeTab);
+  const randomTabs = useMemo(() => {
+    if (!products || products.length === 0) return [];
+    const uniqueTypes = Array.from(new Set(products.map((product) => product.productType)));
+    return uniqueTypes.sort(() => Math.random() - 0.5).slice(0, 5);
+  }, [products]);
 
-    return (
-        <>
-            <div className="tab-features-block style-underwear md:pt-20 pt-10">
-                <div className="container">
-                    <div className="heading flex flex-col items-center text-center">
-                        <div className="heading3 text-center text-secondary">Trending Products</div>
-                        <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl mt-6">
-                            {['Custom Printed Ribbon', 'Cotton Printed Ribbon', 'Primium Satin Ribbon', 'Grossgrain Printed Ribbon', 'Foiled Printed Ribbon'].map((type) => (
-                                <div
-                                    key={type}
-                                    className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-purple ${activeTab === type ? 'active' : ''}`}
-                                    onClick={() => handleTabClick(type)}
-                                >
-                                    {activeTab === type && (
-                                        <motion.div layoutId='active-pill' className='absolute inset-0 rounded-2xl bg-custom-purple-color'></motion.div>
-                                    )}
-                                    <span className='relative text-button-uppercase z-[1]'>
-                                        {type}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+  useEffect(() => {
+    if (randomTabs.length > 0 && !activeTab) {
+      setActiveTab(randomTabs[0]);
+    }
+  }, [randomTabs, activeTab]);
 
-                    <div className="list-product hide-product-sold  grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
-                        {filteredProducts.slice(start, limit).map((prd, index) => (
-                            <Product key={index} data={prd} type='grid' />
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
+  const handleTabClick = (type: string) => {
+    setActiveTab(type);
+  };
 
-export default TrendingProduct
+  const filteredProducts = useMemo(() => {
+    if (!activeTab) return [];
+    return products.filter((product) => product.productType === activeTab);
+  }, [products, activeTab]);
+
+  useEffect(() => {
+    if (randomTabs.length > 0 && !activeTab) {
+      setActiveTab(randomTabs[0]);
+    }
+  }, [randomTabs, activeTab]);
+
+  return (
+    <div className="tab-features-block style-underwear md:pt-20 pt-10">
+      <div className="container">
+        <div className="heading flex flex-col items-center text-center">
+          <div className="heading3 text-center text-secondary">Trending Products</div>
+          <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl mt-6">
+            {randomTabs.map((type) => (
+              <div
+                key={type}
+                className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-purple ${
+                  activeTab === type ? 'active' : ''
+                }`}
+                onClick={() => handleTabClick(type)}
+              >
+                {activeTab === type && (
+                  <motion.div
+                    layoutId="active-pill"
+                    className="absolute inset-0 rounded-2xl bg-custom-purple-color"
+                  />
+                )}
+                <span className="relative text-button-uppercase z-[1]">{type}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Products List */}
+        <div className="list-product hide-product-sold grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.slice(start, limit).map((product) => (
+              <Product key={product.SK} product={product} />
+            ))
+          ) : (
+            <div className="text-center col-span-full">No Products Available</div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TrendingProduct;
