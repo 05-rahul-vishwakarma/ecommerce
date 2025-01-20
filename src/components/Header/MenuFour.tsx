@@ -113,7 +113,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
 
                 <li className="h-full">
                   <Link
-                    href="/shop/breadcrumb1"
+                    href="/shop"
                     className="text-white text-button-uppercase duration-300 h-full flex items-center justify-center"
                   >
                     Shop
@@ -338,7 +338,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     onClick={() => handleOpenSubNavMobile(3)}
                   >
                     <a
-                      href={"/shop/breadcrumb1"}
+                      href={"/shop"}
                       className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
                       Shop

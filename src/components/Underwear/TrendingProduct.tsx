@@ -13,6 +13,7 @@ interface Props {
 const TrendingProduct: React.FC<Props> = ({ start, limit }) => {
   const { products, fetchProducts } = useProductStore();
   const [activeTab, setActiveTab] = useState<string>('');
+  const [isClicked, setClicked] = useState<boolean>(false);
 
   useEffect(() => {
     fetchProducts();
@@ -32,6 +33,7 @@ const TrendingProduct: React.FC<Props> = ({ start, limit }) => {
 
   const handleTabClick = (type: string) => {
     setActiveTab(type);
+    setClicked(!isClicked);
   };
 
   const filteredProducts = useMemo(() => {
@@ -54,9 +56,8 @@ const TrendingProduct: React.FC<Props> = ({ start, limit }) => {
             {randomTabs.map((type) => (
               <div
                 key={type}
-                className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-purple ${
-                  activeTab === type ? 'active' : ''
-                }`}
+                className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-purple ${activeTab === type ? 'active' : ''
+                  }`}
                 onClick={() => handleTabClick(type)}
               >
                 {activeTab === type && (
@@ -71,16 +72,31 @@ const TrendingProduct: React.FC<Props> = ({ start, limit }) => {
           </div>
         </div>
 
-        {/* Products List */}
-        <div className="list-product hide-product-sold grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.slice(start, limit).map((product) => (
-              <Product key={product.SK} product={product} />
-            ))
-          ) : (
-            <div className="text-center col-span-full">No Products Available</div>
-          )}
-        </div>
+        {
+          isClicked ?
+            <>
+              <div className="list-product hide-product-sold grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
+                {filteredProducts.length > 0 ? (
+                  filteredProducts.slice(start, limit).map((product) => (
+                    <Product key={product.SK} product={product} />
+                  ))
+                ) : (
+                  <div className="text-center col-span-full">No Products Available</div>
+                )}
+              </div>
+            </>
+            :
+            <>
+              <div className="list-product hide-product-sold grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
+                {
+                  products?.slice(start, limit).map((product, i) => (
+                    <Product key={product.SK} product={product} />
+                  ))
+                }
+              </div>
+            </>
+        }
+
       </div>
     </div>
   );

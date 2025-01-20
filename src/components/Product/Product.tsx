@@ -1,7 +1,11 @@
+'use client';
+
 import React from "react";
 import Image from "next/image";
 import * as Icon from "@phosphor-icons/react";
 import Marquee from "react-fast-marquee";
+import { useModalWishlistContext } from "@/context/ModalWishlistContext";
+import { useModalQuickviewContext } from "@/context/ModalQuickviewContext";
 
 // Define the types for the product object
 interface ProductType {
@@ -20,7 +24,7 @@ interface ProductType {
         };
     }[];
     ProductType: string;
-   
+
 }
 
 interface ProductProps {
@@ -28,6 +32,12 @@ interface ProductProps {
 }
 
 const Product: React.FC<ProductProps> = ({ product }) => {
+
+    const { openModalWishlist } = useModalWishlistContext();
+    // const { ModalQuickviewContext } = useModalQuickviewContext();
+
+
+
     return (
         <div key={product?.SK} className="product-main cursor-pointer block product-item grid-type">
             <div className="product-thumb bg-white relative overflow-hidden rounded-2xl">
@@ -58,7 +68,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                 {/* Product Image */}
                 <div className="product-img w-full h-full aspect-[3/4]">
                     <Image
-                        src={product?.img || "/placeholder-image.png"}
+                        src={product?.img || "/ribbon.png"}
                         width={500}
                         height={500}
                         alt={product?.name}
@@ -81,7 +91,12 @@ const Product: React.FC<ProductProps> = ({ product }) => {
 
                 {/* Actions */}
                 <div className="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
-                    <div className="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-[10px] duration-300 bg-white hover:bg-purple hover:text-white">
+                    <div
+                        onClick={(e) => {
+                            e.stopPropagation(); // Stop event propagation
+                            // handleQuickviewOpen(); // Call the Quickview function
+                        }}
+                        className="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-[10px] duration-300 bg-white hover:bg-purple hover:text-white">
                         Quick View
                     </div>
                     <div className="add-cart-btn w-full text-button-uppercase py-2 text-center rounded-[10px] duration-500 bg-white hover:bg-purple hover:text-white">
