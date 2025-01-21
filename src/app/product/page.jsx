@@ -27,7 +27,7 @@ const ProductDefault = () => {
                 <MenuFour props="bg-white" />
                 <BreadcrumbProduct data={productData} productPage='default' productId={1}  />
             </div>
-            <Default data={productData} productId={1} />
+            {/* <Default data={productData} productId={1} /> */}
             <Footer />
         </>
     )
