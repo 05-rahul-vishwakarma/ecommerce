@@ -1,41 +1,70 @@
 'use client';
 
-import React from "react";
+import React, { useOptimistic, useState } from "react";
 import Image from "next/image";
 import * as Icon from "@phosphor-icons/react";
 import Marquee from "react-fast-marquee";
 import { useModalWishlistContext } from "@/context/ModalWishlistContext";
 import { useModalQuickviewContext } from "@/context/ModalQuickviewContext";
+import { useCart } from "@/context/CartContext";
+import { useModalCartContext } from "@/context/ModalCartContext";
+import { useWishlist } from "@/context/WishlistContext";
+import { useCompare } from "@/context/CompareContext";
+import { useModalCompareContext } from "@/context/ModalCompareContext";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify'
 
-// Define the types for the product object
-interface ProductType {
-    SK: string;
-    name: string;
-    featured: boolean;
-    discount: number;
-    price: number;
-    quantity: number;
-    img: string;
-    imageURLs: {
-        img: string;
-        color: {
-            clrCode: string;
-            name: string;
-        };
-    }[];
-    ProductType: string;
+// interface ProductType {
+//     SK: string;
+//     name: string;
+//     featured: boolean;
+//     discount: number;
+//     price: number;
+//     quantity: number;
+//     img: string;
+//     imageURLs: {
+//         img: string;
+//         color: {
+//             clrCode: string;
+//             name: string;
+//         };
+//     }[];
+//     ProductType: string;
 
-}
+// }
 
-interface ProductProps {
-    product: ProductType; // Changed from `products` to `product` to handle a single product
-}
+// interface ProductProps {
+//     product: ProductType;
+// }
 
-const Product: React.FC<ProductProps> = ({ product }) => {
+const Product = ({ product }) => {
 
-    const { openModalWishlist } = useModalWishlistContext();
-    // const { ModalQuickviewContext } = useModalQuickviewContext();
+    const { openModalCart } = useModalCartContext()
+    const { openModalWishlist } = useModalWishlistContext()
+    const { openQuickview } = useModalQuickviewContext()
 
+    const router = useRouter();
+
+    const handleQuickviewOpen = () => {
+        openQuickview(product)
+    }
+
+    const handleAddToCart = () => {
+        const accessToken = Cookies.get("accessToken");
+        if (!accessToken) {
+            toast.error("Please log in to add items to the cart.");
+            router.push("/login"); // Redirect to login page
+            return;
+        }
+        // if (!cartState.cartArray.find(item => item.id === data.id)) {
+        //     addToCart({ ...data });
+        //     updateCart(data.id, data.quantityPurchase, activeSize, activeColor)
+        // } else {
+        //     updateCart(data.id, data.quantityPurchase, activeSize, activeColor)
+        // }
+        openModalCart()
+    };
 
 
     return (
@@ -55,13 +84,8 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                 {/* Wishlist and Compare Actions */}
                 <div className="list-action-right absolute top-3 right-3 max-lg:hidden">
                     <div className="add-wishlist-btn w-[32px] h-[32px] flex items-center justify-center rounded-[10px] bg-white text-purple duration-300 relative active">
-                        <div className="tag-action bg-black text-white caption2 px-1.5 py-0.5 rounded-sm">Add To Wishlist</div>
+                        <div onClick={openModalWishlist} className="tag-action bg-black text-white caption2 px-1.5 py-0.5 rounded-sm">Add To Wishlist</div>
                         <Icon.Heart size={18} weight="fill" className="text-white" />
-                    </div>
-                    <div className="compare-btn w-[32px] h-[32px] flex items-center justify-center rounded-[10px] bg-white text-purple duration-300 relative mt-2 active">
-                        <div className="tag-action bg-black text-white caption2 px-1.5 py-0.5 rounded-sm">Compare Product</div>
-                        <Icon.Repeat size={18} className="compare-icon" />
-                        <Icon.CheckCircle size={20} className="checked-icon" />
                     </div>
                 </div>
 
@@ -93,21 +117,32 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                 <div className="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
                     <div
                         onClick={(e) => {
-                            e.stopPropagation(); // Stop event propagation
-                            // handleQuickviewOpen(); // Call the Quickview function
+                            e.stopPropagation()
+                            handleQuickviewOpen()
                         }}
                         className="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-[10px] duration-300 bg-white hover:bg-purple hover:text-white">
                         Quick View
                     </div>
-                    <div className="add-cart-btn w-full text-button-uppercase py-2 text-center rounded-[10px] duration-500 bg-white hover:bg-purple hover:text-white">
+                    <div
+                        onClick={e => {
+                            e.stopPropagation();
+                            handleAddToCart()
+                        }}
+                        className="add-cart-btn w-full text-button-uppercase py-2 text-center rounded-[10px] duration-500 bg-white hover:bg-purple hover:text-white">
                         Add To Cart
                     </div>
                 </div>
                 <div className="list-action-icon flex items-center justify-center gap-10 absolute w-full bottom-3 z-[1] lg:hidden">
-                    <div className="quick-view-btn w-9 h-9 flex items-center justify-center rounded-lg duration-300 bg-white hover:bg-purple hover:text-white">
+                    <div onClick={(e) => {
+                        e.stopPropagation()
+                        handleQuickviewOpen()
+                    }} className="quick-view-btn w-9 h-9 flex items-center justify-center rounded-lg duration-300 bg-white hover:bg-purple hover:text-white">
                         <Icon.Eye className="text-lg" />
                     </div>
-                    <div className="add-cart-btn w-9 h-9 flex items-center justify-center rounded-lg duration-300 bg-white hover:bg-purple hover:text-white">
+                    <div onClick={e => {
+                        e.stopPropagation();
+                        handleAddToCart()
+                    }} className="add-cart-btn w-9 h-9 flex items-center justify-center rounded-lg duration-300 bg-white hover:bg-purple hover:text-white">
                         <Icon.ShoppingBagOpen className="text-lg" />
                     </div>
                 </div>

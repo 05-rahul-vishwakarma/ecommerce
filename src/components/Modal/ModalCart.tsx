@@ -79,7 +79,7 @@ const ModalCart = ({ serverTimeLeft }: { serverTimeLeft: CountdownTimeType }) =>
                                         className="text-xl text-purple  w-10 h-10 rounded-xl border border-purple flex items-center justify-center duration-300 cursor-pointer hover:bg-purple hover:text-white"
                                         onClick={e => {
                                             e.stopPropagation();
-                                            handleAddToCart(product)
+                                            // handleAddToCart(product)
                                         }}
                                     >
                                         <Icon.Handbag />
