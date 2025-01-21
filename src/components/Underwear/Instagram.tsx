@@ -10,7 +10,7 @@ import 'swiper/css/bundle';
 const Instagram = () => {
     return (
         <>
-            <div className="instagram-block ">
+            <div className="instagram-block mt-20">
                 <div className="list-instagram">
                     <Swiper
                         slidesPerView={2}

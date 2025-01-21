@@ -74,12 +74,7 @@ const TopNavOne: React.FC<Props> = ({ props, slogan }) => {
                             <Link href={'https://www.youtube.com/'} target='_blank'>
                                 <i className="icon-youtube text-purple "></i>
                             </Link>
-                            <Link href={'https://twitter.com/'} target='_blank'>
-                                <i className="icon-twitter text-purple "></i>
-                            </Link>
-                            <Link href={'https://pinterest.com/'} target='_blank'>
-                                <i className="icon-pinterest text-purple "></i>
-                            </Link>
+                           
                         </div>
 
                     </div>

@@ -63,9 +63,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
     <>
       <div
         style={{ backgroundColor: "#592dbb" }}
-        className={`header-menu style-one ${
-          fixedHeader ? " fixed" : "relative"
-        } w-full  md:h-[74px] h-[56px] ${props}`}
+        className={`header-menu style-one ${fixedHeader ? " fixed" : "relative"
+          } w-full  md:h-[74px] h-[56px] ${props}`}
       >
         <div className="container mx-auto h-full">
           <div className="header-main flex items-center justify-between h-full">
@@ -77,22 +76,12 @@ const MenuFour: React.FC<Props> = ({ props }) => {
             </div>
 
             <div className="form-search relative max-lg:hidden z-[1]">
-              <Icon.MagnifyingGlass
-                size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                onClick={() => {
-                  handleSearch(searchKeyword);
-                }}
-              />
-              <input
-                type="text"
-                placeholder="What are you looking for?"
-                className=" h-10 rounded-lg border border-line caption2 w-full pl-9 pr-4"
-                value={searchKeyword}
-                onChange={(e) => setSearchKeyword(e.target.value)}
-                onKeyDown={(e) =>
-                  e.key === "Enter" && handleSearch(searchKeyword)
-                }
+              <Image
+                src="/CompanyLogoHeader.png" // Path relative to the public folder
+                alt="Company Logo"
+                width={60} // Specify width (optional for fixed sizes)
+                height={60} // Specify height (optional for fixed sizes)
+                className="h-full w-auto mr-3" // Additional styling if needed
               />
             </div>
             <div className="menu-main h-full xl:w-full flex items-center justify-center max-lg:hidden xl:absolute xl:top-1/2 xl:left-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2">
@@ -101,11 +90,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   <Link
                     href="/"
                     className={` text-white text-button-uppercase duration-300 h-full flex items-center justify-center gap-1 
-                                            ${
-                                              pathname.includes("/homepages")
-                                                ? "active"
-                                                : ""
-                                            }`}
+                                            ${pathname.includes("/homepages")
+                        ? "active"
+                        : ""
+                      }`}
                   >
                     Home
                   </Link>
@@ -145,14 +133,13 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   >
                     Pages
                   </Link>
-                  <div className="sub-menu py-3 px-5 -left-10 absolute  rounded-b-xl">
+                  <div className="sub-menu py-3 px-5 -left-10 absolute  rounded-b-xl backdrop-blur">
                     <ul className="w-full">
                       <li>
                         <Link
                           href="/pages/about"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/about" ? "active" : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/about" ? "active" : ""
+                            }`}
                         >
                           About Us
                         </Link>
@@ -160,9 +147,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/contact"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/contact" ? "active" : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/contact" ? "active" : ""
+                            }`}
                         >
                           Contact Us
                         </Link>
@@ -170,14 +156,13 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/client-contact"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/client-contact" ? "active" : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/client-contact" ? "active" : ""
+                            }`}
                         >
                           Client Contact
                         </Link>
                       </li>
-                       <li>
+                      <li>
                         <Link
                           href="/pages/privacy-policy"
                           className={`text-secondary duration-300 ${pathname === "/pages/privacy-policy" ? "active" : ""
@@ -185,7 +170,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         >
                           Privacy Policy
                         </Link>
-                      </li> 
+                      </li>
                       {/* <li>
                         <Link
                           href="/pages/page-not-found"
@@ -216,11 +201,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/customer-feedbacks"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/customer-feedbacks"
+                          className={`text-secondary duration-300 ${pathname === "/pages/customer-feedbacks"
                               ? "active"
                               : ""
-                          }`}
+                            }`}
                         >
                           Customer Feedbacks
                         </Link>
@@ -285,13 +269,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
       </div>
 
       <div id="menu-mobile" className={`${openMenuMobile ? "open" : ""}`}>
-        <div
-          className="menu-container  bg-custom-purple-color h-full"
-          style={{ borderBottomRightRadius: "400px" }}
-        >
+        <div className="menu-container  bg-custom-purple-color h-full w-9/12 ">
           <div className="container h-full">
             <div className="menu-main h-full overflow-hidden">
-              <div className="heading py-2 relative flex items-center justify-center">
+              <div className="heading py-2 relative flex items-center justify-center mt-5">
                 <div
                   className="close-menu-mobile-btn absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-surface flex items-center justify-center"
                   onClick={handleMenuMobile}
@@ -305,16 +286,16 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   The Ribbon Pack
                 </Link>
               </div>
+
+              {/* Logo */}
               <div className="form-search relative mt-2">
-                <Icon.MagnifyingGlass
-                  size={20}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                />
-                <input
-                  type="text"
-                  placeholder="What are you looking for?"
-                  className=" h-12 rounded-lg border border-line text-sm w-full pl-10 pr-4"
-                />
+              <Image
+                src="/CompanyLogoHeader.png" // Path relative to the public folder
+                alt="Company Logo"
+                width={60} // Specify width (optional for fixed sizes)
+                height={60} // Specify height (optional for fixed sizes)
+                className="h-full w-auto rounded-lg flex items-center" // Additional styling if needed
+              />
               </div>
               <div className="list-nav mt-6">
                 <ul>
@@ -388,9 +369,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     >
                       Pages
                       <span
-                        className={`${
-                          openMenuMobile ? "open" : ""
-                        } tesxt-right`}
+                        className={`${openMenuMobile ? "open" : ""
+                          } tesxt-right`}
                       >
                         <Icon.CaretRight size={20} />
                       </span>
@@ -413,14 +393,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             Contact Us
                           </a>
                         </li>
-                        <li className="mt-2">
-                          <a
-                            href="/pages/client-contact"
-                            className="text-lg text-white font-semibold flex items-center justify-between mt-3"
-                          >
-                            Client Contact
-                          </a>
-                        </li>
+
                         <li className="mt-2">
                           <a
                             href="/pages/customer-feedbacks"
