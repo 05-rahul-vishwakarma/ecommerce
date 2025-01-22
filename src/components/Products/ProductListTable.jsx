@@ -7,23 +7,11 @@ const ProductTable = ({ data: initialData }) => {
     const router = useRouter();
     const [datas, setData] = useState(initialData); // Manage data with state
 
-    const handleViewProduct = async (Pk, SK) => {
-        console.log("clicked");
-        const encodedPK = encodeURIComponent(Pk);
+    const handleViewProduct = async (PK, SK) => {
+        const encodedPK = encodeURIComponent(PK);
         const encodedSK = encodeURIComponent(SK);
-
-        try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/product/get?PK=${encodedPK}&SK=${encodedSK}`)
-            const productData = response.data;
-           console.log(productData);
-           router.push(`/Products/add-product/:id`,{
-            query: {data: JSON.stringify(productData)},
-           })
-            
-        } catch (error) {
-            console.error('Error retriving product ', error);
-            
-        }
+        router.push(`/Products/${PK}&${SK}`)
+       
     }
     const handleDelete = async (PK, SK) => {
         try {

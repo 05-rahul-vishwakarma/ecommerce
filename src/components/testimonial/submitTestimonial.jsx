@@ -61,7 +61,7 @@ export default function SubmitTestimonial() {
 
 
     return (
-        <button onClick={sendTestimonialtData} className="w-[40%] justify-self-end flex justify-center mr-4 text-center mb-4 rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90  m-4 ">
+        <button onClick={sendTestimonialtData} className="w-[40%] mt-8 justify-self-end flex justify-center mr-4 text-center mb-4 rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90  m-4 ">
             Submit
         </button>
     )
