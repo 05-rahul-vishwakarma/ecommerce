@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Link from 'next/link'
-import TopNavOne from '@/components/Header/TopNav/TopNavOne'
+// import TopNavOne from '@/components/Header/TopNav/TopNavOne'
 // import Default from '@/components/Product/Detail/Default';
 import Footer from '@/components/Footer/Footer'
 import { ProductType } from '@/type/ProductType'
@@ -22,7 +22,7 @@ const ProductDefault = () => {
 
     return (
         <>
-            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
+            {/* <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" /> */}
             <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-white" />
                 <BreadcrumbProduct data={productData} productPage='default' productId={1}  />

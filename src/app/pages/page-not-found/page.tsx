@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
-import TopNavOne from '@/components/Header/TopNav/TopNavOne'
+// import TopNavOne from '@/components/Header/TopNav/TopNavOne'
 import Footer from '@/components/Footer/Footer'
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import MenuFour from '@/components/Header/MenuFour';
@@ -10,7 +10,7 @@ import MenuFour from '@/components/Header/MenuFour';
 const PageNotFound = () => {
     return (
         <>
-            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
+            {/* <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" /> */}
             <div id="header" className='relative w-full'>
                 <MenuFour props="bg-white" />
             </div>

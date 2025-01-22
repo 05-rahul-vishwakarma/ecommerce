@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import TopNavOne from '@/components/Header/TopNav/TopNavOne'
+// import TopNavOne from '@/components/Header/TopNav/TopNavOne'
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 import reviewData from '@/data/Testimonial.json'
 import TestimonialItem from '@/components/Testimonial/TestimonialItem';
@@ -10,7 +10,7 @@ import MenuFour from '@/components/Header/MenuFour';
 const CustomerFeedbacks = () => {
     return (
         <>
-            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
+            {/* <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" /> */}
             <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='Customer Feedbacks' subHeading='Customer Feedbacks' />

@@ -9,21 +9,22 @@ const Footer = () => {
             <div id="footer" className='footer'>
                 <div className="footer-main bg-surface">
                     <div className="container">
-                        <div className="content-footer py-[60px] flex justify-between flex-wrap gap-y-8">
+                        <div className="content-footer py-[20px] flex justify-between flex-wrap gap-y-8">
                             <div className="company-infor basis-1/4 max-lg:basis-full pr-7">
                                 <Link href={'/'} className="logo">
                                     <div className="heading4">The Ribbon Pack</div>
                                 </Link>
                                 <div className='flex gap-3 mt-3'>
                                     <div className="flex flex-col ">
-                                        <span className="text-button">Mail:</span>
-                                        <span className="text-button mt-3">Phone:</span>
-                                        <span className="text-button mt-3">Address:</span>
+                                        <span className="text-button -ml-3">Mail:</span>
+                                        <span className="text-button mt-3 -ml-3">Phone:</span>
+                                        <span className="text-button mt-3 -ml-3">Address:</span>
                                     </div>
                                     <div className="flex flex-col ">
-                                        <span className=''>hi.avitex@gmail.com</span>
-                                        <span className='mt-3'>1-333-345-6868</span>
-                                        <span className='mt-3 pt-px'>549 Oak St.Crystal Lake, IL 60014</span>
+                                        <span className='-ml-10'>salestheribbonpack@gmail.com</span>
+                                        <span className='mt-3 -ml-1'>9821472627</span>
+                                        <span className='mt-3 -ml-1 pt-px'>Shop No-105 1st Floor Aggarwal Tower Pocket O & P Dilshad Garden 
+                                        Near in font of Punjab National Bank  Delhi 110095</span>
                                     </div>
                                 </div>
                             </div>
@@ -71,15 +72,15 @@ const Footer = () => {
                                         <Link href={'https://www.instagram.com/'} target='_blank'>
                                             <div className="icon-instagram text-2xl text-custom-purple-color"></div>
                                         </Link>
-                                        <Link href={'https://www.twitter.com/'} target='_blank'>
-                                            <div className="icon-twitter text-2xl text-custom-purple-color"></div>
-                                        </Link>
+                                        {/* <Link href={'https://www.twitter.com/'} target='_blank'> */}
+                                            {/* <div className="icon-twitter text-2xl text-custom-purple-color"></div> */}
+                                        {/* </Link> */}
                                         <Link href={'https://www.youtube.com/'} target='_blank'>
                                             <div className="icon-youtube text-2xl text-custom-purple-color"></div>
                                         </Link>
-                                        <Link href={'https://www.pinterest.com/'} target='_blank'>
-                                            <div className="icon-pinterest text-2xl text-custom-purple-color"></div>
-                                        </Link>
+                                        {/* <Link href={'https://www.pinterest.com/'} target='_blank'> */}
+                                            {/* <div className="icon-pinterest text-2xl text-custom-purple-color"></div> */}
+                                        {/* </Link> */}
                                     </div>
                                 </div>
                             </div>
@@ -89,20 +90,20 @@ const Footer = () => {
                                 <div className="copyright caption1 text-secondary">©2023The Ribbon Pack. All Rights Reserved.</div>
                                 <div className="select-block flex items-center gap-5 max-md:hidden">
                                     <div className="choose-language flex items-center gap-1.5">
-                                        <select name="language" id="chooseLanguageFooter" className='caption2 bg-transparent'>
+                                       {/* <select name="language" id="chooseLanguageFooter" className='caption2 bg-transparent'>
                                             <option value="English">English</option>
                                             <option value="Espana">Espana</option>
                                             <option value="France">France</option>
-                                        </select>
-                                        <Icon.CaretDown size={12} color='#1F1F1F' />
+                                        </select>*/}
+                                        {/* <Icon.CaretDown size={12} color='#1F1F1F' /> */}
                                     </div>
-                                    <div className="choose-currency flex items-center gap-1.5">
-                                        <select name="currency" id="chooseCurrencyFooter" className='caption2 bg-transparent'>
+                                   <div className="choose-currency flex items-center gap-1.5">
+                                       {/*  <select name="currency" id="chooseCurrencyFooter" className='caption2 bg-transparent'>
                                             <option value="USD">USD</option>
                                             <option value="EUR">EUR</option>
                                             <option value="GBP">GBP</option>
                                         </select>
-                                        <Icon.CaretDown size={12} color='#1F1F1F' />
+                                        <Icon.CaretDown size={12} color='#1F1F1F' />*/}
                                     </div>
                                 </div>
                             </div>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import TopNavOne from '@/components/Header/TopNav/TopNavOne';
+// import TopNavOne from '@/components/Header/TopNav/TopNavOne';
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 import Footer from '@/components/Footer/Footer';
 import MenuFour from '@/components/Header/MenuFour';
@@ -12,10 +12,10 @@ const AboutUs = () => {
   return (
     <>
       {/* Top navigation and breadcrumb */}
-      <TopNavOne
-        props="style-one bg-gray-100 border-b border-gray-300"
-        slogan="New customers save 10% with the code GET10"
-      />
+      {/* <TopNavOne */}
+        {/* props="style-one bg-gray-100 border-b border-gray-300" */}
+        {/* slogan="New customers save 10% with the code GET10" */}
+      {/* /> */}
       <div id="header" className="relative w-full text-purple-900">
         <MenuFour props="bg-white shadow-md" />
         <Breadcrumb heading="About Us" subHeading="Learn More About Us" />
