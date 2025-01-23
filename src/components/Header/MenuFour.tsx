@@ -168,14 +168,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         </Link>
                       </li>
                       <li>
-                       {/* <Link
-                          href="/pages/client-contact"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/client-contact" ? "active" : ""
-                          }`}
-                        >
-                          Client Contact
-                        </Link>*/}
+                       
                       </li>
                        <li>
                         <Link
