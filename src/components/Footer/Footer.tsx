@@ -146,10 +146,10 @@ const Footer = () => {
                                     
                   <div className="list-social flex items-center gap-6 mt-4">
                     <div> <Link href="/">  <Image
-                                    src="/CompanyLogo.png" // Path relative to the public folder
+                                    src="/logo2.png" // Path relative to the public folder
                                     alt="Company Logo"
-                                    width={80} // Specify width (optional for fixed sizes)
-                                    height={80} // Specify height (optional for fixed sizes)
+                                    width={150} // Specify width (optional for fixed sizes)
+                                    height={150} // Specify height (optional for fixed sizes)
                                     className="h-full w-auto mr-3" // Additional styling if needed
                                   />
                                   </Link></div>

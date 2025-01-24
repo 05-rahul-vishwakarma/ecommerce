@@ -1,13 +1,17 @@
-
 export interface TestimonialType {
-    id: string,
-    category: string,
-    title: string,
-    name: string,
-    avatar: string,
-    date: string,
-    address: string,
-    description: string,
-    images: Array<string>,
-    star: number,
-}
+    img?: string[];  
+    id: number;
+    rating: number;
+    // businessesTypeKeyValue: string;
+    // createdAt: string;
+    name: string;
+    // isActive: boolean;
+    // isBlocked: boolean;
+    businessType: string;
+    // updatedAt: string;
+    // SK: string;
+    description?: string;  
+    // PK: string;
+    type: string;
+  }
+  
