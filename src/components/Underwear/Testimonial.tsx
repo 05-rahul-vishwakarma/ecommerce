@@ -33,7 +33,7 @@ const Testimonial: React.FC<Props> = ({ data, limit }) => {
             console.error("Testimonial not Found!", error)
         }
     }
-
+console.log(testimonial);
     useEffect(() => {
         getTestimonial();
     }, [])
