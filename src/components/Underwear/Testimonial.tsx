@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,6 +10,7 @@ import TestimonialItem from '../Testimonial/TestimonialItem';
 import data from '../../data/Testimonial.json';
 
 import { TestimonialType } from '@/type/TestimonialType'
+import axios from 'axios';
 
 interface Props {
     data: Array<TestimonialType>;
@@ -18,10 +19,24 @@ interface Props {
 
 const Testimonial: React.FC<Props> = ({ data, limit }) => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [testimonial, setTestimonial] = useState<TestimonialType[]>([])
 
     const handleSlideChange = (swiper: any) => {
         setActiveIndex(swiper.activeIndex);
     };
+
+    const getTestimonial = async () => {
+        try {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/meta-content/testimonial/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`);
+            setTestimonial(response?.data?.data?.items || [])
+        } catch (error) {
+            console.error("Testimonial not Found!", error)
+        }
+    }
+
+    useEffect(() => {
+        getTestimonial();
+    }, [])
 
     return (
         <>
@@ -36,26 +51,26 @@ const Testimonial: React.FC<Props> = ({ data, limit }) => {
                             className='h-full'
                             onSlideChange={handleSlideChange}
                         >
-                            {data.slice(0, limit).map((prd, index) => (
-                                <SwiperSlide key={index} data-item={prd.id}>
-                                    <TestimonialItem data={prd} type='style-four' />
+                            {testimonial.slice(0, limit).map((item, index) => (
+                                <SwiperSlide key={index} data-item={item.id}>
+                                    <TestimonialItem data={item} type='style-seven' />
                                 </SwiperSlide>
                             ))}
                         </Swiper>
                     </div>
                     <div className="list-avatar lg:w-5/12 md:w-1/2 md:pl-9 text-center">
-                        {data.slice(0, limit).map((prd, index) => (
+                        {testimonial.slice(0, limit).map((item, index) => (
                             <div
                                 className={`bg-img rounded-t-full overflow-hidden ${index === activeIndex ? 'active' : ''}`}
                                 key={index}
-                                data-item={prd.id}
+                                data-item={item.id}
                             >
-                               
+
                                 <Image
-                                    src={prd.avatar}
+                                    src={item.img}
                                     width={1000}
                                     height={700}
-                                    alt={prd.name}
+                                    alt={item.name}
                                     className='avatar w-full'
                                 />
                             </div>

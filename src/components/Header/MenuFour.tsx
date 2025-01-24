@@ -77,10 +77,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
 
             <div className="form-search relative max-lg:hidden z-[1]">
               <Image
-                src="/CompanyLogoHeader.png" // Path relative to the public folder
+                src="/logo2.png" // Path relative to the public folder
                 alt="Company Logo"
-                width={60} // Specify width (optional for fixed sizes)
-                height={60} // Specify height (optional for fixed sizes)
+                width={150} // Specify width (optional for fixed sizes)
+                height={150} // Specify height (optional for fixed sizes)
                 className="h-full w-auto mr-3" // Additional styling if needed
               />
             </div>
@@ -290,7 +290,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
               {/* Logo */}
               <div className="form-search relative mt-2">
               <Image
-                src="/CompanyLogoHeader.png" // Path relative to the public folder
+                src="/logo2.png" // Path relative to the public folder
                 alt="Company Logo"
                 width={60} // Specify width (optional for fixed sizes)
                 height={60} // Specify height (optional for fixed sizes)
