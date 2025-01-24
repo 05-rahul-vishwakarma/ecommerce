@@ -27,7 +27,7 @@ export default function Home() {
             <Collection />
             <FeaturedProduct />
             <TrendingProduct start={0} limit={8} />
-            <Testimonial data={testimonialData} limit={6} />
+            <Testimonial />
             <OurBlog data={blogData} start={3} limit={6} />
             <Instagram />
             <Benefit props="py-[60px]" />
