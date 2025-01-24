@@ -15,31 +15,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify'
 
-// interface ProductType {
-//     SK: string;
-//     name: string;
-//     featured: boolean;
-//     discount: number;
-//     price: number;
-//     quantity: number;
-//     img: string;
-//     imageURLs: {
-//         img: string;
-//         color: {
-//             clrCode: string;
-//             name: string;
-//         };
-//     }[];
-//     ProductType: string;
-
-// }
-
-// interface ProductProps {
-//     product: ProductType;
-// }
-
 const Product = ({ product }) => {
-
     const { openModalCart } = useModalCartContext()
     const { openModalWishlist } = useModalWishlistContext()
     const { openQuickview } = useModalQuickviewContext()
@@ -68,7 +44,12 @@ const Product = ({ product }) => {
 
 
     return (
-        <div key={product?.SK} className="product-main cursor-pointer block product-item grid-type">
+        <div onClick={() =>
+            router.push(
+                `/product/${product?.slug}`
+            )
+        }
+            key={product?.SK} className="product-main cursor-pointer block product-item grid-type">
             <div className="product-thumb bg-white relative overflow-hidden rounded-2xl">
                 {product?.featured && (
                     <div className="product-tag text-button-uppercase bg-green px-3 py-0.5 inline-block rounded-[10px] absolute top-3 left-3 z-[1]">
