@@ -54,6 +54,9 @@ console.log(testimonial);
                             {testimonial.slice(0, limit).map((item, index) => (
                                 <SwiperSlide key={index} data-item={item.id}>
                                     <TestimonialItem data={item} type='style-seven' />
+                            {data.slice(0, limit).map((prd, index) => (
+                                <SwiperSlide key={index} data-item={prd.id}>
+                                    <TestimonialItem data={prd} type='style-seven' />
                                 </SwiperSlide>
                             ))}
                         </Swiper>
