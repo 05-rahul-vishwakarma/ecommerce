@@ -12,6 +12,7 @@ import SwiperCore from 'swiper/core'
 import { useModalCartContext } from '@/context/ModalCartContext'
 import { useWishlist } from '@/context/WishlistContext'
 import { useModalWishlistContext } from '@/context/ModalWishlistContext'
+import OthersData from './OthersData';
 
 SwiperCore.use([Navigation, Thumbs])
 
@@ -43,17 +44,18 @@ export default function DyanamicProduct({ productMain }) {
     }
 
 
-    const handleActiveColor = (colorName) => {
+    const handleActiveColor = (colorName, isHover = false) => {
         setActiveColor(colorName);
         const selectedImage = productMain.imageURLs.find((img) => img.color.name === colorName);
-        
+
         if (selectedImage) {
             const index = productMain.imageURLs.findIndex((img) => img.color.name === colorName);
-            console.log(index);
-            
             if (index !== -1) {
-                console.log('yes working');
-                swiperRef.current?.slideTo(index);
+                if (isHover) {
+                    swiperRef.current?.slideTo(index); // Only slide to the index on hover
+                } else {
+                    swiperRef.current?.slideTo(index); // Slide to the index on click
+                }
             }
         }
     };
@@ -95,7 +97,7 @@ export default function DyanamicProduct({ productMain }) {
                             modules={[Thumbs]}
                             className="mySwiper2 rounded-2xl overflow-hidden"
                             onSwiper={(swiper) => {
-                                swiperRef.current = swiper // Set swiperRef when Swiper is initialized
+                                swiperRef.current = swiper; // Set swiperRef when Swiper is initialized
                             }}
                             initialSlide={selectedImageIndex} // Set initial slide to the selected image
                         >
@@ -103,7 +105,7 @@ export default function DyanamicProduct({ productMain }) {
                                 <SwiperSlide
                                     key={index}
                                     onClick={() => {
-                                        setOpenPopupImg(true)
+                                        setOpenPopupImg(true);
                                     }}
                                 >
                                     <Image
@@ -222,17 +224,17 @@ export default function DyanamicProduct({ productMain }) {
                                     Colors: <span className="text-title color">{activeColor}</span>
                                 </div>
                                 <div className="list-color flex items-center gap-2 flex-wrap mt-3">
-                                    <div className="list-color flex items-center gap-2 flex-wrap mt-3">
-                                        {productMain.imageURLs.map((img, index) => (
-                                            <div
-                                                key={index}
-                                                className={`color-option w-8 h-8 rounded-full cursor-pointer border-2 ${activeColor === img.color.name ? 'border-purple' : 'border-transparent'
-                                                    }`}
-                                                style={{ backgroundColor: img.color.clrCode }}
-                                                onClick={() => handleActiveColor(img.color.name)}
-                                            ></div>
-                                        ))}
-                                    </div>
+                                    {productMain.imageURLs.map((img, index) => (
+                                        <div
+                                            key={index}
+                                            className={`color-option w-8 h-8 rounded-full cursor-pointer border-2 ${activeColor === img.color.name ? 'border-purple' : 'border-transparent'
+                                                }`}
+                                            style={{ backgroundColor: img.color.clrCode }}
+                                            onClick={() => handleActiveColor(img.color.name)}
+                                            onMouseEnter={() => handleActiveColor(img.color.name, true)} // Handle hover
+                                            onMouseLeave={() => handleActiveColor(activeColor, true)} // Revert to the active color on mouse leave
+                                        ></div>
+                                    ))}
                                 </div>
                             </div>
                             <div className="choose-size mt-5">
@@ -299,6 +301,7 @@ export default function DyanamicProduct({ productMain }) {
                         </div>
                     </div>
                 </div>
+                <OthersData />
             </div>
         </div>
     )

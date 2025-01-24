@@ -14,6 +14,7 @@ import Footer from '@/components/Footer/Footer'
 import ModalNewsletter from '@/components/Modal/ModalNewsletter'
 import TopNavThree from '@/components/Header/TopNav/TopNavThree'
 import MenuFour from '@/components/Header/MenuFour'
+import DyanamicProduct from '@/components/Product/DyanamicProduct'
 
 export default function Home() {
     return (
