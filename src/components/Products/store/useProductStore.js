@@ -85,6 +85,7 @@ export const useProductStore = create((set, get) => ({
     setProductDetails: (product) => set({ productDetails: product }),  // Setter to update product details
 
     productName: '',
+    
     productTitle: '',
     unit: '',
     subType: '',
@@ -133,8 +134,10 @@ export const useProductStore = create((set, get) => ({
     setProductWidth: (state) => set({ productWidth: state }),
     setProductMeter: (state) => set({ productMeter: state }),
     
-    setProductType: (value) => set({ productType: value }),
-    setProductName: (value) => set({ productName: value }),
+    setProductType: (value) => set({ productType: value }),setProductName: (value) => {
+        console.log(value);
+        set({ productName: value });
+    },
     setProductTitle: (value) => set({ productTitle: value }),
     setUnit: (value) => set({ unit: value }),
     setProductPrice: (value) => set({ productPrice: value }),
@@ -156,5 +159,7 @@ export const useProductStore = create((set, get) => ({
     setIsFeatured: (value) => set({ isFeatured: value }),
     setProductImage: (value) => set({ productImage: value }),
     setImageURLs: (value) => set({ imageURLs: value }),
+   
+
 }));
 

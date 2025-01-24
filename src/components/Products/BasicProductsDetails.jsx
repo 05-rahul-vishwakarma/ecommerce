@@ -246,7 +246,6 @@ const BasicProductsDetails = (productName) => {
           </label>
           <input
             type="text"
-            value={productName}
             placeholder={"Enter the product name"}
             className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition"
             onChange={(e) => setProductName(e.target.value)}

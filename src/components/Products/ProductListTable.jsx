@@ -10,9 +10,10 @@ const ProductTable = ({ data: initialData }) => {
     const handleViewProduct = async (PK, SK) => {
         const encodedPK = encodeURIComponent(PK);
         const encodedSK = encodeURIComponent(SK);
-        router.push(`/Products/${PK}&${SK}`)
-       
-    }
+  
+        
+        router.push(`/Products/${encodedPK}&${encodedSK}`);
+      }
     const handleDelete = async (PK, SK) => {
         try {
             const encodedPK = encodeURIComponent(PK);
