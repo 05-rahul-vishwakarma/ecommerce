@@ -38,7 +38,7 @@ const Testimonial: React.FC<Props> = ({ data, limit }) => {
                         >
                             {data.slice(0, limit).map((prd, index) => (
                                 <SwiperSlide key={index} data-item={prd.id}>
-                                    <TestimonialItem data={prd} type='style-four' />
+                                    <TestimonialItem data={prd} type='style-seven' />
                                 </SwiperSlide>
                             ))}
                         </Swiper>

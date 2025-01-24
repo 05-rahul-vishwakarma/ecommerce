@@ -1,10 +1,7 @@
 import React from 'react'
 import SliderUnderwear from '@/components/Slider/SliderUnderwear'
 import Collection from '@/components/Underwear/Collection'
-import productData from '@/data/Product.json'
-// import TabFeatures from '@/components/Underwear/TabFeatures'
 import FeaturedProduct from '@/components/Underwear/FeaturedProduct'
-// import LookBook from '@/components/Underwear/LookBook'
 import TrendingProduct from '@/components/Underwear/TrendingProduct'
 import testimonialData from '@/data/Testimonial.json'
 import Testimonial from '@/components/Underwear/Testimonial'
@@ -27,13 +24,10 @@ export default function Home() {
                 <SliderUnderwear />
             </div>
             <Collection />
-            {/* <TabFeatures data={productData} start={0} limit={4} /> */}
             <FeaturedProduct />
-            {/* <LookBook data={productData} /> */}
             <TrendingProduct start={0} limit={8} />
             <Testimonial data={testimonialData} limit={6} />
             <OurBlog data={blogData} start={3} limit={6} />
-            {/* <Brand /> */}
             <Instagram />
             <Benefit props="py-[60px]" />
             <Footer />
