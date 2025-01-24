@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { useState } from "react";
 import { useTestimonialStore } from "@/components/testimonial/store/testimonialStore";
-import TestimonialDatePicker from '@/components/testimonial/testimonialDate';
-import SubmitTestimonial from '@/components/testimonial/submitTestimonial'
+import TestimonialDatePicker from "@/components/testimonial/testimonialDate";
+import SubmitTestimonial from "@/components/testimonial/submitTestimonial";
 
 export default function Testimonial() {
   const {
@@ -26,11 +26,11 @@ export default function Testimonial() {
       const formData = new FormData();
       formData.append("ecommerce", file);
 
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
+      // const response = await fetch("/api/upload", {
+      //   method: "POST",
+      //   body: formData,
+      // // });
+      // const data = await response.json();
 
       reader.onloadend = () => {
         const imageUrl = reader.result;
@@ -45,12 +45,10 @@ export default function Testimonial() {
     if (!isNaN(value) && value <= 5) {
       setRatings(value);
     } else {
-      e.target.value = ''; // Clear the input if the value is invalid
+      e.target.value = ""; // Clear the input if the value is invalid
       alert("Please enter a rating between 0 and 5.");
     }
   };
-
-
 
   return (
     <section className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
@@ -67,7 +65,20 @@ export default function Testimonial() {
             onChange={(e) => setCustomerName(e.target.value)}
           />
         </div>
-
+          <div>
+            <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+              {"Ratings "}
+              <span className="text-red">*</span>
+            </label>
+            <input
+              type="number"
+              step="0.1"
+              placeholder={"Enter ratings"}
+              className="mb-4 w-[75%] rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+              onChange={handleChangeRatings}
+            />
+          </div>
+     
         <div className="">
           <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
             {"Description for the Ribbon"}
@@ -79,22 +90,6 @@ export default function Testimonial() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-      </div>
-      <div className="m-4 w-[75%]">
-        <div>
-          <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-            {"Ratings "}
-            <span className="text-red">*</span>
-          </label>
-          <input
-            type="number" 
-            step="0.1"
-            placeholder={"Enter ratings"}
-            className="w-[45%] mb-4 rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-            onChange={handleChangeRatings}
-          />
-        </div>
-        <TestimonialDatePicker/>
       </div>
 
       <div className="m-4 w-[75%]">
@@ -122,10 +117,9 @@ export default function Testimonial() {
         )}
       </div>
 
-<div>
-  <SubmitTestimonial />
-</div>
-
+      <div>
+        <SubmitTestimonial />
+      </div>
     </section>
   );
 }

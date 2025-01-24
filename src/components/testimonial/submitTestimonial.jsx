@@ -19,20 +19,18 @@ export default function SubmitTestimonial() {
 
     const sendTestimonialtData = async () => {
         const {
-          customerName, customerImage, date, ratings, description
+          customerName, customerImage, date, rating, description
         } = useTestimonialStore.getState();
 
         // Construct the payload
         const payload = {
             businessType: process.env.NEXT_PUBLIC_BUSINESS_TYPE,
-            sku: generateSKU(customerName, true),
-            img: customerImage || "", // Assuming productImage or fallback to default image
+           
+            img: customerImage || "", 
           
             name: customerName,
-            slug: `${customerName.toLowerCase().replace(/\s+/g, '-')}`,
-            title: `Testimonial from ${customerName}`,
-           date: date,
-            ratings: ratings,
+        
+            rating: rating,
             description: description,
            
         };
@@ -42,7 +40,7 @@ export default function SubmitTestimonial() {
 
         try {
             const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/testimonial`,
+                `${process.env.NEXT_PUBLIC_API_URL}/meta-content/testimonial`,
                 payload,
                 {
                     headers: {
@@ -54,8 +52,7 @@ export default function SubmitTestimonial() {
         } catch (error) {
             toast.error('Something went wrong');
         }
-        set({name: ""})
-        set({description: ""})
+     
         
     };
 
