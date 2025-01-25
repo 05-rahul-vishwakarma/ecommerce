@@ -126,7 +126,7 @@ export default function Page() {
   ]);
   return (
     <section className='rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card'>
-      <BasicProductsDetails productName={useProductStore((state) => state.productName) || 'N/A'} />
+      <BasicProductsDetails />
       <ProductImages />
       <Pricing />
       <BrandAndCategory />

@@ -44,7 +44,7 @@ const menuGroups = [
         children: [
           { label: "Analytics", route: "/" },
           { label: "Testimonial List", route: "/testimonial/testimonial-list" },
-          { label: "Testimonial", route: "/testimonial" },
+          { label: "Testimonial", route: "/testimonial/add-testimonial" },
           { label: "Product List", route: "/Products/products-list"},
           { label: "Product Add", route: "/Products/add-product"},
           { label: "Product Ordered", route: "/Products/orderd-products"},

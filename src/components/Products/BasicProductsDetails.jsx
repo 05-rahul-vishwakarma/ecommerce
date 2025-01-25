@@ -1,6 +1,7 @@
 'use client';
 import { useProductStore } from '@/components/Products/store/useProductStore';
 import Image from 'next/image';
+import { setuid } from 'process';
 import { useState } from 'react';
 
 const BasicProductsDetails = () => {
@@ -8,11 +9,12 @@ const BasicProductsDetails = () => {
     productName,
     setProductName,
     productTitle,
+    unit,
+    productImage,
     setProductTitle,
     setUnit,
     setProductImage, setSubType, subType, setDesign, design
   } = useProductStore();
-  const [product, setProduct] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleImageChange = async (e) => {
@@ -38,10 +40,23 @@ const BasicProductsDetails = () => {
       reader.readAsDataURL(file); // Read the file as a data URL (base64 string)
     }
   };
-
+const handleProductNameChange = (e) => {
+  setProductName(e.target.value)
+};
+const handleProductTitleChange = (e) => {
+  setProductTitle(e.target.value)
+};
+const handleUnitChange = (e)  => {
+  setUnit(e.target.value)
+};
+const handleSubTypeChange = (e) => {
+  setSubType(e.target.value)
+}
   const handleChangeDesign = (e) => {
     setDesign(e.target.value)
-  }
+  };
+
+
 
   return (
     <div>
@@ -54,9 +69,9 @@ const BasicProductsDetails = () => {
           <input
             type='text'
             value={productName}
+            onChange={handleProductNameChange}
             placeholder={'Enter the product name'}
             className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-            onChange={(e) => setProductName(e.target.value)}
           />
         </div>
 
@@ -71,7 +86,7 @@ const BasicProductsDetails = () => {
             value={productTitle}
             placeholder={'Enter the product title'}
             className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-            onChange={(e) => setProductTitle(e.target.value)}
+            onChange={handleProductTitleChange}
           />
         </div>
 
@@ -82,9 +97,10 @@ const BasicProductsDetails = () => {
           </label>
           <input
             type='text'
+            value={unit}
             placeholder={'Enter the product unit'}
             className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-            onChange={(e) => setUnit(e.target.value)}
+            onChange={handleUnitChange}
           />
         </div>
 
@@ -95,9 +111,10 @@ const BasicProductsDetails = () => {
           </label>
           <input
             type='text'
+            value={subType}
             placeholder={'Enter the Sub Type Category'}
             className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-            onChange={(e) => setSubType(e.target.value)}
+            onChange={handleSubTypeChange}
           />
         </div>
 
@@ -123,6 +140,7 @@ const BasicProductsDetails = () => {
         </label>
         <input
           type="file"
+          value={productImage}
           accept="image/*"
           className="w-full cursor-pointer rounded-[7px] border-[1.5px] border-stroke bg-transparent outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-[#E2E8F0] file:px-6.5 file:py-[13px] file:text-body-sm file:font-medium file:text-dark-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-dark dark:border-dark-3 dark:bg-dark-2 dark:file:border-dark-3 dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"
           onChange={handleImageChange} // Handle image upload

@@ -12,9 +12,9 @@ export default function Testimonial() {
     setCustomerName,
     setCustomerImage,
     setDate,
-    setRatings,
+    setRating,
     setDescription,
-    ratings,
+    rating,
   } = useTestimonialStore();
 
   const [imagePreview, setImagePreview] = useState(null);
@@ -26,11 +26,11 @@ export default function Testimonial() {
       const formData = new FormData();
       formData.append("ecommerce", file);
 
-      // const response = await fetch("/api/upload", {
-      //   method: "POST",
-      //   body: formData,
-      // // });
-      // const data = await response.json();
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
 
       reader.onloadend = () => {
         const imageUrl = reader.result;
@@ -43,7 +43,7 @@ export default function Testimonial() {
   const handleChangeRatings = (e) => {
     const value = parseFloat(e.target.value);
     if (!isNaN(value) && value <= 5) {
-      setRatings(value);
+      setRating(value);
     } else {
       e.target.value = ""; // Clear the input if the value is invalid
       alert("Please enter a rating between 0 and 5.");
