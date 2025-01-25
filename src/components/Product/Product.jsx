@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useOptimistic, useState } from "react";
+import React, { useEffect, useOptimistic, useState } from "react";
 import Image from "next/image";
 import * as Icon from "@phosphor-icons/react";
 import Marquee from "react-fast-marquee";
@@ -14,6 +14,7 @@ import { useModalCompareContext } from "@/context/ModalCompareContext";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify'
+import axiosInstance from '@/api/Interceptor';
 
 const Product = ({ product }) => {
     const { openModalCart } = useModalCartContext()
@@ -42,6 +43,30 @@ const Product = ({ product }) => {
         openModalCart()
     };
 
+    const addWishList = async (product) => {
+        const payload = {
+            businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
+            productId: {
+                PK: product?.PK,
+                SK: product?.SK
+            }
+        }
+
+        try {
+            const response = await axiosInstance.post(`/catalog/wishlist`, payload);
+            console.log('Wishlist data:', response.data);
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching wishlist:', error.response?.data || error.message);
+            throw error;
+        }
+    };
+
+    const handleAddToWishlist = (e) => {
+        e.stopPropagation();
+        addWishList(product)
+        openModalWishlist(product);
+    };
 
     return (
         <div onClick={() =>
@@ -62,10 +87,9 @@ const Product = ({ product }) => {
                     </div>
                 )}
 
-                {/* Wishlist and Compare Actions */}
-                <div className="list-action-right absolute top-3 right-3 max-lg:hidden">
+                <div onClick={handleAddToWishlist} className="list-action-right absolute top-3 right-3 max-lg:hidden">
                     <div className="add-wishlist-btn w-[32px] h-[32px] flex items-center justify-center rounded-[10px] bg-white text-purple duration-300 relative active">
-                        <div onClick={openModalWishlist} className="tag-action bg-black text-white caption2 px-1.5 py-0.5 rounded-sm">Add To Wishlist</div>
+                        <div className="tag-action bg-black text-white caption2 px-1.5 py-0.5 rounded-sm">Add To Wishlist</div>
                         <Icon.Heart size={18} weight="fill" className="text-white" />
                     </div>
                 </div>
