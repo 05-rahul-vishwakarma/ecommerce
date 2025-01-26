@@ -21,7 +21,29 @@ const BrandAndCategory = () => {
     const handleStatusChange = (e) => {
         setStatus(e.target.value);
     };
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
 
+      const formData = new FormData();
+      formData.append('ecommerce', file);
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      reader.onloadend = () => {
+        const imageUrl = reader.result;
+        setImagePreview(imageUrl);
+        setProductImage(data?.imageUrl);
+      };
+      reader.readAsDataURL(file); // Read the file as a data URL (base64 string)
+    }
+  };
 
     return (
         <div className='flex space-x-3 m-4'>

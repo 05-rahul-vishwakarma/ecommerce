@@ -75,7 +75,7 @@ const ProductForm = () => {
             </div>
 
             <h3 className="text-lg font-medium text-dark dark:text-white ">Additional Information</h3>
-            <div className="grid grid-cols-4 gap-3 hidden ">
+            <div className=" grid-cols-4 gap-3 hidden ">
 
                 <div className="mb-4">
                     <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">

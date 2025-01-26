@@ -1,6 +1,8 @@
 'use client'
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { Router } from "next/router";
 import React, { useState } from "react";
 
 interface Testimonial {
@@ -17,8 +19,15 @@ interface TestimonialTableProps {
 }
 
 const TestimonialTable: React.FC<TestimonialTableProps> = ({ data: initialData }) => {
+  const router = useRouter();
   const [data, setData] = useState<Testimonial[]>(initialData);
 
+  const handleViewTestimonial = async (PK:string, SK: string) => {
+    const encodedPK = encodeURIComponent(PK);
+    const encodedSK = encodeURIComponent(SK);
+ 
+    router.push(`/testimonial/${encodedPK}&${encodedSK}`);
+  };
   const handleDelete = async (PK:string, SK: string) => {
     try {
       const encodedPK = encodeURIComponent(PK);
@@ -58,7 +67,10 @@ const TestimonialTable: React.FC<TestimonialTableProps> = ({ data: initialData }
                 <td className="px-4 py-2 text-left">{item.description}</td>
                 <td className="px-4 py-2 text-center">
                   <div className="flex space-x-4">
-                    <button className="rounded bg-blue-500 px-2 py-1 text-white hover:bg-blue-600">View</button>
+                    <button
+                    onClick={() => handleViewTestimonial(item?.PK, item?.SK)}
+                    className="rounded bg-blue-500 px-2 py-1 text-white hover:bg-blue-600">View</button>
+
                     <button onClick={() => handleDelete(item?.PK, item?.SK)} className="rounded bg-red-500 px-2 py-1 text-white hover:bg-red-600">Delete</button>
                   </div>
                 </td>
@@ -67,7 +79,6 @@ const TestimonialTable: React.FC<TestimonialTableProps> = ({ data: initialData }
             ))}
           </tbody>
         </table>
-
       </div>
     </div>
   )
