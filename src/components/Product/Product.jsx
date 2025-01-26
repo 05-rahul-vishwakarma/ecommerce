@@ -1,84 +1,23 @@
 'use client';
 
-import React, { useEffect, useOptimistic, useState } from "react";
 import Image from "next/image";
 import * as Icon from "@phosphor-icons/react";
 import Marquee from "react-fast-marquee";
 import { useModalWishlistContext } from "@/context/ModalWishlistContext";
 import { useModalQuickviewContext } from "@/context/ModalQuickviewContext";
-import { useCart } from "@/context/CartContext";
 import { useModalCartContext } from "@/context/ModalCartContext";
-import { useWishlist } from "@/context/WishlistContext";
-import { useCompare } from "@/context/CompareContext";
-import { useModalCompareContext } from "@/context/ModalCompareContext";
-import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { toast } from 'react-toastify'
-import { addCart, addWishListProduct } from '@/api/productApis/postApi';
-import { getWishListData } from '@/api/productApis/getPostApi';
+import { handleAddToCart } from '@/services/carts';
+import { handleAddToWishlist } from '@/services/wishlist'
 
 const Product = ({ product }) => {
     const { openModalCart } = useModalCartContext()
     const { openModalWishlist } = useModalWishlistContext()
     const { openQuickview } = useModalQuickviewContext()
-
     const router = useRouter();
-
     const handleQuickviewOpen = () => {
         openQuickview(product)
     }
-
-    function cart() {
-        const payload = {
-            businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
-            productId: {
-                PK: product?.PK,
-                SK: product?.SK
-            },
-            qty: 1,
-            totalAmount: product?.price
-        }
-        try {
-            addCart(payload)
-        } catch (error) {
-            toast.error(error?.message);
-        }
-    }
-
-    const handleAddToCart = () => {
-        const accessToken = Cookies.get("accessToken");
-        if (!accessToken) {
-            toast.error("Please log in to add items to the cart.");
-            router.push("/login"); // Redirect to login page
-            return;
-        }
-        cart();
-        openModalCart()
-    };
-
-    const addWishList = async (product) => {
-        const payload = {
-            businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
-            productId: {
-                PK: product?.PK,
-                SK: product?.SK
-            }
-        }
-        try {
-            addWishListProduct(payload);
-            toast.success('successfully listed')
-        } catch (error) {
-            console.log(error);
-
-        }
-    };
-
-    const handleAddToWishlist = (e) => {
-        e.stopPropagation();
-        addWishList(product)
-        openModalWishlist(product);
-
-    };
 
     return (
         <div onClick={() =>
@@ -99,7 +38,11 @@ const Product = ({ product }) => {
                     </div>
                 )}
 
-                <div onClick={handleAddToWishlist} className="list-action-right absolute top-3 right-3 max-lg:hidden">
+                <div onClick={(e) => {
+                    e.stopPropagation();
+                    handleAddToWishlist(product, openModalWishlist);
+                }}
+                    className="list-action-right absolute top-3 right-3 max-lg:hidden">
                     <div className="add-wishlist-btn w-[32px] h-[32px] flex items-center justify-center rounded-[10px] bg-white text-purple duration-300 relative active">
                         <div className="tag-action bg-black text-white caption2 px-1.5 py-0.5 rounded-sm">Add To Wishlist</div>
                         <Icon.Heart size={18} weight="fill" className="text-white" />
@@ -143,7 +86,7 @@ const Product = ({ product }) => {
                     <div
                         onClick={e => {
                             e.stopPropagation();
-                            handleAddToCart()
+                            handleAddToCart(product, openModalCart)
                         }}
                         className="add-cart-btn w-full text-button-uppercase py-2 text-center rounded-[10px] duration-500 bg-white hover:bg-purple hover:text-white">
                         Add To Cart

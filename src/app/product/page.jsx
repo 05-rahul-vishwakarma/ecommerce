@@ -8,7 +8,6 @@ import { ProductType } from '@/type/ProductType'
 import productData from '@/data/Product.json'
 import MenuFour from '@/components/Header/MenuFour';
 import Product from '@/components/Product/Product';
-import Default from '@/components/Product/Detail/Default';
 import BreadcrumbProduct from '@/components/Breadcrumb/BreadcrumbProduct'
 
 const ProductDefault = () => {

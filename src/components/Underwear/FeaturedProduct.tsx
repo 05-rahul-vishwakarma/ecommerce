@@ -6,11 +6,9 @@ import axios from "axios";
 import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
 import { Navigation, Thumbs, FreeMode } from "swiper/modules";
 import "swiper/css/bundle";
-// import { useCart } from "@/context/CartContext";
 import { useModalCartContext } from "@/context/ModalCartContext";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
-import { toast } from "react-toastify";
+import { handleAddToCart } from "@/services/carts";
 
 interface ImageURL {
   img: string;
@@ -37,9 +35,7 @@ const FeaturedProduct: React.FC = () => {
   const [activeImage, setActiveImage] = useState<string>(""); 
   const [activeSize, setActiveSize] = useState<string>("");
   const [itemQty, setItemQty] = useState<number>(0);
-  // const { addToCart, updateCart, cartState } = useCart();
-  const { openModalCart } = useModalCartContext();
-  const router = useRouter();
+  const { openModalCart } = useModalCartContext()
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -204,7 +200,7 @@ const FeaturedProduct: React.FC = () => {
               </div>
               <button
                 className="button-main w-full text-center bg-white text-purple border border-purple"
-                // onClick={() => handleAddToCart(product)}
+                onClick={() => handleAddToCart(product,openModalCart)}
               >
                 Add To Cart
               </button>
