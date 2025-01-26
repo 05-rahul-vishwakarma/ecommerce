@@ -6,7 +6,7 @@ import axios from "axios";
 import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
 import { Navigation, Thumbs, FreeMode } from "swiper/modules";
 import "swiper/css/bundle";
-import { useCart } from "@/context/CartContext";
+// import { useCart } from "@/context/CartContext";
 import { useModalCartContext } from "@/context/ModalCartContext";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
@@ -37,7 +37,7 @@ const FeaturedProduct: React.FC = () => {
   const [activeImage, setActiveImage] = useState<string>(""); 
   const [activeSize, setActiveSize] = useState<string>("");
   const [itemQty, setItemQty] = useState<number>(0);
-  const { addToCart, updateCart, cartState } = useCart();
+  // const { addToCart, updateCart, cartState } = useCart();
   const { openModalCart } = useModalCartContext();
   const router = useRouter();
 
@@ -70,20 +70,20 @@ const FeaturedProduct: React.FC = () => {
     setActiveImage(selectedImage || ""); // Update the main image based on color selection
   };
 
-  const handleAddToCart = (product: Product) => {
-    const accessToken = Cookies.get("accessToken");
-    if (!accessToken) {
-      toast.error("Please log in to add items to the cart.");
-      router.push("/login");
-      return;
-    }
-    const existingProduct = cartState.cartArray.find((item) => item.id === product.id);
-    if (!existingProduct) {
-      // addToCart(product);
-    }
-    updateCart(product.id, product.quantity, activeSize, activeColor);
-    openModalCart();
-  };
+  // const handleAddToCart = (product: Product) => {
+  //   const accessToken = Cookies.get("accessToken");
+  //   if (!accessToken) {
+  //     toast.error("Please log in to add items to the cart.");
+  //     router.push("/login");
+  //     return;
+  //   }
+  //   const existingProduct = cartState.cartArray.find((item) => item.id === product.id);
+  //   if (!existingProduct) {
+  //     // addToCart(product);
+  //   }
+  //   updateCart(product.id, product.quantity, activeSize, activeColor);
+  //   openModalCart();
+  // };
 
   if (!products.length) return null;
 
@@ -204,7 +204,7 @@ const FeaturedProduct: React.FC = () => {
               </div>
               <button
                 className="button-main w-full text-center bg-white text-purple border border-purple"
-                onClick={() => handleAddToCart(product)}
+                // onClick={() => handleAddToCart(product)}
               >
                 Add To Cart
               </button>

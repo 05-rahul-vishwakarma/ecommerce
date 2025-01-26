@@ -25,7 +25,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
   const { openMenuMobile, handleMenuMobile } = useMenuMobile();
   const [openSubNavMobile, setOpenSubNavMobile] = useState<number | null>(null);
   const { openModalCart } = useModalCartContext();
-  const { cartState } = useCart();
+  const { cartData } = useCart();
   const { openModalWishlist } = useModalWishlistContext();
   const { openModalSearch } = useModalSearchContext();
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -202,8 +202,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         <Link
                           href="/pages/customer-feedbacks"
                           className={`text-secondary duration-300 ${pathname === "/pages/customer-feedbacks"
-                              ? "active"
-                              : ""
+                            ? "active"
+                            : ""
                             }`}
                         >
                           Customer Feedbacks
@@ -259,7 +259,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                 >
                   <Icon.Handbag size={24} color="white" />
                   <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-black bg-white w-4 h-4 flex items-center justify-center rounded-full">
-                    {cartState.cartArray.length}
+                    {cartData?.length}
                   </span>
                 </div>
               </div>
@@ -289,13 +289,13 @@ const MenuFour: React.FC<Props> = ({ props }) => {
 
               {/* Logo */}
               <div className="form-search relative mt-2">
-              <Image
-                src="/logo2.png" // Path relative to the public folder
-                alt="Company Logo"
-                width={60} // Specify width (optional for fixed sizes)
-                height={60} // Specify height (optional for fixed sizes)
-                className="h-full w-auto rounded-lg flex items-center" // Additional styling if needed
-              />
+                <Image
+                  src="/logo2.png" // Path relative to the public folder
+                  alt="Company Logo"
+                  width={60} // Specify width (optional for fixed sizes)
+                  height={60} // Specify height (optional for fixed sizes)
+                  className="h-full w-auto rounded-lg flex items-center" // Additional styling if needed
+                />
               </div>
               <div className="list-nav mt-6">
                 <ul>

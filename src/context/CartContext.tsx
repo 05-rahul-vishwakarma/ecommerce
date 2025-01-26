@@ -1,92 +1,87 @@
-'use client'
+'use client';
 
-// CartContext.tsx
-import React, { createContext, useContext, useState, useReducer, useEffect } from 'react';
-import { ProductType } from '@/type/ProductType';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { getCartListData, getProductListData } from '@/api/productApis/getPostApi';
+import axios from 'axios';
 
-interface CartItem extends ProductType {
-    quantity: number
-    selectedSize: string
-    selectedColor: string
+// Define the type for a cart item
+interface CartItem {
+    totalAmount: ReactNode;
+    id: string;
+    name: string;
+    price: number;
+    quantity: number;
+    selectedSize: string;
+    selectedColor: string;
+    PK: string;
+    SK: string;
+    productId: string; // Product ID from API response
 }
 
-interface CartState {
-    cartArray: CartItem[]
+// Define the type for the context value
+interface CartContextValue {
+    cartData: CartItem[] | undefined;
+    fetchCartData: () => Promise<void>;
+    fetchProductDetails: (PK: string, SK: string) => Promise<void>;
+    productIds: string[]; // New property for product IDs
+    cartProducts: any[];
 }
 
-type CartAction =
-    | { type: 'ADD_TO_CART'; payload: ProductType }
-    | { type: 'REMOVE_FROM_CART'; payload: string }
-    | {
-        type: 'UPDATE_CART'; payload: {
-            itemId: string; quantity: number, selectedSize: string, selectedColor: string
+// Create the context with a default value
+const CartContext = createContext<CartContextValue | undefined>(undefined);
+
+// Define the type for the CartProvider props
+interface CartProviderProps {
+    children: ReactNode;
+}
+
+export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
+    const [cartData, setCartData] = useState<CartItem[] | undefined>(undefined);
+    const [productIds, setProductIds] = useState<string[]>([]); // Store product IDs separately
+    const [cartProducts, setCartProducts] = useState<any[]>([]);
+    const fetchCartData = async () => {
+        try {
+            const response = await getCartListData({});
+            setCartData(response?.data?.items);
+            const extractedProductIds = response?.data?.items?.map((item: CartItem) => item.productId);
+            setProductIds(extractedProductIds);
+            extractedProductIds?.map((data: any) => {
+                console.log(data?.PK);
+                fetchProductDetails(data?.PK, data?.SK)
+            })
+        } catch (error) {
+            console.error('Failed to fetch cart data:', error);
         }
-    }
-    | { type: 'LOAD_CART'; payload: CartItem[] }
-
-interface CartContextProps {
-    cartState: CartState;
-    addToCart: (item: ProductType) => void;
-    removeFromCart: (itemId: string) => void;
-    updateCart: (itemId: string, quantity: number, selectedSize: string, selectedColor: string) => void;
-}
-
-const CartContext = createContext<CartContextProps | undefined>(undefined);
-
-const cartReducer = (state: CartState, action: CartAction): CartState => {
-    switch (action.type) {
-        case 'ADD_TO_CART':
-            const newItem: CartItem = { ...action.payload, quantity: 1, selectedSize: '', selectedColor: '' };
-            return {
-                ...state,
-                cartArray: [...state.cartArray, newItem],
-            };
-        case 'REMOVE_FROM_CART':
-            return {
-                ...state,
-                cartArray: state.cartArray.filter((item) => item.id !== action.payload),
-            };
-        case 'UPDATE_CART':
-            return {
-                ...state,
-                cartArray: state.cartArray.map((item) =>
-                    item.id === action.payload.itemId
-                        ? {
-                            ...item,
-                            quantity: action.payload.quantity,
-                            selectedSize: action.payload.selectedSize,
-                            selectedColor: action.payload.selectedColor
-                        }
-                        : item
-                ),
-            };
-        case 'LOAD_CART':
-            return {
-                ...state,
-                cartArray: action.payload,
-            };
-        default:
-            return state;
-    }
-};
-
-export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [cartState, dispatch] = useReducer(cartReducer, { cartArray: [] });
-
-    const addToCart = (item: ProductType) => {
-        dispatch({ type: 'ADD_TO_CART', payload: item });
     };
 
-    const removeFromCart = (itemId: string) => {
-        dispatch({ type: 'REMOVE_FROM_CART', payload: itemId });
+    const fetchProductDetails = async (PK: string, SK: string) => {
+        try {
+            console.log('yes working');
+            const response = await getProductListData(PK, SK)
+            setCartProducts(response.data?.items)
+        } catch (error) {
+            console.error('Failed to fetch product details:', error);
+            throw error; // Re-throw the error for handling in the calling function
+        }
     };
 
-    const updateCart = (itemId: string, quantity: number, selectedSize: string, selectedColor: string) => {
-        dispatch({ type: 'UPDATE_CART', payload: { itemId, quantity, selectedSize, selectedColor } });
+   
+
+    useEffect(() => {
+        fetchCartData();
+    }, []);
+
+    // Provide the context value
+    const contextValue: CartContextValue = {
+        cartData,
+        fetchCartData,
+        fetchProductDetails,
+        productIds, // Expose product IDs in context
+        cartProducts
     };
 
     return (
-        <CartContext.Provider value={{ cartState, addToCart, removeFromCart, updateCart }}>
+        <CartContext.Provider value={contextValue}>
             {children}
         </CartContext.Provider>
     );

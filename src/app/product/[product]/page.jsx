@@ -11,8 +11,9 @@ export default async function page({ params }) {
 
         const cookieStore = cookies();
         const accessToken = cookieStore.get('accessToken')?.value;
-
-        // Redirect to login if accessToken is not available
+        console.log(accessToken,'product dyanamic page');
+        
+        // Redirect to logilogn if accessToken is not available
         if (!accessToken) {
             toast.error('Login First');
             redirect('/login'); // Redirects to the login page

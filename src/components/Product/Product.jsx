@@ -14,7 +14,8 @@ import { useModalCompareContext } from "@/context/ModalCompareContext";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify'
-import axiosInstance from '@/api/Interceptor';
+import { addCart, addWishListProduct } from '@/api/productApis/postApi';
+import { getWishListData } from '@/api/productApis/getPostApi';
 
 const Product = ({ product }) => {
     const { openModalCart } = useModalCartContext()
@@ -27,6 +28,23 @@ const Product = ({ product }) => {
         openQuickview(product)
     }
 
+    function cart() {
+        const payload = {
+            businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
+            productId: {
+                PK: product?.PK,
+                SK: product?.SK
+            },
+            qty: 1,
+            totalAmount: product?.price
+        }
+        try {
+            addCart(payload)
+        } catch (error) {
+            toast.error(error?.message);
+        }
+    }
+
     const handleAddToCart = () => {
         const accessToken = Cookies.get("accessToken");
         if (!accessToken) {
@@ -34,12 +52,7 @@ const Product = ({ product }) => {
             router.push("/login"); // Redirect to login page
             return;
         }
-        // if (!cartState.cartArray.find(item => item.id === data.id)) {
-        //     addToCart({ ...data });
-        //     updateCart(data.id, data.quantityPurchase, activeSize, activeColor)
-        // } else {
-        //     updateCart(data.id, data.quantityPurchase, activeSize, activeColor)
-        // }
+        cart();
         openModalCart()
     };
 
@@ -51,14 +64,12 @@ const Product = ({ product }) => {
                 SK: product?.SK
             }
         }
-
         try {
-            const response = await axiosInstance.post(`/catalog/wishlist`, payload);
-            console.log('Wishlist data:', response.data);
-            return response.data;
+            addWishListProduct(payload);
+            toast.success('successfully listed')
         } catch (error) {
-            console.error('Error fetching wishlist:', error.response?.data || error.message);
-            throw error;
+            console.log(error);
+
         }
     };
 
@@ -66,6 +77,7 @@ const Product = ({ product }) => {
         e.stopPropagation();
         addWishList(product)
         openModalWishlist(product);
+
     };
 
     return (

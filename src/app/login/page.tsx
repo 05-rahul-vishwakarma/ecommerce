@@ -25,8 +25,6 @@ const Login = () => {
       phoneNo: phoneNo,
       businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
     };
-    console.log(payload);
-
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/user/login`,

@@ -11,6 +11,9 @@ const ModalWishlist = () => {
     const { isModalOpen, closeModalWishlist } = useModalWishlistContext();
     const { wishlistState, removeFromWishlist } = useWishlist()
 
+    console.log(wishlistState);
+    
+
     return (
         <>
             <div className={`modal-wishlist-block`} onClick={closeModalWishlist}>
