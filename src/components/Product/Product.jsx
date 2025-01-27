@@ -15,7 +15,9 @@ const Product = ({ product }) => {
     const { openModalWishlist } = useModalWishlistContext()
     const { openQuickview } = useModalQuickviewContext()
     const router = useRouter();
-    const handleQuickviewOpen = () => {
+
+    const handleQuickviewOpen = (product) => {
+        console.log('yes working')
         openQuickview(product)
     }
 
@@ -78,7 +80,7 @@ const Product = ({ product }) => {
                     <div
                         onClick={(e) => {
                             e.stopPropagation()
-                            handleQuickviewOpen()
+                            handleQuickviewOpen(product)
                         }}
                         className="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-[10px] duration-300 bg-white hover:bg-purple hover:text-white">
                         Quick View

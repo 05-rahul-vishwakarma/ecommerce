@@ -4,11 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import * as Icon from "@phosphor-icons/react/dist/ssr";
-import productData from '@/data/Product.json'
-import { ProductType } from '@/type/ProductType';
 import { useModalCartContext } from '@/context/ModalCartContext'
-import { countdownTime } from '@/store/countdownTime'
-import CountdownTimeType from '@/type/CountdownType';
 import { useProductStore } from '../Product/store/useProduct';
 import { useCart } from '@/context/CartContext';
 
@@ -16,8 +12,6 @@ const ModalCart = () => {
     const [activeTab, setActiveTab] = useState<string | undefined>('')
     const { isModalOpen, closeModalCart } = useModalCartContext();
     const { fetchProducts, products } = useProductStore();
-    let [totalCart, setTotalCart] = useState<number>(0)
-    let [discountCart, setDiscountCart] = useState<number>(0)
     const { cartData, cartProducts } = useCart();
 
     useEffect(() => {
@@ -173,7 +167,7 @@ const ModalCart = () => {
                             </div> */}
                             <div className="flex items-center justify-between pt-6 px-6">
                                 <div className="heading5">Subtotal</div>
-                                <div className="heading5">${totalCart}.00</div>
+                                <div className="heading5">${cartProducts?.length}.00</div>
                             </div>
                             <div className="block-button text-center p-6">
                                 <div className="flex items-center gap-4">

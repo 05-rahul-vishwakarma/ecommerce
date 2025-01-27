@@ -2,7 +2,14 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { getCartListData, getProductListData } from '@/api/productApis/getPostApi';
-import axios from 'axios';
+
+// Define the type for a product item
+interface ProductItem {
+    PK: string;
+    SK: string;
+    img: string;
+    name: string;
+}
 
 // Define the type for a cart item
 interface CartItem {
@@ -15,7 +22,15 @@ interface CartItem {
     selectedColor: string;
     PK: string;
     SK: string;
-    productId: string; // Product ID from API response
+    productId: {
+        PK: string;
+        SK: string;
+    };
+}
+
+// Define the merged cart item type
+interface MergedCartItem extends CartItem {
+    image?: string;
 }
 
 // Define the type for the context value
@@ -23,8 +38,9 @@ interface CartContextValue {
     cartData: CartItem[] | undefined;
     fetchCartData: () => Promise<void>;
     fetchProductDetails: (PK: string, SK: string) => Promise<void>;
-    productIds: string[]; // New property for product IDs
-    cartProducts: any[];
+    productIds: string[];
+    cartProducts: ProductItem[];
+    mergedCartData: MergedCartItem[];
 }
 
 // Create the context with a default value
@@ -37,18 +53,25 @@ interface CartProviderProps {
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const [cartData, setCartData] = useState<CartItem[] | undefined>(undefined);
-    const [productIds, setProductIds] = useState<string[]>([]); // Store product IDs separately
-    const [cartProducts, setCartProducts] = useState<any[]>([]);
+    const [productIds, setProductIds] = useState<string[]>([]);
+    const [cartProducts, setCartProducts] = useState<ProductItem[]>([]);
+    const [mergedCartData, setMergedCartData] = useState<MergedCartItem[]>([]);
+
     const fetchCartData = async () => {
         try {
             const response = await getCartListData({});
-            setCartData(response?.data?.items);
-            const extractedProductIds = response?.data?.items?.map((item: CartItem) => item.productId);
+            const cartItems: CartItem[] = response?.data?.items || [];
+            setCartData(cartItems);
+
+            const extractedProductIds = cartItems.map(item => item.productId.PK);
             setProductIds(extractedProductIds);
-            extractedProductIds?.map((data: any) => {
-                console.log(data?.PK);
-                fetchProductDetails(data?.PK, data?.SK)
-            })
+
+            // Fetch details for all products
+            cartItems.forEach(({ productId }) => {
+                if (productId.PK && productId.SK) {
+                    fetchProductDetails(productId.PK, productId.SK);
+                }
+            });
         } catch (error) {
             console.error('Failed to fetch cart data:', error);
         }
@@ -56,16 +79,33 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     const fetchProductDetails = async (PK: string, SK: string) => {
         try {
-            console.log('yes working');
-            const response = await getProductListData(PK, SK)
-            setCartProducts(response.data?.items)
+            const response = await getProductListData(PK, SK);
+            const productItems: ProductItem[] = response.data?.items || [];
+            setCartProducts(prev => [...prev, ...productItems]);
         } catch (error) {
             console.error('Failed to fetch product details:', error);
-            throw error; // Re-throw the error for handling in the calling function
         }
     };
 
-   
+    // Merge cartData and cartProducts based on productId (PK and SK)
+    useEffect(() => {
+        if (cartData && cartProducts.length > 0) {
+            const mergedData: MergedCartItem[] = cartData.map(cartItem => {
+                const product = cartProducts.find(
+                    product =>
+                        product.PK === cartItem.productId.PK &&
+                        product.SK === cartItem.productId.SK
+                );
+                return {
+                    ...cartItem,
+                    image: product?.img || 'placeholder-image-url', // Provide a fallback image
+                    name: product?.name || 'Unknown Product',       // Provide a fallback name
+                };
+            });
+            setMergedCartData(mergedData);
+        }
+    }, [cartData, cartProducts]);
+    
 
     useEffect(() => {
         fetchCartData();
@@ -76,15 +116,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         cartData,
         fetchCartData,
         fetchProductDetails,
-        productIds, // Expose product IDs in context
-        cartProducts
+        productIds,
+        cartProducts,
+        mergedCartData,
     };
 
-    return (
-        <CartContext.Provider value={contextValue}>
-            {children}
-        </CartContext.Provider>
-    );
+    return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>;
 };
 
 export const useCart = () => {
