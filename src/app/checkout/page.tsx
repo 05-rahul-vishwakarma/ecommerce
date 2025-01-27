@@ -21,7 +21,7 @@ const Checkout = () => {
         <div className="container">
           <div className="content-main flex flex-col md:flex-row justify-between gap-5">
             {/* Login Section */}
-            {/* <div className="left md:w-1/2 w-full">
+            <div className="left md:w-1/2 w-full">
               <Link
                 href={'/login'}
                 className="login bg-surface py-3 px-4 flex justify-between rounded-lg hover:text-purple"
@@ -62,7 +62,7 @@ const Checkout = () => {
                 </form>
               </div>
               <PersonalForm />
-            </div> */}
+            </div>
             {/* Payment Section */}
             <PaymentBar />
           </div>

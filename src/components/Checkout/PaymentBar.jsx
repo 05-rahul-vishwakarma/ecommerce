@@ -1,44 +1,35 @@
+'use client';
+import useCartStore from '@/globalStore/useCartStore';
+import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
-import React from 'react'
+import React, { useState } from 'react';
 
 export default function PaymentBar() {
+    const { mergedCart, updateCartItemQuantity, updateCartItemColor } = useCartStore();
+    const [editingQuantity, setEditingQuantity] = useState(null);
+    const discount = 10;
+    const ship = 5;
 
-    const discount = 10; // Static discount value
-    const ship = 5; // Static shipping value
+    const handleQuantityChange = (SK, newQuantity) => {
+        updateCartItemQuantity(SK, newQuantity);
+    };
 
-    const staticCartData = [
-        {
-            id: 1,
-            name: 'Orange Ribbon',
-            price: 50,
-            quantity: 2,
-            thumbImage: ['https://res.cloudinary.com/dxgapyggk/image/upload/v1737728286/uploads/1737728283464_IMG_01902.jpg.jpg'],
-            selectedSize: 'Medium',
-            selectedColor: 'Orange',
-        },
-        {
-            id: 2,
-            name: 'Blue Ribbon',
-            price: 30,
-            quantity: 1,
-            thumbImage: ['https://res.cloudinary.com/dxgapyggk/image/upload/v1737728286/uploads/1737728283464_IMG_01902.jpg.jpg'],
-            selectedSize: 'Small',
-            selectedColor: 'Blue',
-        },
-    ];
+    const handleColorChange = (SK, newColor) => {
+        updateCartItemColor(SK, newColor);
+    };
 
-    const totalCart = staticCartData.reduce((total, item) => total + item.price * item.quantity, 0);
+    const totalCart = mergedCart.reduce((total, item) => total + item.totalAmount * item.qty, 0);
 
     return (
         <div className="right md:w-5/12 w-full ml-5">
             <div className="checkout-block">
                 <div className="heading5 pb-3">Your Order</div>
                 <div className="list-product-checkout">
-                    {staticCartData.map((product) => (
-                        <div key={product.id} className="item flex flex-col md:flex-row items-center justify-between w-full pb-5 border-b border-line gap-6 mt-5">
+                    {mergedCart?.map((product, i) => (
+                        <div key={i} className="item flex flex-col md:flex-row items-center justify-between w-full pb-5 border-b border-line gap-6 mt-5">
                             <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden">
                                 <Image
-                                    src={product.thumbImage[0]}
+                                    src={product?.image}
                                     width={500}
                                     height={500}
                                     alt='img'
@@ -49,25 +40,56 @@ export default function PaymentBar() {
                                 <div>
                                     <div className="name text-title">{product.name}</div>
                                     <div className="caption1 text-secondary mt-2">
-                                        <span className='size capitalize'>{product.selectedSize}</span>
+                                        <span className='size capitalize'>{product.selectedSize || "product size"}</span>
                                         <span>/</span>
-                                        <span className='color capitalize'>{product.selectedColor}</span>
+                                        <span className='color capitalize'>{product.selectedColor || "product color"}</span>
+                                    </div>
+                                    <div className="color-options mt-2">
+                                        {product.imageUrl?.map((image, index) => (
+                                            <button
+                                                key={index}
+                                                className={`w-6 h-6 rounded-sm  mr-2 ${
+                                                    product.selectedColor === image.color.name
+                                                        ? 'border-blue-500'
+                                                        : 'border-gray-300'
+                                                }`}
+                                                style={{ backgroundColor: image.color.clrCode }}
+                                                onClick={() => handleColorChange(product.SK, image.color.name)}
+                                                title={image.color.name}
+                                            />
+                                        ))}
                                     </div>
                                 </div>
                                 <div className="text-title">
-                                    <span className='quantity'>{product.quantity}</span>
+                                    {editingQuantity === product.SK ? (
+                                        <input
+                                            type="number"
+                                            value={product.qty}
+                                            onChange={(e) => handleQuantityChange(product.SK, parseInt(e.target.value))}
+                                            onBlur={() => setEditingQuantity(null)}
+                                            min="1"
+                                            className="w-16 border border-line rounded px-2 py-1"
+                                        />
+                                    ) : (
+                                        <span
+                                            className='quantity cursor-pointer'
+                                            onClick={() => setEditingQuantity(product.SK)}
+                                        >
+                                            {product.qty}
+                                        </span>
+                                    )}
                                     <span className='px-1'>x</span>
-                                    <span>${product.price}.00</span>
+                                    <span>${product.totalAmount}.00</span>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-                <div className="discount-block py-5 flex justify-between border-b border-line">
+                <div className="discount-block py-5 flex justify-between border-b border-line hidden">
                     <div className="text-title">Discounts</div>
                     <div className="text-title">-${discount}.00</div>
                 </div>
-                <div className="ship-block py-5 flex justify-between border-b border-line">
+                <div className="ship-block py-5 flex justify-between border-b border-line hidden">
                     <div className="text-title">Shipping</div>
                     <div className="text-title">${ship}.00</div>
                 </div>
@@ -77,5 +99,5 @@ export default function PaymentBar() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
