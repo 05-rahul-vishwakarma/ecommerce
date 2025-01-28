@@ -37,4 +37,6 @@
   "exclude": [
     "node_modules"
   ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/testimonial/add-testimonial/page.jsx"],
+  "exclude": ["node_modules"]
 }

@@ -84,6 +84,13 @@ const menuGroups = [
            {label: "View Blog",route:"/blogs/View-Blog"},
           ],
         },
+          { label: "Testimonial List", route: "/testimonial/testimonial-list" },
+          { label: "Testimonial", route: "/testimonial/add-testimonial" },
+          { label: "Product List", route: "/Products/products-list"},
+          { label: "Product Add", route: "/Products/add-product"},
+          { label: "Product Ordered", route: "/Products/orderd-products"},
+        ],
+      },
       {
         icon: (
           <svg
@@ -415,6 +422,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </div>
             ))}
           </nav>
+          
           {/* <!-- Sidebar Menu --> */}
         </div>
       </aside>
