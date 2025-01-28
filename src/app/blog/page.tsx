@@ -23,7 +23,7 @@ export default function page() {
                 <MenuFour props="bg-transparent" />
             </div>
             <div className='blog grid md:py-20 py-10'>
-                
+
                 {/* Blog Content */}
                 <main className="container mx-auto px-4 py-8">
                     <article className="max-w-3xl mx-auto">
@@ -35,7 +35,7 @@ export default function page() {
                         {/* Author Info */}
                         <div className="flex items-center space-x-4 mb-6">
                             <img
-                                src="https://via.placeholder.com/40"
+                                src="images/avatar/avatar1.png"
                                 alt="Author"
                                 className="w-10 h-10 rounded-full"
                             />
@@ -67,35 +67,29 @@ export default function page() {
                         {/* Featured Image */}
                         <figure className="mb-6">
                             <img
-                                src="/images/blg.png"
-                                alt="Yoga"
+                                src="/blog5.jpg"
+                                alt="blog"
                                 className="rounded-lg"
                             />
                             <figcaption className="text-sm text-gray-500 mt-2 text-center">
-                                Pexels-Vlada Karpovich
+                            Perfect for Crafting!
                             </figcaption>
                         </figure>
 
                         {/* Blog Text */}
                         <div className="prose max-w-none text-gray-700">
                             <p>
-                                Habits matter. If you’ve ever tried breaking a bad habit, you know
-                                all too well how ingrained they are.
+                            This ribbon is just what I needed for my DIY projects. It’s easy to cut, doesn’t fray, and ties beautifully. Whether for decorations or handmade gifts, this ribbon never disappoints.
                             </p>
                             <p>
-                                Here’s a look at some daily, monthly, and yearly habits to help
-                                kickstart your quest. Just remember that everyone’s version of
-                                happiness is a little different, and so is their path to achieving
-                                it.
+                            I am absolutely delighted with this ribbon! The quality is top-notch, and the colors are vibrant and exactly as shown in the photos. It’s perfect for all my crafting projects, from gift wrapping to decorations. 
                             </p>
                             <p>
-                                If some of these habits create added stress or just don’t fit your
-                                lifestyle, ditch them. With a little time and practice, you’ll
-                                figure out what does and doesn’t work for you.
+                            The texture is smooth, making it easy to work with, and it holds its shape beautifully. I’ve received so many compliments on the finished products I’ve created using it. Highly recommend this ribbon for anyone looking to add a touch of elegance to their projects!
                             </p>
 
-                            <h2>Daily habits</h2>
-                            <p>Most adults need at least 7 hours of sleep every night...</p>
+                            <h2>Beautiful and High Quality!</h2>
+                            <p>I absolutely love this ribbon! The material is soft yet durable, and the colors are so rich and vibrant. It added the perfect touch to my gift wrapping, and I’ve already ordered more for future projects. Highly recommended!</p>
                         </div>
                     </article>
                 </main>
