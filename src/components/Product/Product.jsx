@@ -9,15 +9,17 @@ import { useModalCartContext } from "@/context/ModalCartContext";
 import { useRouter } from "next/navigation";
 import { handleAddToCart } from '@/services/carts';
 import { handleAddToWishlist } from '@/services/wishlist'
+import { useWishlist } from "@/context/WishlistContext";
 
 const Product = ({ product }) => {
     const { openModalCart } = useModalCartContext()
     const { openModalWishlist } = useModalWishlistContext()
     const { openQuickview } = useModalQuickviewContext()
+    const { addToWishlist } = useWishlist()
+
     const router = useRouter();
 
     const handleQuickviewOpen = (product) => {
-        console.log('yes working')
         openQuickview(product)
     }
 
@@ -42,7 +44,9 @@ const Product = ({ product }) => {
 
                 <div onClick={(e) => {
                     e.stopPropagation();
-                    handleAddToWishlist(product, openModalWishlist);
+                    addToWishlist(product);
+                    openModalWishlist();
+                    // handleAddToWishlist(product, openModalWishlist, addToWishlist);
                 }}
                     className="list-action-right absolute top-3 right-3 max-lg:hidden">
                     <div className="add-wishlist-btn w-[32px] h-[32px] flex items-center justify-center rounded-[10px] bg-white text-purple duration-300 relative active">

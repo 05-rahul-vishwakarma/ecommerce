@@ -7,13 +7,19 @@ import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { useModalCartContext } from '@/context/ModalCartContext'
 import { useProductStore } from '../Product/store/useProduct';
 import { useCart } from '@/context/CartContext';
+import useCartStore from '@/globalStore/useCartStore';
 
 const ModalCart = () => {
     const [activeTab, setActiveTab] = useState<string | undefined>('')
     const { isModalOpen, closeModalCart } = useModalCartContext();
     const { fetchProducts, products } = useProductStore();
-    const { cartData, cartProducts } = useCart();
+    const { mergedCart , removeProductFromCart} = useCartStore();
 
+    console.log(mergedCart);
+    
+
+    const subtotal = mergedCart.reduce((total: any, item: any) => total + item.totalAmount * item.qty, 0);
+    
     useEffect(() => {
         fetchProducts();
     }, []);
@@ -22,7 +28,6 @@ const ModalCart = () => {
         setActiveTab(tab)
     }
 
-    let moneyForFreeship = 150;
 
 
 
@@ -37,8 +42,8 @@ const ModalCart = () => {
                     <div className="left w-1/2 border-r border-line py-6 max-md:hidden">
                         <div className="heading5 px-6 pb-3">You May Also Like</div>
                         <div className="list px-6">
-                            {products.slice(0, 3).map((product) => (
-                                <div key={product.SK} className="item py-5 flex items-center justify-between gap-3 border-b border-line">
+                            {products.slice(0, 3).map((product, i) => (
+                                <div key={i} className="item py-5 flex items-center justify-between gap-3 border-b border-line">
                                     <div className="infor flex items-center gap-5">
                                         <div className="bg-img">
                                             <Image
@@ -86,44 +91,21 @@ const ModalCart = () => {
                                 <Icon.X size={14} />
                             </div>
                         </div>
-                        {/* <div className="time px-6">
-                            <div className=" flex items-center gap-3 px-5 py-3 bg-green rounded-lg">
-                                <p className='text-3xl'>🔥</p>
-
-                            </div>
-                        </div> */}
-                        {/* <div className="heading banner mt-3 px-6">
-                            <div className="text">Buy <span className="text-button"> $<span className="more-price">{moneyForFreeship - totalCart > 0 ? (<>{moneyForFreeship - totalCart}</>) : (0)}</span>.00 </span>
-                                <span>more to get </span>
-                                <span className="text-button">freeship</span></div>
-                            <div className="tow-bar-block mt-3">
-                                <div
-                                    className="progress-line"
-                                    style={{ width: totalCart <= moneyForFreeship ? `${(totalCart / moneyForFreeship) * 100}%` : `100%` }}
-                                ></div>
-                            </div>
-                        </div> */}
                         <div className="h-[70vh] px-6 overflow-y-auto ">
                             {
-                                cartProducts?.map((product: any) => {
+                                mergedCart?.map((product: any, i: number) => {
                                     return (
-                                        <div key={product.id} className='item py-5 flex items-center justify-between gap-3 border-b border-line'>
+                                        <div key={i} className='item py-5 flex items-center justify-between gap-3 border-b border-line'>
                                             <div className="infor flex items-center gap-3 w-full">
                                                 <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden">
-                                                    <Image
-                                                        src={product.img}
-                                                        width={300}
-                                                        height={300}
-                                                        alt={product.name}
-                                                        className='w-full h-full'
-                                                    />
+                                                    <Image src={product?.img || ""} width={1000} height={1000} alt={product.name} className="w-full h-full object-cover rounded-lg" />
                                                 </div>
                                                 <div className='w-full'>
                                                     <div className="flex items-center justify-between w-full">
-                                                        <div className="name text-button">{product.name}</div>
+                                                        <div className="name text-button">{product?.name}</div>
                                                         <div
                                                             className="remove-cart-btn caption1 font-semibold text-red underline cursor-pointer"
-                                                        // onClick={() => removeFromCart(product.id)}
+                                                        onClick={() => removeProductFromCart(product?.PK,product?.SK)}
                                                         >
                                                             Remove
                                                         </div>
@@ -132,7 +114,7 @@ const ModalCart = () => {
                                                         <div className="flex items-center text-secondary2 capitalize">
                                                             {/* {product.selectedSize || product.sizes[0]}/{product.selectedColor || product.variation[0].color} */}
                                                         </div>
-                                                        <div className="product-price text-title">${product?.price}.00</div>
+                                                        <div className="product-price text-title">${product?.totalAmount}.00</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,7 +149,7 @@ const ModalCart = () => {
                             </div> */}
                             <div className="flex items-center justify-between pt-6 px-6">
                                 <div className="heading5">Subtotal</div>
-                                <div className="heading5">${cartProducts?.length}.00</div>
+                                <div className="heading5">${subtotal}.00</div>
                             </div>
                             <div className="block-button text-center p-6">
                                 <div className="flex items-center gap-4">

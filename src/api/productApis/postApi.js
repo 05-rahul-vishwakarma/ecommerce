@@ -6,7 +6,7 @@ export const addWishListProduct = async (payload) => {
         const response = await axios.post(addWishList, payload, {
             headers: getAuthHeaders()
         })
-        return response;
+        return response?.data?.data;
     } catch (error) {
         return error;
     }

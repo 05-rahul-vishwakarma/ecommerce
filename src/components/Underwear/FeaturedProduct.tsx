@@ -200,7 +200,7 @@ const FeaturedProduct: React.FC = () => {
               </div>
               <button
                 className="button-main w-full text-center bg-white text-purple border border-purple"
-                onClick={() => handleAddToCart(product,openModalCart)}
+                onClick={() => handleAddToCart(product,openModalCart,itemQty)}
               >
                 Add To Cart
               </button>

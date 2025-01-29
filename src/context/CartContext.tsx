@@ -23,6 +23,7 @@ interface ProductItem {
 
 // Define the type for a cart item
 interface CartItem {
+    totalAmount: any;
     id: string;
     name: string;
     price: number;
@@ -62,7 +63,6 @@ interface CartContextValue {
     fetchCartData: () => Promise<void>;
     productIds: string[];
     cartProducts: ProductItem[];
-    mergedCartData: MergedCartItem[];
 }
 
 // Create the context with a default value
@@ -84,52 +84,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
             const response = await getCartListData({});
             const cartItems: CartItem[] = response?.data?.items || [];
             setCartData(cartItems);
-
-            const extractedProductIds = cartItems.map(item => item.productId.PK);
-            setProductIds(extractedProductIds);
-
-            // Fetch details for all products
-            const productDetails = await Promise.all(
-                cartItems.map(({ productId }) =>
-                    getProductListData(productId.PK, productId.SK)
-                )
-            );
-
-            const products = productDetails.map(response => response.data?.items || []).flat();
-            setCartProducts(products);
+            setCart(cartItems);
         } catch (error) {
             console.error('Failed to fetch cart data:', error);
         }
     }, []);
-
-    const mergedCartData = useMemo(() => {
-        if (!cartData || cartProducts.length === 0) return [];
-
-        return cartData.map(cartItem => {
-            const product = cartProducts.find(
-                product =>
-                    product.PK === cartItem.productId.PK &&
-                    product.SK === cartItem.productId.SK
-            );
-            const qty = cartItem.quantity || 1;
-            const totalAmount = qty * cartItem.price;
-
-            return {
-                ...cartItem,
-                qty,
-                totalAmount,
-                image: product?.img || 'placeholder-image-url', // Provide a fallback image
-                name: product?.name || cartItem.name,           // Fallback to cartItem name
-                imageUrl: product?.imageURLs || [],             // Provide fallback empty array
-            };
-        });
-    }, [cartData, cartProducts]);
-
-    useEffect(() => {
-        if (mergedCartData.length > 0) {
-            setCart(mergedCartData);
-        }
-    }, [mergedCartData, setCart]);
 
     useEffect(() => {
         fetchCartData();
@@ -141,7 +100,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         fetchCartData,
         productIds,
         cartProducts,
-        mergedCartData,
     };
 
     return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>;

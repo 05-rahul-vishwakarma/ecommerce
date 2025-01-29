@@ -14,6 +14,7 @@ import { useModalWishlistContext } from "@/context/ModalWishlistContext";
 import { useModalSearchContext } from "@/context/ModalSearchContext";
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
+import useCartStore from "@/globalStore/useCartStore";
 
 interface Props {
   props: string;
@@ -30,6 +31,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
   const { openModalSearch } = useModalSearchContext();
   const [searchKeyword, setSearchKeyword] = useState("");
   const router = useRouter();
+  const { mergedCart } = useCartStore();
 
   const handleSearch = (value: string) => {
     router.push(`/search-result?query=${value}`);
@@ -259,7 +261,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                 >
                   <Icon.Handbag size={24} color="white" />
                   <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-black bg-white w-4 h-4 flex items-center justify-center rounded-full">
-                    {cartData?.length}
+                    {mergedCart?.length}
                   </span>
                 </div>
               </div>

@@ -12,7 +12,7 @@ const ModalWishlist = () => {
     const { wishlistState, removeFromWishlist } = useWishlist()
 
     console.log(wishlistState);
-    
+
 
     return (
         <>
@@ -31,12 +31,12 @@ const ModalWishlist = () => {
                         </div>
                     </div>
                     <div className="list-product px-6">
-                        {wishlistState.wishlistArray.map((product,i) => (
+                        {wishlistState?.wishlistArray?.map((product: any, i: number) => (
                             <div key={i} className='item py-5 flex items-center justify-between gap-3 border-b border-line'>
                                 <div className="infor flex items-center gap-5">
                                     <div className="bg-img">
                                         <Image
-                                            src={product.images[0]}
+                                            src={'/image3.png'}
                                             width={300}
                                             height={300}
                                             alt={product.name}
@@ -51,7 +51,7 @@ const ModalWishlist = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="remove-wishlist-btn caption1 font-semibold text-red underline cursor-pointer" onClick={() => removeFromWishlist(product.id)}>
+                                <div className="remove-wishlist-btn caption1 font-semibold text-red underline cursor-pointer" onClick={() => removeFromWishlist(product?.PK , product?.SK)}>
                                     Remove
                                 </div>
                             </div>
