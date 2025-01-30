@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import SubmitTestimonial from "./submitTestimonial";
 import { useTestimonialStore } from "./store/testimonialStore";
+import Image from "next/image";
 
 export default function ViewTestimonial() {
   const [imagePreview, setImagePreview] = useState("");
