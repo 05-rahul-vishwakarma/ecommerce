@@ -8,25 +8,24 @@ import { useModalCartContext } from '@/context/ModalCartContext'
 import { useProductStore } from '../Product/store/useProduct';
 import { useCart } from '@/context/CartContext';
 import useCartStore from '@/globalStore/useCartStore';
+import { fetchAndMergeCartData } from '@/services/carts'
 
 const ModalCart = () => {
     const [activeTab, setActiveTab] = useState<string | undefined>('')
     const { isModalOpen, closeModalCart } = useModalCartContext();
     const { fetchProducts, products } = useProductStore();
-    const { mergedCart , removeProductFromCart} = useCartStore();
+    const { mergedCart, removeProductFromCart } = useCartStore();
+    const subtotal = mergedCart?.reduce((total: any, item: any) => total + item?.totalAmount * item?.qty, 0);
 
-    console.log(mergedCart);
-    
-
-    const subtotal = mergedCart.reduce((total: any, item: any) => total + item.totalAmount * item.qty, 0);
-    
     useEffect(() => {
+        fetchAndMergeCartData();
         fetchProducts();
     }, []);
 
     const handleActiveTab = (tab: string) => {
         setActiveTab(tab)
     }
+
 
 
 
@@ -42,12 +41,12 @@ const ModalCart = () => {
                     <div className="left w-1/2 border-r border-line py-6 max-md:hidden">
                         <div className="heading5 px-6 pb-3">You May Also Like</div>
                         <div className="list px-6">
-                            {products.slice(0, 3).map((product, i) => (
+                            {products?.slice(0, 3)?.map((product, i) => (
                                 <div key={i} className="item py-5 flex items-center justify-between gap-3 border-b border-line">
                                     <div className="infor flex items-center gap-5">
                                         <div className="bg-img">
                                             <Image
-                                                src={product.imageURLs[0].img} // Using the first image from imageURLs
+                                                src={product?.img} // Using the first image from imageURLs
                                                 width={300}
                                                 height={300}
                                                 alt={product.name}
@@ -91,37 +90,46 @@ const ModalCart = () => {
                                 <Icon.X size={14} />
                             </div>
                         </div>
-                        <div className="h-[70vh] px-6 overflow-y-auto ">
-                            {
-                                mergedCart?.map((product: any, i: number) => {
-                                    return (
-                                        <div key={i} className='item py-5 flex items-center justify-between gap-3 border-b border-line'>
-                                            <div className="infor flex items-center gap-3 w-full">
-                                                <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden">
-                                                    <Image src={product?.img || ""} width={1000} height={1000} alt={product.name} className="w-full h-full object-cover rounded-lg" />
+                        <div className="h-[65vh] px-6 overflow-y-scroll">
+                            {mergedCart?.map((product: any, i: number) => {
+                                // Safely access productDetails
+                                const productDetail = product?.productDetails?.[0] || {};
+
+                                return (
+                                    <div key={i} className='item py-5 flex items-center justify-between gap-3 border-b border-line'>
+                                        <div className="infor flex items-center gap-3 w-full">
+                                            <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden">
+                                                <Image
+                                                    src={productDetail?.img || "/image3.png"} // Fallback image if img is undefined
+                                                    width={1000}
+                                                    height={1000}
+                                                    alt={productDetail?.name || "Product Image"} // Fallback alt text
+                                                    className="w-full h-full object-cover rounded-lg"
+                                                />
+                                            </div>
+                                            <div className='w-full'>
+                                                <div className="flex items-center justify-between w-full">
+                                                    <div className="name text-button">
+                                                        {productDetail?.name || "Product Name"} {/* Fallback name */}
+                                                    </div>
+                                                    <div
+                                                        className="remove-cart-btn caption1 font-semibold text-red underline cursor-pointer"
+                                                        onClick={() => removeProductFromCart(product?.PK, product?.SK)}
+                                                    >
+                                                        Remove
+                                                    </div>
                                                 </div>
-                                                <div className='w-full'>
-                                                    <div className="flex items-center justify-between w-full">
-                                                        <div className="name text-button">{product?.name}</div>
-                                                        <div
-                                                            className="remove-cart-btn caption1 font-semibold text-red underline cursor-pointer"
-                                                        onClick={() => removeProductFromCart(product?.PK,product?.SK)}
-                                                        >
-                                                            Remove
-                                                        </div>
+                                                <div className="flex items-center justify-between gap-2 mt-3 w-full">
+                                                    <div className="flex items-center text-secondary2 capitalize">
+                                                        {/* {product.selectedSize || product.sizes[0]}/{product.selectedColor || product.variation[0].color} */}
                                                     </div>
-                                                    <div className="flex items-center justify-between gap-2 mt-3 w-full">
-                                                        <div className="flex items-center text-secondary2 capitalize">
-                                                            {/* {product.selectedSize || product.sizes[0]}/{product.selectedColor || product.variation[0].color} */}
-                                                        </div>
-                                                        <div className="product-price text-title">${product?.totalAmount}.00</div>
-                                                    </div>
+                                                    <div className="product-price text-title">${product?.totalAmount}.00</div>
                                                 </div>
                                             </div>
                                         </div>
-                                    )
-                                })
-                            }
+                                    </div>
+                                );
+                            })}
                         </div>
                         <div className="footer-modal bg-white absolute bottom-0 left-0 w-full">
                             {/* <div className="flex items-center justify-center lg:gap-14 gap-8 px-6 py-4 border-b border-line">

@@ -4,22 +4,20 @@ import { getWishList, getAuthHeaders, getCartList, getProductList } from '@/api/
 
 export const getProductListData = async (PK, SK) => {
     const payload = {
-        
+
     }
     try {
-        const response = await axios.post(getProductList, {
-            params: {
-                PK: PK,
-                SK: SK,
-            },
+        const url = getProductList(PK, SK);
+        const response = await axios.post(url, {
             headers: getAuthHeaders(),
-        })
-        return response?.data;
+        });
+        return response.data;
     } catch (error) {
         console.error('Error fetching product list data:', error);
         throw error; // Re-throw the error for handling
     }
 };
+
 
 
 export const getWishListData = async (payload) => {
