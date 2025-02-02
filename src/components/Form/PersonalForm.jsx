@@ -1,31 +1,71 @@
 'use client'
 import React, { useState } from 'react'
 import * as Icon from "@phosphor-icons/react/dist/ssr";
+import { updateProfile, getAuthHeaders } from '@/api/baseApi';
 
 export default function PersonalForm() {
     const [activePayment, setActivePayment] = useState('credit-card');
+    const [message, setMessage] = useState("")
 
     const handlePayment = (item) => {
         setActivePayment(item);
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.target)
+        const data = Object.fromEntries(formData)
+  
+        const payload = {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            city: data.city,
+            address_1: data.apartment,
+            state: data.country,
+            pincode: data.postal
+          };
+    
+        try {
+          const response = await fetch(updateProfile, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              ...getAuthHeaders(),
+            },
+            body: JSON.stringify(payload),
+          })
+    
+          if (!response.ok) {
+            console.log(response)
+            const errorData = await response.json()
+            throw new Error(errorData.message || "Failed to update profile")
+          }
+    
+          const result = await response.json()
+          setMessage("Profile updated successfully")
+        } catch (error) {
+          console.error("Error updating profile:", error)
+          setMessage(error.message || "Failed to update profile")
+        }
+      }
+
     return (
         <div className="information mt-5">
             <div className="heading5">Information</div>
             <div className="form-checkout mt-5 p-3 bg-[#f6efff]">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="grid sm:grid-cols-2 gap-4 gap-y-5 flex-wrap">
                         <div className="">
-                            <input className="border-line px-4 py-3 w-full rounded-lg" id="firstName" type="text" placeholder="First Name *" required />
+                            <input className="border-line px-4 py-3 w-full rounded-lg" id="firstName" name="firstName" type="text" placeholder="First Name *" required />
                         </div>
                         <div className="">
-                            <input className="border-line px-4 py-3 w-full rounded-lg" id="lastName" type="text" placeholder="Last Name *" required />
+                            <input className="border-line px-4 py-3 w-full rounded-lg" id="lastName" name="lastName" type="text" placeholder="Last Name *" required />
                         </div>
                         <div className="">
-                            <input className="border-line px-4 py-3 w-full rounded-lg" id="email" type="email" placeholder="Email Address *" required />
+                            <input className="border-line px-4 py-3 w-full rounded-lg" id="email" name="email" type="email" placeholder="Email Address *" required />
                         </div>
                         <div className="">
-                            <input className="border-line px-4 py-3 w-full rounded-lg" id="phoneNumber" type="number" placeholder="Phone Numbers *" required />
+                            <input className="border-line px-4 py-3 w-full rounded-lg" id="phoneNumber" name="phoneNumber" type="number" placeholder="Phone Number *" required />
                         </div>
                         <div className="col-span-full select-block">
                             <select className="border border-line px-4 py-3 w-full rounded-lg" id="region" name="region" defaultValue={'default'}>
@@ -37,10 +77,10 @@ export default function PersonalForm() {
                             <Icon.CaretDown className='arrow-down' />
                         </div>
                         <div className="">
-                            <input className="border-line px-4 py-3 w-full rounded-lg" id="city" type="text" placeholder="Town/City *" required />
+                            <input className="border-line px-4 py-3 w-full rounded-lg" id="city" name="city" type="text" placeholder="Town/City *" required />
                         </div>
                         <div className="">
-                            <input className="border-line px-4 py-3 w-full rounded-lg" id="apartment" type="text" placeholder="Street,..." required />
+                            <input className="border-line px-4 py-3 w-full rounded-lg" id="apartment" name="apartment" type="text" placeholder="Street,..." required />
                         </div>
                         <div className="select-block">
                             <select className="border border-line px-4 py-3 w-full rounded-lg" id="country" name="country" defaultValue={'default'}>
@@ -52,7 +92,7 @@ export default function PersonalForm() {
                             <Icon.CaretDown className='arrow-down' />
                         </div>
                         <div className="">
-                            <input className="border-line px-4 py-3 w-full rounded-lg" id="postal" type="text" placeholder="Postal Code *" required />
+                            <input className="border-line px-4 py-3 w-full rounded-lg" id="postal" name="postal" type="text" placeholder="Postal Code *" required />
                         </div>
                         <div className="col-span-full">
                             <textarea className="border border-line px-4 py-3 w-full rounded-lg" id="note" name="note" placeholder="Write note..."></textarea>
@@ -60,10 +100,257 @@ export default function PersonalForm() {
                     </div>
 
                     <div className="block-button md:mt-10 mt-6">
-                        <button className="button-main w-full">Payment</button>
+                        <button type='submit' className="button-main w-full">Payment</button>
                     </div>
+                    {message && (
+                    <div className={`mt-4 text-center ${message.includes("successfully") ? "text-green-600" : "text-red-600"}`}>
+                    {message}
+                    </div>
+                    )}
                 </form>
             </div>
         </div>
     )
 }
+
+// For PROFILE PAGE
+// 'use client'
+// import React, { useState } from 'react'
+// import * as Icon from "@phosphor-icons/react/dist/ssr";
+
+// import { updateProfile, getAuthHeaders } from '@/api/baseApi'; 
+// export default function PersonalForm() {
+//     const [activePayment, setActivePayment] = useState("credit-card")
+//     const [message, setMessage] = useState("")
+  
+//     const handlePayment = (item) => {
+//       setActivePayment(item)
+//     }
+  
+//     const handleSubmit = async (e) => {
+//       e.preventDefault()
+//       const formData = new FormData(e.target)
+//       const data = Object.fromEntries(formData)
+
+//       const payload = {
+//         firstName: data.firstName,
+//         lastName: data.lastName,
+//         gender: data.gender,
+//         dob: data.dob,
+//         address_1: data.address_1,
+//         address_2: data.address_2,
+//         city: data.city,
+//         state: data.state,
+//         pincode: data.pincode
+//       };
+  
+//       try {
+//         const response = await fetch(updateProfile, {
+//           method: "PUT",
+//           headers: {
+//             "Content-Type": "application/json",
+//             ...getAuthHeaders(),
+//           },
+//           body: JSON.stringify(payload),
+//         })
+  
+//         if (!response.ok) {
+//           console.log(response)
+//           const errorData = await response.json()
+//           throw new Error(errorData.message || "Failed to update profile")
+//         }
+  
+//         const result = await response.json()
+//         setMessage("Profile updated successfully")
+//       } catch (error) {
+//         console.error("Error updating profile:", error)
+//         setMessage(error.message || "Failed to update profile")
+//       }
+//     }
+  
+//     return (
+//       <div className="information mt-5">
+//         <div className="heading5">Information</div>
+//         <div className="form-checkout mt-5 p-3 bg-[#f6efff]">
+//           <form onSubmit={handleSubmit}>
+//             <div className="grid sm:grid-cols-2 gap-4 gap-y-5 flex-wrap">
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="firstName"
+//                   name="firstName"
+//                   type="text"
+//                   placeholder="First Name"
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="lastName"
+//                   name="lastName"
+//                   type="text"
+//                   placeholder="Last Name"
+//                   required
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="gender"
+//                   name="gender"
+//                   type="text"
+//                   placeholder="Gender"
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="dob"
+//                   name="dob"
+//                   type="date"
+//                   placeholder="Date of Birth"
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="email"
+//                   name="email"
+//                   type="email"
+//                   placeholder="Email Address"
+//                   required
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="phoneNumber"
+//                   name="phoneNumber"
+//                   type="number"
+//                   placeholder="Phone Number"
+//                   required
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="address_1"
+//                   name="address_1"
+//                   type="text"
+//                   placeholder="Address 1"
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="address_2"
+//                   name="address_2"
+//                   type="text"
+//                   placeholder="Address 2"
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="city"
+//                   name="city"
+//                   type="text"
+//                   placeholder="City"
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="state"
+//                   name="state"
+//                   type="text"
+//                   placeholder="State"
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="pincode"
+//                   name="pincode"
+//                   type="text"
+//                   placeholder="Pincode"
+//                 />
+//               </div>
+//               <div className="col-span-full select-block">
+//                 <select
+//                   className="border border-line px-4 py-3 w-full rounded-lg"
+//                   id="region"
+//                   name="region"
+//                   defaultValue={"default"}
+//                 >
+//                   <option value="default" disabled>
+//                     Choose Country/Region
+//                   </option>
+//                   <option value="India">India</option>
+//                   <option value="France">France</option>
+//                   <option value="Singapore">Singapore</option>
+//                 </select>
+//                 <Icon.CaretDown className="arrow-down" />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="apartment"
+//                   name="apartment"
+//                   type="text"
+//                   placeholder="Street..."
+//                   required
+//                 />
+//               </div>
+//               <div className="select-block">
+//                 <select
+//                   className="border border-line px-4 py-3 w-full rounded-lg"
+//                   id="country"
+//                   name="country"
+//                   defaultValue={"default"}
+//                 >
+//                   <option value="default" disabled>
+//                     Choose State
+//                   </option>
+//                   <option value="India">India</option>
+//                   <option value="France">France</option>
+//                   <option value="Singapore">Singapore</option>
+//                 </select>
+//                 <Icon.CaretDown className="arrow-down" />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="postal"
+//                   name="postal"
+//                   type="text"
+//                   placeholder="Postal Code"
+//                   required
+//                 />
+//               </div>
+//               <div className="col-span-full">
+//                 <textarea
+//                   className="border border-line px-4 py-3 w-full rounded-lg"
+//                   id="note"
+//                   name="note"
+//                   placeholder="Write note..."
+//                 ></textarea>
+//               </div>
+//             </div>
+  
+//             <div className="block-button md:mt-10 mt-6">
+//               <button type="submit" className="button-main w-full">
+//                 Payment
+//               </button>
+//             </div>
+  
+//             {message && (
+//               <div className={`mt-4 text-center ${message.includes("successfully") ? "text-green-600" : "text-red-600"}`}>
+//                 {message}
+//               </div>
+//             )}
+//           </form>
+//         </div>
+//       </div>
+//     )
+//   }
