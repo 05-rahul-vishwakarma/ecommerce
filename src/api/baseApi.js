@@ -15,6 +15,11 @@ export const deleteWishListProduct = (PK, SK) => `${process.env.NEXT_PUBLIC_BASE
 
 export const addToCart = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/cart`;
 export const getCartList = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/cart/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`
+
+export const deleteCartProduct = (PK, SK) => `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/wishlist/delete?PK=${encodeURIComponent(PK)}&SK=${encodeURIComponent(SK)}`;
+
+
+export const updateProfile = `${process.env.NEXT_PUBLIC_BASE_URL}/user/profile`;
 export const deleteCartProduct = (PK, SK) => `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/cart/delete?PK=${encodeURIComponent(PK)}&SK=${encodeURIComponent(SK)}`;
 
 
