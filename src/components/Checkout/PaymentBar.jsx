@@ -5,10 +5,8 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 
 export default function PaymentBar() {
-    const { mergedCart, updateCartItemQuantity, updateCartItemColor } = useCartStore();
+    const { mergedCart, updateCartItemQuantity, updateCartItemColor , removeProductFromCart} = useCartStore();
     const [editingQuantity, setEditingQuantity] = useState(null);
-    const discount = 10;
-    const ship = 5;
 
     const handleQuantityChange = (SK, newQuantity) => {
         updateCartItemQuantity(SK, newQuantity);
@@ -29,7 +27,7 @@ export default function PaymentBar() {
                         <div key={i} className="item flex flex-col md:flex-row items-center justify-between w-full pb-5 border-b border-line gap-6 mt-5">
                             <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden">
                                 <Image
-                                    src={product?.image}
+                                    src={product?.img}
                                     width={500}
                                     height={500}
                                     alt='img'
@@ -38,7 +36,15 @@ export default function PaymentBar() {
                             </div>
                             <div className="flex items-center justify-between w-full">
                                 <div>
-                                    <div className="name text-title">{product.name}</div>
+                                    <div className="flex items-center justify-between w-full space-x-4 ">
+                                        <div className="name text-button">{product?.name}</div>
+                                        <div
+                                            className="remove-cart-btn caption1 font-semibold text-red underline cursor-pointer"
+                                            onClick={() => removeProductFromCart(product?.PK, product?.SK)}
+                                        >
+                                            Remove
+                                        </div>
+                                    </div>
                                     <div className="caption1 text-secondary mt-2">
                                         <span className='size capitalize'>{product.selectedSize || "product size"}</span>
                                         <span>/</span>
@@ -48,15 +54,15 @@ export default function PaymentBar() {
                                         {product.imageUrl?.map((image, index) => (
                                             <button
                                                 key={index}
-                                                className={`w-6 h-6 rounded-sm  mr-2 ${
-                                                    product.selectedColor === image.color.name
-                                                        ? 'border-blue-500'
-                                                        : 'border-gray-300'
-                                                }`}
+                                                className={`w-6 h-6 rounded-sm  mr-2 ${product.selectedColor === image.color.name
+                                                    ? 'border-blue-500'
+                                                    : 'border-gray-300'
+                                                    }`}
                                                 style={{ backgroundColor: image.color.clrCode }}
                                                 onClick={() => handleColorChange(product.SK, image.color.name)}
                                                 title={image.color.name}
                                             />
+
                                         ))}
                                     </div>
                                 </div>
@@ -80,22 +86,15 @@ export default function PaymentBar() {
                                     )}
                                     <span className='px-1'>x</span>
                                     <span>${product.totalAmount}.00</span>
+
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-                <div className="discount-block py-5 flex justify-between border-b border-line hidden">
-                    <div className="text-title">Discounts</div>
-                    <div className="text-title">-${discount}.00</div>
-                </div>
-                <div className="ship-block py-5 flex justify-between border-b border-line hidden">
-                    <div className="text-title">Shipping</div>
-                    <div className="text-title">${ship}.00</div>
-                </div>
                 <div className="total-cart-block pt-5 flex justify-between">
                     <div className="heading5">Total</div>
-                    <div className="heading5 total-cart">${totalCart - discount + ship}.00</div>
+                    <div className="heading5 total-cart">${totalCart}.00</div>
                 </div>
             </div>
         </div>

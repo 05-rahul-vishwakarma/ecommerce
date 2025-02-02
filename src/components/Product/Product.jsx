@@ -10,18 +10,47 @@ import { useRouter } from "next/navigation";
 import { handleAddToCart } from '@/services/carts';
 import { handleAddToWishlist } from '@/services/wishlist'
 import { useWishlist } from "@/context/WishlistContext";
+import Cookies from "js-cookie";
+import { toast } from 'react-toastify'
+
 
 const Product = ({ product }) => {
     const { openModalCart } = useModalCartContext()
     const { openModalWishlist } = useModalWishlistContext()
     const { openQuickview } = useModalQuickviewContext()
     const { addToWishlist } = useWishlist()
-
     const router = useRouter();
+
 
     const handleQuickviewOpen = (product) => {
         openQuickview(product)
     }
+
+    const handleCart = () => {
+        const accessToken = Cookies.get("accessToken");
+        if (!accessToken) {
+            console.log('token is not avilable');
+            toast.error("Please log in to add items to the cart.");
+            router.push("/login"); // Redirect to login page
+            return;
+        } else {
+            handleAddToCart(product, openModalCart);
+        }
+    }
+
+    const handleWishList = (product) => {
+        const accessToken = Cookies.get("accessToken");
+        if (!accessToken) {
+            console.log('token is not avilable');
+            toast.error("Please log in to add items to the cart.");
+            router.push("/login"); // Redirect to login page
+            return;
+        } else {
+            addToWishlist(product);
+            openModalWishlist();
+        }
+    }
+
 
     return (
         <div onClick={() =>
@@ -44,9 +73,7 @@ const Product = ({ product }) => {
 
                 <div onClick={(e) => {
                     e.stopPropagation();
-                    addToWishlist(product);
-                    openModalWishlist();
-                    // handleAddToWishlist(product, openModalWishlist, addToWishlist);
+                    handleWishList(product);
                 }}
                     className="list-action-right absolute top-3 right-3 max-lg:hidden">
                     <div className="add-wishlist-btn w-[32px] h-[32px] flex items-center justify-center rounded-[10px] bg-white text-purple duration-300 relative active">
@@ -92,7 +119,7 @@ const Product = ({ product }) => {
                     <div
                         onClick={e => {
                             e.stopPropagation();
-                            handleAddToCart(product, openModalCart)
+                            handleCart();
                         }}
                         className="add-cart-btn w-full text-button-uppercase py-2 text-center rounded-[10px] duration-500 bg-white hover:bg-purple hover:text-white">
                         Add To Cart
@@ -107,7 +134,7 @@ const Product = ({ product }) => {
                     </div>
                     <div onClick={e => {
                         e.stopPropagation();
-                        handleAddToCart()
+                        handleCart();
                     }} className="add-cart-btn w-9 h-9 flex items-center justify-center rounded-lg duration-300 bg-white hover:bg-purple hover:text-white">
                         <Icon.ShoppingBagOpen className="text-lg" />
                     </div>

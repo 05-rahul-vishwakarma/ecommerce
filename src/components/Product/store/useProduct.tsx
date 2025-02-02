@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import axios from 'axios';
 
 interface Product {
+    productDetails: any;
     SK: string;
     category: { name: string };
     productType: string;

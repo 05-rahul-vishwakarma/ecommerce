@@ -5,9 +5,14 @@ import { ProductType } from '@/type/ProductType';
 import { getWishListData } from '@/api/productApis/getPostApi';
 import { dltWishListProduct } from '@/api/productApis/deleteApi';
 import { addWishListProduct } from '@/api/productApis/postApi';
+import { getProductListData } from '@/api/productApis/getPostApi'; // Import the function to fetch product details
 
 interface WishlistItem extends ProductType {
-    productId: string;
+    productId: {
+        PK: string;
+        SK: string;
+    };
+    productDetails?: ProductType[]; // Add product details to the wishlist item
 }
 
 interface WishlistState {
@@ -15,7 +20,7 @@ interface WishlistState {
 }
 
 type WishlistAction =
-    | { type: 'ADD_TO_WISHLIST'; payload: ProductType }
+    | { type: 'ADD_TO_WISHLIST'; payload: WishlistItem }
     | { type: 'REMOVE_FROM_WISHLIST'; payload: { pk: string, sk: string } }
     | { type: 'LOAD_WISHLIST'; payload: WishlistItem[] };
 
@@ -30,15 +35,12 @@ const WishlistContext = createContext<WishlistContextProps | undefined>(undefine
 const WishlistReducer = (state: WishlistState, action: WishlistAction): WishlistState => {
     switch (action.type) {
         case 'ADD_TO_WISHLIST':
-            if (state.wishlistArray.some(item => item.id === action.payload.id)) {
+            if (state.wishlistArray.some(item => item.PK === action.payload.PK && item.SK === action.payload.SK)) {
                 return state; // Do not add duplicate items
             }
             return {
                 ...state,
-                wishlistArray: [...state.wishlistArray, {
-                    ...action.payload,
-                    productId: ''
-                }],
+                wishlistArray: [...state.wishlistArray, action.payload],
             };
         case 'REMOVE_FROM_WISHLIST':
             return {
@@ -78,8 +80,21 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const fetchWishlistData = async () => {
         try {
             const result = await getWishListData({});
-            dispatchActual({ type: 'LOAD_WISHLIST', payload: result.data.items });
-            dispatchOptimistic({ type: 'LOAD_WISHLIST', payload: result.data.items }); // Sync optimistic state
+            const wishlistItems = result.data.items || [];
+
+            const mergedWishlist = await Promise.all(
+                wishlistItems.map(async (item: { productId: { PK: any; SK: any; }; }) => {
+
+                    const productDetails = await getProductListData(item?.productId?.PK, item?.productId?.SK);
+                    return {
+                        ...item,
+                        productDetails: productDetails?.data, // Assuming the product details are in `data`
+                    };
+                })
+            );
+
+            dispatchActual({ type: 'LOAD_WISHLIST', payload: mergedWishlist });
+            dispatchOptimistic({ type: 'LOAD_WISHLIST', payload: mergedWishlist }); // Sync optimistic state
         } catch (error) {
             console.error('Failed to fetch wishlist data:', error);
         }
@@ -94,31 +109,41 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
             productId: {
                 PK: item?.PK,
-                SK: item?.SK
-            }
+                SK: item?.SK,
+            },
         };
+
         try {
             const data = await addWishListProduct(payload);
-            dispatchActual({ type: 'ADD_TO_WISHLIST', payload: data });
+
+            // Fetch product details for the newly added item
+            const productDetails = await getProductListData({
+                businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
+                PK: data?.data?.productId?.PK,
+                SK: data?.data?.productId?.SK,
+            });
+
+            const mergedData = {
+                ...data?.data,
+                productDetails: productDetails?.data?.items, // Merge product details
+            };
+
+            dispatchActual({ type: 'ADD_TO_WISHLIST', payload: mergedData });
         } catch (error) {
             console.error('Failed to add item to wishlist:', error);
-            fetchWishlistData();
+            fetchWishlistData(); // Refresh the wishlist data on error
         }
     };
 
     const removeFromWishlist = async (pk: string, sk: string) => {
-        // Optimistically update the UI
         dispatchOptimistic({ type: 'REMOVE_FROM_WISHLIST', payload: { pk, sk } });
 
         try {
-            // Perform the API call
             await dltWishListProduct(pk, sk);
-            // Sync the actual state with the server
             dispatchActual({ type: 'REMOVE_FROM_WISHLIST', payload: { pk, sk } });
         } catch (error) {
             console.error('Failed to remove item from wishlist:', error);
-            // Revert the optimistic state if the API call fails
-            fetchWishlistData();
+            fetchWishlistData(); // Refresh the wishlist data on error
         }
     };
 
