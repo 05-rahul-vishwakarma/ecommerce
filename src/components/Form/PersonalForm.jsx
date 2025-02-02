@@ -197,7 +197,88 @@ export default function PersonalForm() {
 //                 <input
 //                   className="border-line px-4 py-3 w-full rounded-lg"
 //                   id="gender"
-//                   name="gender"
+//                   name="gender"// For PROFILE PAGE
+// 'use client'
+// import React, { useState } from 'react'
+// import * as Icon from "@phosphor-icons/react/dist/ssr";
+
+// import { updateProfile, getAuthHeaders } from '@/api/baseApi'; 
+// export default function PersonalForm() {
+//     const [activePayment, setActivePayment] = useState("credit-card")
+//     const [message, setMessage] = useState("")
+  
+//     const handlePayment = (item) => {
+//       setActivePayment(item)
+//     }
+  
+//     const handleSubmit = async (e) => {
+//       e.preventDefault()
+//       const formData = new FormData(e.target)
+//       const data = Object.fromEntries(formData)
+
+//       const payload = {
+//         firstName: data.firstName,
+//         lastName: data.lastName,
+//         gender: data.gender,
+//         dob: data.dob,
+//         address_1: data.address_1,
+//         address_2: data.address_2,
+//         city: data.city,
+//         state: data.state,
+//         pincode: data.pincode
+//       };
+  
+//       try {
+//         const response = await fetch(updateProfile, {
+//           method: "PUT",
+//           headers: {
+//             "Content-Type": "application/json",
+//             ...getAuthHeaders(),
+//           },
+//           body: JSON.stringify(payload),
+//         })
+  
+//         if (!response.ok) {
+//           console.log(response)
+//           const errorData = await response.json()
+//           throw new Error(errorData.message || "Failed to update profile")
+//         }
+  
+//         const result = await response.json()
+//         setMessage("Profile updated successfully")
+//       } catch (error) {
+//         console.error("Error updating profile:", error)
+//         setMessage(error.message || "Failed to update profile")
+//       }
+//     }
+  
+//     return (
+//       <div className="information mt-5">
+//         <div className="heading5">Information</div>
+//         <div className="form-checkout mt-5 p-3 bg-[#f6efff]">
+//           <form onSubmit={handleSubmit}>
+//             <div className="grid sm:grid-cols-2 gap-4 gap-y-5 flex-wrap">
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="firstName"
+//                   name="firstName"
+//                   type="text"
+//                   placeholder="First Name"
+//                 />
+//               </div>
+//               <div className="">
+//                 <input
+//                   className="border-line px-4 py-3 w-full rounded-lg"
+//                   id="lastName"
+//                   name="lastName"
+//                   type="text"
+//                   placeholder="Last Name"
+//                   required
+//                 />
+//               </div>
+//               <div className="">
+
 //                   type="text"
 //                   placeholder="Gender"
 //                 />
@@ -340,7 +421,7 @@ export default function PersonalForm() {
   
 //             <div className="block-button md:mt-10 mt-6">
 //               <button type="submit" className="button-main w-full">
-//                 Payment
+//                 Update Profile
 //               </button>
 //             </div>
   
