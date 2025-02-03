@@ -1,7 +1,7 @@
 import Link from "next/link";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 
-export default function BreadCrumbPart() {
+export default function BreadCrumbPart({pageName}) {
     return (
         <div>
             <div className="breadcrumb-block style-img">
@@ -16,7 +16,7 @@ export default function BreadCrumbPart() {
                                     <Link href={"/"}>Homepage</Link>
                                     <Icon.CaretRight size={14} className="text-secondary2" />
                                     <div className="text-secondary2 capitalize">
-                                        {"Shop"}
+                                        {pageName || "Shop"}
                                     </div>
                                 </div>
                             </div>

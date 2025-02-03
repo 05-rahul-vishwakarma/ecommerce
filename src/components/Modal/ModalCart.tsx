@@ -26,10 +26,8 @@ const ModalCart = () => {
         setActiveTab(tab)
     }
 
-
-
-
-
+    console.log(mergedCart);
+    
 
     return (
         <>

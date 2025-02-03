@@ -4,6 +4,8 @@ import React from 'react';
 import DyanamicProduct from '@/components/Product/DyanamicProduct';
 import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';
+import MenuFour from '@/components/Header/MenuFour';
+import Footer from '@/components/Footer/Footer';
 
 export default async function page({ params }) {
     try {
@@ -11,9 +13,8 @@ export default async function page({ params }) {
 
         const cookieStore = cookies();
         const accessToken = cookieStore.get('accessToken')?.value;
-        console.log(accessToken,'product dyanamic page');
-        
-        // Redirect to logilogn if accessToken is not available
+        console.log(accessToken, 'product dyanamic page');
+
         if (!accessToken) {
             toast.error('Login First');
             redirect('/login'); // Redirects to the login page
@@ -34,7 +35,11 @@ export default async function page({ params }) {
 
         return (
             <section>
+                <div id="header" className='relative w-full text-purple'>
+                    <MenuFour props="bg-white" />
+                </div>
                 <DyanamicProduct productMain={product} />
+                <Footer />
             </section>
         );
     } catch (error) {

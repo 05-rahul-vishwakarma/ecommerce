@@ -11,7 +11,7 @@ export default function FilterSide({ sidebarData, products }) {
     const uniqueTypes = [...new Set(sidebarData.map((item) => item?.productType))];
     return uniqueTypes.map((type, index) => (
       <div key={index} className="item flex items-center justify-between cursor-pointer">
-        <div className="text-secondary has-line-before capitalize">{type}</div>
+        <div className="text-primary has-line-before capitalize">{type}</div>
       </div>
     ));
   };

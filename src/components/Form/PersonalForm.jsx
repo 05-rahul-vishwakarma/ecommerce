@@ -205,8 +205,8 @@ export default function PersonalForm() {
           </div>
 
           {/* Submit Button */}
-          <div className="block-button mt-6">
-            <button type="submit" className="button-main w-full">
+          <div className="button-block mt-6">
+            <button type="submit" className="button-main  w-full">
               Submit
             </button>
           </div>

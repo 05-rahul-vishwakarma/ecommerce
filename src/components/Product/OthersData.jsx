@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -8,16 +8,37 @@ import { Navigation, Scrollbar } from 'swiper/modules'
 import 'swiper/css/bundle'
 import * as Icon from "@phosphor-icons/react/dist/ssr"
 import Rate from '../Other/Rate'
+import { productListData } from '@/api/productApis/getPostApi'
+import Product from './Product'
 
 export default function OthersData() {
+    const [products, setProducts] = useState([]); // State to store product data
+    const [loading, setLoading] = useState(true); // State to handle loading state
+    const [error, setError] = useState(null); // State to handle errors
+
+    // Fetch product data from the API
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await productListData();
+                setProducts(response); // Set the fetched data to state
+            } catch (error) {
+                setError(error.message); // Handle errors
+            } finally {
+                setLoading(false); // Set loading to false after fetching
+            }
+        };
+
+        fetchProducts();
+    }, []);
     return (
         <div>
             {/* Product Carousel Section */}
-            <div className="list-product hide-product-sold menu-main mt-6">
+            <div className="list-product hide-product-sold menu-main mt-6 mx-[2rem] ">
                 <div className="heading5 pb-4">You'll love this too</div>
                 <Swiper
-                    spaceBetween={12}
-                    slidesPerView={2}
+                    spaceBetween={4}
+                    slidesPerView={4}
                     scrollbar={{ hide: false }}
                     modules={[Navigation, Scrollbar]}
                     breakpoints={{
@@ -27,11 +48,18 @@ export default function OthersData() {
                     }}
                     className='pb-4'
                 >
-                    {/* Static product slides */}
-                    <SwiperSlide>Product Slide 1</SwiperSlide>
-                    <SwiperSlide>Product Slide 2</SwiperSlide>
-                    <SwiperSlide>Product Slide 3</SwiperSlide>
+                    {
+                        products?.map((data, i) => {
+                            return (
+                                <SwiperSlide>
+                                    <Product product={data} />
+                                </SwiperSlide>
+                            )
+                        })
+                    }
                 </Swiper>
+
+
             </div>
 
             {/* Description and Specifications Section */}
@@ -222,9 +250,13 @@ export default function OthersData() {
                 <div className="container">
                     <div className="heading3 text-center">Related Products</div>
                     <div className="list-product hide-product-sold grid lg:grid-cols-4 grid-cols-2 md:gap-[30px] gap-5 md:mt-10 mt-6">
-                        {/* Static related products */}
-                        <div>Related Product 1</div>
-                        <div>Related Product 2</div>
+                        {
+                            products?.slice(0, 12).map((data, i) => {
+                                return (
+                                    <Product product={data} />
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>

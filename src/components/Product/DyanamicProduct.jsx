@@ -80,7 +80,6 @@ export default function DyanamicProduct({ productMain }) {
         setProductImage(productMain?.imageURLs)
     }, [])
 
-    console.log(productImage);
 
     const images = productImage?.map((img) => img.img) || []
 
