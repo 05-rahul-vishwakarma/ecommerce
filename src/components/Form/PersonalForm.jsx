@@ -4,6 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
 import { updateProfile, getAuthHeaders } from "@/api/baseApi";
+import UserProfile from "../Profile/UserProfile";
 
 export default function PersonalForm() {
   const [message, setMessage] = useState("");
@@ -48,6 +49,7 @@ export default function PersonalForm() {
 
   return (
     <div className="information mt-5">
+      <UserProfile />
       <div className="heading5">Information</div>
       <div className="form-checkout mt-5 p-3 bg-[#f6efff]">
         <form onSubmit={handleSubmit(onSubmit)}>
