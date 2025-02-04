@@ -1,52 +1,65 @@
+"use client";
 
-"use client"
-
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { getProfile, updateProfile, getAuthHeaders } from "@/api/baseApi"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { toast } from "react-toastify"
-import { User, MapPin, Calendar, Home, MapIcon as City, Hash, Loader2 } from "lucide-react"
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { getProfile, updateProfile, getAuthHeaders } from "@/api/baseApi";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { toast } from "react-toastify";
+import {
+  User,
+  MapPin,
+  Calendar,
+  Home,
+  MapIcon as City,
+  Hash,
+  Loader2,
+} from "lucide-react";
 
 export default function ProfilePage() {
-  const [profile, setProfile] = useState(null)
-  const [isEditing, setIsEditing] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [profile, setProfile] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchProfile()
-  }, [])
+    fetchProfile();
+  }, []);
 
   const fetchProfile = async () => {
-    setIsLoading(true)
-    setError(null)
+    setIsLoading(true);
+    setError(null);
     try {
       const response = await fetch(getProfile, {
         headers: getAuthHeaders(),
-      })
+      });
       if (!response.ok) {
-        throw new Error("Failed to fetch profile")
+        throw new Error("Failed to fetch profile");
       }
-      const data = await response.json()
-      setProfile(data.data)
+      const data = await response.json();
+      setProfile(data.data);
     } catch (error) {
-      console.error("Error fetching profile:", error)
-      setError("Failed to fetch profile. Please try again later.")
-      toast.error("Failed to fetch profile")
+      console.error("Error fetching profile:", error);
+      setError("Failed to fetch profile. Please try again later.");
+      toast.error("Failed to fetch profile");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const formData = new FormData(e.target)
-    const data = Object.fromEntries(formData)
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
 
     const payload = {
       firstName: data.firstName,
@@ -58,7 +71,7 @@ export default function ProfilePage() {
       city: data.city,
       state: data.state,
       pincode: data.pincode,
-    }
+    };
 
     try {
       const response = await fetch(updateProfile, {
@@ -68,29 +81,29 @@ export default function ProfilePage() {
           ...getAuthHeaders(),
         },
         body: JSON.stringify(payload),
-      })
+      });
 
       if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.message || "Failed to update profile")
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to update profile");
       }
 
-      await response.json()
-      toast.success("Profile updated successfully 😊")
-      setIsEditing(false)
-      fetchProfile()
+      await response.json();
+      toast.success("Profile updated successfully 😊");
+      setIsEditing(false);
+      fetchProfile();
     } catch (error) {
-      console.error("Error updating profile:", error)
-      toast.error(error.message || "Failed to update profile")
+      console.error("Error updating profile:", error);
+      toast.error(error.message || "Failed to update profile");
     }
-  }
+  };
 
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple to-purple-800">
         <Loader2 className="w-12 h-12 text-white animate-spin" />
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -108,7 +121,7 @@ export default function ProfilePage() {
           </CardContent>
         </Card>
       </div>
-    )
+    );
   }
 
   if (!profile) {
@@ -116,14 +129,16 @@ export default function ProfilePage() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple to-purple-800">
         <p className="text-white text-xl">No profile data available.</p>
       </div>
-    )
+    );
   }
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <Card className="w-full max-w-4xl mx-auto shadow-2xl bg-white rounded-2xl overflow-hidden">
         <CardHeader className="bg-gradient-to-r from-purple to-purple text-white p-6">
-          <CardTitle className="text-3xl font-bold">Personal Information</CardTitle>
+          <CardTitle className="text-3xl font-bold">
+            Personal Information
+          </CardTitle>
         </CardHeader>
         <CardContent className="p-8">
           <div className="flex justify-center mb-8">
@@ -139,14 +154,22 @@ export default function ProfilePage() {
                   { label: "First Name", value: profile.firstName, icon: User },
                   { label: "Last Name", value: profile.lastName, icon: User },
                   { label: "Gender", value: profile.gender, icon: User },
-                  { label: "Date of Birth", value: profile.dob, icon: Calendar },
-                  { label: "Address", value: `${profile.address_1} ${profile.address_2}`, icon: Home },
+                  {
+                    label: "Date of Birth",
+                    value: profile.dob,
+                    icon: Calendar,
+                  },
+                  {
+                    label: "Address",
+                    value: `${profile.address_1} ${profile.address_2}`,
+                    icon: Home,
+                  },
                   { label: "City", value: profile.city, icon: City },
                   { label: "State", value: profile.state, icon: MapPin },
                   { label: "Pincode", value: profile.pincode, icon: Hash },
                 ].map((item, index) => (
                   <div key={index} className="bg-gray-50 p-4 rounded-lg shadow">
-                    <Label className="text-purple flex items-center mb-2">
+                    <Label className="text-secondary flex items-center mb-2">
                       <item.icon size={18} className="mr-2" />
                       {item.label}
                     </Label>
@@ -172,24 +195,72 @@ export default function ProfilePage() {
               >
                 <div className="grid sm:grid-cols-2 gap-6">
                   {[
-                    { name: "firstName", label: "First Name", icon: User, type: "text" },
-                    { name: "lastName", label: "Last Name", icon: User, type: "text" },
-                    { name: "gender", label: "Gender", icon: User, type: "select" },
-                    { name: "dob", label: "Date of Birth", icon: Calendar, type: "date" },
-                    { name: "address_1", label: "Address Line 1", icon: Home, type: "text" },
-                    { name: "address_2", label: "Address Line 2", icon: Home, type: "text" },
+                    {
+                      name: "firstName",
+                      label: "First Name",
+                      icon: User,
+                      type: "text",
+                    },
+                    {
+                      name: "lastName",
+                      label: "Last Name",
+                      icon: User,
+                      type: "text",
+                    },
+                    {
+                      name: "gender",
+                      label: "Gender",
+                      icon: User,
+                      type: "select",
+                    },
+                    {
+                      name: "dob",
+                      label: "Date of Birth",
+                      icon: Calendar,
+                      type: "date",
+                    },
+                    {
+                      name: "address_1",
+                      label: "Address Line 1",
+                      icon: Home,
+                      type: "text",
+                    },
+                    {
+                      name: "address_2",
+                      label: "Address Line 2",
+                      icon: Home,
+                      type: "text",
+                    },
                     { name: "city", label: "City", icon: City, type: "text" },
-                    { name: "state", label: "State", icon: MapPin, type: "text" },
-                    { name: "pincode", label: "Pincode", icon: Hash, type: "text" },
+                    {
+                      name: "state",
+                      label: "State",
+                      icon: MapPin,
+                      type: "text",
+                    },
+                    {
+                      name: "pincode",
+                      label: "Pincode",
+                      icon: Hash,
+                      type: "text",
+                    },
                   ].map((field) => (
                     <div key={field.name} className="space-y-2">
-                      <Label htmlFor={field.name} className="flex items-center text-purple">
+                      <Label
+                        htmlFor={field.name}
+                        className="flex items-center text-secondary"
+                      >
                         <field.icon size={18} className="mr-2" /> {field.label}
                       </Label>
                       {field.type === "select" ? (
-                        <Select name={field.name} defaultValue={profile[field.name]}>
+                        <Select
+                          name={field.name}
+                          defaultValue={profile[field.name]}
+                        >
                           <SelectTrigger className="w-full border-purple-300 focus:border-purple-500 focus:ring-purple-500 bg-white">
-                            <SelectValue placeholder={`Select ${field.label}`} />
+                            <SelectValue
+                              placeholder={`Select ${field.label}`}
+                            />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="MALE">Male</SelectItem>
@@ -230,6 +301,5 @@ export default function ProfilePage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
-

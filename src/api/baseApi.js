@@ -26,7 +26,9 @@ export const deleteCartProduct = (PK, SK) => `${process.env.NEXT_PUBLIC_BASE_URL
 export const getProfile = `${process.env.NEXT_PUBLIC_BASE_URL}/user/profile`;
 export const updateProfile = `${process.env.NEXT_PUBLIC_BASE_URL}/user/profile`;
 
-
 export const buyProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/product/puchased`;
 export const getBuyProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/product/puchased/get?businessType=SUBHI_E_LTD`;
+
+export const reviewProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/review`;
+export const getReviewProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/review/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`;
 

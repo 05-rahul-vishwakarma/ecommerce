@@ -132,7 +132,7 @@
 //                                         onClick={() => handleCategory('fashion')}
 //                                     >
 //                                         <div className='capitalize has-line-before hover:text-black text-secondary'>Fashion</div>
-//                                         <div className="text-secondary2">
+//                                         <div className="text-purple2">
 //                                             ({blogData.filter(dataItem => dataItem.category === 'fashion').length})
 //                                         </div>
 //                                     </div>
@@ -141,7 +141,7 @@
 //                                         onClick={() => handleCategory('cosmetic')}
 //                                     >
 //                                         <div className='capitalize has-line-before hover:text-black text-secondary'>cosmetic</div>
-//                                         <div className="text-secondary2">
+//                                         <div className="text-purple2">
 //                                             ({blogData.filter(dataItem => dataItem.category === 'cosmetic').length})
 //                                         </div>
 //                                     </div>
@@ -150,7 +150,7 @@
 //                                         onClick={() => handleCategory('toys-kid')}
 //                                     >
 //                                         <div className='capitalize has-line-before hover:text-black text-secondary'>toys kid</div>
-//                                         <div className="text-secondary2">
+//                                         <div className="text-purple2">
 //                                             ({blogData.filter(dataItem => dataItem.category === 'toys-kid').length})
 //                                         </div>
 //                                     </div>
@@ -159,7 +159,7 @@
 //                                         onClick={() => handleCategory('yoga')}
 //                                     >
 //                                         <div className='capitalize has-line-before hover:text-black text-secondary'>yoga</div>
-//                                         <div className="text-secondary2">
+//                                         <div className="text-purple2">
 //                                             ({blogData.filter(dataItem => dataItem.category === 'yoga').length})
 //                                         </div>
 //                                     </div>
@@ -168,7 +168,7 @@
 //                                         onClick={() => handleCategory('organic')}
 //                                     >
 //                                         <div className='capitalize has-line-before hover:text-black text-secondary'>organic</div>
-//                                         <div className="text-secondary2">
+//                                         <div className="text-purple2">
 //                                             ({blogData.filter(dataItem => dataItem.category === 'organic').length})
 //                                         </div>
 //                                     </div>
@@ -220,10 +220,8 @@
 
 // export default BlogList
 
-import React from 'react'
+import React from "react";
 
 export default function page() {
-  return (
-    <div>page list</div>
-  )
+  return <div>page list</div>;
 }

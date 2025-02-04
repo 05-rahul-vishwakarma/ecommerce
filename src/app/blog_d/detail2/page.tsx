@@ -148,7 +148,7 @@
 //                                         <div className="left cursor-pointer"
 //                                             onClick={() => handleBlogDetail(String(blogData.length))}
 //                                         >
-//                                             <div className="text-button-uppercase text-secondary2">Previous</div>
+//                                             <div className="text-button-uppercase text-purple2">Previous</div>
 //                                             <div className="text-title mt-2">{blogData[blogData.length - 1].title}</div>
 //                                         </div>
 //                                     </>
@@ -157,7 +157,7 @@
 //                                         <div className="left cursor-pointer"
 //                                             onClick={() => handleBlogDetail(blogData[Number(blogId) - 2].id)}
 //                                         >
-//                                             <div className="text-button-uppercase text-secondary2">Previous</div>
+//                                             <div className="text-button-uppercase text-purple2">Previous</div>
 //                                             <div className="text-title mt-2">{blogData[Number(blogId) - 2].title}</div>
 //                                         </div>
 //                                     </>
@@ -167,7 +167,7 @@
 //                                         <div className="right text-right cursor-pointer"
 //                                             onClick={() => handleBlogDetail('1')}
 //                                         >
-//                                             <div className="text-button-uppercase text-secondary2">Next</div>
+//                                             <div className="text-button-uppercase text-purple2">Next</div>
 //                                             <div className="text-title mt-2">{blogData[0].title}</div>
 //                                         </div>
 //                                     </>
@@ -176,7 +176,7 @@
 //                                         <div className="right text-right cursor-pointer"
 //                                             onClick={() => handleBlogDetail(blogData[Number(blogId)].id)}
 //                                         >
-//                                             <div className="text-button-uppercase text-secondary2">Next</div>
+//                                             <div className="text-button-uppercase text-purple2">Next</div>
 //                                             <div className="text-title mt-2">{blogData[Number(blogId)].title}</div>
 //                                         </div>
 //                                     </>
@@ -227,9 +227,9 @@
 //                                                         <Rate currentRate={5} size={12} />
 //                                                     </div>
 //                                                     <div className="flex items-center gap-2">
-//                                                         <div className="text-secondary2">1 days ago</div>
-//                                                         <div className="text-secondary2">-</div>
-//                                                         <div className="text-secondary2"><span>Yellow</span> / <span>XL</span></div>
+//                                                         <div className="text-purple2">1 days ago</div>
+//                                                         <div className="text-purple2">-</div>
+//                                                         <div className="text-purple2"><span>Yellow</span> / <span>XL</span></div>
 //                                                     </div>
 //                                                 </div>
 //                                             </div>
@@ -273,9 +273,9 @@
 //                                                         <Rate currentRate={4} size={12} />
 //                                                     </div>
 //                                                     <div className="flex items-center gap-2">
-//                                                         <div className="text-secondary2">1 days ago</div>
-//                                                         <div className="text-secondary2">-</div>
-//                                                         <div className="text-secondary2"><span>Yellow</span> / <span>XL</span></div>
+//                                                         <div className="text-purple2">1 days ago</div>
+//                                                         <div className="text-purple2">-</div>
+//                                                         <div className="text-purple2"><span>Yellow</span> / <span>XL</span></div>
 //                                                     </div>
 //                                                 </div>
 //                                             </div>
@@ -319,9 +319,9 @@
 //                                                         <Rate currentRate={5} size={12} />
 //                                                     </div>
 //                                                     <div className="flex items-center gap-2">
-//                                                         <div className="text-secondary2">1 days ago</div>
-//                                                         <div className="text-secondary2">-</div>
-//                                                         <div className="text-secondary2"><span>Yellow</span> / <span>XL</span></div>
+//                                                         <div className="text-purple2">1 days ago</div>
+//                                                         <div className="text-purple2">-</div>
+//                                                         <div className="text-purple2"><span>Yellow</span> / <span>XL</span></div>
 //                                                     </div>
 //                                                 </div>
 //                                             </div>
@@ -449,10 +449,8 @@
 
 // export default BlogDetailTwo
 
-import React from 'react'
+import React from "react";
 
 export default function page() {
-  return (
-    <div>page 3</div>
-  )
+  return <div>page 3</div>;
 }

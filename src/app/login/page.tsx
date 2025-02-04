@@ -87,7 +87,7 @@ const Login = () => {
         props="style-one bg-white"
         slogan="New customers save 10% with the code GET10"
       />
-      <div id="header" className="relative w-full text-purple">
+      <div id="header" className="relative w-full text-secondary">
         <MenuFour props="bg-transparent" />
         <Breadcrumb heading="Login" subHeading="Login" />
       </div>
