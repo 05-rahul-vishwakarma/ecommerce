@@ -1213,7 +1213,6 @@ const AccountContent = ({ initialProfile }: { initialProfile : Profile | null })
           </div>
         </div>
       </div>
-      <Footer />
       <div
         className={`modal-order-detail-block flex items-center justify-center`}
         onClick={() => setOpenDetail(false)}
