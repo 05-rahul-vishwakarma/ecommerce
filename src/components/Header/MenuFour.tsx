@@ -237,13 +237,13 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Icon.User size={18} />
                             My Account
                           </Link>
-                          <Link
+                          {/* <Link
                             href="/profile"
                             className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
                           >
                             <Icon.User size={18} />
                             My Profile
-                          </Link>
+                          </Link> */}
                           <Link
                             href="/orders"
                             className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
