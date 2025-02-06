@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
@@ -7,13 +7,36 @@ import { updateProfile, getAuthHeaders } from "@/api/baseApi";
 
 export default function PersonalForm() {
   const [message, setMessage] = useState("");
-
   const {
     register,
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    async function fetchProfile() {
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/user/profile`, {
+          headers: getAuthHeaders(),
+        });
+        if (response.data.statusCode === 200) {
+          const profile = response.data.data;
+          setValue("firstName", profile.firstName);
+          setValue("lastName", profile.lastName);
+          setValue("city", profile.city);
+          setValue("apartment", profile.address_1);
+          setValue("state", profile.state);
+          setValue("postal", profile.pincode);
+          setValue("phoneNumber", profile.phoneNo);
+        }
+      } catch (error) {
+        console.error("Failed to fetch profile", error);
+      }
+    }
+    fetchProfile();
+  }, [setValue]);
 
   const onSubmit = async (data) => {
     const payload = {
@@ -52,169 +75,20 @@ export default function PersonalForm() {
       <div className="form-checkout mt-5 p-3 bg-[#f6efff]">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid sm:grid-cols-2 gap-4 gap-y-5">
-            {/* First Name */}
-            <div>
-              <input
-                className="border-line px-4 py-3 w-full rounded-lg"
-                type="text"
-                placeholder="First Name *"
-                {...register("firstName", {
-                  required: "First Name is required",
-                })}
-              />
-              {errors.firstName && (
-                <p className="text-red-500 text-sm">
-                  {errors.firstName.message}
-                </p>
-              )}
-            </div>
-
-            {/* Last Name */}
-            <div>
-              <input
-                className="border-line px-4 py-3 w-full rounded-lg"
-                type="text"
-                placeholder="Last Name *"
-                {...register("lastName", { required: "Last Name is required" })}
-              />
-              {errors.lastName && (
-                <p className="text-red-500 text-sm">
-                  {errors.lastName.message}
-                </p>
-              )}
-            </div>
-
-            {/* Email */}
-            <div>
-              <input
-                className="border-line px-4 py-3 w-full rounded-lg"
-                type="email"
-                placeholder="Email Address *"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email",
-                  },
-                })}
-              />
-              {errors.email && (
-                <p className="text-red-500 text-sm">{errors.email.message}</p>
-              )}
-            </div>
-
-            {/* Phone Number */}
-            <div>
-              <input
-                className="border-line px-4 py-3 w-full rounded-lg"
-                type="number"
-                placeholder="Phone Number *"
-                {...register("phoneNumber", {
-                  required: "Phone Number is required",
-                  minLength: {
-                    value: 10,
-                    message: "Must be at least 10 digits",
-                  },
-                })}
-              />
-              {errors.phoneNumber && (
-                <p className="text-red-500 text-sm">
-                  {errors.phoneNumber.message}
-                </p>
-              )}
-            </div>
-
-            {/* Country/Region */}
-            <div className="col-span-full select-block">
-              <Controller
-                name="state"
-                control={control}
-                defaultValue=""
-                rules={{ required: "Country/Region is required" }}
-                render={({ field }) => (
-                  <select
-                    className="border px-4 py-3 w-full rounded-lg"
-                    {...field}
-                  >
-                    <option value="" disabled>
-                      Choose Country/Region
-                    </option>
-                    <option value="India">India</option>
-                    <option value="France">France</option>
-                    <option value="Singapore">Singapore</option>
-                  </select>
-                )}
-              />
-              <Icon.CaretDown className="arrow-down" />
-              {errors.state && (
-                <p className="text-red-500 text-sm">{errors.state.message}</p>
-              )}
-            </div>
-
-            {/* City */}
-            <div>
-              <input
-                className="border-line px-4 py-3 w-full rounded-lg"
-                type="text"
-                placeholder="Town/City *"
-                {...register("city", { required: "Town/City is required" })}
-              />
-              {errors.city && (
-                <p className="text-red-500 text-sm">{errors.city.message}</p>
-              )}
-            </div>
-
-            {/* Street Address */}
-            <div>
-              <input
-                className="border-line px-4 py-3 w-full rounded-lg"
-                type="text"
-                placeholder="Street, Apartment, etc."
-                {...register("apartment", {
-                  required: "Street Address is required",
-                })}
-              />
-              {errors.apartment && (
-                <p className="text-red-500 text-sm">
-                  {errors.apartment.message}
-                </p>
-              )}
-            </div>
-
-            {/* Postal Code */}
-            <div>
-              <input
-                className="border-line px-4 py-3 w-full rounded-lg"
-                type="text"
-                placeholder="Postal Code *"
-                {...register("postal", { required: "Postal Code is required" })}
-              />
-              {errors.postal && (
-                <p className="text-red-500 text-sm">{errors.postal.message}</p>
-              )}
-            </div>
-
-            {/* Note */}
-            <div className="col-span-full">
-              <textarea
-                className="border px-4 py-3 w-full rounded-lg"
-                placeholder="Write a note..."
-                {...register("note")}
-              />
-            </div>
+            <input className="border-line px-4 py-3 w-full rounded-lg" type="text" placeholder="First Name *" {...register("firstName", { required: "First Name is required" })} />
+            <input className="border-line px-4 py-3 w-full rounded-lg" type="text" placeholder="Last Name *" {...register("lastName", { required: "Last Name is required" })} />
+            <input className="border-line px-4 py-3 w-full rounded-lg" type="text" placeholder="Town/City *" {...register("city", { required: "City is required" })} />
+            <input className="border-line px-4 py-3 w-full rounded-lg" type="text" placeholder="Street, Apartment, etc." {...register("apartment", { required: "Address is required" })} />
+            <input className="border-line px-4 py-3 w-full rounded-lg" type="text" placeholder="State *" {...register("state", { required: "State is required" })} />
+            <input className="border-line px-4 py-3 w-full rounded-lg" type="text" placeholder="Postal Code *" {...register("postal", { required: "Postal Code is required" })} />
+            <input className="border-line px-4 py-3 w-full rounded-lg" type="text" placeholder="Phone Number *" {...register("phoneNumber", { required: "Phone Number is required" })} />
           </div>
-
-          {/* Submit Button */}
-          <div className="button-block mt-6">
-            <button type="submit" className="button-main  w-full">
-              Submit
-            </button>
+          <div onClick={''} className="button-block mt-5">
+            <p className="button-main w-full text-center text-white">
+              Update
+            </p>
           </div>
-
-          {/* Message Display */}
-          {message && (
-            <p className="text-green-500 text-center mt-2">{message}</p>
-          )}
+          {message && <p className="text-green-500 text-center mt-2">{message}</p>}
         </form>
       </div>
     </div>

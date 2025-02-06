@@ -9,6 +9,7 @@ import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { Button } from "../ui/button";
+import PersonalForm from "../Form/PersonalForm";
 
 interface Profile {
   firstName?: string;
@@ -19,6 +20,7 @@ interface Profile {
   data?: any;
 }
 
+
 const AccountContent = ({
   initialProfile,
 }: {
@@ -27,6 +29,11 @@ const AccountContent = ({
   const [profile, setProfile] = useState<Profile | null>(
     initialProfile?.data || null
   );
+
+const AccountContent = ({ initialProfile }: { initialProfile: Profile | null }) => {
+
+  const [profile, setProfile] = useState<Profile | null>(initialProfile?.data || null);
+
   const [activeTab, setActiveTab] = useState<string | undefined>("dashboard");
   const [activeAddress, setActiveAddress] = useState<string | null>("billing");
   const [activeOrders, setActiveOrders] = useState<string | undefined>("all");
@@ -103,9 +110,8 @@ const AccountContent = ({
                   <Link
                     href={"#!"}
                     scroll={false}
-                    className={`item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white ${
-                      activeTab === "dashboard" ? "active" : ""
-                    }`}
+                    className={`item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white ${activeTab === "dashboard" ? "active" : ""
+                      }`}
                     onClick={() => setActiveTab("dashboard")}
                   >
                     <Icon.HouseLine size={20} />
@@ -114,9 +120,8 @@ const AccountContent = ({
                   <Link
                     href={"#!"}
                     scroll={false}
-                    className={`item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5 ${
-                      activeTab === "orders" ? "active" : ""
-                    }`}
+                    className={`item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5 ${activeTab === "orders" ? "active" : ""
+                      }`}
                     onClick={() => setActiveTab("orders")}
                   >
                     <Icon.Package size={20} />
@@ -125,9 +130,8 @@ const AccountContent = ({
                   <Link
                     href={"#!"}
                     scroll={false}
-                    className={`item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5 ${
-                      activeTab === "address" ? "active" : ""
-                    }`}
+                    className={`item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5 ${activeTab === "address" ? "active" : ""
+                      }`}
                     onClick={() => setActiveTab("address")}
                   >
                     <Icon.Tag size={20} />
@@ -136,9 +140,8 @@ const AccountContent = ({
                   <Link
                     href={"#!"}
                     scroll={false}
-                    className={`item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5 ${
-                      activeTab === "setting" ? "active" : ""
-                    }`}
+                    className={`item flex items-center gap-3 w-full px-5 py-4 rounded-lg cursor-pointer duration-300 hover:bg-white mt-1.5 ${activeTab === "setting" ? "active" : ""
+                      }`}
                     onClick={() => setActiveTab("setting")}
                   >
                     <Icon.GearSix size={20} />
@@ -156,9 +159,8 @@ const AccountContent = ({
             </div>
             <div className="right md:w-2/3 w-full pl-2.5">
               <div
-                className={`tab text-content w-full ${
-                  activeTab === "dashboard" ? "block" : "hidden"
-                }`}
+                className={`tab text-content w-full ${activeTab === "dashboard" ? "block" : "hidden"
+                  }`}
               >
                 <div className="overview grid sm:grid-cols-3 gap-5">
                   <div className="item flex items-center justify-between p-5 border border-line rounded-lg box-shadow-xs">
@@ -420,9 +422,8 @@ const AccountContent = ({
                 </div>
               </div>
               <div
-                className={`tab text-content overflow-hidden w-full p-7 border border-line rounded-xl ${
-                  activeTab === "orders" ? "block" : "hidden"
-                }`}
+                className={`tab text-content overflow-hidden w-full p-7 border border-line rounded-xl ${activeTab === "orders" ? "block" : "hidden"
+                  }`}
               >
                 <h6 className="heading6">Your Orders</h6>
                 <div className="w-full overflow-x-auto">
@@ -436,11 +437,10 @@ const AccountContent = ({
                     ].map((item, index) => (
                       <button
                         key={index}
-                        className={`item relative px-3 py-2.5 text-secondary text-center duration-300 hover:text-black border-b-2 ${
-                          activeOrders === item
-                            ? "active border-black"
-                            : "border-transparent"
-                        }`}
+                        className={`item relative px-3 py-2.5 text-secondary text-center duration-300 hover:text-black border-b-2 ${activeOrders === item
+                          ? "active border-black"
+                          : "border-transparent"
+                          }`}
                         onClick={() => handleActiveOrders(item)}
                       >
                         {/* {activeOrders === item && (
@@ -736,25 +736,22 @@ const AccountContent = ({
                 </div>
               </div>
               <div
-                className={`tab_address text-content w-full p-7 border border-line rounded-xl ${
-                  activeTab === "address" ? "block" : "hidden"
-                }`}
+                className={`tab_address text-content w-full p-7 border border-line rounded-xl ${activeTab === "address" ? "block" : "hidden"
+                  }`}
               >
                 <form>
                   <button
                     type="button"
-                    className={`tab_btn flex items-center justify-between w-full pb-1.5 border-b border-line ${
-                      activeAddress === "billing" ? "active" : ""
-                    }`}
+                    className={`tab_btn flex items-center justify-between w-full pb-1.5 border-b border-line ${activeAddress === "billing" ? "active" : ""
+                      }`}
                     onClick={() => handleActiveAddress("billing")}
                   >
                     <strong className="heading6">Billing address</strong>
                     <Icon.CaretDown className="text-2xl ic_down duration-300" />
                   </button>
                   <div
-                    className={`form_address ${
-                      activeAddress === "billing" ? "block" : "hidden"
-                    }`}
+                    className={`form_address ${activeAddress === "billing" ? "block" : "hidden"
+                      }`}
                   >
                     <div className="grid sm:grid-cols-2 gap-4 gap-y-5 mt-5">
                       <div className="first-name">
@@ -901,18 +898,16 @@ const AccountContent = ({
                   </div>
                   <button
                     type="button"
-                    className={`tab_btn flex items-center justify-between w-full mt-10 pb-1.5 border-b border-line ${
-                      activeAddress === "shipping" ? "active" : ""
-                    }`}
+                    className={`tab_btn flex items-center justify-between w-full mt-10 pb-1.5 border-b border-line ${activeAddress === "shipping" ? "active" : ""
+                      }`}
                     onClick={() => handleActiveAddress("shipping")}
                   >
                     <strong className="heading6">Shipping address</strong>
                     <Icon.CaretDown className="text-2xl ic_down duration-300" />
                   </button>
                   <div
-                    className={`form_address ${
-                      activeAddress === "shipping" ? "block" : "hidden"
-                    }`}
+                    className={`form_address ${activeAddress === "shipping" ? "block" : "hidden"
+                      }`}
                   >
                     <div className="grid sm:grid-cols-2 gap-4 gap-y-5 mt-5">
                       <div className="first-name">
@@ -1063,159 +1058,10 @@ const AccountContent = ({
                 </form>
               </div>
               <div
-                className={`tab text-content w-full p-7 border border-line rounded-xl ${
-                  activeTab === "setting" ? "block" : "hidden"
-                }`}
+                className={`tab text-content w-full p-7 border border-line rounded-xl ${activeTab === "setting" ? "block" : "hidden"
+                  }`}
               >
-                <form onSubmit={handleSubmit}>
-                  <div className="heading5 pb-4">Information</div>
-                  {/* <div className="upload_image col-span-full">
-                    <label htmlFor="uploadImage">
-                      Upload Avatar: <span className="text-red">*</span>
-                    </label>
-                    <div className="flex flex-wrap items-center gap-5 mt-3">
-                      <div className="bg_img flex-shrink-0 relative w-[7.5rem] h-[7.5rem] rounded-lg overflow-hidden bg-surface">
-                        <span className="ph ph-image text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-secondary"></span>
-                        <Image
-                          src={"/images/avatar/1.png"}
-                          width={300}
-                          height={300}
-                          alt="avatar"
-                          className="upload_img relative z-[1] w-full h-full object-cover"
-                        />
-                      </div>
-                      <div>
-                        <strong className="text-button">Upload File:</strong>
-                        <p className="caption1 text-secondary mt-1">
-                          JPG 120x120px
-                        </p>
-                        <div className="upload_file flex items-center gap-3 w-[220px] mt-3 px-3 py-2 border border-line rounded">
-                          <label
-                            htmlFor="uploadImage"
-                            className="caption2 py-1 px-3 rounded bg-line whitespace-nowrap cursor-pointer"
-                          >
-                            Choose File
-                          </label>
-                          <input
-                            type="file"
-                            name="uploadImage"
-                            id="uploadImage"
-                            accept="image/*"
-                            className="caption2 cursor-pointer"
-                            required
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
-                  <div className="grid sm:grid-cols-2 gap-4 gap-y-5 mt-5">
-                    <div className="first-name">
-                      <label
-                        htmlFor="firstName"
-                        className="caption1 capitalize"
-                      >
-                        First Name <span className="text-red">*</span>
-                      </label>
-                      <input
-                        className="border-line mt-2 px-4 py-3 w-full rounded-lg"
-                        id="firstName"
-                        name="firstName"
-                        type="text"
-                        value={profile?.firstName}
-                        placeholder="First name"
-                        required
-                      />
-                    </div>
-                    <div className="last-name">
-                      <label htmlFor="lastName" className="caption1 capitalize">
-                        Last Name <span className="text-red">*</span>
-                      </label>
-                      <input
-                        className="border-line mt-2 px-4 py-3 w-full rounded-lg"
-                        id="lastName"
-                        name="lastName"
-                        type="text"
-                        value={profile?.lastName}
-                        placeholder="Last name"
-                        required
-                      />
-                    </div>
-                    <div className="phone-number">
-                      <label
-                        htmlFor="phoneNumber"
-                        className="caption1 capitalize"
-                      >
-                        Phone Number <span className="text-red">*</span>
-                      </label>
-                      <input
-                        className="border-line mt-2 px-4 py-3 w-full rounded-lg"
-                        id="phoneNumber"
-                        type="text"
-                        name="phoneNumber"
-                        value={profile?.phoneNo}
-                        placeholder="Phone number"
-                        required
-                      />
-                    </div>
-                    {/* <div className="email">
-                                <label htmlFor="email" className='caption1 capitalize'>Email Address <span className='text-red'>*</span></label>
-                                <input className="border-line mt-2 px-4 py-3 w-full rounded-lg" id="email" type="email" value={'hi.avitex@gmail.com'} placeholder="Email address" required />
-                    </div> */}
-                    <div className="gender">
-                      <label htmlFor="gender" className="caption1 capitalize">
-                        Gender <span className="text-red">*</span>
-                      </label>
-                      <div className="select-block mt-2">
-                        <select
-                          className="border border-line px-4 py-3 w-full rounded-lg"
-                          id="gender"
-                          name="gender"
-                          value={profile?.gender}
-                        >
-                          <option value="MALE">Male</option>
-                          <option value="FEMALE">Female</option>
-                          <option value="Other">Other</option>
-                        </select>
-                        <Icon.CaretDown className="arrow-down text-lg" />
-                      </div>
-                    </div>
-                    <div className="birth">
-                      <label htmlFor="dob" className="caption1">
-                        Day of Birth <span className="text-red">*</span>
-                      </label>
-                      <input
-                        className="border-line mt-2 px-4 py-3 w-full rounded-lg"
-                        id="dob"
-                        name="dob"
-                        type="date"
-                        value={profile?.dob}
-                        placeholder="Day of Birth"
-                        required
-                      />
-                    </div>
-                  </div>
-                  {/* <div className="heading5 pb-4 lg:mt-10 mt-6">Change Password</div>
-                            <div className="pass">
-                                <label htmlFor="password" className='caption1'>Current password <span className='text-red'>*</span></label>
-                                <input className="border-line mt-2 px-4 py-3 w-full rounded-lg" id="password" type="password" placeholder="Password *" required />
-                            </div>
-                            <div className="new-pass mt-5">
-                                <label htmlFor="newPassword" className='caption1'>New password <span className='text-red'>*</span></label>
-                                <input className="border-line mt-2 px-4 py-3 w-full rounded-lg" id="newPassword" type="password" placeholder="New Password *" required />
-                            </div>
-                            <div className="confirm-pass mt-5">
-                                <label htmlFor="confirmPassword" className='caption1'>Confirm new password <span className='text-red'>*</span></label>
-                                <input className="border-line mt-2 px-4 py-3 w-full rounded-lg" id="confirmPassword" type="password" placeholder="Confirm Password *" required />
-                            </div> */}
-                  <div className="flex space-x-4 space-y-4 mt-5">
-                    <Button
-                      type="submit"
-                      className="flex-1/2 bg-purple text-white shadow-lg"
-                    >
-                      Save Changes
-                    </Button>
-                  </div>
-                </form>
+                <PersonalForm profile={profile} />
               </div>
             </div>
           </div>
@@ -1226,9 +1072,8 @@ const AccountContent = ({
         onClick={() => setOpenDetail(false)}
       >
         <div
-          className={`modal-order-detail-main grid grid-cols-2 w-[1160px] bg-white rounded-2xl ${
-            openDetail ? "open" : ""
-          }`}
+          className={`modal-order-detail-main grid grid-cols-2 w-[1160px] bg-white rounded-2xl ${openDetail ? "open" : ""
+            }`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="info p-10 border-r border-line">
