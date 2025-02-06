@@ -237,13 +237,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             <Icon.User size={18} />
                             My Account
                           </Link>
-                          <Link
-                            href="/profile"
-                            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
-                          >
-                            <Icon.User size={18} />
-                            My Profile
-                          </Link>
+                        
                           <Link
                             href="/orders"
                             className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
@@ -252,7 +246,6 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                             Orders
                           </Link>
                           <button
-                            onClick={() => console.log("Logout clicked")}
                             className="flex items-center gap-2 px-4 py-2 text-red-500 hover:bg-gray-100 rounded w-full"
                           >
                             <Icon.Power size={18} />

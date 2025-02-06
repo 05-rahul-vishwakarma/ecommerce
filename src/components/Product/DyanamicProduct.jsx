@@ -300,7 +300,7 @@ export default function DyanamicProduct({ productMain }) {
                         </div>
                     </div>
                 </div>
-                <OthersData />
+                <OthersData pk={productMain?.PK} sk={productMain?.SK} />
             </div>
         </div>
     )

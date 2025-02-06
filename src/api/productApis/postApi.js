@@ -1,5 +1,5 @@
 import axios from "axios";
-import { addToCart, addWishList, getAuthHeaders } from "../baseApi";
+import { addToCart, addWishList, getAuthHeaders, reviewProduct, } from "../baseApi";
 
 export const addWishListProduct = async (payload) => {
     try {
@@ -23,6 +23,16 @@ export const addCart = async (payload) => {
     }
 }
 
+export const reviewProd = async (payload) => {
+    try {
+        const response = await axios.post(reviewProduct, payload, {
+            headers: getAuthHeaders()
+        })
+        return response;
+    } catch (error) {
+        return error;
+    }
+}
 
 
 

@@ -12,7 +12,6 @@ export const purchaseProduct = async (payload) => {
     }
 }
 
-
 export const getPurchasedProduct = async () => {
     try {
         const response = await axios.post(getBuyProduct, {}, {
