@@ -12,20 +12,19 @@ import { productListData } from '@/api/productApis/getPostApi'
 import Product from './Product'
 
 export default function OthersData() {
-    const [products, setProducts] = useState([]); // State to store product data
-    const [loading, setLoading] = useState(true); // State to handle loading state
-    const [error, setError] = useState(null); // State to handle errors
+    const [products, setProducts] = useState([]); 
+    const [loading, setLoading] = useState(true); 
+    const [error, setError] = useState(null); 
 
-    // Fetch product data from the API
     useEffect(() => {
         const fetchProducts = async () => {
             try {
                 const response = await productListData();
-                setProducts(response); // Set the fetched data to state
+                setProducts(response); 
             } catch (error) {
-                setError(error.message); // Handle errors
+                setError(error.message); 
             } finally {
-                setLoading(false); // Set loading to false after fetching
+                setLoading(false);
             }
         };
 
@@ -33,7 +32,6 @@ export default function OthersData() {
     }, []);
     return (
         <div>
-            {/* Product Carousel Section */}
             <div className="list-product hide-product-sold menu-main mt-6 mx-[2rem] ">
                 <div className="heading5 pb-4">You'll love this too</div>
                 <Swiper
@@ -51,7 +49,7 @@ export default function OthersData() {
                     {
                         products?.map((data, i) => {
                             return (
-                                <SwiperSlide>
+                                <SwiperSlide key={i} >
                                     <Product product={data} />
                                 </SwiperSlide>
                             )
@@ -253,7 +251,7 @@ export default function OthersData() {
                         {
                             products?.slice(0, 12).map((data, i) => {
                                 return (
-                                    <Product product={data} />
+                                    <Product product={data} key={i} />
                                 )
                             })
                         }
