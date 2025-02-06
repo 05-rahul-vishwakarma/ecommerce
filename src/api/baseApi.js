@@ -31,4 +31,3 @@ export const getBuyProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/product/puchas
 
 export const reviewProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/review`;
 export const getReviewProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/review/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`;
-
