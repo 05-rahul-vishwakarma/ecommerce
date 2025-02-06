@@ -27,9 +27,9 @@ const PageNotFound = () => {
                         />
                         <div className="text-content sm:w-1/2 w-full flex items-center justify-center sm:pl-10">
                             <div className=''>
-                                <div className="lg:text-[140px] md:text-[80px] text-[42px] lg:leading-[152px] md:leading-[92px] leading-[52px] font-semibold text-secondary">404</div>
-                                <div className="heading2 mt-4 text-secondary">OOPs! Something is Missing.</div>
-                                <div className="body1 text-secondary mt-4 pb-4">The page you are looking for cannot be found. <br className='max-xl:hidden' />Take a break before trying again </div>
+                                <div className="lg:text-[140px] md:text-[80px] text-[42px] lg:leading-[152px] md:leading-[92px] leading-[52px] font-semibold text-secondary2">404</div>
+                                <div className="heading2 mt-4 text-secondary2">OOPs! Something is Missing.</div>
+                                <div className="body1 text-secondary2 mt-4 pb-4">The page you are looking for cannot be found. <br className='max-xl:hidden' />Take a break before trying again </div>
                                 <Link className="flex items-center gap-3" href={'/'}>
                                     <Icon.ArrowLeft />
                                     <div className="text-button text-purple">Back To Homepage</div>

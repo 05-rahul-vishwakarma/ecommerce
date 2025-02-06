@@ -138,7 +138,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/about"
-                          className={`text-secondary duration-300 ${pathname === "/pages/about" ? "active" : ""
+                          className={`text-secondary2 duration-300 ${pathname === "/pages/about" ? "active" : ""
                             }`}
                         >
                           About Us
@@ -147,7 +147,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/contact"
-                          className={`text-secondary duration-300 ${pathname === "/pages/contact" ? "active" : ""
+                          className={`text-secondary2 duration-300 ${pathname === "/pages/contact" ? "active" : ""
                             }`}
                         >
                           Contact Us
@@ -156,7 +156,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/client-contact"
-                          className={`text-secondary duration-300 ${pathname === "/pages/client-contact" ? "active" : ""
+                          className={`text-secondary2 duration-300 ${pathname === "/pages/client-contact" ? "active" : ""
                             }`}
                         >
                           Client Contact
@@ -165,7 +165,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/privacy-policy"
-                          className={`text-secondary duration-300 ${pathname === "/pages/privacy-policy" ? "active" : ""
+                          className={`text-secondary2 duration-300 ${pathname === "/pages/privacy-policy" ? "active" : ""
                             }`}
                         >
                           Privacy Policy
@@ -201,7 +201,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/customer-feedbacks"
-                          className={`text-secondary duration-300 ${pathname === "/pages/customer-feedbacks"
+                          className={`text-secondary2 duration-300 ${pathname === "/pages/customer-feedbacks"
                             ? "active"
                             : ""
                             }`}
@@ -232,7 +232,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     >
                       Login
                     </Link>
-                    <div className="text-secondary text-center mt-3 pb-4">
+                    <div className="text-secondary2 text-center mt-3 pb-4">
                       Don’t have an account?
                       <Link
                         href={"/register"}

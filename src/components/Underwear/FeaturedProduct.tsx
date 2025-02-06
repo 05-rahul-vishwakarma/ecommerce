@@ -136,12 +136,12 @@ const FeaturedProduct: React.FC = () => {
 
         {/* Right Section: Product Info */}
         <div className="product-info md:w-1/2 w-full lg:pl-16 md:pl-6">
-          <div className="caption2 text-secondary font-semibold uppercase">
+          <div className="caption2 text-secondary2 font-semibold uppercase">
             {product.productType}
           </div>
           <h2 className="heading4 mt-1">{product.name}</h2>
           <div className="flex items-center mt-3">
-            <span className="caption1 text-secondary">(45 reviews)</span>
+            <span className="caption1 text-secondary2">(45 reviews)</span>
           </div>
 
           <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
@@ -157,7 +157,7 @@ const FeaturedProduct: React.FC = () => {
             </div>
           </div>
 
-          <p className="desc text-secondary mt-3">{product.description}</p>
+          <p className="desc text-secondary2 mt-3">{product.description}</p>
 
           <div className="list-action mt-6">
             <div className="choose-color">

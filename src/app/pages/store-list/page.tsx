@@ -27,18 +27,18 @@ const StoreList = () => {
                                 className='lg:absolute relative top-0 left-0 lg:bottom-0 lg:w-1/2 w-full h-full object-cover'
                             />
                             <div className="text-content lg:w-1/2 lg:pr-20 lg:pl-[100px] lg:py-14 sm:py-10 py-6 max-lg:px-6">
-                                <div className="heading3 text-secondary text-start">New York Office</div>
+                                <div className="heading3 text-secondary2 text-start">New York Office</div>
                                 <div className="list-featrue lg:mt-10 mt-6">
                                     <div className="item flex lg:gap-10 gap-6">
                                         <div className='w-1/2'>
                                             <div className="heading6">Address:</div>
-                                            <div className="text-secondary mt-2">2163 Phillips Gap Rd West Jefferson, North Carolina</div>
+                                            <div className="text-secondary2 mt-2">2163 Phillips Gap Rd West Jefferson, North Carolina</div>
                                         </div>
                                         <div className='w-1/2'>
                                             <div className="heading6">Opentime:</div>
-                                            <div className="text-secondary mt-2 whitespace-nowrap">Monay - Friday:</div>
+                                            <div className="text-secondary2 mt-2 whitespace-nowrap">Monay - Friday:</div>
                                             <div className='text-title text-black whitespace-nowrap'>08:00 - 20:00</div>
-                                            <div className="text-secondary whitespace-nowrap">Saturday - Sunday:</div>
+                                            <div className="text-secondary2 whitespace-nowrap">Saturday - Sunday:</div>
                                             <div className='text-title text-black whitespace-nowrap'>10:00 - 18:00</div>
                                         </div>
                                     </div>
@@ -47,7 +47,7 @@ const StoreList = () => {
                                     <div className="item flex lg:gap-10 gap-6">
                                         <div className='w-1/2'>
                                             <div className="heading6">Infomation:</div>
-                                            <div className="text-secondary mt-2">+1 666 234 8888<br />
+                                            <div className="text-secondary2 mt-2">+1 666 234 8888<br />
                                                 hi.avitex@gmail.com</div>
                                         </div>
                                         <div className='w-1/2'>
@@ -72,18 +72,18 @@ const StoreList = () => {
                     <div className="item bg-surface overflow-hidden rounded-[20px] md:mt-20 mt-10">
                         <div className="flex items-center justify-start relative max-lg:flex-col-reverse bg-[#f9f5ff]">
                             <div className="text-content lg:w-1/2 w-full lg:pl-20 lg:pr-[100px] lg:py-14 sm:py-10 py-6 max-lg:px-6">
-                                <div className="heading3 text-secondary">Chicago Office</div>
+                                <div className="heading3 text-secondary2">Chicago Office</div>
                                 <div className="list-featrue lg:mt-10 mt-6">
                                     <div className="item flex lg:gap-10 gap-6">
                                         <div className='w-1/2'>
                                             <div className="heading6">Address:</div>
-                                            <div className="text-secondary mt-2">2163 Phillips Gap Rd West Jefferson, North Carolina</div>
+                                            <div className="text-secondary2 mt-2">2163 Phillips Gap Rd West Jefferson, North Carolina</div>
                                         </div>
                                         <div className='w-1/2'>
                                             <div className="heading6">Opentime:</div>
-                                            <div className="text-secondary mt-2 whitespace-nowrap">Monay - Friday:</div>
+                                            <div className="text-secondary2 mt-2 whitespace-nowrap">Monay - Friday:</div>
                                             <div className='text-title text-black whitespace-nowrap'>08:00 - 20:00</div>
-                                            <div className="text-secondary whitespace-nowrap">Saturday - Sunday:</div>
+                                            <div className="text-secondary2 whitespace-nowrap">Saturday - Sunday:</div>
                                             <div className='text-title text-black whitespace-nowrap'>10:00 - 18:00</div>
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@ const StoreList = () => {
                                     <div className="item flex lg:gap-10 gap-6">
                                         <div className='w-1/2'>
                                             <div className="heading6">Infomation:</div>
-                                            <div className="text-secondary mt-2">+1 666 234 8888<br />
+                                            <div className="text-secondary2 mt-2">+1 666 234 8888<br />
                                                 hi.avitex@gmail.com</div>
                                         </div>
                                         <div className='w-1/2'>
@@ -131,18 +131,18 @@ const StoreList = () => {
                                 className='lg:absolute relative top-0 left-0 lg:bottom-0 lg:w-1/2 w-full h-full object-cover'
                             />
                             <div className="text-content lg:w-1/2 lg:pr-20 lg:pl-[100px] lg:py-14 sm:py-10 py-6 max-lg:px-6 bg">
-                                <div className="heading3 text-secondary">San Francisco Office</div>
+                                <div className="heading3 text-secondary2">San Francisco Office</div>
                                 <div className="list-featrue lg:mt-10 mt-6">
                                     <div className="item flex lg:gap-10 gap-6">
                                         <div className='w-1/2'>
                                             <div className="heading6">Address:</div>
-                                            <div className="text-secondary mt-2">2163 Phillips Gap Rd West Jefferson, North Carolina</div>
+                                            <div className="text-secondary2 mt-2">2163 Phillips Gap Rd West Jefferson, North Carolina</div>
                                         </div>
                                         <div className='w-1/2'>
                                             <div className="heading6">Opentime:</div>
-                                            <div className="text-secondary mt-2 whitespace-nowrap">Monay - Friday:</div>
+                                            <div className="text-secondary2 mt-2 whitespace-nowrap">Monay - Friday:</div>
                                             <div className='text-title text-black whitespace-nowrap'>08:00 - 20:00</div>
-                                            <div className="text-secondary whitespace-nowrap">Saturday - Sunday:</div>
+                                            <div className="text-secondary2 whitespace-nowrap">Saturday - Sunday:</div>
                                             <div className='text-title text-black whitespace-nowrap'>10:00 - 18:00</div>
                                         </div>
                                     </div>
@@ -151,7 +151,7 @@ const StoreList = () => {
                                     <div className="item flex lg:gap-10 gap-6">
                                         <div className='w-1/2'>
                                             <div className="heading6">Infomation:</div>
-                                            <div className="text-secondary mt-2">+1 666 234 8888<br />
+                                            <div className="text-secondary2 mt-2">+1 666 234 8888<br />
                                                 hi.avitex@gmail.com</div>
                                         </div>
                                         <div className='w-1/2'>

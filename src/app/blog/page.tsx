@@ -72,20 +72,20 @@ export default function page() {
                                 className="rounded-lg"
                             />
                             <figcaption className="text-sm text-gray-500 mt-2 text-center">
-                            Perfect for Crafting!
+                                Perfect for Crafting!
                             </figcaption>
                         </figure>
 
                         {/* Blog Text */}
                         <div className="prose max-w-none text-gray-700">
                             <p>
-                            This ribbon is just what I needed for my DIY projects. It’s easy to cut, doesn’t fray, and ties beautifully. Whether for decorations or handmade gifts, this ribbon never disappoints.
+                                This ribbon is just what I needed for my DIY projects. It’s easy to cut, doesn’t fray, and ties beautifully. Whether for decorations or handmade gifts, this ribbon never disappoints.
                             </p>
                             <p>
-                            I am absolutely delighted with this ribbon! The quality is top-notch, and the colors are vibrant and exactly as shown in the photos. It’s perfect for all my crafting projects, from gift wrapping to decorations. 
+                                I am absolutely delighted with this ribbon! The quality is top-notch, and the colors are vibrant and exactly as shown in the photos. It’s perfect for all my crafting projects, from gift wrapping to decorations.
                             </p>
                             <p>
-                            The texture is smooth, making it easy to work with, and it holds its shape beautifully. I’ve received so many compliments on the finished products I’ve created using it. Highly recommend this ribbon for anyone looking to add a touch of elegance to their projects!
+                                The texture is smooth, making it easy to work with, and it holds its shape beautifully. I’ve received so many compliments on the finished products I’ve created using it. Highly recommend this ribbon for anyone looking to add a touch of elegance to their projects!
                             </p>
 
                             <h2>Beautiful and High Quality!</h2>

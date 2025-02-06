@@ -40,9 +40,9 @@ const   BlogItem: React.FC<BlogProps> = ({ data, type }) => {
                             <div className="blog-tag bg-custom-purple-color hover:bg-purple py-2 px-3.5  rounded-[10px] text-button-uppercase inline-block text-surface">{data.tag}</div>
                             <div className=" blog-title mt-3 duration-300 text-black font-medium leading-normal tracking-[0.8px]">{data.title}</div>
                             <div className="flex items-center gap-2 mt-2 ">
-                                <div className="blog-author caption1 text-secondary">by {data.author}</div>
+                                <div className="blog-author caption1 text-secondary2">by {data.author}</div>
                                 <span className='w-[20px] h-[1px] bg-black'></span>
-                                <div className="blog-date caption1 text-secondary">{data.date}</div>
+                                <div className="blog-date caption1 text-secondary2">{data.date}</div>
                             </div>
                         </div>
                     </div>
@@ -68,11 +68,11 @@ const   BlogItem: React.FC<BlogProps> = ({ data, type }) => {
                                     <div className="blog-tag bg-green py-1 px-2.5 rounded-full text-button-uppercase inline-block">{data.tag}</div>
                                     <div className="heading6 blog-title mt-3 duration-300">{data.title}</div>
                                     <div className="flex items-center gap-2 mt-2">
-                                        <div className="blog-author caption1 text-secondary">by {data.author}</div>
+                                        <div className="blog-author caption1 text-secondary2">by {data.author}</div>
                                         <span className='w-[20px] h-[1px] bg-black'></span>
-                                        <div className="blog-date caption1 text-secondary">{data.date}</div>
+                                        <div className="blog-date caption1 text-secondary2">{data.date}</div>
                                     </div>
-                                    <div className="body1 text-secondary mt-4">{data.shortDesc}</div>
+                                    <div className="body1 text-secondary2 mt-4">{data.shortDesc}</div>
                                     <div className="text-button underline mt-4">Read More</div>
                                 </div>
                             </div>
@@ -98,11 +98,11 @@ const   BlogItem: React.FC<BlogProps> = ({ data, type }) => {
                                             <div className="blog-tag bg-green py-1 px-2.5 rounded-full text-button-uppercase inline-block">{data.tag}</div>
                                             <div className="heading6 blog-title mt-3 duration-300">{data.title}</div>
                                             <div className="flex items-center gap-2 mt-2">
-                                                <div className="blog-author caption1 text-secondary">by {data.author}</div>
+                                                <div className="blog-author caption1 text-secondary2">by {data.author}</div>
                                                 <span className='w-[20px] h-[1px] bg-black'></span>
-                                                <div className="blog-date caption1 text-secondary">{data.date}</div>
+                                                <div className="blog-date caption1 text-secondary2">{data.date}</div>
                                             </div>
-                                            <div className="body1 text-secondary mt-4">{data.shortDesc}</div>
+                                            <div className="body1 text-secondary2 mt-4">{data.shortDesc}</div>
                                             <div className="text-button underline mt-4">Read More</div>
                                         </div>
                                     </div>
