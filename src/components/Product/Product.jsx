@@ -31,7 +31,7 @@ const Product = ({ product }) => {
         if (!accessToken) {
             console.log('token is not avilable');
             toast.error("Please log in to add items to the cart.");
-            router.push("/login"); // Redirect to login page
+            router.push("/login"); 
             return;
         } else {
             handleAddToCart(product, openModalCart);
@@ -43,7 +43,7 @@ const Product = ({ product }) => {
         if (!accessToken) {
             console.log('token is not avilable');
             toast.error("Please log in to add items to the cart.");
-            router.push("/login"); // Redirect to login page
+            router.push("/login"); 
             return;
         } else {
             addToWishlist(product);

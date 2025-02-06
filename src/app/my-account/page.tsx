@@ -32,14 +32,13 @@ export default async function MyAccount() {
     const accessToken = (await nextCookies).get('accessToken')?.value;
 
     if (!accessToken) {
-        redirect('/login'); // Redirect to login if no token
+        redirect('/login'); 
         return null;
     }
 
     let profileData = null;
     try {
         profileData = await fetchProfile(accessToken);
-        // console.log("Profile Data:", profileData);
     } catch (error) {
         console.error("Profile fetch failed:", (error as { message: string }).message);
         return (

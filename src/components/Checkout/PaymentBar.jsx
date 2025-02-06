@@ -70,17 +70,17 @@ export default function PaymentBar() {
                         <div key={i} className="item flex flex-col md:flex-row items-center justify-between w-full pb-5 border-b border-line gap-6 mt-5">
                             <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden">
                                 <Image
-                                    src={product?.productDetails[0]?.img || '/public/image3.png'}
+                                    src={product?.productDetails?.[0]?.img || '/public/image3.png'}
                                     width={500}
                                     height={500}
-                                    alt='img'
-                                    className='w-full h-full'
+                                    alt="img"
+                                    className="w-full h-full"
                                 />
                             </div>
                             <div className="flex items-center justify-between w-full">
                                 <div>
                                     <div className="flex items-center justify-between w-full space-x-4 ">
-                                        <div className="name text-button">{product?.productDetails[0]?.name || 'none'}</div>
+                                        <div className="name text-button">{product?.productDetails?.[0]?.name || 'none'}</div>
                                         <div
                                             className="remove-cart-btn caption1 font-semibold text-red underline cursor-pointer"
                                             onClick={() => removeProductFromCart(product?.PK, product?.SK)}

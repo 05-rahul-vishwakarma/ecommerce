@@ -14,8 +14,6 @@ import { useModalWishlistContext } from "@/context/ModalWishlistContext";
 import { useModalSearchContext } from "@/context/ModalSearchContext";
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
-import useCartStore from "@/globalStore/useCartStore";
-import { accesstToken } from "@/api/baseApi";
 
 interface Props {
   props: string;
@@ -32,9 +30,6 @@ const MenuFour: React.FC<Props> = ({ props }) => {
   const { openModalSearch } = useModalSearchContext();
   const [searchKeyword, setSearchKeyword] = useState("");
   const router = useRouter();
-  const { mergedCart } = useCartStore();
-  const [openDropdown, setOpenDropdown] = useState(false);
-
 
   const handleSearch = (value: string) => {
     router.push(`/search-result?query=${value}`);
@@ -63,10 +58,6 @@ const MenuFour: React.FC<Props> = ({ props }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollPosition]);
-
-  const handleProfile = () => {
-    router.push('/profile')
-  }
 
   return (
     <>
@@ -114,6 +105,15 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     className="text-white text-button-uppercase duration-300 h-full flex items-center justify-center"
                   >
                     Shop
+                  </Link>
+                </li>
+
+                <li className="h-full">
+                  <Link
+                    href="/product"
+                    className="text-white text-button-uppercase duration-300 h-full flex items-center justify-center"
+                  >
+                    Product
                   </Link>
                 </li>
 
@@ -220,66 +220,33 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   <Icon.User
                     size={24}
                     color="white"
-                    // onClick={handleLoginPopup}
                     onClick={handleLoginPopup}
                   />
                   <div
                     className={`login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-sm 
-                    ${openLoginPopup ? "open" : ""}`}
+                                            ${openLoginPopup ? "open" : ""}`}
                   >
-                    {
-                      accesstToken ?
-                        <>
-                          <Link
-                            href="/my-account"
-                            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
-                          >
-                            <Icon.User size={18} />
-                            My Account
-                          </Link>
-                        
-                          <Link
-                            href="/orders"
-                            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
-                          >
-                            <Icon.List size={18} />
-                            Orders
-                          </Link>
-                          <button
-                            className="flex items-center gap-2 px-4 py-2 text-red-500 hover:bg-gray-100 rounded w-full"
-                          >
-                            <Icon.Power size={18} />
-                            Logout
-                          </button>
-                        </> :
-                        <>
-
-                          <Link
-                            href={"/login"}
-                            className="button-main w-full text-center"
-                          >
-                            Login
-                          </Link>
-                          <div className="text-secondary text-center mt-3 pb-4">
-                            Don’t have an account?
-                            <Link
-                              href={"/register"}
-                              className="text-black pl-1 hover:underline hover:text-purple"
-                            >
-                              Register
-                            </Link>
-                          </div>
-                          <div className="bottom pt-4 border-t border-line"></div>
-                          <Link href={"#!"} className="body1 hover:underline">
-                            Support
-                          </Link>
-                        </>
-                    }
-
-
+                    <Link
+                      href={"/login"}
+                      className="button-main w-full text-center"
+                    >
+                      Login
+                    </Link>
+                    <div className="text-secondary text-center mt-3 pb-4">
+                      Don’t have an account?
+                      <Link
+                        href={"/register"}
+                        className="text-black pl-1 hover:underline hover:text-purple"
+                      >
+                        Register
+                      </Link>
+                    </div>
+                    <div className="bottom pt-4 border-t border-line"></div>
+                    <Link href={"#!"} className="body1 hover:underline">
+                      Support
+                    </Link>
                   </div>
                 </div>
-
                 <div
                   className="max-md:hidden wishlist-icon flex items-center cursor-pointer"
                   onClick={openModalWishlist}
@@ -292,7 +259,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                 >
                   <Icon.Handbag size={24} color="white" />
                   <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-black bg-white w-4 h-4 flex items-center justify-center rounded-full">
-                    {mergedCart?.length}
+                    {cartData?.length}
                   </span>
                 </div>
               </div>
@@ -366,7 +333,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     className={`${openSubNavMobile === 4 ? "open" : ""}`}
                     onClick={() => handleOpenSubNavMobile(4)}
                   >
-                    <Link
+                    <a
                       href={"/product"}
                       className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
@@ -374,7 +341,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <span className="text-right">
                         <Icon.CaretRight size={20} />
                       </span>
-                    </Link>
+                    </a>
                   </li>
 
                   <li
