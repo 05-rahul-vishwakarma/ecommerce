@@ -36,7 +36,7 @@
 //         props="style-one bg-white"
 //         slogan="New customers save 10% with the code GET10"
 //       />
-//       <div id="header" className="relative w-full text-purple">
+//       <div id="header" className="relative w-full text-secondary">
 //         <MenuFour props="bg-transparent" />
 //         <Breadcrumb heading="Compare Products" subHeading="Compare Products" />
 //       </div>
@@ -64,7 +64,7 @@
 //                       <div className="text-title text-center mt-4">
 //                         {/* {item.name} */}
 //                       </div>
-//                       <div className="caption2 font-semibold text-secondary2 uppercase text-center mt-1">
+//                       <div className="caption2 font-semibold text-purple2 uppercase text-center mt-1">
 //                         {/* {item.brand} */}
 //                       </div>
 //                     </div>
@@ -227,10 +227,8 @@
 
 // export default Compare;
 
-import React from 'react'
+import React from "react";
 
 export default function page() {
-  return (
-    <div>page</div>
-  )
+  return <div>page</div>;
 }

@@ -10,7 +10,6 @@
 // import * as Icon from "@phosphor-icons/react/dist/ssr";
 // import MenuFour from '@/components/Header/MenuFour'
 
-
 // const Wishlist = () => {
 //     const { wishlistState } = useWishlist();
 //     const [sortOption, setSortOption] = useState('');
@@ -93,7 +92,6 @@
 //         filteredData = sortedData.sort((a, b) => a.price - b.price)
 //     }
 
-
 //     // Find page number base on filteredData
 //     const pageCount = Math.ceil(filteredData.length / productsPerPage);
 
@@ -115,11 +113,10 @@
 //         setCurrentPage(selected);
 //     };
 
-
 //     return (
 //         <>
 //             <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
-//             <div id="header" className='relative w-full text-purple'>
+//             <div id="header" className='relative w-full text-secondary'>
 //                 <MenuFour props="bg-transparent" />
 //                 <Breadcrumb heading='Wish list' subHeading='Wish list' />
 //             </div>
@@ -260,10 +257,8 @@
 
 // export default Wishlist
 
-import React from 'react'
+import React from "react";
 
 export default function page() {
-  return (
-    <div>page</div>
-  )
+  return <div>page</div>;
 }

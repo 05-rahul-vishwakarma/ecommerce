@@ -1,19 +1,22 @@
-'use client';
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import TopNavOne from '@/components/Header/TopNav/TopNavOne';
-import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
-import Footer from '@/components/Footer/Footer';
-import MenuFour from '@/components/Header/MenuFour';
-import PersonalForm from '@/components/Form/PersonalForm';
-import PaymentBar from '@/components/Checkout/PaymentBar';
+"use client";
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import TopNavOne from "@/components/Header/TopNav/TopNavOne";
+import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
+import Footer from "@/components/Footer/Footer";
+import MenuFour from "@/components/Header/MenuFour";
+import PersonalForm from "@/components/Form/PersonalForm";
+import PaymentBar from "@/components/Checkout/PaymentBar";
 
 const Checkout = () => {
   return (
     <>
-      <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
-      <div id="header" className="relative w-full text-purple">
+      <TopNavOne
+        props="style-one bg-white"
+        slogan="New customers save 10% with the code GET10"
+      />
+      <div id="header" className="relative w-full text-secondary">
         <MenuFour props="bg-transparent" />
         <Breadcrumb heading="Shopping cart" subHeading="Shopping cart" />
       </div>
@@ -23,12 +26,16 @@ const Checkout = () => {
             {/* Login Section */}
             <div className="left md:w-1/2 w-full">
               <Link
-                href={'/login'}
-                className="login bg-surface py-3 px-4 flex justify-between rounded-lg hover:text-purple"
+                href={"/login"}
+                className="login bg-surface py-3 px-4 flex justify-between rounded-lg hover:text-secondary"
               >
                 <div className="left flex items-center">
-                  <span className="text-on-surface-variant1 pr-4">Already have an account?</span>
-                  <span className="text-button text-on-surface hover-underline cursor-pointer">Login</span>
+                  <span className="text-on-surface-variant1 pr-4">
+                    Already have an account?
+                  </span>
+                  <span className="text-button text-on-surface hover-underline cursor-pointer">
+                    Login
+                  </span>
                 </div>
                 <div className="right">
                   <i className="ph ph-caret-down fs-20 d-block cursor-pointer"></i>
@@ -57,7 +64,9 @@ const Checkout = () => {
                     </div>
                   </div>
                   <div className="block-button mt-3">
-                    <button className="button-main button-blue-hover w-full">Login</button>
+                    <button className="button-main button-blue-hover w-full">
+                      Login
+                    </button>
                   </div>
                 </form>
               </div>
