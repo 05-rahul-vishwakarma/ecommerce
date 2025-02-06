@@ -12,11 +12,8 @@ const AboutUs = () => {
   return (
     <>
       {/* Top navigation and breadcrumb */}
-      <TopNavOne
-        props="style-one bg-gray-100 border-b border-gray-300"
-        slogan="New customers save 10% with the code GET10"
-      />
-      <div id="header" className="relative w-full text-purple-900">
+     
+      <div id="header" className="relative w-full text-purple">
         <MenuFour props="bg-white shadow-md" />
         <Breadcrumb heading="About Us" subHeading="Learn More About Us" />
       </div>

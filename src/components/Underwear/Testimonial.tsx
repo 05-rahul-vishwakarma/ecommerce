@@ -48,7 +48,7 @@ const Testimonial = () => {
             <div className="testimonial-block style-four bg-[#fffdfd] md:mt-20 mt-10 md:py-20 py-14">
                 <div className="container flex items-center justify-between flex-wrap gap-y-6 max-md:flex-col-reverse">
                     <div className="md:w-1/2 w-full list-testimonial section-swiper-navigation style-small-border">
-                        <div className="heading3 md:pb-10 pb-5 text-secondary">What People Say</div>
+                        <div className="heading3 md:pb-10 pb-5 text-secondary2">What People Say</div>
                         <Swiper
                             slidesPerView={1}
                             navigation

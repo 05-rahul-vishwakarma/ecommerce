@@ -20,7 +20,7 @@ const Faqs = () => {
 
     return (
         <>
-            <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
+            {/* <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" /> */}
             <div id="header" className='relative w-full text-purple'>
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading='FAQs' subHeading='FAQs' />
@@ -35,7 +35,7 @@ const Faqs = () => {
                                 ].map((item, index) => (
                                     <div
                                         key={index}
-                                        className={`tab-item inline-block w-fit heading6 has-line-before text-secondary2 hover:text-purple duration-300 ${activeTab === item ? 'active' : ''}`}
+                                        className={`tab-item inline-block w-fit heading6 has-line-before text-secondary22 hover:text-purple duration-300 ${activeTab === item ? 'active' : ''}`}
                                         onClick={() => handleActiveTab(item)}
                                     >
                                         {item}
@@ -53,7 +53,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -64,7 +64,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -75,7 +75,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -86,7 +86,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -97,7 +97,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -108,7 +108,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -132,7 +132,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -143,7 +143,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -154,7 +154,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -165,7 +165,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -189,7 +189,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -200,7 +200,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -211,7 +211,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -222,7 +222,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -233,7 +233,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                             </div>
@@ -246,7 +246,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -257,7 +257,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -268,7 +268,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -279,7 +279,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -290,7 +290,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                             </div>
@@ -303,7 +303,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -314,7 +314,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -325,7 +325,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -336,7 +336,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -347,7 +347,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -358,7 +358,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                             </div>
@@ -371,7 +371,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -382,7 +382,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -393,7 +393,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -404,7 +404,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -415,7 +415,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                             </div>
@@ -428,7 +428,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -439,7 +439,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -450,7 +450,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -461,7 +461,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                                 <div
@@ -472,7 +472,7 @@ const Faqs = () => {
                                         <div className="heading6">How does COVID-19 affect my online orders and store purchases?</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com</div>
                                 </div>
                                 <div
@@ -483,7 +483,7 @@ const Faqs = () => {
                                         <div className="heading6">NEW! Plus sizes for Woman</div>
                                         <Icon.CaretRight size={24} />
                                     </div>
-                                    <div className="content body1 text-secondary">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
+                                    <div className="content body1 text-secondary2">The courier companies have adapted their procedures to guarantee the safety of our employees and our community. We thank you for your patience, as there may be some delays to deliveries.
                                         We remind you that you can still find us at Mango.com and on all our online channels. Our customer services are still there for you, to answer any questions you may have, although due to the current situation, we are operating with longer waiting times.</div>
                                 </div>
                             </div>
