@@ -9,7 +9,7 @@ import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { Button } from "../ui/button";
-import PersonalForm from "../Form/PersonalForm";
+import Form from "./Form";
 
 interface Profile {
   firstName?: string;
@@ -20,9 +20,15 @@ interface Profile {
   data?: any;
 }
 
-const AccountContent = ({ initialProfile }: { initialProfile: Profile | null }) => {
+interface AccountContentProps {
+  initialProfile: { data: Profile } | null;
+}
 
-  const [profile, setProfile] = useState<Profile | null>(initialProfile?.data || null);
+
+const AccountContent = ({ initialProfile }: AccountContentProps) => {
+  const [profile, setProfile] = useState<Profile | null>(
+    initialProfile?.data || null
+  );
   const [activeTab, setActiveTab] = useState<string | undefined>("dashboard");
   const [activeAddress, setActiveAddress] = useState<string | null>("billing");
   const [activeOrders, setActiveOrders] = useState<string | undefined>("all");
@@ -1048,13 +1054,12 @@ const AccountContent = ({ initialProfile }: { initialProfile: Profile | null }) 
                 className={`tab text-content w-full p-7 border border-line rounded-xl ${activeTab === "setting" ? "block" : "hidden"
                   }`}
               >
-                <PersonalForm profile={profile} />
+                <Form profile={profile} />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
       <div
         className={`modal-order-detail-block flex items-center justify-center`}
         onClick={() => setOpenDetail(false)}
