@@ -41,6 +41,27 @@ export default async function MyAccount() {
     return null;
   }
 
+    const nextCookies = cookies();
+    const accessToken = (await nextCookies).get('accessToken')?.value;
+
+    if (!accessToken) {
+        redirect('/login'); 
+        return null;
+    }
+
+    let profileData = null;
+    try {
+        profileData = await fetchProfile(accessToken);
+    } catch (error) {
+        console.error("Profile fetch failed:", (error as { message: string }).message);
+        return (
+          <div>
+            <h1>An error occurred</h1>
+            <p>{(error as { message: string }).message}</p>
+          </div>
+        )
+    }
+
   let profileData = null;
   try {
     profileData = await fetchProfile(accessToken);

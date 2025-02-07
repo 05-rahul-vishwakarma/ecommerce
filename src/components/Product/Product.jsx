@@ -24,6 +24,7 @@ const Product = ({ product }) => {
     openQuickview(product);
   };
 
+ 
   const handleCart = () => {
     const accessToken = Cookies.get("accessToken");
     if (!accessToken) {
@@ -33,9 +34,22 @@ const Product = ({ product }) => {
       return;
     } else {
       handleAddToCart(product, openModalCart);
+
+    const handleCart = () => {
+        const accessToken = Cookies.get("accessToken");
+        if (!accessToken) {
+            console.log('token is not avilable');
+            toast.error("Please log in to add items to the cart.");
+            router.push("/login"); 
+            return;
+        } else {
+            handleAddToCart(product, openModalCart);
+        }
+ 
     }
   };
 
+ 
   const handleWishList = (product) => {
     const accessToken = Cookies.get("accessToken");
     if (!accessToken) {
@@ -46,6 +60,18 @@ const Product = ({ product }) => {
     } else {
       addToWishlist(product);
       openModalWishlist();
+
+    const handleWishList = (product) => {
+        const accessToken = Cookies.get("accessToken");
+        if (!accessToken) {
+            console.log('token is not avilable');
+            toast.error("Please log in to add items to the cart.");
+            router.push("/login"); 
+            return;
+        } else {
+            addToWishlist(product);
+            openModalWishlist();
+        }
     }
   };
 
