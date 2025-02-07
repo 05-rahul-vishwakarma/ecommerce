@@ -9,21 +9,16 @@ import { redirect } from "next/navigation";
 
 async function fetchProfile(accessToken: string) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/user/profile`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/profile`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!res.ok) {
       const errorDetails = await res.text();
-      throw new Error(
-        `Failed to fetch profile: ${res.status} ${res.statusText}. Details: ${errorDetails}`
-      );
+      throw new Error(`Failed to fetch profile: ${res.status} ${res.statusText}. Details: ${errorDetails}`);
     }
     return res.json();
   } catch (error) {
@@ -34,58 +29,31 @@ async function fetchProfile(accessToken: string) {
 
 export default async function MyAccount() {
   const nextCookies = cookies();
-  const accessToken = (await nextCookies).get("accessToken")?.value;
-
-  if (!accessToken) {
-    redirect("/login"); // Redirect to login if no token
-    return null;
-  }
-
-    const nextCookies = cookies();
-    const accessToken = (await nextCookies).get('accessToken')?.value;
+  const accessToken = (await nextCookies).get('accessToken')?.value;
 
   if (!accessToken) {
     redirect('/login');
     return null;
   }
 
-    let profileData = null;
-    try {
-        profileData = await fetchProfile(accessToken);
-    } catch (error) {
-        console.error("Profile fetch failed:", (error as { message: string }).message);
-        return (
-          <div>
-            <h1>An error occurred</h1>
-            <p>{(error as { message: string }).message}</p>
-          </div>
-        )
-    }
-
   let profileData = null;
+
   try {
     profileData = await fetchProfile(accessToken);
-    // console.log("Profile Data:", profileData);
   } catch (error) {
-    console.error(
-      "Profile fetch failed:",
-      (error as { message: string }).message
-    );
+    console.error("Profile fetch failed:", (error as { message: string }).message);
     return (
       <div>
         <h1>An error occurred</h1>
         <p>{(error as { message: string }).message}</p>
       </div>
-    );
+    )
   }
 
   return (
     <>
-      <TopNavOne
-        props="style-one bg-white"
-        slogan="New customers save 10% with the code GET20"
-      />
-      <div id="header" className="relative w-full text-secondary">
+      
+      <div id="header" className="relative w-full text-purple">
         <MenuFour props="bg-transparent" />
         <Breadcrumb heading="My Account" subHeading="My Account" />
       </div>
@@ -96,7 +64,6 @@ export default async function MyAccount() {
           </Suspense>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

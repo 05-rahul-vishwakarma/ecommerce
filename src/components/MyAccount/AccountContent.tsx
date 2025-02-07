@@ -19,21 +19,15 @@ interface Profile {
   phoneNo?: string;
   data?: any;
 }
+interface AccountContentProps {
+  initialProfile: { data: Profile } | null;
+}
 
 
-const AccountContent = ({
-  initialProfile,
-}: {
-  initialProfile: Profile | null;
-}) => {
+const AccountContent = ({ initialProfile }: AccountContentProps) => {
   const [profile, setProfile] = useState<Profile | null>(
     initialProfile?.data || null
   );
-
-const AccountContent = ({ initialProfile }: { initialProfile: Profile | null }) => {
-
-  const [profile, setProfile] = useState<Profile | null>(initialProfile?.data || null);
-
   const [activeTab, setActiveTab] = useState<string | undefined>("dashboard");
   const [activeAddress, setActiveAddress] = useState<string | null>("billing");
   const [activeOrders, setActiveOrders] = useState<string | undefined>("all");

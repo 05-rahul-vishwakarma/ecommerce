@@ -14,6 +14,8 @@ import { useModalWishlistContext } from "@/context/ModalWishlistContext";
 import { useModalSearchContext } from "@/context/ModalSearchContext";
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
+import useCartStore from "@/globalStore/useCartStore";
+import Cookies from "js-cookie";
 
 interface Props {
   props: string;
@@ -32,7 +34,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
   const router = useRouter();
   const { mergedCart } = useCartStore();
   const [openDropdown, setOpenDropdown] = useState(false);
- 
+
 
   const handleSearch = (value: string) => {
     router.push(`/search-result?query=${value}`);
@@ -62,20 +64,96 @@ const MenuFour: React.FC<Props> = ({ props }) => {
     };
   }, [lastScrollPosition]);
 
- 
   const handleProfile = () => {
-    router.push("/profile");
-  };
+    router.push('/profile')
+  }
+  const [popupContent, setPopupContent] = useState(
+    <>
+      <Link href={"/login"} className="button-main w-full text-center">
+        Login
+      </Link>
+      <div className="text-secondary text-center mt-3 pb-4">
+        Don’t have an account?
+        <Link
+          href={"/register"}
+          className="text-black pl-1 hover:underline hover:text-purple"
+        >
+          Register
+        </Link>
+      </div>
+      <div className="bottom pt-4 border-t border-line"></div>
+      <Link href={"#!"} className="body1 hover:underline">
+        Support
+      </Link>
+    </>
+  );
 
+  useEffect(() => {
+    const checkAccessToken = () => {
+      const accessToken = Cookies.get('accessToken');
 
- 
+      if (accessToken) {
+        setPopupContent(
+          <>
+            <Link
+              href="/my-account"
+              className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
+            >
+              <Icon.User size={18} />
+              My Account
+            </Link>
+            <Link
+              href="/orders"
+              className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
+            >
+              <Icon.List size={18} />
+              Orders
+            </Link>
+            <button
+              onClick={() => {
+                Cookies.remove('accessToken');
+                router.push('/login');
+                console.log("Logout clicked");
+                setPopupContent(
+                  <>
+                    <Link href={"/login"} className="button-main w-full text-center">
+                      Login
+                    </Link>
+                    <div className="text-secondary text-center mt-3 pb-4">
+                      Don’t have an account?
+                      <Link
+                        href={"/register"}
+                        className="text-black pl-1 hover:underline hover:text-purple"
+                      >
+                        Register
+                      </Link>
+                    </div>
+                    <div className="bottom pt-4 border-t border-line"></div>
+                    <Link href={"#!"} className="body1 hover:underline">
+                      Support
+                    </Link>
+                  </>
+                );
+              }}
+              className="flex items-center gap-2 px-4 py-2 text-red-500 hover:bg-gray-100 rounded w-full"
+            >
+              <Icon.Power size={18} />
+              Logout
+            </button>
+          </>
+        );
+      }
+    };
+
+    checkAccessToken();
+  }, [router]);
+
   return (
     <>
       <div
         style={{ backgroundColor: "#592dbb" }}
-        className={`header-menu style-one ${
-          fixedHeader ? " fixed" : "relative"
-        } w-full  md:h-[74px] h-[56px] ${props}`}
+        className={`header-menu style-one ${fixedHeader ? " fixed" : "relative"
+          } w-full  md:h-[74px] h-[56px] ${props}`}
       >
         <div className="container mx-auto h-full">
           <div className="header-main flex items-center justify-between h-full">
@@ -101,11 +179,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   <Link
                     href="/"
                     className={` text-white text-button-uppercase duration-300 h-full flex items-center justify-center gap-1 
-                                            ${
-                                              pathname.includes("/homepages")
-                                                ? "active"
-                                                : ""
-                                            }`}
+                                            ${pathname.includes("/homepages")
+                        ? "active"
+                        : ""
+                      }`}
                   >
                     Home
                   </Link>
@@ -117,15 +194,6 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     className="text-white text-button-uppercase duration-300 h-full flex items-center justify-center"
                   >
                     Shop
-                  </Link>
-                </li>
-
-                <li className="h-full">
-                  <Link
-                    href="/product"
-                    className="text-white text-button-uppercase duration-300 h-full flex items-center justify-center"
-                  >
-                    Product
                   </Link>
                 </li>
 
@@ -150,9 +218,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/about"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/about" ? "active" : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/about" ? "active" : ""
+                            }`}
                         >
                           About Us
                         </Link>
@@ -160,9 +227,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/contact"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/contact" ? "active" : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/contact" ? "active" : ""
+                            }`}
                         >
                           Contact Us
                         </Link>
@@ -170,9 +236,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/client-contact"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/client-contact" ? "active" : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/client-contact" ? "active" : ""
+                            }`}
                         >
                           Client Contact
                         </Link>
@@ -180,9 +245,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/privacy-policy"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/privacy-policy" ? "active" : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/privacy-policy" ? "active" : ""
+                            }`}
                         >
                           Privacy Policy
                         </Link>
@@ -217,11 +281,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <li>
                         <Link
                           href="/pages/customer-feedbacks"
-                          className={`text-secondary duration-300 ${
-                            pathname === "/pages/customer-feedbacks"
-                              ? "active"
-                              : ""
-                          }`}
+                          className={`text-secondary duration-300 ${pathname === "/pages/customer-feedbacks"
+                            ? "active"
+                            : ""
+                            }`}
                         >
                           Customer Feedbacks
                         </Link>
@@ -237,90 +300,17 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   <Icon.User
                     size={24}
                     color="white"
+                    // onClick={handleLoginPopup}
                     onClick={handleLoginPopup}
                   />
                   <div
                     className={`login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-sm 
-                                            ${openLoginPopup ? "open" : ""}`}
+                    ${openLoginPopup ? "open" : ""}`}
                   >
- 
-                    {accesstToken ? (
-                      <>
-                        <Link
-                          href="/my-account"
-                          className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
-                        >
-                          <Icon.User size={18} />
-                          My Account
-                        </Link>
-                        {/* <Link
-                            href="/profile"
-                            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
-                          >
-                            <Icon.User size={18} />
-                            My Profile
-                          </Link> */}
-                        <Link
-                          href="/orders"
-                          className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
-                        >
-                          <Icon.List size={18} />
-                          Orders
-                        </Link>
-                        <button
-                          onClick={() => console.log("Logout clicked")}
-                          className="flex items-center gap-2 px-4 py-2 text-red-500 hover:bg-gray-100 rounded w-full"
-                        >
-                          <Icon.Power size={18} />
-                          Logout
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <Link
-                          href={"/login"}
-                          className="button-main w-full text-center"
-                        >
-                          Login
-                        </Link>
-                        <div className="text-secondary text-center mt-3 pb-4">
-                          Don’t have an account?
-                          <Link
-                            href={"/register"}
-                            className="text-black pl-1 hover:underline hover:text-secondary"
-                          >
-                            Register
-                          </Link>
-                        </div>
-                        <div className="bottom pt-4 border-t border-line"></div>
-                        <Link href={"#!"} className="body1 hover:underline">
-                          Support
-                        </Link>
-                      </>
-                    )}
-
-                    <Link
-                      href={"/login"}
-                      className="button-main w-full text-center"
-                    >
-                      Login
-                    </Link>
-                    <div className="text-secondary2 text-center mt-3 pb-4">
-                      Don’t have an account?
-                      <Link
-                        href={"/register"}
-                        className="text-black pl-1 hover:underline hover:text-purple"
-                      >
-                        Register
-                      </Link>
-                    </div>
-                    <div className="bottom pt-4 border-t border-line"></div>
-                    <Link href={"#!"} className="body1 hover:underline">
-                      Support
-                    </Link>
- 
+                  {popupContent}
                   </div>
                 </div>
+
                 <div
                   className="max-md:hidden wishlist-icon flex items-center cursor-pointer"
                   onClick={openModalWishlist}
@@ -333,7 +323,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                 >
                   <Icon.Handbag size={24} color="white" />
                   <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-black bg-white w-4 h-4 flex items-center justify-center rounded-full">
-                    {cartData?.length}
+                    {mergedCart?.length}
                   </span>
                 </div>
               </div>
@@ -407,7 +397,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     className={`${openSubNavMobile === 4 ? "open" : ""}`}
                     onClick={() => handleOpenSubNavMobile(4)}
                   >
-                    <a
+                    <Link
                       href={"/product"}
                       className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
@@ -415,7 +405,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <span className="text-right">
                         <Icon.CaretRight size={20} />
                       </span>
-                    </a>
+                    </Link>
                   </li>
 
                   <li
@@ -443,9 +433,8 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     >
                       Pages
                       <span
-                        className={`${
-                          openMenuMobile ? "open" : ""
-                        } tesxt-right`}
+                        className={`${openMenuMobile ? "open" : ""
+                          } tesxt-right`}
                       >
                         <Icon.CaretRight size={20} />
                       </span>
