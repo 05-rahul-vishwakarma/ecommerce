@@ -93,10 +93,10 @@ const AccountContent = ({
                     />
                   </div>
                   <div className="name heading6 mt-4 text-center">
-                    Tony Nguyen
+                    {profile?.firstName}
                   </div>
                   <div className="mail heading6 font-normal normal-case text-secondary text-center mt-1">
-                    hi.avitex@gmail.com
+                    {profile?.phoneNo}
                   </div>
                 </div>
                 <div className="menu-tab w-full max-w-none lg:mt-10 mt-6">
