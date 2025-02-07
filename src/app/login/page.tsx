@@ -180,7 +180,7 @@ const Login = () => {
             <div className="right md:w-1/2 w-full lg:pl-[60px] md:pl-[40px] flex items-center">
               <div className="text-content">
                 <div className="heading4">New Customer</div>
-                <div className="mt-2 text-secondary">
+                <div className="mt-2 text-secondary2">
                   Be part of our growing family of new customers! Join us today
                   and unlock a world of exclusive benefits, offers, and
                   personalized experiences.

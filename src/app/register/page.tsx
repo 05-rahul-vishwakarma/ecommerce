@@ -86,10 +86,12 @@ const Register = () => {
                   </label>
                 </div>
                 <div className="block-button md:mt-7 mt-4">
-                  <button className="button-main" type="submit">
+                  <button
+                    className="button-main bg-custom-purple-color"type="submit">
                     Register
                   </button>
                 </div>
+             
               </form>
             </div>
             <div className="right md:w-1/2 w-full lg:pl-[60px] md:pl-[40px] flex items-center">

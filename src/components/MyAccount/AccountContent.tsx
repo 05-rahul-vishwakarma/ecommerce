@@ -9,7 +9,7 @@ import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { Button } from "../ui/button";
-import PersonalForm from "../Form/PersonalForm";
+import Form from "./Form";
 
 interface Profile {
   firstName?: string;
@@ -1061,7 +1061,7 @@ const AccountContent = ({ initialProfile }: { initialProfile: Profile | null }) 
                 className={`tab text-content w-full p-7 border border-line rounded-xl ${activeTab === "setting" ? "block" : "hidden"
                   }`}
               >
-                <PersonalForm profile={profile} />
+                <Form profile={profile} />
               </div>
             </div>
           </div>

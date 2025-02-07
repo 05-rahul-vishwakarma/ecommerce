@@ -53,16 +53,25 @@ const TrendingProduct: React.FC<Props> = ({ start, limit }) => {
     <div className="tab-features-block style-underwear md:pt-20 pt-10">
       <div className="container">
         <div className="heading flex flex-col items-center text-center">
+<<<<<<< HEAD
           <div className="heading3 text-center text-secondary">
             Trending Products
           </div>
+=======
+          <div className="heading3 text-center text-secondary2">Trending Products</div>
+>>>>>>> 1a460d804c57f714cdf37f1bb048b31008d31ed8
           <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl mt-6">
             {randomTabs.map((type) => (
               <div
                 key={type}
+<<<<<<< HEAD
                 className={`tab-item relative text-secondary py-2 px-5 cursor-pointer duration-500 hover:text-secondary ${
                   activeTab === type ? "active" : ""
                 }`}
+=======
+                className={`tab-item relative text-secondary2 py-2 px-5 cursor-pointer duration-500 hover:text-purple ${activeTab === type ? 'active' : ''
+                  }`}
+>>>>>>> 1a460d804c57f714cdf37f1bb048b31008d31ed8
                 onClick={() => handleTabClick(type)}
               >
                 {activeTab === type && (

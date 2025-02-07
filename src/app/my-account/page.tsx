@@ -44,10 +44,10 @@ export default async function MyAccount() {
     const nextCookies = cookies();
     const accessToken = (await nextCookies).get('accessToken')?.value;
 
-    if (!accessToken) {
-        redirect('/login'); 
-        return null;
-    }
+  if (!accessToken) {
+    redirect('/login');
+    return null;
+  }
 
     let profileData = null;
     try {

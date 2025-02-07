@@ -305,7 +305,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     >
                       Login
                     </Link>
-                    <div className="text-secondary text-center mt-3 pb-4">
+                    <div className="text-secondary2 text-center mt-3 pb-4">
                       Don’t have an account?
                       <Link
                         href={"/register"}
