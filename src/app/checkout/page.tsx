@@ -7,7 +7,7 @@ import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";
 import MenuFour from "@/components/Header/MenuFour";
 import PersonalForm from "@/components/Form/PersonalForm";
-import PaymentBar from "@/components/Checkout/PaymentBar";
+// import PaymentBar from "@/components/Checkout/PaymentBar";
 
 const Checkout = () => {
   return (
@@ -72,7 +72,7 @@ const Checkout = () => {
               </div>
               <PersonalForm />
             </div>
-            <PaymentBar />
+            {/* <PaymentBar /> */}
           </div>
         </div>
       </div>
