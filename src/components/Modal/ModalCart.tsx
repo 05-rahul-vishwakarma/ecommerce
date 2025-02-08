@@ -200,7 +200,7 @@ const ModalCart = () => {
                                 </div>
                                 <div className="form pt-4 px-6">
                                     <div className="">
-                                        <label htmlFor='select-country' className="caption1 text-secondary">Country/region</label>
+                                        <label htmlFor='select-country' className="caption1 text-secondary2">Country/region</label>
                                         <div className="select-block relative mt-2">
                                             <select
                                                 id="select-country"
@@ -218,7 +218,7 @@ const ModalCart = () => {
                                         </div>
                                     </div>
                                     <div className="mt-3">
-                                        <label htmlFor='select-state' className="caption1 text-secondary">State</label>
+                                        <label htmlFor='select-state' className="caption1 text-secondary2">State</label>
                                         <div className="select-block relative mt-2">
                                             <select
                                                 id="select-state"
@@ -236,7 +236,7 @@ const ModalCart = () => {
                                         </div>
                                     </div>
                                     <div className="mt-3">
-                                        <label htmlFor='select-code' className="caption1 text-secondary">Postal/Zip Code</label>
+                                        <label htmlFor='select-code' className="caption1 text-secondary2">Postal/Zip Code</label>
                                         <input className="border-line px-5 py-3 w-full rounded-xl mt-3" id="select-code" type="text" placeholder="Postal/Zip Code" />
                                     </div>
                                 </div>
@@ -254,7 +254,7 @@ const ModalCart = () => {
                                 </div>
                                 <div className="form pt-4 px-6">
                                     <div className="">
-                                        <label htmlFor='select-discount' className="caption1 text-secondary">Enter Code</label>
+                                        <label htmlFor='select-discount' className="caption1 text-secondary2">Enter Code</label>
                                         <input className="border-line px-5 py-3 w-full rounded-xl mt-3" id="select-discount" type="text" placeholder="Discount code" />
                                     </div>
                                 </div>

@@ -190,7 +190,7 @@ export default function DyanamicProduct({ productMain }) {
                     <div className="product-infor md:w-1/2 w-full lg:pl-[15px] md:pl-2">
                         <div className="flex justify-between">
                             <div>
-                                <div className="caption2 text-secondary font-semibold uppercase">{productMain?.businessType}</div>
+                                <div className="caption2 text-secondary2 font-semibold uppercase">{productMain?.businessType}</div>
                                 <div className="heading4 mt-1">{productMain?.name}</div>
                             </div>
                             <div
@@ -202,7 +202,7 @@ export default function DyanamicProduct({ productMain }) {
                         </div>
                         <div className="flex items-center mt-3">
                             <Rate currentRate={5} size={14} />
-                            <span className="caption1 text-secondary">(1.234 reviews)</span>
+                            <span className="caption1 text-secondary2">(1.234 reviews)</span>
                         </div>
                         <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
                             <div className="product-price heading5">${productMain?.price}.00</div>
@@ -215,7 +215,7 @@ export default function DyanamicProduct({ productMain }) {
                                     -{Math.round(((productMain.originPrice - productMain.price) / productMain.originPrice) * 100)}%
                                 </div>
                             )}
-                            <div className="desc text-secondary mt-3">{productMain?.description}</div>
+                            <div className="desc text-secondary2 mt-3">{productMain?.description}</div>
                         </div>
                         <div className="list-action mt-6">
                             <div className="choose-color">
@@ -275,26 +275,26 @@ export default function DyanamicProduct({ productMain }) {
                                 <div className="flex items-center gap-1 mt-3">
                                     <Icon.Timer className="body1" />
                                     <div className="text-title">Estimated Delivery:</div>
-                                    <div className="text-secondary">14 January - 18 January</div>
+                                    <div className="text-secondary2">14 January - 18 January</div>
                                 </div>
                                 <div className="flex items-center gap-1 mt-3">
                                     <Icon.Eye className="body1" />
                                     <div className="text-title">38</div>
-                                    <div className="text-secondary">people viewing this product right now!</div>
+                                    <div className="text-secondary2">people viewing this product right now!</div>
                                 </div>
                                 <div className="flex items-center gap-1 mt-3">
                                     <div className="text-title">SKU:</div>
-                                    <div className="text-secondary">{productMain?.sku}</div>
+                                    <div className="text-secondary2">{productMain?.sku}</div>
                                 </div>
                                 <div className="flex items-center gap-1 mt-3">
                                     <div className="text-title">Categories:</div>
-                                    <div className="text-secondary">
+                                    <div className="text-secondary2">
                                         {productMain?.category?.name}, {productMain?.gender}
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-1 mt-3">
                                     <div className="text-title">Tag:</div>
-                                    <div className="text-secondary">{productMain?.tags?.join(', ')}</div>
+                                    <div className="text-secondary2">{productMain?.tags?.join(', ')}</div>
                                 </div>
                             </div>
                         </div>

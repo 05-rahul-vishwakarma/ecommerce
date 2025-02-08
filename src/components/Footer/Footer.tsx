@@ -169,7 +169,7 @@ const Footer = () => {
             </div>
             <div className="footer-bottom py-3 flex items-center justify-between gap-5 max-lg:justify-center max-lg:flex-col border-t border-line">
               <div className="left flex items-center gap-8">
-                <div className="copyright caption1 text-secondary">
+                <div className="copyright caption1 text-secondary2">
                   <span>Developer Email: -  </span>
                 <a
                         href="https://mail.google.com/mail/?view=cm&fs=1&to=rahul930vishwakarma@gmail.com"
@@ -208,7 +208,7 @@ const Footer = () => {
                 </div> */}
               </div>
               <div className="right flex items-center gap-2">
-                <div className="caption1 text-secondary">Payment:</div>
+                <div className="caption1 text-secondary2">Payment:</div>
                 <div className="payment-img">
                   <Image
                     src={"/images/payment/payment1.png"}

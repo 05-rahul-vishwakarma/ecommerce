@@ -35,7 +35,7 @@ const Faqs = () => {
                                 ].map((item, index) => (
                                     <div
                                         key={index}
-                                        className={`tab-item inline-block w-fit heading6 has-line-before text-secondary22 hover:text-purple duration-300 ${activeTab === item ? 'active' : ''}`}
+                                        className={`tab-item inline-block w-fit heading6 has-line-before text-secondary2 hover:text-purple duration-300 ${activeTab === item ? 'active' : ''}`}
                                         onClick={() => handleActiveTab(item)}
                                     >
                                         {item}

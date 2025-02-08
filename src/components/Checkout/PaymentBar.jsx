@@ -88,7 +88,7 @@ export default function PaymentBar() {
                                             Remove
                                         </div>
                                     </div>
-                                    <div className="caption1 text-secondary mt-2">
+                                    <div className="caption1 text-secondary2 mt-2">
                                         <span className='size capitalize'>{product.selectedSize || "product size"}</span>
                                         <span>/</span>
                                         <span className='color capitalize'>{product.selectedColor || "product color"}</span>

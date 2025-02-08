@@ -36,11 +36,11 @@ const BreadcrumbProduct: React.FC<Props> = ({ data, productPage, productId }) =>
                         <div className="right flex items-center gap-3">
                             {productId !== null && Number(productId) >= 2 ? (
                                 <>
-                                    <div onClick={() => handleDetailProduct(Number(productId) - 1)} className='flex items-center cursor-pointer text-secondary hover:text-purple border-r border-line pr-3'>
+                                    <div onClick={() => handleDetailProduct(Number(productId) - 1)} className='flex items-center cursor-pointer text-secondary2 hover:text-purple border-r border-line pr-3'>
                                         <Icon.CaretCircleLeft className='text-2xl text-black' />
                                         <span className='caption1 pl-1'>Previous Product</span>
                                     </div>
-                                    <div onClick={() => handleDetailProduct(Number(productId) + 1)} className='flex items-center cursor-pointer text-secondary hover:text-purple'>
+                                    <div onClick={() => handleDetailProduct(Number(productId) + 1)} className='flex items-center cursor-pointer text-secondary2 hover:text-purple'>
                                         <span className='caption1 pr-1'>Next Product</span>
                                         <Icon.CaretCircleRight className='text-2xl text-purple' />
                                     </div>
@@ -48,7 +48,7 @@ const BreadcrumbProduct: React.FC<Props> = ({ data, productPage, productId }) =>
                             ) : (
                                 <>
                                     {productId !== null && Number(productId) === 1 && (
-                                        <div onClick={() => handleDetailProduct(Number(productId) + 1)} className='flex items-center cursor-pointer text-secondary hover:text-purple'>
+                                        <div onClick={() => handleDetailProduct(Number(productId) + 1)} className='flex items-center cursor-pointer text-secondary2 hover:text-purple'>
                                             <span className='caption1 pr-1'>Next Product</span>
                                             <Icon.CaretCircleRight className='text-2xl text-pruple' />
                                         </div>

@@ -78,18 +78,18 @@ export default function OthersData() {
                             <div className='grid md:grid-cols-2 gap-8 gap-y-5'>
                                 <div className="left">
                                     <div className="heading6">Description</div>
-                                    <div className="text-secondary mt-2">
+                                    <div className="text-secondary2 mt-2">
                                         Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture.
                                     </div>
                                 </div>
                                 <div className="right">
                                     <div className="heading6">About This Products</div>
                                     <div className="list-feature">
-                                        <div className="item flex gap-1 text-secondary mt-1">
+                                        <div className="item flex gap-1 text-secondary2 mt-1">
                                             <Icon.Dot size={28} />
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                         </div>
-                                        <div className="item flex gap-1 text-secondary mt-1">
+                                        <div className="item flex gap-1 text-secondary2 mt-1">
                                             <Icon.Dot size={28} />
                                             <p>Nulla luctus libero quis mauris vestibulum dapibus.</p>
                                         </div>
@@ -100,12 +100,12 @@ export default function OthersData() {
                                 <div className="item">
                                     <div className="icon-delivery-truck text-4xl"></div>
                                     <div className="heading6 mt-4">Shipping Faster</div>
-                                    <div className="text-secondary mt-2">Use on walls, furniture, doors and many more surfaces.</div>
+                                    <div className="text-secondary2 mt-2">Use on walls, furniture, doors and many more surfaces.</div>
                                 </div>
                                 <div className="item">
                                     <div className="icon-cotton text-4xl"></div>
                                     <div className="heading6 mt-4">Cotton Material</div>
-                                    <div className="text-secondary mt-2">Use on walls, furniture, doors and many more surfaces.</div>
+                                    <div className="text-secondary2 mt-2">Use on walls, furniture, doors and many more surfaces.</div>
                                 </div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@ export default function OthersData() {
                                 <div className="text-display">4.6</div>
                                 <div className='flex flex-col items-center'>
                                     <Rate currentRate={5} size={18} />
-                                    <div className='text-secondary text-center mt-1'>(1,968 Ratings)</div>
+                                    <div className='text-secondary2 text-center mt-1'>(1,968 Ratings)</div>
                                 </div>
                             </div>
                             <div className="list-rating mt-3">
@@ -217,14 +217,14 @@ export default function OthersData() {
                                             <Icon.HandsClapping size={18} />
                                             <div className="text-button">20</div>
                                         </div>
-                                        <Link href={'#form-review'} className="reply-btn text-button text-secondary cursor-pointer hover:text-purple">Reply</Link>
+                                        <Link href={'#form-review'} className="reply-btn text-button text-secondary2 cursor-pointer hover:text-purple">Reply</Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="form-review" className='form-review pt-6'>
-                        <div className="heading4 text-secondary">Leave A comment</div>
+                        <div className="heading4 text-secondary2">Leave A comment</div>
                         <form className="grid sm:grid-cols-2 gap-4 gap-y-5 mt-6">
                             <div className="name">
                                 <input className="border-line px-4 pt-3 pb-3 w-full rounded-lg" id="username" type="text" placeholder="Your Name *" required />
