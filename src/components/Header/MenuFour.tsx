@@ -35,6 +35,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
   const { mergedCart } = useCartStore();
   const [openDropdown, setOpenDropdown] = useState(false);
 
+
   const handleSearch = (value: string) => {
     router.push(`/search-result?query=${value}`);
     setSearchKeyword("");

@@ -204,7 +204,7 @@
 //                         <div className="list-filtered flex items-center gap-3 mt-4">
 //                             <div className="total-product">
 //                                 {totalProducts}
-//                                 <span className='text-secondary2 pl-1'>Products Found</span>
+//                                 <span className='text-secondary pl-1'>Products Found</span>
 //                             </div>
 //                             {
 //                                 (selectedType) && (
