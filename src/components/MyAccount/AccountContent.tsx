@@ -95,7 +95,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                   <div className="name heading6 mt-4 text-center">
                     Tony Nguyen
                   </div>
-                  <div className="mail heading6 font-normal normal-case text-secondary text-center mt-1">
+                  <div className="mail heading6 font-normal normal-case text-secondary2 text-center mt-1">
                     hi.avitex@gmail.com
                   </div>
                 </div>
@@ -186,25 +186,25 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                         <tr>
                           <th
                             scope="col"
-                            className="pb-3 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap"
+                            className="pb-3 text-left text-sm font-bold uppercase text-secondary2 whitespace-nowrap"
                           >
                             Order
                           </th>
                           <th
                             scope="col"
-                            className="pb-3 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap"
+                            className="pb-3 text-left text-sm font-bold uppercase text-secondary2 whitespace-nowrap"
                           >
                             Products
                           </th>
                           <th
                             scope="col"
-                            className="pb-3 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap"
+                            className="pb-3 text-left text-sm font-bold uppercase text-secondary2 whitespace-nowrap"
                           >
                             Pricing
                           </th>
                           <th
                             scope="col"
-                            className="pb-3 text-right text-sm font-bold uppercase text-secondary whitespace-nowrap"
+                            className="pb-3 text-right text-sm font-bold uppercase text-secondary2 whitespace-nowrap"
                           >
                             Status
                           </th>
@@ -231,7 +231,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                                 <strong className="product_name text-button">
                                   Contrasting sweatshirt
                                 </strong>
-                                <span className="product_tag caption1 text-secondary">
+                                <span className="product_tag caption1 text-secondary2">
                                   Foil Printed Ribbon, Ribbon
                                 </span>
                               </div>
@@ -264,7 +264,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                                 <strong className="product_name text-button">
                                   Faux-leather trousers
                                 </strong>
-                                <span className="product_tag caption1 text-secondary">
+                                <span className="product_tag caption1 text-secondary2">
                                   Foil Printed Ribbon, Ribbon
                                 </span>
                               </div>
@@ -297,7 +297,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                                 <strong className="product_name text-button">
                                   V-neck knitted top
                                 </strong>
-                                <span className="product_tag caption1 text-secondary">
+                                <span className="product_tag caption1 text-secondary2">
                                   Foil Printed Ribbon, Ribbon
                                 </span>
                               </div>
@@ -330,7 +330,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                                 <strong className="product_name text-button">
                                   Contrasting sweatshirt
                                 </strong>
-                                <span className="product_tag caption1 text-secondary">
+                                <span className="product_tag caption1 text-secondary2">
                                   Foil Printed Ribbon, Ribbon
                                 </span>
                               </div>
@@ -363,7 +363,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                                 <strong className="product_name text-button">
                                   Faux-leather trousers
                                 </strong>
-                                <span className="product_tag caption1 text-secondary">
+                                <span className="product_tag caption1 text-secondary2">
                                   Foil Printed Ribbon, Ribbon
                                 </span>
                               </div>
@@ -396,7 +396,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                                 <strong className="product_name text-button">
                                   V-neck knitted top
                                 </strong>
-                                <span className="product_tag caption1 text-secondary">
+                                <span className="product_tag caption1 text-secondary2">
                                   Foil Printed Ribbon, Ribbon
                                 </span>
                               </div>
@@ -430,7 +430,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                     ].map((item, index) => (
                       <button
                         key={index}
-                        className={`item relative px-3 py-2.5 text-secondary text-center duration-300 hover:text-black border-b-2 ${activeOrders === item
+                        className={`item relative px-3 py-2.5 text-secondary2 text-center duration-300 hover:text-black border-b-2 ${activeOrders === item
                           ? "active border-black"
                           : "border-transparent"
                           }`}
@@ -481,7 +481,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                             <div className="prd_name text-title">
                               Contrasting sheepskin sweatshirt
                             </div>
-                            <div className="caption1 text-secondary mt-2">
+                            <div className="caption1 text-secondary2 mt-2">
                               <span className="prd_size uppercase">XL</span>
                               <span>/</span>
                               <span className="prd_color capitalize">
@@ -514,7 +514,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                             <div className="prd_name text-title">
                               Contrasting sheepskin sweatshirt
                             </div>
-                            <div className="caption1 text-secondary mt-2">
+                            <div className="caption1 text-secondary2 mt-2">
                               <span className="prd_size uppercase">XL</span>
                               <span>/</span>
                               <span className="prd_color capitalize">
@@ -576,7 +576,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                             <div className="prd_name text-title">
                               Contrasting sheepskin sweatshirt
                             </div>
-                            <div className="caption1 text-secondary mt-2">
+                            <div className="caption1 text-secondary2 mt-2">
                               <span className="prd_size uppercase">L</span>
                               <span>/</span>
                               <span className="prd_color capitalize">Pink</span>
@@ -636,7 +636,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                             <div className="prd_name text-title">
                               Contrasting sheepskin sweatshirt
                             </div>
-                            <div className="caption1 text-secondary mt-2">
+                            <div className="caption1 text-secondary2 mt-2">
                               <span className="prd_size uppercase">L</span>
                               <span>/</span>
                               <span className="prd_color capitalize">
@@ -698,7 +698,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                             <div className="prd_name text-title">
                               Contrasting sheepskin sweatshirt
                             </div>
-                            <div className="caption1 text-secondary mt-2">
+                            <div className="caption1 text-secondary2 mt-2">
                               <span className="prd_size uppercase">M</span>
                               <span>/</span>
                               <span className="prd_color capitalize">
@@ -1073,7 +1073,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
             <h5 className="heading5">Order Details</h5>
             <div className="list_info grid grid-cols-2 gap-10 gap-y-8 mt-5">
               <div className="info_item">
-                <strong className="text-button-uppercase text-secondary">
+                <strong className="text-button-uppercase text-secondary2">
                   Contact Information
                 </strong>
                 <h6 className="heading6 order_name mt-2">Tony nguyen</h6>
@@ -1085,13 +1085,13 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                 </h6>
               </div>
               <div className="info_item">
-                <strong className="text-button-uppercase text-secondary">
+                <strong className="text-button-uppercase text-secondary2">
                   Payment method
                 </strong>
                 <h6 className="heading6 order_payment mt-2">cash delivery</h6>
               </div>
               <div className="info_item">
-                <strong className="text-button-uppercase text-secondary">
+                <strong className="text-button-uppercase text-secondary2">
                   Shipping address
                 </strong>
                 <h6 className="heading6 order_shipping_address mt-2">
@@ -1099,7 +1099,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                 </h6>
               </div>
               <div className="info_item">
-                <strong className="text-button-uppercase text-secondary">
+                <strong className="text-button-uppercase text-secondary2">
                   Billing address
                 </strong>
                 <h6 className="heading6 order_billing_address mt-2">
@@ -1107,7 +1107,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                 </h6>
               </div>
               <div className="info_item">
-                <strong className="text-button-uppercase text-secondary">
+                <strong className="text-button-uppercase text-secondary2">
                   Company
                 </strong>
                 <h6 className="heading6 order_company mt-2">
@@ -1137,7 +1137,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                     <div className="prd_name text-title">
                       Contrasting sheepskin sweatshirt
                     </div>
-                    <div className="caption1 text-secondary mt-2">
+                    <div className="caption1 text-secondary2 mt-2">
                       <span className="prd_size uppercase">XL</span>
                       <span>/</span>
                       <span className="prd_color capitalize">Yellow</span>
@@ -1168,7 +1168,7 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
                     <div className="prd_name text-title">
                       Contrasting sheepskin sweatshirt
                     </div>
-                    <div className="caption1 text-secondary mt-2">
+                    <div className="caption1 text-secondary2 mt-2">
                       <span className="prd_size uppercase">XL</span>
                       <span>/</span>
                       <span className="prd_color capitalize">White</span>

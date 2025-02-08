@@ -68,7 +68,7 @@ const ModalSizeguide: React.FC<Props> = ({ data, isOpen, onClose }) => {
                                 <span className='flex-shrink-0 md:w-14'>Height</span>
                                 <div className="flex items-center justify-center w-20 gap-1 py-2 border border-line rounded-lg flex-shrink-0">
                                     <span>{heightRange.max}</span>
-                                    <span className='caption1 text-secondary'>Cm</span>
+                                    <span className='caption1 text-secondary2'>Cm</span>
                                 </div>
                             </div>
                             <Slider
@@ -85,7 +85,7 @@ const ModalSizeguide: React.FC<Props> = ({ data, isOpen, onClose }) => {
                                 <span className='flex-shrink-0 md:w-14'>Weight</span>
                                 <div className="flex items-center justify-center w-20 gap-1 py-2 border border-line rounded-lg flex-shrink-0">
                                     <span>{weightRange.max}</span>
-                                    <span className='caption1 text-secondary'>Kg</span>
+                                    <span className='caption1 text-secondary2'>Kg</span>
                                 </div>
                             </div>
                             <Slider

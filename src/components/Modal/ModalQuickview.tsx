@@ -67,7 +67,7 @@ const ModalQuickview = () => {
                             <div className="product-infor px-4">
                                 <div className="flex justify-between">
                                     <div>
-                                        <div className="caption2 text-secondary font-semibold uppercase">{selectedProduct?.type}</div>
+                                        <div className="caption2 text-secondary2 font-semibold uppercase">{selectedProduct?.type}</div>
                                         <div className="heading4 mt-1">{selectedProduct?.name}</div>
                                     </div>
                                     <div
@@ -78,7 +78,7 @@ const ModalQuickview = () => {
                                 </div>
                                 <div className="flex items-center mt-3">
                                     <Rate currentRate={3} size={14} />
-                                    <span className='caption1 text-secondary'>(1.234 reviews)</span>
+                                    <span className='caption1 text-secondary2'>(1.234 reviews)</span>
                                 </div>
                                 <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
                                     <div className="product-price heading5">${selectedProduct?.price}.00</div>
@@ -89,7 +89,7 @@ const ModalQuickview = () => {
                                             -{selectedProduct?.discount}%
                                         </div>
                                     )}
-                                    <div className='desc text-secondary mt-3'>{selectedProduct?.description}</div>
+                                    <div className='desc text-secondary2 mt-3'>{selectedProduct?.description}</div>
                                 </div>
                                 <div className="list-action mt-6">
                                     <div className="choose-color">
@@ -154,24 +154,24 @@ const ModalQuickview = () => {
                                         <div className="flex items-center flex-wrap gap-1 mt-3">
                                             <Icon.Timer className='body1' />
                                             <span className="text-title">Estimated Delivery:</span>
-                                            <span className="text-secondary">14 January - 18 January</span>
+                                            <span className="text-secondary2">14 January - 18 January</span>
                                         </div>
                                         <div className="flex items-center flex-wrap gap-1 mt-3">
                                             <Icon.Eye className='body1' />
                                             <span className="text-title">38</span>
-                                            <span className="text-secondary">people viewing this product right now!</span>
+                                            <span className="text-secondary2">people viewing this product right now!</span>
                                         </div>
                                         <div className="flex items-center gap-1 mt-3">
                                             <div className="text-title">SKU:</div>
-                                            <div className="text-secondary">53453412</div>
+                                            <div className="text-secondary2">53453412</div>
                                         </div>
                                         <div className="flex items-center gap-1 mt-3">
                                             <div className="text-title">Categories:</div>
-                                            <div className="text-secondary">{selectedProduct?.category?.name}</div>
+                                            <div className="text-secondary2">{selectedProduct?.category?.name}</div>
                                         </div>
                                         <div className="flex items-center gap-1 mt-3">
                                             <div className="text-title">Tag:</div>
-                                            <div className="text-secondary">{selectedProduct?.productType}</div>
+                                            <div className="text-secondary2">{selectedProduct?.productType}</div>
                                         </div>
                                     </div>
 
