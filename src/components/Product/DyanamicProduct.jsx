@@ -145,6 +145,7 @@ export default function DyanamicProduct({ productMain }) {
               ))}
             </Swiper>
 
+ 
             <div className={`popup-img ${openPopupImg ? "open" : ""}`}>
               <span
                 className="close-popup-btn absolute top-4 right-4 z-[2] cursor-pointer"
@@ -323,6 +324,163 @@ export default function DyanamicProduct({ productMain }) {
                   <div className="text-secondary">
                     {productMain?.tags?.join(", ")}
                   </div>
+
+                        <div className={`popup-img ${openPopupImg ? 'open' : ''}`}>
+                            <span
+                                className="close-popup-btn absolute top-4 right-4 z-[2] cursor-pointer"
+                                onClick={() => {
+                                    setOpenPopupImg(false)
+                                }}
+                            >
+                                <Icon.X className="text-3xl text-white" />
+                            </span>
+                            <Swiper
+                                spaceBetween={0}
+                                slidesPerView={1}
+                                modules={[Navigation, Thumbs]}
+                                navigation={true}
+                                loop={true}
+                                className="popupSwiper"
+                                initialSlide={selectedImageIndex} // Set initial slide to the selected image
+                                onSwiper={(swiper) => {
+                                    swiperRef.current = swiper
+                                }}
+                            >
+                                {images.map((item, index) => (
+                                    <SwiperSlide
+                                        key={index}
+                                        onClick={() => {
+                                            setOpenPopupImg(false)
+                                        }}
+                                    >
+                                        <Image
+                                            src={item}
+                                            width={1000}
+                                            height={1000}
+                                            alt="prd-img"
+                                            className="w-full aspect-[3/4] object-cover rounded-xl"
+                                            onClick={(e) => {
+                                                e.stopPropagation() // prevent
+                                            }}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    </div>
+                    <div className="product-infor md:w-1/2 w-full lg:pl-[15px] md:pl-2">
+                        <div className="flex justify-between">
+                            <div>
+                                <div className="caption2 text-secondary2 font-semibold uppercase">{productMain?.businessType}</div>
+                                <div className="heading4 mt-1">{productMain?.name}</div>
+                            </div>
+                            <div
+                                className={`add-wishlist-btn w-12 h-12 flex items-center justify-center border border-line cursor-pointer rounded-xl duration-300 hover:bg-purple hover:text-white`}
+                                onClick={handleAddToWishlist}
+                            >
+                                <Icon.Heart size={24} />
+                            </div>
+                        </div>
+                        <div className="flex items-center mt-3">
+                            <Rate currentRate={5} size={14} />
+                            <span className="caption1 text-secondary2">(1.234 reviews)</span>
+                        </div>
+                        <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
+                            <div className="product-price heading5">${productMain?.price}.00</div>
+                            <div className="w-px h-4 bg-line"></div>
+                            <div className="product-origin-price font-normal text-secondary2">
+                                <del>${productMain?.originPrice}.00</del>
+                            </div>
+                            {productMain?.originPrice && (
+                                <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
+                                    -{Math.round(((productMain.originPrice - productMain.price) / productMain.originPrice) * 100)}%
+                                </div>
+                            )}
+                            <div className="desc text-secondary2 mt-3">{productMain?.description}</div>
+                        </div>
+                        <div className="list-action mt-6">
+                            <div className="choose-color">
+                                <div className="text-title">
+                                    Colors: <span className="text-title color">{activeColor}</span>
+                                </div>
+                                <div className="list-color flex items-center gap-2 flex-wrap mt-3">
+                                    {productMain.imageURLs.map((img, index) => (
+                                        <div
+                                            key={index}
+                                            className={`color-option w-8 h-8 rounded-full cursor-pointer border-2 ${activeColor === img.color.name ? 'border-purple' : 'border-transparent'
+                                                }`}
+                                            style={{ backgroundColor: img.color.clrCode }}
+                                            onClick={() => handleActiveColor(img.color.name)}
+                                            onMouseEnter={() => handleActiveColor(img.color.name, true)} // Handle hover
+                                            onMouseLeave={() => handleActiveColor(activeColor, true)} // Revert to the active color on mouse leave
+                                        ></div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="choose-size mt-5">
+                                <div className="heading flex items-center justify-between">
+                                    <div className="text-title">
+                                        Size: <span className="text-title size">{activeSize}</span>
+                                    </div>
+                                </div>
+                                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                                    {/* Render size options here */}
+                                </div>
+                            </div>
+                            <div className="text-title mt-5">Quantity:</div>
+                            <div className="choose-quantity flex items-center lg:justify-between gap-5 gap-y-3 mt-3">
+                                <div className="quantity-block md:p-3 max-md:py-1.5 max-md:px-3 flex items-center justify-between rounded-lg border border-line sm:w-[180px] w-[120px] flex-shrink-0">
+                                    <Icon.Minus size={20} className="cursor-pointer" />
+                                    <div className="body1 font-semibold">{productMain?.quantity}</div>
+                                    <Icon.Plus size={20} className="cursor-pointer" />
+                                </div>
+                                <div onClick={handleAddToCart} className="button-main w-full text-center bg-white text-purple border border-purple">
+                                    Add To Cart
+                                </div>
+                            </div>
+                            <div className="button-block mt-5">
+                                <div className="button-main w-full text-center">Buy It Now</div>
+                            </div>
+
+                            <div className="more-infor mt-6">
+                                <div className="flex items-center gap-4 flex-wrap">
+                                    <div className="flex items-center gap-1">
+                                        <Icon.ArrowClockwise className="body1" />
+                                        <div className="text-title">Delivery & Return</div>
+                                    </div>
+                                    <div className="flex items-center gap-1">
+                                        <Icon.Question className="body1" />
+                                        <div className="text-title">Ask A Question</div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-1 mt-3">
+                                    <Icon.Timer className="body1" />
+                                    <div className="text-title">Estimated Delivery:</div>
+                                    <div className="text-secondary2">14 January - 18 January</div>
+                                </div>
+                                <div className="flex items-center gap-1 mt-3">
+                                    <Icon.Eye className="body1" />
+                                    <div className="text-title">38</div>
+                                    <div className="text-secondary2">people viewing this product right now!</div>
+                                </div>
+                                <div className="flex items-center gap-1 mt-3">
+                                    <div className="text-title">SKU:</div>
+                                    <div className="text-secondary2">{productMain?.sku}</div>
+                                </div>
+                                <div className="flex items-center gap-1 mt-3">
+                                    <div className="text-title">Categories:</div>
+                                    <div className="text-secondary2">
+                                        {productMain?.category?.name}, {productMain?.gender}
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-1 mt-3">
+                                    <div className="text-title">Tag:</div>
+                                    <div className="text-secondary2">{productMain?.tags?.join(', ')}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+ 
                 </div>
               </div>
             </div>

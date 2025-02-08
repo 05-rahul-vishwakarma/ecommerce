@@ -25,6 +25,7 @@ const BreadcrumbProduct: React.FC<Props> = ({
     router.push(`/product/${productPage}?id=${productId}`);
   };
 
+
   return (
     <>
       <div className="breadcrumb-product">
@@ -69,6 +70,41 @@ const BreadcrumbProduct: React.FC<Props> = ({
                     >
                       <span className="caption1 pr-1">Next Product</span>
                       <Icon.CaretCircleRight className="text-2xl text-pruple" />
+    return (
+        <>
+            <div className="breadcrumb-product">
+                <div className="main bg-surface md:pt-[88px] pt-[70px] pb-[14px]">
+                    <div className="container flex items-center justify-between flex-wrap gap-3">
+                        <div className="left flex items-center gap-1">
+                            <Link href={'/'} className='caption1  text-purple hover:underline'>Homepage</Link>
+                            <Icon.CaretRight size={12} className='text-purple' />
+                            <div className='caption1 text-purple'>Product</div>
+                            <Icon.CaretRight size={12} className='text-purple' />
+                            <div className='caption1 capitalize'>{`Product ${productPage}`}</div>
+                        </div>
+                        <div className="right flex items-center gap-3">
+                            {productId !== null && Number(productId) >= 2 ? (
+                                <>
+                                    <div onClick={() => handleDetailProduct(Number(productId) - 1)} className='flex items-center cursor-pointer text-secondary2 hover:text-purple border-r border-line pr-3'>
+                                        <Icon.CaretCircleLeft className='text-2xl text-black' />
+                                        <span className='caption1 pl-1'>Previous Product</span>
+                                    </div>
+                                    <div onClick={() => handleDetailProduct(Number(productId) + 1)} className='flex items-center cursor-pointer text-secondary2 hover:text-purple'>
+                                        <span className='caption1 pr-1'>Next Product</span>
+                                        <Icon.CaretCircleRight className='text-2xl text-purple' />
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    {productId !== null && Number(productId) === 1 && (
+                                        <div onClick={() => handleDetailProduct(Number(productId) + 1)} className='flex items-center cursor-pointer text-secondary2 hover:text-purple'>
+                                            <span className='caption1 pr-1'>Next Product</span>
+                                            <Icon.CaretCircleRight className='text-2xl text-pruple' />
+                                        </div>
+                                    )}
+                                </>
+                            )}
+                        </div>
                     </div>
                   )}
                 </>
