@@ -26,9 +26,6 @@ const ModalCart = () => {
         setActiveTab(tab)
     }
 
-    console.log(mergedCart);
-    
-
     return (
         <>
             <div className={`modal-cart-block`} onClick={closeModalCart}>
@@ -88,27 +85,24 @@ const ModalCart = () => {
                                 <Icon.X size={14} />
                             </div>
                         </div>
-                        <div className="h-[65vh] px-6 overflow-y-scroll">
+                        <div className="h-[65vh] px-6 pb-[4rem] overflow-y-scroll">
                             {mergedCart?.map((product: any, i: number) => {
-                                // Safely access productDetails
-                                const productDetail = product?.productDetails?.[0] || {};
-
                                 return (
                                     <div key={i} className='item py-5 flex items-center justify-between gap-3 border-b border-line'>
                                         <div className="infor flex items-center gap-3 w-full">
                                             <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden">
                                                 <Image
-                                                    src={productDetail?.img || "/image3.png"} // Fallback image if img is undefined
+                                                    src={product?.productDetails?.img || "/image3.png"} // Fallback image if img is undefined
                                                     width={1000}
                                                     height={1000}
-                                                    alt={productDetail?.name || "Product Image"} // Fallback alt text
+                                                    alt={product?.productDetails?.name || "Product Image"} // Fallback alt text
                                                     className="w-full h-full object-cover rounded-lg"
                                                 />
                                             </div>
                                             <div className='w-full'>
                                                 <div className="flex items-center justify-between w-full">
                                                     <div className="name text-button">
-                                                        {productDetail?.name || "Product Name"} {/* Fallback name */}
+                                                        {product?.productDetails?.name || "Product Name"} {/* Fallback name */}
                                                     </div>
                                                     <div
                                                         className="remove-cart-btn caption1 font-semibold text-red underline cursor-pointer"

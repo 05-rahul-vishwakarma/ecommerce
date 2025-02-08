@@ -13,9 +13,8 @@ export const productListData = async () => {
 }
 
 export const getProductListData = async (PK, SK) => {
-    const payload = {
-
-    }
+    console.log(PK,SK);
+    
     try {
         const url = getProductList(PK, SK);
         const response = await axios.post(url, {
