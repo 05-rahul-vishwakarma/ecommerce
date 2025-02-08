@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Cosmetic1/AdsPhoto.jsx", "src/components/Underwear/FeaturedProduct.jsx", "src/components/Underwear/FeaturedProduct.jsx", "src/context/CartContext.jsx", "src/app/cart/page.jsx", "src/components/Modal/ModalWishlist.jsx", "src/context/WishlistContext.jsx", "src/components/MyAccount/Form.tsx"],
+  "exclude": ["node_modules"]
+}

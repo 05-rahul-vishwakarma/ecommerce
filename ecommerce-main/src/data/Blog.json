@@ -1,0 +1,376 @@
+[
+    {
+        "id": "1",
+        "category": "fashion",
+        "tag": "Jean, glasses",
+        "title": "Fashion Trends to Watch Out for in Summer 2023",
+        "date": "Dec 20, 2023",
+        "author": "Chris Evans",
+        "avatar": "/images/avatar/avatar1.png",
+        "thumbImg": "/images/blog/blog6.png",
+        "coverImg": "/images/blog/blog6.png",
+        "subImg": [
+            "/images/blog/3.png",
+            "/images/blog/2.png"
+        ],
+        "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
+        "description": "Our ribbons are the perfect choice for adding charm and elegance to your crafts, gifts, and home décor. With a wide variety of colors, patterns, and textures, you’ll find the perfect ribbon for any occasion. Whether you're creating handmade cards, decorating events, or adding a special touch to a gift, our collection will inspire endless possibilities."
+    },
+    {
+        "id": "2",
+        "category": "fashion",
+        "tag": "Jean, shoes",
+        "title": "How to Build a Sustainable and Stylish Wardrobe",
+        "date": "Dec 21, 2023",
+        "author": "Alex Balde",
+        "avatar": "/images/avatar2.png",
+        "thumbImg": "/images/blog/2.png",
+        "coverImg": "/images/blog/2.png",
+        "subImg": [
+            "/images/blog/blog6.png",
+            "/images/blog/3.png"
+        ],
+        "shortDesc": "Elevate your creativity with our premium ribbons. From crafting to gift wrapping, explore versatile designs perfect for every project",
+        "description": "Our ribbons are the perfect choice for adding charm and elegance to your crafts, gifts, and home décor. With a wide variety of colors, patterns, and textures, you’ll find the perfect ribbon for any occasion. Whether you're creating handmade cards, decorating events, or adding a special touch to a gift, our collection will inspire endless possibilities."
+    },
+    {
+        "id": "3",
+        "category": "fashion",
+        "tag": "Jean, skirt",
+        "title": "Fashion and Beauty Tips for Busy Professionals",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar3.png",
+        "thumbImg": "/images/blog/3.png",
+        "coverImg": "/images/blog/3.png",
+        "subImg": [
+            "/images/blog/blog6.png",
+            "/images/blog/2.png"
+        ],
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "Our ribbons are the perfect choice for adding charm and elegance to your crafts, gifts, and home décor. With a wide variety of colors, patterns, and textures, you’ll find the perfect ribbon for any occasion. Whether you're creating handmade cards, decorating events, or adding a special touch to a gift, our collection will inspire endless possibilities."
+    },
+    {
+        "id": "blog4",
+        "category": "ribbons",
+        "tag": "ribbons",
+        "title": "The Art of Makeup: Mastering the Perfect Everyday Look",
+        "date": "Dec 2blog4, 2023",
+        "author": "Christina Smith",
+        "avatar": "/images/avatar/avatar14.png",
+        "thumbImg": "/images/blog/blog7.png",
+        "coverImg": "/images/blog/blog7.png",
+        "subImg": [
+            "/images/blog/blog6.png",
+            "/images/blog/blog5.jpg"
+        ],
+        "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "ribbons-blog"
+    },
+    {
+        "id": "blog5",
+        "category": "ribbons",
+        "tag": "ribbons",
+        "title": "Unlocking the Secrets of Anti-Aging: Effective Strategies and Products",
+        "date": "Dec 2blog6, 2023",
+        "author": "Louis Ancelotti",
+        "avatar": "/images/avatar/avatar2.png",
+        "thumbImg": "/images/blog/blog4.png",
+        "coverImg": "/images/blog/blog4.png",
+        "subImg": [
+            "/images/blog/blog7.png",
+            "/images/blog/blog6.jpg"
+        ],
+        "shortDesc": "Transform your projects with our stunning ribbons. Add color, texture, and elegance to crafts, gifts, and décor..",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "ribbons-blog"
+    },
+    {
+        "id": "blog6",
+        "category": "ribbons",
+        "tag": "ribbons",
+        "title": "Exploring the World of Fragrances: How to Find Your Signature Scent",
+        "date": "Dec 2blog6, 2023",
+        "author": "Davide Alvaro",
+        "avatar": "/images/avatar/avatar3.png",
+        "thumbImg": "/images/blog/blog6.png",
+        "coverImg": "/images/blog/blog6.png",
+        "subImg": [
+            "/images/blog/blog4.png",
+            "/images/blog/blog7.jpg"
+        ],
+        "shortDesc": "Discover the latest fashion trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "ribbons-blog"
+    },
+    {
+        "id": "7",
+        "category": "cosmetic",
+        "tag": "body lotion",
+        "title": "cosmetic Trends to Watch Out for in Summer 2023",
+        "date": "Dec 20, 2023",
+        "author": "Chris Evans",
+        "avatar": "/images/avatar/avatar1.png",
+        "thumbImg": "/images/blog/7.png",
+        "coverImg": "/images/blog/7.png",
+        "subImg": [
+            "/images/blog/9.png",
+            "/images/blog/8.png"
+        ],
+        "shortDesc": "Discover the latest cosmetic trends that will dominate the upcoming season. From vibrant colors to unique patterns and innovative styles, stay ahead of the cosmetic curve with our comprehensive guide.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "cosmetic-news"
+    },
+    {
+        "id": "8",
+        "category": "cosmetic",
+        "tag": "nourishing mask",
+        "title": "How to Build a Sustainable and Stylish Wardrobe",
+        "date": "Dec 21, 2023",
+        "author": "Alex Balde",
+        "avatar": "/images/avatar/avatar1.png",
+        "thumbImg": "/images/blog/8.png",
+        "coverImg": "/images/blog/8.png",
+        "subImg": [
+            "/images/blog/7.png",
+            "/images/blog/9.png"
+        ],
+        "shortDesc": "Build a versatile and timeless wardrobe with our list of must-have cosmetic staples. From the classic little black dress to the perfect pair of jeans.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "cosmetic-news"
+    },
+    {
+        "id": "9",
+        "category": "cosmetic",
+        "tag": "body lotion",
+        "title": "cosmetic and Beauty Tips for Busy Professionals",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar2.png",
+        "thumbImg": "/images/blog/9.png",
+        "coverImg": "/images/blog/9.png",
+        "subImg": [
+            "/images/blog/8.png",
+            "/images/blog/7.png"
+        ],
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "cosmetic-news"
+    },
+    {
+        "id": "10",
+        "category": "toys-kid",
+        "tag": "body lotion",
+        "title": "The Art of Makeup: Mastering the Perfect Everyday Look",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar3.png",
+        "thumbImg": "/images/blog/toys1.png",
+        "coverImg": "/images/blog/toys1.png",
+        "subImg": [
+            "/images/blog/toys3.png",
+            "/images/blog/toys2.png"
+        ],
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "toys-kid-news"
+    },
+    {
+        "id": "11",
+        "category": "toys-kid",
+        "tag": "nourishing mask",
+        "title": "How to Build a Sustainable and Stylish Wardrobe",
+        "date": "Dec 21, 2023",
+        "author": "Alex Balde",
+        "avatar": "/images/avatar/avatar3.png",
+        "thumbImg": "/images/blog/toys2.png",
+        "coverImg": "/images/blog/toys2.png",
+        "subImg": [
+            "/images/blog/toys1.png",
+            "/images/blog/toys3.png"
+        ],
+        "shortDesc": "Build a versatile and timeless wardrobe with our list of must-have toys-kid staples. From the classic little black dress to the perfect pair of jeans.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "toys-kid-news"
+    },
+    {
+        "id": "12",
+        "category": "toys-kid",
+        "tag": "body lotion",
+        "title": "toys kid and Beauty Tips for Busy Professionals",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar1.png",
+        "thumbImg": "/images/blog/toys3.png",
+        "coverImg": "/images/blog/toys3.png",
+        "subImg": [
+            "/images/blog/toys2.png",
+            "/images/blog/toys1.png"
+        ],
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "toys-kid-news"
+    },
+    {
+        "id": "13",
+        "category": "yoga",
+        "tag": "body lotion",
+        "title": "Mastering the Perfect Everyday Look",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar1.png",
+        "thumbImg": "/images/blog/yoga1.png",
+        "coverImg": "/images/blog/yoga1.png",
+        "subImg": [
+            "/images/blog/yoga2.png",
+            "/images/blog/yoga3.png"
+        ],
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "yoga-news"
+    },
+    {
+        "id": "1blog4",
+        "category": "yoga",
+        "tag": "nourishing mask",
+        "title": "How to Build a Sustainable",
+        "date": "Dec 21, 2023",
+        "author": "Alex Balde",
+        "avatar": "/images/avatar/avatar2.png",
+        "thumbImg": "/images/blog/yoga2.png",
+        "coverImg": "/images/blog/yoga2.png",
+        "subImg": [
+            "/images/blog/yoga1.png",
+            "/images/blog/yoga3.png"
+        ],
+        "shortDesc": "Build a versatile and timeless wardrobe with our list of must-have yoga staples. From the classic little black dress to the perfect pair of jeans.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "yoga-news"
+    },
+    {
+        "id": "1blog5",
+        "category": "yoga",
+        "tag": "body lotion",
+        "title": "Beauty Tips for Busy Professionals",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar1.png",
+        "thumbImg": "/images/blog/yoga3.png",
+        "coverImg": "/images/blog/yoga3.png",
+        "subImg": [
+            "/images/blog/yoga2.png",
+            "/images/blog/yoga1.png"
+        ],
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "yoga-news"
+    },
+    {
+        "id": "1blog6",
+        "category": "organic",
+        "tag": "body lotion",
+        "title": "The Art of Makeup: Mastering the Perfect Everyday Look",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar2.png",
+        "thumbImg": "/images/blog/organic1.png",
+        "coverImg": "/images/blog/organic1.png",
+        "subImg": [
+            "/images/blog/organic3.png",
+            "/images/blog/organic2.png"
+        ],
+        "shortDesc": "Unleash your creativity with our stylish ribbon collection. Perfect for gifts, decorations, and crafts",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "organic-news"
+    },
+    {
+        "id": "17",
+        "category": "organic",
+        "tag": "nourishing mask",
+        "title": "How to Build a Sustainable and Stylish Wardrobe",
+        "date": "Dec 21, 2023",
+        "author": "Alex Balde",
+        "avatar": "/images/avatar/avatar3.png",
+        "thumbImg": "/images/blog/organic2.png",
+        "coverImg": "/images/blog/organic2.png",
+        "subImg": [
+            "/images/blog/organic1.png",
+            "/images/blog/organic3.png"
+        ],
+        "shortDesc": "Build a versatile and timeless wardrobe with our list of must-have organic staples. From the classic little black dress to the perfect pair of jeans.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "organic-news"
+    },
+    {
+        "id": "18",
+        "category": "organic",
+        "tag": "body lotion",
+        "title": "toys kid and Beauty Tips for Busy Professionals",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar3.png",
+        "thumbImg": "/images/blog/organic3.png",
+        "coverImg": "/images/blog/organic3.png",
+        "subImg": [
+            "/images/blog/organic2.png",
+            "/images/blog/organic1.png"
+        ],
+        "shortDesc": "Discover the charm of our exquisite ribbons and learn how to add elegance to your crafts, gifts, and décor with ease. From vibrant designs to luxurious textures, find the perfect ribbon for every occasion.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "organic-news"
+    },
+    {
+        "id": "19",
+        "category": "marketplace",
+        "tag": "Apple, headphone",
+        "title": "quality Headphone models worth buying in 202blog4",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar2.png",
+        "thumbImg": "/images/blog/marketplace1.png",
+        "coverImg": "/images/slider/watch1.png",
+        "subImg": [
+            "/images/blog/marketplace1.png",
+            "/images/blog/marketplace2.png"
+        ],
+        "shortDesc": "Discover the charm of our exquisite ribbons and learn how to add elegance to your crafts, gifts, and décor with ease. From vibrant designs to luxurious textures, find the perfect ribbon for every occasion.",
+        "description": "From luxurious satin to vibrant grosgrain, our ribbons bring beauty and versatility to any project. Use them to decorate parties, embellish packaging, or craft memorable keepsakes. With endless designs to choose from, your imagination is the only limit. Turn ordinary moments into extraordinary memories with our high-quality ribbons.",
+        "slug": "organic-news"
+    },
+    {
+        "id": "20",
+        "category": "marketplace",
+        "tag": "Samsung, S21",
+        "title": "Useful feature of S21 Ultra that you don’t know",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar2.png",
+        "thumbImg": "/images/blog/marketplace2.png",
+        "coverImg": "/images/slider/watch2.png",
+        "subImg": [
+            "/images/blog/marketplace1.png",
+            "/images/blog/marketplace2.png"
+        ],
+        "shortDesc": "Discover the charm of our exquisite ribbons and learn how to add elegance to your crafts, gifts, and décor with ease. From vibrant designs to luxurious textures, find the perfect ribbon for every occasion.",
+        "description": "Our carefully curated collection of ribbons is designed to inspire creativity and add a touch of elegance to any project. Whether you're wrapping gifts, embellishing crafts, or creating beautiful decorations, our ribbons come in a variety of colors, patterns, and textures to suit your needs. Explore endless possibilities and transform ordinary moments into extraordinary memories with our premium-quality ribbons."
+    },
+    {
+        "id": "21",
+        "category": "marketplace",
+        "tag": "Apple, iPhone",
+        "title": "Great performance of the new iPhone Generation",
+        "date": "Dec 22, 2023",
+        "author": "Leona Pablo",
+        "avatar": "/images/avatar/avatar2.png",
+        "thumbImg": "/images/blog/marketplace3.png",
+        "coverImg": "/images/slider/watch3.png",
+        "subImg": [
+            "/images/blog/marketplace1.png",
+            "/images/blog/marketplace2.png"
+        ],
+        "shortDesc": "Discover the charm of our exquisite ribbons and learn how to add elegance to your crafts, gifts, and décor with ease. From vibrant designs to luxurious textures, find the perfect ribbon for every occasion.",
+        "description": "Our carefully curated collection of ribbons is designed to inspire creativity and add a touch of elegance to any project. Whether you're wrapping gifts, embellishing crafts, or creating beautiful decorations, our ribbons come in a variety of colors, patterns, and textures to suit your needs. Explore endless possibilities and transform ordinary moments into extraordinary memories with our premium-quality ribbons.",
+        "slug": "organic-news"
+    }
+]
