@@ -497,7 +497,6 @@ const ModalCart = () => {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };
