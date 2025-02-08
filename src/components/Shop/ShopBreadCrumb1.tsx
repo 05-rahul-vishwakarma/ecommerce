@@ -258,7 +258,7 @@
 //                       <div className="text-secondary has-line-before capitalize">
 //                         {item}
 //                       </div>
-//                       <div className="text-secondary2">
+//                       <div className="text-purple2">
 //                         (
 //                         {
 //                           data.filter(
@@ -400,7 +400,7 @@
 //                         </div>
 //                         <label htmlFor={item} className="brand-name capitalize pl-2 cursor-pointer">{item}</label>
 //                       </div>
-//                       <div className='text-secondary2'>
+//                       <div className='text-purple2'>
 //                         ({data.filter(dataItem => dataItem.brand === item && dataItem.category === 'fashion').length})
 //                       </div>
 //                     </div>
@@ -585,10 +585,8 @@
 
 // export default ShopBreadCrumb1;
 
-import React from 'react'
+import React from "react";
 
 export default function ShopBreadCrumb1() {
-  return (
-    <div>ShopBreadCrumb1</div>
-  )
+  return <div>ShopBreadCrumb1</div>;
 }

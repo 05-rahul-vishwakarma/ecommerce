@@ -1,21 +1,25 @@
-'use client';
-import React, { useState } from 'react';
-import Link from 'next/link';
-import TopNavOne from '@/components/Header/TopNav/TopNavOne';
-import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
-import Footer from '@/components/Footer/Footer';
-import * as Icon from '@phosphor-icons/react/dist/ssr';
-import MenuFour from '@/components/Header/MenuFour';
-
-
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import TopNavOne from "@/components/Header/TopNav/TopNavOne";
+import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
+import Footer from "@/components/Footer/Footer";
+import * as Icon from "@phosphor-icons/react/dist/ssr";
+import MenuFour from "@/components/Header/MenuFour";
 
 const Register = () => {
   return (
     <>
-      <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
-      <div id="header" className="relative w-full text-purple">
+      <TopNavOne
+        props="style-one bg-white"
+        slogan="New customers save 10% with the code GET10"
+      />
+      <div id="header" className="relative w-full text-secondary">
         <MenuFour props="bg-transparent" />
-        <Breadcrumb heading="Create An Account" subHeading="Create An Account" />
+        <Breadcrumb
+          heading="Create An Account"
+          subHeading="Create An Account"
+        />
       </div>
       <div className="register-block md:py-20 py-10">
         <div className="container">
@@ -62,31 +66,44 @@ const Register = () => {
                 <div className="flex items-center mt-5">
                   <div className="block-input">
                     <input type="checkbox" name="remember" id="remember" />
-                    <Icon.CheckSquare size={20} weight="fill" className="icon-checkbox" />
+                    <Icon.CheckSquare
+                      size={20}
+                      weight="fill"
+                      className="icon-checkbox"
+                    />
                   </div>
-                  <label htmlFor="remember" className="pl-2 cursor-pointer text-secondary2">
+                  <label
+                    htmlFor="remember"
+                    className="pl-2 cursor-pointer text-purple2"
+                  >
                     I agree to the
-                    <Link href={'#!'} className="text-black hover:underline pl-1">
+                    <Link
+                      href={"#!"}
+                      className="text-black hover:underline pl-1"
+                    >
                       Terms of Use
                     </Link>
                   </label>
                 </div>
                 <div className="block-button md:mt-7 mt-4">
-                  <button className="button-main" type="submit">
+                  <button
+                    className="button-main bg-custom-purple-color"type="submit">
                     Register
                   </button>
                 </div>
+             
               </form>
             </div>
             <div className="right md:w-1/2 w-full lg:pl-[60px] md:pl-[40px] flex items-center">
               <div className="text-content">
                 <div className="heading4">Already have an account?</div>
                 <div className="mt-2 text-secondary">
-                  Welcome back. Sign in to access your personalized experience, saved preferences, and more. We're thrilled
-                  to have you with us again!
+                  Welcome back. Sign in to access your personalized experience,
+                  saved preferences, and more. We're thrilled to have you with
+                  us again!
                 </div>
                 <div className="block-button md:mt-7 mt-4">
-                  <Link href={'/login'} className="button-main">
+                  <Link href={"/login"} className="button-main">
                     Login
                   </Link>
                 </div>
@@ -164,7 +181,7 @@ export default Register;
 //   return (
 //     <>
 //       <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET10" />
-//       <div id="header" className='relative w-full text-purple'>
+//       <div id="header" className='relative w-full text-secondary'>
 //         <MenuFour props="bg-transparent" />
 //         <Breadcrumb heading='Create An Account' subHeading='Create An Account' />
 //       </div>
@@ -229,15 +246,17 @@ export default Register;
 //                     id='terms'
 //                     required
 //                   />
-//                   <label htmlFor='terms' className="pl-2 cursor-pointer text-secondary2">
+//                   <label htmlFor='terms' className="pl-2 cursor-pointer text-purple2">
 //                     I agree to the
 //                     <Link href={'#!'} className='text-black hover:underline pl-1'>Terms of Use</Link>
 //                   </label>
 //                 </div>
 //                 {/* Error or Success Messages */}
-                // {error && <p className="text-red-500 mb-3">{error}</p>}
-                // {success && <p className="text-green-500 mb-3">{success}</p>}
-                {/* Submit Button */}
+// {error && <p className="text-red-500 mb-3">{error}</p>}
+// {success && <p className="text-green-500 mb-3">{success}</p>}
+{
+  /* Submit Button */
+}
 //                 <div className="block-button">
 //                   <button type="submit" className="button-main">Register</button>
 //                 </div>

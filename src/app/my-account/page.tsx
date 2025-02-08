@@ -4,8 +4,8 @@ import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";
 import MenuFour from "@/components/Header/MenuFour";
 import AccountContent from "@/components/MyAccount/AccountContent";
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 async function fetchProfile(accessToken: string) {
   try {
@@ -52,7 +52,7 @@ export default async function MyAccount() {
 
   return (
     <>
-      <TopNavOne props="style-one bg-white" slogan="New customers save 10% with the code GET20" />
+      
       <div id="header" className="relative w-full text-purple">
         <MenuFour props="bg-transparent" />
         <Breadcrumb heading="My Account" subHeading="My Account" />

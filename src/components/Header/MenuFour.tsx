@@ -15,6 +15,7 @@ import { useModalSearchContext } from "@/context/ModalSearchContext";
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
 import useCartStore from "@/globalStore/useCartStore";
+import Cookies from "js-cookie";
 
 interface Props {
   props: string;
@@ -32,6 +33,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const router = useRouter();
   const { mergedCart } = useCartStore();
+  const [openDropdown, setOpenDropdown] = useState(false);
 
   const handleSearch = (value: string) => {
     router.push(`/search-result?query=${value}`);
@@ -60,6 +62,90 @@ const MenuFour: React.FC<Props> = ({ props }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollPosition]);
+
+  const handleProfile = () => {
+    router.push('/profile')
+  }
+  const [popupContent, setPopupContent] = useState(
+    <>
+      <Link href={"/login"} className="button-main w-full text-center">
+        Login
+      </Link>
+      <div className="text-secondary text-center mt-3 pb-4">
+        Don’t have an account?
+        <Link
+          href={"/register"}
+          className="text-black pl-1 hover:underline hover:text-purple"
+        >
+          Register
+        </Link>
+      </div>
+      <div className="bottom pt-4 border-t border-line"></div>
+      <Link href={"#!"} className="body1 hover:underline">
+        Support
+      </Link>
+    </>
+  );
+
+  useEffect(() => {
+    const checkAccessToken = () => {
+      const accessToken = Cookies.get('accessToken');
+
+      if (accessToken) {
+        setPopupContent(
+          <>
+            <Link
+              href="/my-account"
+              className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
+            >
+              <Icon.User size={18} />
+              My Account
+            </Link>
+            <Link
+              href="/orders"
+              className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded"
+            >
+              <Icon.List size={18} />
+              Orders
+            </Link>
+            <button
+              onClick={() => {
+                Cookies.remove('accessToken');
+                router.push('/login');
+                console.log("Logout clicked");
+                setPopupContent(
+                  <>
+                    <Link href={"/login"} className="button-main w-full text-center">
+                      Login
+                    </Link>
+                    <div className="text-secondary text-center mt-3 pb-4">
+                      Don’t have an account?
+                      <Link
+                        href={"/register"}
+                        className="text-black pl-1 hover:underline hover:text-purple"
+                      >
+                        Register
+                      </Link>
+                    </div>
+                    <div className="bottom pt-4 border-t border-line"></div>
+                    <Link href={"#!"} className="body1 hover:underline">
+                      Support
+                    </Link>
+                  </>
+                );
+              }}
+              className="flex items-center gap-2 px-4 py-2 text-red-500 hover:bg-gray-100 rounded w-full"
+            >
+              <Icon.Power size={18} />
+              Logout
+            </button>
+          </>
+        );
+      }
+    };
+
+    checkAccessToken();
+  }, [router]);
 
   return (
     <>
@@ -109,7 +195,6 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     Shop
                   </Link>
                 </li>
-
                 <li className="h-full">
                   <Link
                     href="/product"
@@ -222,33 +307,17 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   <Icon.User
                     size={24}
                     color="white"
+                    // onClick={handleLoginPopup}
                     onClick={handleLoginPopup}
                   />
                   <div
                     className={`login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-sm 
-                                            ${openLoginPopup ? "open" : ""}`}
+                    ${openLoginPopup ? "open" : ""}`}
                   >
-                    <Link
-                      href={"/login"}
-                      className="button-main w-full text-center"
-                    >
-                      Login
-                    </Link>
-                    <div className="text-secondary text-center mt-3 pb-4">
-                      Don’t have an account?
-                      <Link
-                        href={"/register"}
-                        className="text-black pl-1 hover:underline hover:text-purple"
-                      >
-                        Register
-                      </Link>
-                    </div>
-                    <div className="bottom pt-4 border-t border-line"></div>
-                    <Link href={"#!"} className="body1 hover:underline">
-                      Support
-                    </Link>
+                  {popupContent}
                   </div>
                 </div>
+
                 <div
                   className="max-md:hidden wishlist-icon flex items-center cursor-pointer"
                   onClick={openModalWishlist}
@@ -335,7 +404,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     className={`${openSubNavMobile === 4 ? "open" : ""}`}
                     onClick={() => handleOpenSubNavMobile(4)}
                   >
-                    <a
+                    <Link
                       href={"/product"}
                       className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
@@ -343,7 +412,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       <span className="text-right">
                         <Icon.CaretRight size={20} />
                       </span>
-                    </a>
+                    </Link>
                   </li>
 
                   <li
