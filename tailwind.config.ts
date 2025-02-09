@@ -73,7 +73,7 @@ const config: Config = {
   		green: '#D2EF9A',
   		black: '#1F1F1F',
   		secondary: '#696C70',
-  		secondary2: '#A0A0A0',
+  		secondary2: '#555550',
   		white: '#ffffff',
   		surface: '#F7F7F7',
   		red: '#DB4444',
