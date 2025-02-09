@@ -6,7 +6,7 @@ import { getCartListData, getProductListData } from '@/api/productApis/getPostAp
 async function cart(product, itemQty, openModalCart) {
     try {
         openModalCart();
-        
+
         const payload = {
             businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
             productId: {
@@ -49,13 +49,14 @@ export const fetchAndMergeCartData = async () => {
 
         const mergedCart = await Promise.all(
             cartItems.map(async (item) => {
-                const productDetailsResponse = await getProductListData({
-                    PK: item?.productId?.PK,
-                    SK: item?.productId?.SK,
-                });
+                const productDetailsResponse = await getProductListData(
+                    item?.productId?.PK,
+                    item?.productId?.SK,
+                );
+                console.log(productDetailsResponse,'productDetailsResponse');
                 return {
                     ...item,
-                    productDetails: productDetailsResponse?.data?.items || {},
+                    productDetails: productDetailsResponse?.data?.[0] || {},
                 };
             })
         );

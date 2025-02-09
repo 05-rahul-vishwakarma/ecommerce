@@ -1,264 +1,131 @@
-// "use client";
-// import useCartStore from "@/globalStore/useCartStore";
-// import { useCart } from "@/context/CartContext";
-// import Image from "next/image";
-// import React, { useState } from "react";
-// import { toast } from "react-toastify";
-// import axios from "axios";
-// import { purchaseProduct } from "@/api/purchaseApis/purchasePost";
-// import { dltCartProduct } from "@/api/productApis/deleteApi";
+'use client';
+import useCartStore from '@/globalStore/useCartStore';
+import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
 
-// export default function PaymentBar() {
-//   const {
-//     mergedCart,
-//     updateCartItemQuantity,
-//     updateCartItemColor,
-//     removeProductFromCart,
-//   } = useCartStore();
-//   const [editingQuantity, setEditingQuantity] = useState(null);
+export default function PaymentBar() {
+    const [decodedData, setDecodedData] = useState([]);
+    const [activeColors, setActiveColors] = useState({});
 
-//   const handleQuantityChange = (SK, newQuantity) => {
-//     updateCartItemQuantity(SK, newQuantity);
-//   };
+    useEffect(() => {
+        const storedCart = localStorage.getItem("checkoutProduct");
+        if (storedCart) {
+            try {
+                const decodedCart = JSON.parse(decodeURIComponent(storedCart));
+                setDecodedData(decodedCart);
+            } catch (error) {
+                console.error("Error parsing cart data:", error);
+            }
+        }
+    }, []);
 
-//   const handleColorChange = (SK, newColor) => {
-//     updateCartItemColor(SK, newColor);
-//   };
+    const { removeProductFromCart } = useCartStore();
 
-//   const totalCart = mergedCart.reduce(
-//     (total, item) => total + item.totalAmount * item.qty,
-//     0
-//   );
+    const totalAmount = decodedData.reduce((total, item) => {
+        const price = parseFloat(item.price) || 0;
+        const quantity = parseInt(item.itemQty) || 0;
+        return total + price * quantity;
+    }, 0);
 
-//   const handleBuy = async () => {
-//     if (mergedCart.length === 0) {
-//       toast.error("Your cart is empty!");
-//       return;
-//     }
+    const updateCartItem = (pk, sk, newQty, newColor) => {
+        setDecodedData(prevData =>
+            prevData.map(item =>
+                item.PK === pk && item.SK === sk
+                    ? {
+                        ...item,
+                        itemQty: newQty,
+                        img: item.imageURLs.find(img => img.color.name === newColor)?.img || item.img
+                    }
+                    : item
+            )
+        );
+        setActiveColors(prevColors => ({ ...prevColors, [pk + sk]: newColor }));
+    };
 
-//     const payload = {
-//       businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
-//       productIds: mergedCart.map((item) => ({
-//         PK: item?.productDetails[0]?.PK,
-//         SK: item?.productDetails[0]?.SK,
-//         quantity: item.qty,
-//       })),
-//       amount: totalCart,
-//     };
+    return (
+        <div className="right md:w-5/12 w-full ml-5">
+            <div className="checkout-block bg-white p-6 rounded-lg shadow-lg">
+                <div className="heading5 pb-3 text-2xl font-bold text-gray-800">Your Order</div>
+                <div className="list-product-checkout">
+                    {decodedData.map((item, index) => (
+                        <div key={index} className='border-b border-gray-200 pb-6 mb-6'>
+                            <div className="name text-lg font-semibold text-gray-700">{item.name || 'No Name'}</div>
 
-//     const removecartPayload = {
-//       productIds: mergedCart.map((item) => ({
-//         PK: item?.PK,
-//         SK: item?.SK,
-//       })),
-//     };
+                            <div className="item flex flex-col md:flex-row items-center justify-between w-full gap-6">
+                                <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden shadow-md">
+                                    <Image
+                                        src={item.img || '/public/image3.png'}
+                                        width={500}
+                                        height={500}
+                                        alt="img"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <div className="flex items-center justify-between w-full">
+                                    <div>
+                                        <div className="text-sm text-gray-500 mt-2">
+                                            <span className="size capitalize">{item.unit || "No Unit"}</span>
+                                            <span>/</span>
+                                            <span className="color capitalize">{item.status || "No Status"}</span>
+                                        </div>
+                                    </div>
+                                    <div className="quantity-block md:p-3 p-2 flex items-center justify-between rounded-lg border border-line w-[140px] flex-shrink-0">
+                                        <input
+                                            type="number"
+                                            value={item.itemQty}
+                                            min="1"
+                                            onChange={(e) => updateCartItem(item.PK, item.SK, e.target.value, activeColors[item.PK + item.SK] || item.imageURLs[0]?.color.name)}
+                                            className="w-12 text-center border border-gray-300 rounded"
+                                        />
+                                        <span className="px-1">x</span>
+                                        <span>${item.price || 0}.00</span>
+                                    </div>
+                                </div>
+                            </div>
 
-//     try {
-//       const response = await purchaseProduct(payload);
-//       console.log(response);
-//       if (response?.data?.statusCode === 200) {
-//         for (const item of mergedCart) {
-//           await dltCartProduct(item.PK, item.SK);
-//         }
- 
-//         toast.success(response?.data?.message);
-//       }
-//     } catch (error) {
-//       toast.error("Something went wrong. Please try again.");
-//       console.error("Purchase Error:", error);
-//     }
-//   };
+                            <div className="choose-color mt-4">
+                                <p className="text-lg font-semibold text-gray-700">Color: <span className="text-purple-600">{activeColors[item.PK + item.SK] || item.imageURLs[0]?.color.name}</span></p>
+                                <div className="list-color flex items-center gap-2 flex-wrap mt-3">
+                                    {item.imageURLs.map((image, idx) => (
+                                        <button
+                                            key={idx}
+                                            className={`color-item w-12 h-12 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow ${activeColors[item.PK + item.SK] === image.color.name ? "border-2 border-purple-600" : "border-2 border-transparent"
+                                                }`}
+                                            onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, image.color.name)}
+                                        >
+                                            <Image
+                                                src={image.img}
+                                                alt={image.color.name}
+                                                width={48}
+                                                height={48}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
 
-//   return (
-//     <div className="right md:w-5/12 w-full ml-5">
-//       <div className="checkout-block">
-//         <div className="heading5 pb-3">Your Order</div>
-//         <div className="list-product-checkout">
-//           {mergedCart?.map((product, i) => (
-//             <div
-//               key={i}
-//               className="item flex flex-col md:flex-row items-center justify-between w-full pb-5 border-b border-line gap-6 mt-5"
-//             >
-//               <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden">
-//                 <Image
-//                   src={product?.productDetails[0]?.img || "/public/image3.png"}
-//                   width={500}
-//                   height={500}
-//                   alt="img"
-//                   className="w-full h-full"
-//                 />
-//               </div>
-//               <div className="flex items-center justify-between w-full">
-//                 <div>
-//                   <div className="flex items-center justify-between w-full space-x-4 ">
-//                     <div className="name text-button">
-//                       {product?.productDetails[0]?.name || "none"}
-//                     </div>
-//                     <div
-//                       className="remove-cart-btn caption1 font-semibold text-red underline cursor-pointer"
-//                       onClick={() =>
-//                         removeProductFromCart(product?.PK, product?.SK)
-//                       }
-//                     >
-//                       Remove
-//                     </div>
-//                   </div>
-//                   <div className="caption1 text-secondary mt-2">
-//                     <span className="size capitalize">
-//                       {product.selectedSize || "product size"}
-//                     </span>
-//                     <span>/</span>
-//                     <span className="color capitalize">
-//                       {product.selectedColor || "product color"}
-//                     </span>
-//                   </div>
-//                   <div className="color-options mt-2">
-//                     {product.imageUrl?.map((image, index) => (
-//                       <button
-//                         key={index}
-//                         className={`w-6 h-6 rounded-sm  mr-2 ${
-//                           product.selectedColor === image.color.name
-//                             ? "border-blue-500"
-//                             : "border-gray-300"
-//                         }`}
-//                         style={{ backgroundColor: image.color.clrCode }}
-//                         onClick={() =>
-//                           handleColorChange(product.SK, image.color.name)
-//                         }
-//                         title={image.color.name}
-//                       />
-
-//         try {
-//             const response = await purchaseProduct(payload);
-//             console.log(response);
-//             if (response?.data?.statusCode === 200) {
-//                 for (const item of mergedCart) {
-//                     await dltCartProduct(item.PK, item.SK);
-//                 }
-//                 toast.success(response?.data?.message);
-//             }
-//         } catch (error) {
-//             toast.error('Something went wrong. Please try again.');
-//             console.error("Purchase Error:", error);
-//         }
-//     };
-
-
-//     return (
-//         <div className="right md:w-5/12 w-full ml-5">
-//             <div className="checkout-block">
-//                 <div className="heading5 pb-3">Your Order</div>
-//                 <div className="list-product-checkout">
-//                     {mergedCart?.map((product, i) => (
-//                         <div key={i} className="item flex flex-col md:flex-row items-center justify-between w-full pb-5 border-b border-line gap-6 mt-5">
-//                             <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden">
-//                                 <Image
-//                                     src={product?.productDetails?.[0]?.img || '/public/image3.png'}
-//                                     width={500}
-//                                     height={500}
-//                                     alt="img"
-//                                     className="w-full h-full"
-//                                 />
-//                             </div>
-//                             <div className="flex items-center justify-between w-full">
-//                                 <div>
-//                                     <div className="flex items-center justify-between w-full space-x-4 ">
-//                                         <div className="name text-button">{product?.productDetails?.[0]?.name || 'none'}</div>
-//                                         <div
-//                                             className="remove-cart-btn caption1 font-semibold text-red underline cursor-pointer"
-//                                             onClick={() => removeProductFromCart(product?.PK, product?.SK)}
-//                                         >
-//                                             Remove
-//                                         </div>
-//                                     </div>
-//                                     <div className="caption1 text-secondary mt-2">
-//                                         <span className='size capitalize'>{product.selectedSize || "product size"}</span>
-//                                         <span>/</span>
-//                                         <span className='color capitalize'>{product.selectedColor || "product color"}</span>
-//                                     </div>
-//                                     <div className="color-options mt-2">
-//                                         {product.imageUrl?.map((image, index) => (
-//                                             <button
-//                                                 key={index}
-//                                                 className={`w-6 h-6 rounded-sm  mr-2 ${product.selectedColor === image.color.name
-//                                                     ? 'border-blue-500'
-//                                                     : 'border-gray-300'
-//                                                     }`}
-//                                                 style={{ backgroundColor: image.color.clrCode }}
-//                                                 onClick={() => handleColorChange(product.SK, image.color.name)}
-//                                                 title={image.color.name}
-//                                             />
-
-//                                         ))}
-//                                     </div>
-//                                 </div>
-//                                 <div className="text-title">
-//                                     {editingQuantity === product.SK ? (
-//                                         <input
-//                                             type="number"
-//                                             value={product.qty}
-//                                             onChange={(e) => handleQuantityChange(product.SK, parseInt(e.target.value))}
-//                                             onBlur={() => setEditingQuantity(null)}
-//                                             min="1"
-//                                             className="w-16 border border-line rounded px-2 py-1"
-//                                         />
-//                                     ) : (
-//                                         <span
-//                                             className='quantity cursor-pointer'
-//                                             onClick={() => setEditingQuantity(product.SK)}
-//                                         >
-//                                             {product.qty}
-//                                         </span>
-//                                     )}
-//                                     <span className='px-1'>x</span>
-//                                     <span>${product.totalAmount}.00</span>
-
-//                                 </div>
-//                             </div>
-//                         </div>
- 
-//                     ))}
-//                   </div>
-//                 </div>
-//                 <div className="text-title">
-//                   {editingQuantity === product.SK ? (
-//                     <input
-//                       type="number"
-//                       value={product.qty}
-//                       onChange={(e) =>
-//                         handleQuantityChange(
-//                           product.SK,
-//                           parseInt(e.target.value)
-//                         )
-//                       }
-//                       onBlur={() => setEditingQuantity(null)}
-//                       min="1"
-//                       className="w-16 border border-line rounded px-2 py-1"
-//                     />
-//                   ) : (
-//                     <span
-//                       className="quantity cursor-pointer"
-//                       onClick={() => setEditingQuantity(product.SK)}
-//                     >
-//                       {product.qty}
-//                     </span>
-//                   )}
-//                   <span className="px-1">x</span>
-//                   <span>${product.totalAmount}.00</span>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//         <div className="total-cart-block pt-5 flex justify-between">
-//           <div className="heading5">Total</div>
-//           <div className="heading5 total-cart">${totalCart}.00</div>
-//         </div>
-
-//         <div onClick={handleBuy} className="button-block mt-5">
-//           <p className="button-main w-full text-center text-white">Buy</p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+                            <div className="flex items-center justify-between w-full space-x-4">
+                                <div
+                                    className="remove-cart-btn text-sm font-semibold text-red-500 underline cursor-pointer hover:text-red-700"
+                                    onClick={() => removeProductFromCart(item.PK, item.SK)}
+                                >
+                                    Remove
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="total-cart-block pt-6 flex justify-between border-t border-gray-200">
+                    <div className="heading5 text-xl font-bold text-gray-800">Total</div>
+                    <div className="heading5 total-cart text-xl font-bold text-purple-600">${totalAmount.toFixed(2)}</div>
+                </div>
+            </div>
+            <button
+                className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
+            >
+                Place Order
+            </button>
+        </div>
+    );
+}
