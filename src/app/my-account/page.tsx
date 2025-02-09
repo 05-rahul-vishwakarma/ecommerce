@@ -4,8 +4,8 @@ import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";
 import MenuFour from "@/components/Header/MenuFour";
 import AccountContent from "@/components/MyAccount/AccountContent";
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 async function fetchProfile(accessToken: string) {
   try {

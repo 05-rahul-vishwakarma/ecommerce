@@ -32,10 +32,10 @@ const FeaturedProduct: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const [activeColor, setActiveColor] = useState<string>("");
-  const [activeImage, setActiveImage] = useState<string>(""); 
+  const [activeImage, setActiveImage] = useState<string>("");
   const [activeSize, setActiveSize] = useState<string>("");
   const [itemQty, setItemQty] = useState<number>(0);
-  const { openModalCart } = useModalCartContext()
+  const { openModalCart } = useModalCartContext();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -83,7 +83,7 @@ const FeaturedProduct: React.FC = () => {
 
   if (!products.length) return null;
 
-  const product = products[1]; 
+  const product = products[1];
 
   return (
     <div className="featured-product underwear md:py-20 py-14">
@@ -108,7 +108,7 @@ const FeaturedProduct: React.FC = () => {
             </SwiperSlide>
           </Swiper>
 
-          <div className="z-[1] " >
+          <div className="z-[1] ">
             <Swiper
               onSwiper={setThumbsSwiper}
               spaceBetween={0}
@@ -145,11 +145,13 @@ const FeaturedProduct: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
-            <div className="product-price heading5">${product.price.toFixed(2)}</div>
+            <div className="product-price heading5">
+              ${product.price.toFixed(2)}
+            </div>
             <div className="w-px h-4 bg-line"></div>
-            <div className="product-origin-price font-normal text-secondary2">
+            <div className="product-origin-price font-normal text-purple2">
               <del>
-                ${((product.price / (1 - product.discount / 100)).toFixed(2))}
+                ${(product.price / (1 - product.discount / 100)).toFixed(2)}
               </del>
             </div>
             <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
@@ -162,7 +164,10 @@ const FeaturedProduct: React.FC = () => {
           <div className="list-action mt-6">
             <div className="choose-color">
               <p className="text-title">
-                Colors: <span className="text-title color">{activeColor || product.imageURLs[0]?.color?.name}</span>
+                Colors:{" "}
+                <span className="text-title color">
+                  {activeColor || product.imageURLs[0]?.color?.name}
+                </span>
               </p>
               <div className="list-color flex items-center gap-2 flex-wrap mt-3">
                 {product.imageURLs.map((item, index) => (
@@ -186,28 +191,32 @@ const FeaturedProduct: React.FC = () => {
             <div className="choose-quantity flex items-center lg:justify-between gap-5 gap-y-3 mt-5">
               <div className="quantity-block md:p-3 p-2 flex items-center justify-between rounded-lg border border-line w-[140px] flex-shrink-0">
                 <button
-                  onClick={() => itemQty > 0 && setItemQty(itemQty - 1)}  // Prevent going below 0
+                  onClick={() => itemQty > 0 && setItemQty(itemQty - 1)} // Prevent going below 0
                   className="cursor-pointer"
                 >
                   -
                 </button>
-                <span className="body1 font-semibold">
-                  {itemQty}
-                </span>
-                <button onClick={() => setItemQty(itemQty + 1)} className="cursor-pointer">
+                <span className="body1 font-semibold">{itemQty}</span>
+                <button
+                  onClick={() => setItemQty(itemQty + 1)}
+                  className="cursor-pointer"
+                >
                   +
                 </button>
               </div>
               <button
                 className="button-main w-full text-center bg-white text-purple border border-purple"
-                onClick={() => handleAddToCart(product,openModalCart,itemQty)}
+                onClick={() => handleAddToCart(product, openModalCart, itemQty)}
               >
                 Add To Cart
               </button>
             </div>
 
             <div className="button-block mt-5">
-              <a href="/checkout" className="button-main w-full text-center text-white">
+              <a
+                href="/checkout"
+                className="button-main w-full text-center text-white"
+              >
                 Buy It Now
               </a>
             </div>
@@ -219,6 +228,3 @@ const FeaturedProduct: React.FC = () => {
 };
 
 export default FeaturedProduct;
-
-
-

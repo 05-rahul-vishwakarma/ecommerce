@@ -16,14 +16,11 @@ import { toast } from 'react-toastify'
 
 const Product = ({ product }) => {
 
-    
-
     const { openModalCart } = useModalCartContext()
     const { openModalWishlist } = useModalWishlistContext()
     const { openQuickview } = useModalQuickviewContext()
     const { addToWishlist } = useWishlist()
     const router = useRouter();
-
 
     const handleQuickviewOpen = (product) => {
         openQuickview(product)
@@ -88,7 +85,7 @@ const Product = ({ product }) => {
                 {/* Product Image */}
                 <div className="product-img w-full h-full aspect-[3/4]">
                     <Image
-                        src={product?.productDetails?.[0]?.img || "/ribbon.png"}
+                        src={product?.img || "/ribbon.png"}
                         width={500}
                         height={500}
                         alt={product?.name}
