@@ -9,6 +9,8 @@ export default function PaymentBar() {
 
     useEffect(() => {
         const storedCart = localStorage.getItem("checkoutProduct");
+        const storedCartS = localStorage.getItem("cartData");
+
         if (storedCart) {
             try {
                 const decodedCart = JSON.parse(decodeURIComponent(storedCart));

@@ -9,8 +9,10 @@ import { useProductStore } from "../Product/store/useProduct";
 import { useCart } from "@/context/CartContext";
 import useCartStore from "@/globalStore/useCartStore";
 import { fetchAndMergeCartData } from "@/services/carts";
+import { useRouter } from "next/navigation";
 
 const ModalCart = () => {
+  const router = useRouter(); // Correct way to use router in Next.js App Router
   const [activeTab, setActiveTab] = useState<string | undefined>("");
   const { isModalOpen, closeModalCart } = useModalCartContext();
   const { fetchProducts, products } = useProductStore();
@@ -29,7 +31,14 @@ const ModalCart = () => {
     setActiveTab(tab);
   };
 
-  console.log(mergedCart);
+
+  const checkoutHandler = () => {
+    closeModalCart();
+    const encodedProduct = encodeURIComponent(JSON.stringify(mergedCart));
+    localStorage.setItem("cartData", encodedProduct);
+    router.push(`/checkout/${'true'}`)
+  };
+
 
   return (
     <>
@@ -190,13 +199,12 @@ const ModalCart = () => {
                   >
                     View cart
                   </Link>
-                  <Link
-                    href={"/checkout"}
+                  <button
                     className="button-main basis-1/2 text-center uppercase"
-                    onClick={closeModalCart}
+                    onClick={() => checkoutHandler()}
                   >
                     Check Out
-                  </Link>
+                  </button>
                 </div>
                 <div
                   onClick={closeModalCart}
