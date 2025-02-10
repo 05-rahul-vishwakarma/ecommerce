@@ -84,10 +84,11 @@ const ModalCart = () => {
                             </del>
                           </div>
                         )}
+
                       </div>
-                      <div className="quantity text-sm text-gray-500">
+                      {/* <div className="quantity text-sm text-gray-500">
                         Quantity: {product.quantity}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   <div
@@ -133,9 +134,29 @@ const ModalCart = () => {
                       </div>
                       <div className="w-full">
                         <div className="flex items-center justify-between w-full">
-                          <div className="name text-button">
-                            {productDetail?.name || "Product Name"}{" "}
-                            {/* Fallback name */}
+
+                          <div className="flex-col ">
+                            <div className="name text-button">
+                              {productDetail?.name || "Product Name"}{" "}
+                            </div>
+                            <div className="choose-color mt-4">
+                              <div className="list-color flex items-center gap-2 flex-wrap mt-3">
+                                {product?.productDetails?.imageURLs.map((image: any, idx: any) => (
+                                  <button
+                                    key={idx}
+                                    className={`color-item rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow`}
+                                  >
+                                    <Image
+                                      src={image.img}
+                                      alt={image.color.name}
+                                      width={28}
+                                      height={28}
+                                      className="object-cover"
+                                    />
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
                           </div>
                           <div
                             className="remove-cart-btn caption1 font-semibold text-red underline cursor-pointer"
@@ -151,6 +172,14 @@ const ModalCart = () => {
                             {/* {product.selectedSize || product.sizes[0]}/{product.selectedColor || product.variation[0].color} */}
                           </div>
                           <div className="product-price text-title">
+                            <input
+                              type="number"
+                              value={product?.qty || ''}
+                              min="1"
+                              // onChange={(e) => updateCartItemQty(item.PK, item.SK, e.target.value)}
+                              className="w-12 text-center border border-gray-300 rounded"
+                            />
+                            <span className="">x</span>
                             ${product?.totalAmount}.00
                           </div>
                         </div>
