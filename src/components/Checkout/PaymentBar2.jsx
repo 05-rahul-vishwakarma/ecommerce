@@ -2,6 +2,7 @@
 import useCartStore from '@/globalStore/useCartStore'; // Ensure this import is correct
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
+import PaymentComponent from '@/components/Payment/Payment'
 
 export default function PaymentBarTwo() {
     const [decodedData, setDecodedData] = useState([]);
@@ -100,7 +101,7 @@ export default function PaymentBarTwo() {
                                                 <span>/</span>
                                                 <span className="color capitalize">{item?.productDetails?.status || "No Status"}</span>
                                             </div>
-                                            
+
                                             {
                                                 activeColors &&
                                                 <div className="selected-color mt-2">
@@ -173,7 +174,8 @@ export default function PaymentBarTwo() {
                 onClick={() => console.log('Order placed!', decodedData)}
             >
                 Place Order
-            </button>
+            </button> 
+            <PaymentComponent />
         </div>
     );
 }

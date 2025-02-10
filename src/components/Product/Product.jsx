@@ -31,7 +31,7 @@ const Product = ({ product }) => {
         if (!accessToken) {
             console.log('token is not avilable');
             toast.error("Please log in to add items to the cart.");
-            router.push("/login"); 
+            router.push("/login");
             return;
         } else {
             handleAddToCart(product, openModalCart);
@@ -43,7 +43,7 @@ const Product = ({ product }) => {
         if (!accessToken) {
             console.log('token is not avilable');
             toast.error("Please log in to add items to the cart.");
-            router.push("/login"); 
+            router.push("/login");
             return;
         } else {
             addToWishlist(product);
@@ -147,7 +147,7 @@ const Product = ({ product }) => {
                     <div className="progress bg-line h-1.5 w-full rounded-[10px] overflow-hidden relative">
                         <div className="progress-sold bg-red absolute left-0 top-0 h-full" style={{ width: "50%" }}></div>
                     </div>
-                    <div className="flex items-center justify-between gap-3 gap-y-1 flex-wrap mt-2">
+                    <div className="flex items-center justify-between gap-3 gap-y-1 flex-wrap mt-2 hidden ">
                         <div className="text-button-uppercase">
                             <span className="text-secondary2 max-sm:text-xs">Sold: </span>
                             <span className="max-sm:text-xs">{product?.quantity - 50}</span>
