@@ -219,6 +219,12 @@ const FeaturedProduct: React.FC = () => {
                   +
                 </button>
               </div>
+              <button
+                className="button-main w-full text-center bg-white text-purple border border-purple"
+                onClick={() => handleAddToCart(product, openModalCart, colorQuantities[activeColor], activeColor)}
+              >
+                Add To Cart
+              </button>
             </div>
 
             <button className="button-main w-full mt-5" onClick={checkouthandler}>

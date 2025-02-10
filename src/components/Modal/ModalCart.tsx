@@ -113,11 +113,9 @@ const ModalCart = () => {
                 <Icon.X size={14} />
               </div>
             </div>
-            <div className="h-[65vh] px-6 overflow-y-scroll">
+            <div className="h-[65vh] px-6 overflow-y-scroll pb-[6rem] ">
               {mergedCart?.map((product: any, i: number) => {
-                // Safely access productDetails
                 const productDetail = product?.productDetails || {};
-
                 return (
                   <div
                     key={i}
@@ -194,7 +192,7 @@ const ModalCart = () => {
                 <div className="flex items-center gap-4">
                   <Link
                     href={"/cart"}
-                    className="button-main basis-1/2 bg-white border border-purple text-secondary text-center uppercase"
+                    className="button-main basis-1/2  bg-white border border-purple text-[black] text-center uppercase"
                     onClick={closeModalCart}
                   >
                     View cart

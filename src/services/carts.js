@@ -38,9 +38,17 @@ async function cart(product, itemQty, openModalCart) {
     }
 }
 
-export const handleAddToCart = (product, openModalCart, itemQty = 1) => {
-    cart(product, itemQty, openModalCart);
+
+export const handleAddToCart = (product, openModalCart, itemQty = 1, activeColor) => {
+    // Ensure quantity is provided and is greater than 0
+    if (itemQty <= 0) {
+        toast.error('Please select a valid quantity.');
+        return;
+    }
+
+    cart(product, itemQty, openModalCart, activeColor); // Pass activeColor too
 };
+
 
 export const fetchAndMergeCartData = async () => {
     try {

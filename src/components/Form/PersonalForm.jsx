@@ -83,7 +83,7 @@ export default function PersonalForm() {
             <input className="border-line px-4 py-3 w-full rounded-lg" type="text" placeholder="Postal Code *" {...register("postal", { required: "Postal Code is required" })} />
             <input className="border-line px-4 py-3 w-full rounded-lg" type="text" placeholder="Phone Number *" {...register("phoneNumber", { required: "Phone Number is required" })} />
           </div>
-          <div onClick={''} className="button-block mt-5">
+          <div className="button-block mt-5">
             <p className="button-main w-full text-center text-white">
               Update
             </p>

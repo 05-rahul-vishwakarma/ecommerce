@@ -30,10 +30,10 @@ const CartItem = ({ product }) => {
       <div className="w-1/2 flex items-center gap-6">
         <div className="bg-img md:w-[100px] w-20 aspect-[3/4]">
           <Image
-            src={product.image || ""}
+            src={product?.productDetails?.img || ""}
             width={1000}
             height={1000}
-            alt={product.name}
+            alt={product?.productDetails?.name}
             className="w-full h-full object-cover rounded-lg"
           />
         </div>
@@ -144,7 +144,7 @@ const Cart = () => {
                 <div className="flex flex-col items-center gap-y-4 mt-5">
                   <button
                     className="checkout-btn button-main text-center w-full"
-                    onClick={() => router.push("/checkout")}
+                    onClick={() => router.push("/checkout/true")}
                   >
                     Process To Checkout
                   </button>

@@ -70,7 +70,7 @@ const Page = () => {
                                     </div>
                                 </form>
                             </div>
-                            {/* <PersonalForm /> */}
+                            <PersonalForm />
                         </div>
                         <PaymentBarTwo />
                     </div>
