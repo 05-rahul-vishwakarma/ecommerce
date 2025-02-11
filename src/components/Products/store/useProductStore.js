@@ -11,6 +11,7 @@ export const useProductStore = create((set, get) => ({
     quantity: '',
     productBrand: '',
     productCategory: '',
+    productCategoryId: '', // New state for storing the category ID
     status: 'in-stock',
     design: 'plain',
     setDesign: (state) => set({ design: state }),
@@ -60,6 +61,7 @@ export const useProductStore = create((set, get) => ({
     setQuantity: (value) => set({ quantity: value }),
     setProductBrand: (value) => set({ productBrand: value }),
     setProductCategory: (value) => set({ productCategory: value }),
+    setProductCategoryId: (value) => set({ productCategoryId: value }), // New setter for category ID
     setStatus: (value) => set({ status: value }),
     setDescription: (value) => set({ description: value }),
     setScreenSize: (value) => set({ screenSize: value }),

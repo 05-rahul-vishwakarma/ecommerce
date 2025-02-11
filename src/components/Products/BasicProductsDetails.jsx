@@ -14,7 +14,7 @@ const BasicProductsDetails = () => {
     setUnit,
     productImage,
     setProductTitle,
-    setProductImage, setSubType,  setDesign, design
+    setProductImage, setSubType, setDesign, design
   } = useProductStore();
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -32,27 +32,29 @@ const BasicProductsDetails = () => {
       });
 
       const data = await response.json();
+      setProductImage(data?.imageUrl);
 
       reader.onloadend = () => {
         const imageUrl = reader.result;
         setImagePreview(imageUrl);
-        setProductImage(data?.imageUrl);
       };
       reader.readAsDataURL(file); // Read the file as a data URL (base64 string)
     }
   };
-const handleProductNameChange = (e) => {
-  setProductName(e.target.value)
-};
-const handleProductTitleChange = (e) => {
-  setProductTitle(e.target.value)
-};
-const handleUnitChange = (e)  => {
-  setUnit(e.target.value)
-};
-const handleSubTypeChange = (e) => {
-  setSubType(e.target.value)
-}
+
+  const handleProductNameChange = (e) => {
+    setProductName(e.target.value)
+  };
+
+  const handleProductTitleChange = (e) => {
+    setProductTitle(e.target.value)
+  };
+
+  const handleUnitChange = (e) => {
+    setUnit(e.target.value)
+  };
+
+ 
   const handleChangeDesign = (e) => {
     setDesign(e.target.value)
   };
@@ -105,32 +107,18 @@ const handleSubTypeChange = (e) => {
           />
         </div>
 
+      
         <div>
           <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-            {'Sub Type'}
-            <span className="text-red">*</span>
-          </label>
-          <input
-            type='text'
-            value={subType}
-            placeholder={'Enter the Sub Type Category'}
-            className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-            onChange={handleSubTypeChange}
-          />
-        </div>
-
-        <div>
-          <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-            {'Card Design'}
-            <span className="text-red">*</span>
+            Card Design <span className="text-red">*</span>
           </label>
           <select
             value={design}
             onChange={handleChangeDesign}
             className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
           >
-            <option value="in-stock">simple</option>
-            <option value="out-of-stock">round</option>
+            <option value="simple">Simple</option>
+            <option value="round">Round</option>
           </select>
         </div>
       </div>

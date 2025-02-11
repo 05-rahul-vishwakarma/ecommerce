@@ -33,10 +33,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/app/blogs/Add-Blog/page.jsx"  ],
   "exclude": [
     "node_modules"
   ],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/testimonial/add-testimonial/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/testimonial/add-testimonial/page.jsx", "src/app/blogs/Add-Blog/page.jsx"],
   "exclude": ["node_modules"]
 }

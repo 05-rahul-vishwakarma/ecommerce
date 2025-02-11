@@ -1,5 +1,6 @@
 /** @type {import("next").NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
   images: {
     domains: ["localhost", "i.ibb.co", 'dietghar.in'],
     remotePatterns: [

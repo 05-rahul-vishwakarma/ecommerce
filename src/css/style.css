@@ -477,3 +477,11 @@ input[type="number"] {
     margin: 0; /* Optional */
   }
   
+  .jodit_theme_dark .jodit-toolbar__box:not(:empty) {
+    background: #122031 !important;
+}
+.jodit .jodit-workplace .jodit-wysiwyg, .jodit .jodit-workplace .jodit-wysiwyg_iframe, .jodit-container .jodit-workplace .jodit-wysiwyg, .jodit-container .jodit-workplace .jodit-wysiwyg_iframe {
+    height: 100%;
+    width: 100%;
+    background: #1f2a37 !important;
+}

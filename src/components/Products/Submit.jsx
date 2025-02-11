@@ -8,11 +8,9 @@ import { toast } from 'react-toastify';
 export default function Submit() {
 
     function generateSKU(productName, category, timestamp) {
-        // Take the first three characters of the product name and category, make them uppercase
         const namePart = productName.slice(0, 3).toUpperCase();
         const categoryPart = category.slice(0, 3).toUpperCase();
 
-        // Generate a unique identifier using the current timestamp or a random number
         const uniquePart = timestamp ? Date.now() : Math.floor(Math.random() * 10000);
 
         return `${namePart}-${categoryPart}-${uniquePart}`;
@@ -31,21 +29,11 @@ export default function Submit() {
             productCategory,
             status,
             description,
-            screenSize,
-            colors,
-            screenResolution,
-            maxResolution,
-            processor,
-            graphics,
-            wirelessType,
-            tags,design,
-            sellCount,
-            isFeatured,
-            productImage, subType, productWidth, productMeter,
+            tags, design,
+            productImage, subType, productWidth, productMeter,productCategoryId,
             imageURLs
         } = useProductStore.getState();
 
-        // Construct the payload
         const payload = {
             businessType: process.env.NEXT_PUBLIC_BUSINESS_TYPE,
             sku: generateSKU(productName, productCategory, true),
@@ -61,11 +49,7 @@ export default function Submit() {
                 },
                 img
             })),
-            // size:{
-            //    width:productWidth,
-            //    meter:productMeter,
-            // },
-            parent: design === 'plain' ? design : 'round',
+            parent: design,
             children: subType,
             price: productPrice,
             discount: productDiscount,
@@ -76,32 +60,41 @@ export default function Submit() {
             },
             category: {
                 name: productCategory,
-                id: '88888'
+                id: productCategoryId
             },
+            additionalInformation: [
+                {
+                    width: productWidth,
+                    length: productMeter,
+                },
+            ],
             status: status,
             productType: productType,
             description: description,
-            featured: isFeatured,
             tags: tags.split(','), // Assuming tags are comma-separated
         };
 
-        // Token you provided
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQSyI6IlNVQkhJX0VfTFREX1VTRVIjMGZiZjUxOTYtYjM4MC00M2NmLTk2OTgtYTAxZGFjMDkzYjcxIiwiU0siOiJQUk9GSUxFIzBmYmY1MTk2LWIzODAtNDNjZi05Njk4LWEwMWRhYzA5M2I3MSIsImlhdCI6MTczNTI5MTExNywiZXhwIjoxNzM3ODgzMTE3fQ.rBSa6aGtLzQYzn6R_7tSinYzwamqli-C7ZIN2s8a3lg";
+        
+       console.log(payload);
+       
 
-        try {
-            const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/product`,
-                payload,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}` // Sending token in the headers
-                    }
-                }
-            );
-            toast.success('Successfully uploaded');
-        } catch (error) {
-            toast.error('Something went wrong');
-        }
+
+        // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQSyI6IlNVQkhJX0VfTFREX1VTRVIjMGZiZjUxOTYtYjM4MC00M2NmLTk2OTgtYTAxZGFjMDkzYjcxIiwiU0siOiJQUk9GSUxFIzBmYmY1MTk2LWIzODAtNDNjZi05Njk4LWEwMWRhYzA5M2I3MSIsImlhdCI6MTczNTI5MTExNywiZXhwIjoxNzM3ODgzMTE3fQ.rBSa6aGtLzQYzn6R_7tSinYzwamqli-C7ZIN2s8a3lg";
+
+        // try {
+        //     const response = await axios.post(
+        //         `${process.env.NEXT_PUBLIC_API_URL}/product`,
+        //         payload,
+                // {
+                //     headers: {
+                //         Authorization: `Bearer ${token}` // Sending token in the headers
+                //     }
+                // }
+        //     );
+        //     toast.success('Successfully uploaded');
+        // } catch (error) {
+        //     toast.error('Something went wrong');
+        // }
     };
 
 

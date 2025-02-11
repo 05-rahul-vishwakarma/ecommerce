@@ -5,8 +5,6 @@ import { useProductStore } from "./store/useProductStore";
 const ProductForm = () => {
     const { productType,
         setProductType,
-        productName,
-        productTitle,
         description,
         screenSize,
         colors,
@@ -19,8 +17,6 @@ const ProductForm = () => {
         sellCount,
         quantity,
         isFeatured,
-        setProductName,
-        setProductTitle,
         setDescription,
         setScreenSize,
         setColors,
@@ -37,7 +33,15 @@ const ProductForm = () => {
         productMeter,
         setProductWidth,
         setProductMeter,
+        subType,
+        setSubType
+
     } = useProductStore();
+
+    const handleSubTypeChange = (e) => {
+        setSubType(e.target.value)
+    }
+
 
     return (
         <div className="m-4">
@@ -59,6 +63,20 @@ const ProductForm = () => {
                 />
             </div>
 
+            <div>
+                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+                    {'Sub Type'}
+                    <span className="text-red">*</span>
+                </label>
+                <input
+                    type='text'
+                    value={subType}
+                    placeholder={'Enter the Sub Type Category'}
+                    className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                    onChange={handleSubTypeChange}
+                />
+            </div>
+
             <div className="mb-4">
                 <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
                     {'Description'}
@@ -73,6 +91,8 @@ const ProductForm = () => {
                     required
                 />
             </div>
+
+
 
             <h3 className="text-lg font-medium text-dark dark:text-white ">Additional Information</h3>
             <div className=" grid-cols-4 gap-3 hidden ">
@@ -199,7 +219,7 @@ const ProductForm = () => {
                     />
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4  ">
                     <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
                         {'Tags'}
                         <span className="text-red">*</span>
@@ -214,7 +234,7 @@ const ProductForm = () => {
                     />
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 hidden ">
                     <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
                         {'Sell Count'}
                         <span className="text-red">*</span>
@@ -229,7 +249,7 @@ const ProductForm = () => {
                     />
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 hidden ">
                     <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
                         {'Featured'}
                     </label>
