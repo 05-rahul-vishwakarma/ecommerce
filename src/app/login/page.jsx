@@ -6,7 +6,7 @@ const LoginForm = () => {
   // State to store form input values.
   const [email, setEmail] = useState('admin@gmail.com');
   const [password, setPassword] = useState('admin12345');
-  const [businessType, setBusinessType] = useState('SUBHI_E_LTD');
+  const [businessType, setBusinessType] = useState('NILAM_E_KANTI');
   
   // State for handling loading and error messages.
   const [loading, setLoading] = useState(false);

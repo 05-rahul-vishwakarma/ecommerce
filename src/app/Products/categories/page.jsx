@@ -34,8 +34,9 @@ export default function Page() {
         businessType: process.env.NEXT_PUBLIC_BUSINESS_TYPE,
         name: categoryName
       }
+      const token = localStorage.getItem('accessToken');
 
-      const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQSyI6IlNVQkhJX0VfTFREX0FETUlOIzRlY2UyN2RhLTJkNjgtNDUyMi1iZTFkLTI0Y2IxNzk4ODBmYSIsIlNLIjoiUFJPRklMRSM0ZWNlMjdkYS0yZDY4LTQ1MjItYmUxZC0yNGNiMTc5ODgwZmEiLCJpYXQiOjE3MzkyOTUyMzEsImV4cCI6MTc0MTg4NzIzMX0.eU6LyGXocKtwoSk660kxoDd4zQxFPeltCsUo_NFNGpc`;
+
 
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/catalog/category`, payload,
         {

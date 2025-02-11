@@ -63,8 +63,7 @@ const ProductForm = () => {
                     {'Description'}
                     <span className="text-red">*</span>
                 </label>
-                <input
-                    type="text"
+                <textarea
                     value={description}  // Bind to Zustand state
                     onChange={(e) => setDescription(e.target.value)}  // Update state on input change
                     placeholder="Enter product description"
