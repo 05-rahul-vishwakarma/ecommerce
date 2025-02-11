@@ -30,8 +30,8 @@ export default function Submit() {
             status,
             description,
             tags, design,
-            productImage, subType, productWidth, productMeter,productCategoryId,
-            imageURLs
+            productImage, subType, productWidth, productMeter, productCategoryId,
+            imageURLs,isFeatured
         } = useProductStore.getState();
 
         const payload = {
@@ -64,37 +64,51 @@ export default function Submit() {
             },
             additionalInformation: [
                 {
-                    width: productWidth,
-                    length: productMeter,
+                    key: "width",
+                    value: productWidth,
+                },
+                {
+                    key: "length",
+                    value: productMeter,
                 },
             ],
             status: status,
             productType: productType,
+            featured:isFeatured,
             description: description,
             tags: tags.split(','), // Assuming tags are comma-separated
         };
 
+
+        console.log(payload);
+
+
+        const token = localStorage.getItem('accessToken');
+
+        if (!token) {
+            toast.error('Unauthorized: No token found');
+            return;
+        }
+
+        console.log(payload);
         
-       console.log(payload);
-       
 
-
-        // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQSyI6IlNVQkhJX0VfTFREX1VTRVIjMGZiZjUxOTYtYjM4MC00M2NmLTk2OTgtYTAxZGFjMDkzYjcxIiwiU0siOiJQUk9GSUxFIzBmYmY1MTk2LWIzODAtNDNjZi05Njk4LWEwMWRhYzA5M2I3MSIsImlhdCI6MTczNTI5MTExNywiZXhwIjoxNzM3ODgzMTE3fQ.rBSa6aGtLzQYzn6R_7tSinYzwamqli-C7ZIN2s8a3lg";
-
-        // try {
-        //     const response = await axios.post(
-        //         `${process.env.NEXT_PUBLIC_API_URL}/product`,
-        //         payload,
-                // {
-                //     headers: {
-                //         Authorization: `Bearer ${token}` // Sending token in the headers
-                //     }
-                // }
-        //     );
-        //     toast.success('Successfully uploaded');
-        // } catch (error) {
-        //     toast.error('Something went wrong');
-        // }
+        try {
+            const response = await axios.post(
+                `${process.env.NEXT_PUBLIC_API_URL}/product`,
+                payload,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}` // Sending token in the headers
+                    }
+                }
+            );
+            if (response) {
+                toast.success('Successfully uploaded');
+            }
+        } catch (error) {
+            toast.error('Something went wrong');
+        }
     };
 
 
