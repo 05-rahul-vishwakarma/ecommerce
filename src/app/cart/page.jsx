@@ -20,8 +20,6 @@ const shippingOptions = [
 
 const CartItem = ({ product }) => {
   const { removeProductFromCart , decreaseCartItemQuantity , increaseCartItemQuantity} = useCartStore();
-  
-  
   return (
     <div
       className="item flex md:mt-7 md:pb-7 mt-5 pb-5 border-b border-line w-full"

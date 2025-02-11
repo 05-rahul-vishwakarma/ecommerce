@@ -10,6 +10,8 @@ export const getAuthHeaders = () => {
 
 export const accesstToken = Cookies.get('accessToken');
 
+export const sendOtp = `${process.env.NEXT_PUBLIC_BASE_URL}/user/login`;
+
 export const productList = `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`;
 export const getFilteredProductList = (data) => `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&productType=${encodeURIComponent(data)}`;
 export const getProductList = (PK, SK) => `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&PK=${encodeURIComponent(PK)}&SK=${encodeURIComponent(SK)}`;
@@ -32,3 +34,4 @@ export const getBuyProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/product/puchas
 
 export const reviewProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/review`;
 export const getReviewProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/review/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`;
+

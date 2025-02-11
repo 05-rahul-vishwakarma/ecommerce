@@ -25,12 +25,12 @@ const Testimonial = () => {
       );
       const mappedTestimonials: TestimonialType[] =
         response?.data?.data?.items.map((item: any) => ({
-          img: item.img, // Optional field
-          id: item.SK, // Map SK to id
+          img: item.img, 
+          id: item.SK, 
           rating: item.rating,
           name: item.name,
           businessType: item.businessType,
-          description: item.description, // Optional field
+          description: item.description,
           type: item.type,
         }));
       setTestimonial(mappedTestimonials);
@@ -38,6 +38,7 @@ const Testimonial = () => {
       console.error("Testimonial not Found!", error);
     }
   };
+  
   useEffect(() => {
     getTestimonial();
   }, []);

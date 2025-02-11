@@ -45,10 +45,10 @@ const Login = () => {
         `${process.env.NEXT_PUBLIC_BASE_URL}/user/verifyOtp`,
         payload
       );
-      toast.success("User Loged In");
       Cookies.set("accessToken", response?.data?.data?.accessToken, {
         expires: 1,
-      }); // Expires in 7 days
+      }); 
+      toast.success("User Loged In");
     } catch (error: unknown) {
       const errorMessage =
         (error as { message?: string })?.message ||

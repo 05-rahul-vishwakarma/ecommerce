@@ -10,15 +10,14 @@ import Footer from "@/components/Footer/Footer";
 export default async function page({ params }) {
   try {
     const slug = (await params)?.product;
-
     const cookieStore = cookies();
     const accessToken = cookieStore.get("accessToken")?.value;
     console.log(accessToken, "product dyanamic page");
 
     if (!accessToken) {
       toast.error("Login First");
-      redirect("/login"); // Redirects to the login page
-      return null; // Stop further execution
+      redirect("/login");
+      return null; 
     }
 
     const response = await axios.post(
