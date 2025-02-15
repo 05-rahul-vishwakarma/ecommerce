@@ -80,7 +80,6 @@ export default function Submit() {
         };
 
 
-        console.log(payload);
 
 
         const token = localStorage.getItem('accessToken');

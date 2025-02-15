@@ -1,11 +1,10 @@
-import CreationForm from '@/components/Blogs/Creation/CreationForm';
-
+import BlogCreationForm from '@/components/Blogs/Creation/BlogCreationForm';
 
 export default function page() {
   return (
     <section>
       <h1>Blog Creation</h1>
-      <CreationForm />
+      <BlogCreationForm />
     </section>
   )
 }
