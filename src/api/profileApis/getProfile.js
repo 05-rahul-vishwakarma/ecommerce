@@ -7,12 +7,13 @@ export async function getAccessToken() {
 
 import { getAccessToken } from "@/utils/getAccessToken";
 import { redirect } from 'next/navigation';
+import axios from 'axios';
 
 export async function getProfileData() {
     const accessToken = getAccessToken();
 
     if (!accessToken) {
-        redirect('/login'); 
+        redirect('/login');
     }
 
     try {
@@ -34,5 +35,5 @@ export async function getProfileData() {
 }
 
 export async function sendOtp() {
-    
+
 }

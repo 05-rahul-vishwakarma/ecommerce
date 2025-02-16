@@ -1,5 +1,9 @@
 
 export interface BlogType {
+    SK:string,
+    BlogImage: any;
+    createdAt: string;
+    PK: string;
     id: string,
     category: string,
     tag: string,
