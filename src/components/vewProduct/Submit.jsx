@@ -7,7 +7,6 @@ import { useProductStore } from '../Products/store/useProductStore';
 
 export default function Submit({PK,SK}) {
 
-
     const sendProductData = async () => {
         const {
             productWidth, productMeter,

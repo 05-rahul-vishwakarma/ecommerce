@@ -19,8 +19,6 @@ export default function Page() {
   const PK = id[0];
   const SK = id[1];
 
-  console.log(PK,SK ,'pk and sk');
-  
 
   // Destructure the store setters
   const {
