@@ -1,14 +1,14 @@
 'use client';
 import { useParams } from 'next/navigation';
 import React, { useEffect } from 'react';
-import BasicProductsDetails from '@/components/vewProduct/BasicProductsDetails';
-import ProductImages from '@/components/vewProduct/ProductImages';
-import Pricing from '@/components/vewProduct/Pricing';
-import BrandAndCategory from '@/components/vewProduct/BrandAndCategory';
-import ProductForm from '@/components/vewProduct/ProductForm';
 import Submit from '@/components/vewProduct/Submit';
 import { useProductStore } from '@/components/Products/store/useProductStore';
 import axios from 'axios';
+import BasicProductsDetails from '@/components/Products/BasicProductsDetails';
+import ProductImages from '@/components/Products/ProductImages';
+import Pricing from '@/components/Products/Pricing';
+import BrandAndCategory from '@/components/Products/BrandAndCategory';
+import ProductForm from '@/components/Products/ProductForm';
 
 export default function Page() {
   const params = useParams();
@@ -18,6 +18,9 @@ export default function Page() {
   const id = slug.split('&');
   const PK = id[0];
   const SK = id[1];
+
+  console.log(PK,SK ,'pk and sk');
+  
 
   // Destructure the store setters
   const {
@@ -57,9 +60,6 @@ export default function Page() {
           `${process.env.NEXT_PUBLIC_API_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_TYPE}&PK=${encodeURIComponent(PK)}&SK=${encodeURIComponent(SK)}`
         );
         const productData = response?.data?.data[0]; // Assuming the API response has a `data` field
-        console.log(productData, 'productData');
-  
-        // Set all the values in the store
         setProductName(productData?.name || ''); // Updated to match the object field
         setProductTitle(productData.title || ''); // Updated to match the object field
         setUnit(productData.unit || ''); // Updated to match the object field
@@ -91,7 +91,7 @@ export default function Page() {
         console.error('Error fetching product data:', error);
       }
     };
-  
+
     fetchData();
   }, [
     PK,
@@ -131,7 +131,7 @@ export default function Page() {
       <Pricing />
       <BrandAndCategory />
       <ProductForm />
-      <Submit />
+      <Submit PK={id[0]} SK={id[1]} />
     </section>
   );
 }

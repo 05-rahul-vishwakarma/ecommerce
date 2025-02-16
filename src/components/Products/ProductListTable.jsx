@@ -13,6 +13,7 @@ const ProductTable = ({ data: initialData }) => {
 
     router.push(`/Products/${encodedPK}&${encodedSK}`);
   };
+  
   const handleDelete = async (PK, SK) => {
     try {
       const encodedPK = encodeURIComponent(PK);

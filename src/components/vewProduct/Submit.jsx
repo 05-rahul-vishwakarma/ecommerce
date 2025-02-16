@@ -1,96 +1,44 @@
 'use client';
 
 import React from 'react'
-import { useProductStore } from '../Products/store/useProductStore'
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useProductStore } from '../Products/store/useProductStore';
 
-export default function Submit() {
+export default function Submit({PK,SK}) {
 
-    function generateSKU(productName, category, timestamp) {
-        // Take the first three characters of the product name and category, make them uppercase
-        const namePart = productName.slice(0, 3).toUpperCase();
-        const categoryPart = category.slice(0, 3).toUpperCase();
-
-        // Generate a unique identifier using the current timestamp or a random number
-        const uniquePart = timestamp ? Date.now() : Math.floor(Math.random() * 10000);
-
-        return `${namePart}-${categoryPart}-${uniquePart}`;
-    }
 
     const sendProductData = async () => {
         const {
-            productType,
-            productName,
-            productTitle,
-            unit,
-            productPrice,
-            productDiscount,
-            quantity,
-            productBrand,
-            productCategory,
-            status,
-            description,
-            screenSize,
-            colors,
-            screenResolution,
-            maxResolution,
-            processor,
-            graphics,
-            wirelessType,
-            tags,design,
-            sellCount,
-            isFeatured,
-            productImage, subType, productWidth, productMeter,
-            imageURLs
+            productWidth, productMeter,
         } = useProductStore.getState();
 
-        // Construct the payload
         const payload = {
-            businessType: process.env.NEXT_PUBLIC_BUSINESS_TYPE,
-            sku: generateSKU(productName, productCategory, true),
-            img: productImage || imageURLs[0].img, // Assuming productImage or fallback to default image
-            title: productTitle,
-            name: productName,
-            slug: `${productName.toLowerCase().replace(/\s+/g, '-')}`,
-            unit: unit,
-            imageURLs: imageURLs.map(({ color, img }) => ({
-                color: {
-                    name: color.name,
-                    clrCode: color.clrCode
+            additionalInformation: [
+                {
+                    key: "width",
+                    value: productWidth,
                 },
-                img
-            })),
-            // size:{
-            //    width:productWidth,
-            //    meter:productMeter,
-            // },
-            parent: design === 'plain' ? design : 'round',
-            children: subType,
-            price: productPrice,
-            discount: productDiscount,
-            quantity: quantity,
-            brand: {
-                name: productBrand,
-                id: '9999999'
-            },
-            category: {
-                name: productCategory,
-                id: '88888'
-            },
-            status: status,
-            productType: productType,
-            description: description,
-            featured: isFeatured,
-            tags: tags.split(','), // Assuming tags are comma-separated
+                {
+                    key: "length",
+                    value: productMeter,
+                },
+            ],
         };
 
-        // Token you provided
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQSyI6IlNVQkhJX0VfTFREX1VTRVIjMGZiZjUxOTYtYjM4MC00M2NmLTk2OTgtYTAxZGFjMDkzYjcxIiwiU0siOiJQUk9GSUxFIzBmYmY1MTk2LWIzODAtNDNjZi05Njk4LWEwMWRhYzA5M2I3MSIsImlhdCI6MTczNTI5MTExNywiZXhwIjoxNzM3ODgzMTE3fQ.rBSa6aGtLzQYzn6R_7tSinYzwamqli-C7ZIN2s8a3lg";
+        const token = localStorage.getItem('accessToken');
+
+        if (!token) {
+            toast.error('Unauthorized: No token found');
+            return;
+        }
+
+        console.log(payload);
+
 
         try {
-            const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/product`,
+            const response = await axios.put(
+                `${process.env.NEXT_PUBLIC_API_URL}/product/update?PK=${encodeURIComponent(PK)}&SK=${encodeURIComponent(SK)}`,
                 payload,
                 {
                     headers: {
@@ -98,16 +46,19 @@ export default function Submit() {
                     }
                 }
             );
-            toast.success('Successfully uploaded');
+            if (response) {
+                toast.success('Successfully uploaded');
+            }
         } catch (error) {
             toast.error('Something went wrong');
         }
+
     };
 
 
     return (
-        <button onClick={sendProductData} className="w-[40%] justify-self-end flex justify-center mr-4 text-center mb-4 rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90  m-4 ">
-            Submit Product
+        <button onClick={() => sendProductData()} className="w-[40%] justify-self-end flex justify-center mr-4 text-center mb-4 rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90  m-4 ">
+            Update Product
         </button>
     )
 }
