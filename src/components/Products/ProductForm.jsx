@@ -30,9 +30,9 @@ const ProductForm = () => {
         setQuantity,
         setIsFeatured,
         productWidth,
-        productMeter,
+        productLength,
         setProductWidth,
-        setProductMeter,
+        setProductLength,
         subType,
         setSubType
 
@@ -261,30 +261,34 @@ const ProductForm = () => {
                     />
                 </div>
 
-                <div className="mb-4">
+             {/* Width Input */}
+             <div className="mb-4">
                     <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-                        {'Product Size In Width'}
+                        {'Width'}
+                        <span className="text-red">*</span>
                     </label>
                     <input
                         type="text"
                         value={productWidth}
                         onChange={(e) => setProductWidth(e.target.value)}
-                        className="w-full rounded-[7px] capitalize border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                        placeholder="Enter width (e.g., 5m, 10cm)"
+                        className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         required
-                        placeholder="enter the product size in width"
                     />
                 </div>
 
+                {/* Length Input */}
                 <div className="mb-4">
                     <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-                        {'Product Size In Meter'}
+                        {'Length'}
+                        <span className="text-red">*</span>
                     </label>
                     <input
                         type="text"
-                        placeholder="Enter The product size in meter"
-                        value={productMeter}
-                        onChange={(e) => setProductMeter(e.target.value)}
-                        className="w-full capitalize rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                        value={productLength}
+                        onChange={(e) => setProductLength(e.target.value)}
+                        placeholder="Enter length (e.g., 2m, 30cm)"
+                        className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                         required
                     />
                 </div>
@@ -294,3 +298,38 @@ const ProductForm = () => {
 };
 
 export default ProductForm;
+
+
+
+// 'use client';
+
+// import { useProductStore } from "./store/useProductStore";
+
+// const ProductForm = () => {
+//     const {
+//         // ... other existing state variables ...
+//         productWidth,
+//         productLength,
+//         setProductWidth,
+//         setProductLength,
+//         // ... rest of the state variables ...
+//     } = useProductStore();
+
+//     // ... other existing handlers ...
+
+//     return (
+//         <div className="m-4">
+//             {/* ... existing form elements ... */}
+
+//             <div className="grid grid-cols-4 gap-3">
+//                 {/* ... other existing fields in the grid ... */}
+
+               
+
+//                 {/* ... rest of the existing grid content ... */}
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default ProductForm;
