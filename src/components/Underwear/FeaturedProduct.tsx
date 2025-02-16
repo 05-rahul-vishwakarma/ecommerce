@@ -219,7 +219,6 @@ const FeaturedProduct: React.FC = () => {
                   ))}
                 </div>
               </div>
-              <div className="list-size flex items-center gap-2 flex-wrap mt-3"></div>
             </div>
 
             {/* Quantity Selection */}
