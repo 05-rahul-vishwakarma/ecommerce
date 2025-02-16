@@ -28,7 +28,7 @@ export default function Home() {
             <FeaturedProduct />
             <TrendingProduct start={0} limit={8} />
             <Testimonial />
-            <OurBlog data={blogData} start={3} limit={6} />
+            <OurBlog />
             <Instagram />
             <Benefit props="py-[60px]" />
             <Footer />
