@@ -60,7 +60,7 @@ export default function OthersData({ PK, SK }) {
       </div>
 
       {/* Description and Specifications Section */}
-      <div className="desc-tab md:pb-20 pb-10">
+      {/* <div className="desc-tab md:pb-20 pb-10">
         <div className="container">
           <div className="flex items-center justify-center w-full">
             <div className="menu-tab flex items-center md:gap-[60px] gap-8">
@@ -132,12 +132,11 @@ export default function OthersData({ PK, SK }) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      {/* Customer Reviews Section */}
-      <div className="review-block md:py-20 py-10 bg-surface">
+      <div className="review-block md:py-20 py-10 bg-surface  ">
         <div className="container">
-          <div className="heading flex items-center justify-between flex-wrap gap-4">
+          {/* <div className="heading flex items-center justify-between flex-wrap gap-4">
             <div className="heading4">Customer Review</div>
             <Link
               href={"#form-review"}
@@ -145,8 +144,9 @@ export default function OthersData({ PK, SK }) {
             >
               Write Reviews
             </Link>
-          </div>
-          <div className="top-overview flex justify-between py-6 max-md:flex-col gap-y-6">
+          </div> */}
+
+          {/* <div className="top-overview flex justify-between py-6 max-md:flex-col gap-y-6">
             <div className="rating lg:w-1/4 md:w-[30%] lg:pr-[75px] md:pr-[35px]">
               <div className="heading flex items-center justify-center flex-wrap gap-3 gap-y-4">
                 <div className="text-display">4.6</div>
@@ -246,13 +246,12 @@ export default function OthersData({ PK, SK }) {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div id="form-review" className="form-review pt-6">
             <ReviewForm PK={PK} SK={SK} />
           </div>
         </div>
 
-        {/* Related Products Section */}
         <div className="related-product md:py-20 py-10">
           <div className="container">
             <div className="heading3 text-center">Related Products</div>

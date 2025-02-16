@@ -20,23 +20,11 @@ export default function DyanamicProduct({ productMain }) {
   const swiperRef = useRef(null); // Initialize swiperRef with null
   const [productImage, setProductImage] = useState();
   const [openPopupImg, setOpenPopupImg] = useState(false);
-  const [openSizeGuide, setOpenSizeGuide] = useState(false);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [activeColor, setActiveColor] = useState("");
-  const [activeSize, setActiveSize] = useState("");
-  const [activeTab, setActiveTab] = useState("description");
   const [selectedImageIndex, setSelectedImageIndex] = useState(0); // Track selected image index
   const { openModalCart } = useModalCartContext();
-  const { addToWishlist, removeFromWishlist, wishlistState } = useWishlist();
   const { openModalWishlist } = useModalWishlistContext();
-
-  const handleOpenSizeGuide = () => {
-    setOpenSizeGuide(true);
-  };
-
-  const handleCloseSizeGuide = () => {
-    setOpenSizeGuide(false);
-  };
 
   const handleSwiper = (swiper) => {
     console.log(swiper, "swiper");
@@ -63,10 +51,6 @@ export default function DyanamicProduct({ productMain }) {
     }
   };
 
-  const handleActiveSize = (item) => {
-    setActiveSize(item);
-  };
-
   const handleAddToCart = () => {
     openModalCart();
   };
@@ -75,15 +59,22 @@ export default function DyanamicProduct({ productMain }) {
     openModalWishlist();
   };
 
-  const handleActiveTab = (tab) => {
-    setActiveTab(tab);
-  };
+
 
   useEffect(() => {
     setProductImage(productMain?.imageURLs);
   }, []);
 
   const images = productImage?.map((img) => img.img) || [];
+
+  const formattedData = productMain?.additionalInformation?.map(info => ({
+    key: info.key,
+    values: info.value
+      .replace(/\s/g, '') // Removing spaces
+      .split(',')
+      .map(value => value + (info.key === "width" ? "mm" : "cm"))
+      .join(', ')
+  }));
 
   return (
     <div className="product-detail default">
@@ -207,28 +198,22 @@ export default function DyanamicProduct({ productMain }) {
               <Rate currentRate={5} size={14} />
               <span className="caption1 text-secondary">(1.234 reviews)</span>
             </div>
+           
             <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
-              <div className="product-price heading5">
-                ${productMain?.price}.00
-              </div>
+              <div className="product-price heading5">${productMain?.price.toFixed(2)}</div>
               <div className="w-px h-4 bg-line"></div>
               <div className="product-origin-price font-normal text-purple2">
-                <del>${productMain?.originPrice}.00</del>
+                <del>
+                  ${(productMain?.price / (1 - productMain?.discount / 100)).toFixed(2)}
+                </del>
               </div>
-              {productMain?.originPrice && (
-                <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
-                  -
-                  {Math.round(
-                    ((productMain.originPrice - productMain.price) /
-                      productMain.originPrice) *
-                      100
-                  )}
-                  %
-                </div>
-              )}
-              <div className="desc text-secondary mt-3">
-                {productMain?.description}
+              <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
+                -{productMain?.discount}%
               </div>
+            </div>
+
+            <div className="desc text-secondary mt-3">
+              {productMain?.description}
             </div>
             <div className="list-action mt-6">
               <div className="choose-color">
@@ -240,11 +225,10 @@ export default function DyanamicProduct({ productMain }) {
                   {productMain.imageURLs.map((img, index) => (
                     <div
                       key={index}
-                      className={`color-option w-8 h-8 rounded-full cursor-pointer border-2 ${
-                        activeColor === img.color.name
-                          ? "border-purple"
-                          : "border-transparent"
-                      }`}
+                      className={`color-option w-8 h-8 rounded-full cursor-pointer border-2 ${activeColor === img.color.name
+                        ? "border-purple"
+                        : "border-transparent"
+                        }`}
                       style={{ backgroundColor: img.color.clrCode }}
                       onClick={() => handleActiveColor(img.color.name)}
                       onMouseEnter={() =>
@@ -258,11 +242,13 @@ export default function DyanamicProduct({ productMain }) {
               <div className="choose-size mt-5">
                 <div className="heading flex items-center justify-between">
                   <div className="text-title">
-                    Size: <span className="text-title size">{activeSize}</span>
+                    Size:{" "}
+                    {formattedData?.map((item, index) => (
+                      <p key={index}>
+                        {item.key.charAt(0).toUpperCase() + item.key.slice(1)} Sizes: {item.values}
+                      </p>
+                    ))}
                   </div>
-                </div>
-                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                  {/* Render size options here */}
                 </div>
               </div>
               <div className="text-title mt-5">Quantity:</div>
@@ -270,7 +256,7 @@ export default function DyanamicProduct({ productMain }) {
                 <div className="quantity-block md:p-3 max-md:py-1.5 max-md:px-3 flex items-center justify-between rounded-lg border border-line sm:w-[180px] w-[120px] flex-shrink-0">
                   <Icon.Minus size={20} className="cursor-pointer" />
                   <div className="body1 font-semibold">
-                    {productMain?.quantity}
+                    {1}
                   </div>
                   <Icon.Plus size={20} className="cursor-pointer" />
                 </div>
@@ -296,10 +282,25 @@ export default function DyanamicProduct({ productMain }) {
                     <div className="text-title">Ask A Question</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-1 mt-3">
+                <div className="flex items-center flex-wrap gap-1 mt-3">
                   <Icon.Timer className="body1" />
-                  <div className="text-title">Estimated Delivery:</div>
-                  <div className="text-secondary">14 January - 18 January</div>
+                  <span className="text-title">Estimated Delivery:</span>
+                  <span className="text-secondary">
+                    {(() => {
+                      const today = new Date();
+                      const startDate = new Date(today);
+                      startDate.setDate(today.getDate() + 2);
+                      const endDate = new Date(today);
+                      endDate.setDate(today.getDate() + 3);
+
+                      const options = {
+                        day: 'numeric',
+                        month: 'long'
+                      };
+
+                      return `${startDate.toLocaleDateString('en-US', options)} - ${endDate.toLocaleDateString('en-US', options)}`;
+                    })()}
+                  </span>
                 </div>
                 <div className="flex items-center gap-1 mt-3">
                   <Icon.Eye className="body1" />

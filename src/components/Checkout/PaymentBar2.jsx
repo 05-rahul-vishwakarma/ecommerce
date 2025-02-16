@@ -75,7 +75,7 @@ export default function PaymentBarTwo() {
     }
 
     return (
-        <div className="right md:w-5/12 w-full ml-5">
+        <div className="right md:w-5/12 w-full lg:ml-5">
             <div className="checkout-block bg-white p-6 rounded-lg shadow-lg">
                 <div className="heading5 pb-3 text-2xl font-bold text-gray-800">Your Order</div>
                 <div className="list-product-checkout">

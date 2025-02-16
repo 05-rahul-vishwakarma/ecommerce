@@ -26,6 +26,10 @@ interface Product {
   description: string;
   quantity: number;
   imageURLs: ImageURL[];
+  additionalInformation: Array<{
+    value: string;
+    key: string;
+  }>;
 }
 
 const FeaturedProduct: React.FC = () => {
@@ -102,6 +106,16 @@ const FeaturedProduct: React.FC = () => {
     localStorage.setItem("checkoutProduct", encodedProduct);
     router.push("/checkout");
   };
+
+
+  const formattedData = product?.additionalInformation?.map(info => ({
+    key: info.key,
+    values: info.value
+      .replace(/\s/g, '') // Removing spaces
+      .split(',')
+      .map(value => value + (info.key === "width" ? "mm" : "cm"))
+      .join(', ')
+  }));
 
   return (
     <div className="featured-product underwear md:py-20 py-14">
@@ -192,6 +206,20 @@ const FeaturedProduct: React.FC = () => {
                   </button>
                 ))}
               </div>
+            </div>
+
+            <div className="choose-size mt-5">
+              <div className="heading flex items-center justify-between">
+                <div className="text-title">
+                  Size:{" "}
+                  {formattedData?.map((item:any, index:any) => (
+                    <p key={index}>
+                      {item.key.charAt(0).toUpperCase() + item.key.slice(1)} Sizes: {item.values}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              <div className="list-size flex items-center gap-2 flex-wrap mt-3"></div>
             </div>
 
             {/* Quantity Selection */}

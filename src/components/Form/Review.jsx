@@ -94,7 +94,7 @@ const ReviewForm = ({ PK, SK }) => {
         <div className="col-span-full sm:pt-3">
           <button
             type="submit"
-            className="button-main bg-white text-secondary border border-purple"
+            className="button-main text-secondary bg-custom-purple-color border border-purple"
           >
             Submit Review
           </button>

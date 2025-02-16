@@ -58,6 +58,9 @@ export interface ProductType {
     PK: string;
     sku: string;
     title: string;
-    
+    additionalInformation: Array<{
+      value: string;
+      key: string;
+    }>;   
 }
 

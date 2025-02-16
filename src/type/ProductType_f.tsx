@@ -40,5 +40,8 @@ interface ProductType {
   sku: string;
   type: string;
   title: string;
-  
+  additionalInformation: Array<{
+    value: string;
+    key: string;
+  }>;
 }
