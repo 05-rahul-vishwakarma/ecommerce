@@ -13,6 +13,7 @@ import { useModalCartContext } from "@/context/ModalCartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { useModalWishlistContext } from "@/context/ModalWishlistContext";
 import OthersData from "./OthersData";
+import { useRouter } from "next/navigation";
 
 SwiperCore.use([Navigation, Thumbs]);
 
@@ -25,6 +26,9 @@ export default function DyanamicProduct({ productMain }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0); // Track selected image index
   const { openModalCart } = useModalCartContext();
   const { openModalWishlist } = useModalWishlistContext();
+  const [products, setProducts] = useState(productMain);
+  const [quantity, setQuantity] = useState(1);
+  const router = useRouter();
 
   const handleSwiper = (swiper) => {
     console.log(swiper, "swiper");
@@ -51,23 +55,57 @@ export default function DyanamicProduct({ productMain }) {
     }
   };
 
-  const handleAddToCart = () => {
-    openModalCart();
-  };
-
   const handleAddToWishlist = () => {
     openModalWishlist();
   };
 
+  const handleDecrement = () => {
+    setQuantity(prev => Math.max(prev - 1, 1));
+  };
+
+  const handleIncrement = () => {
+    setQuantity(prev => prev + 1);
+  };
+
+  const handleAddToCart = () => {
+    const accessToken = Cookies.get("accessToken");
+    if (!accessToken) {
+      console.log('token is not avilable');
+      toast.error("Please log in to add items to the cart.");
+      router.push("/login");
+      return;
+    } else {
+      handleAddToCart(products, openModalCart);
+    }
+  }
 
 
   useEffect(() => {
+    setProducts(productMain);
     setProductImage(productMain?.imageURLs);
-  }, []);
+    if (productMain?.imageURLs?.length > 0) {
+      setActiveColor(productMain.imageURLs[0].color.name);
+    }
+  }, [productMain]);
 
   const images = productImage?.map((img) => img.img) || [];
 
-  const formattedData = productMain?.additionalInformation?.map(info => ({
+  const handleCheckout = () => {
+    console.log('yes working');
+
+    const checkoutProduct = [{
+      ...products,
+      itemQty: quantity,
+      selectedColor: activeColor,
+    }];
+
+    localStorage.setItem('checkoutProduct',
+      encodeURIComponent(JSON.stringify(checkoutProduct))
+    );
+    router.push("/checkout");
+  };
+
+  const formattedData = products?.additionalInformation?.map(info => ({
     key: info.key,
     values: info.value
       .replace(/\s/g, '') // Removing spaces
@@ -75,6 +113,8 @@ export default function DyanamicProduct({ productMain }) {
       .map(value => value + (info.key === "width" ? "mm" : "cm"))
       .join(', ')
   }));
+
+
 
   return (
     <div className="product-detail default">
@@ -179,13 +219,14 @@ export default function DyanamicProduct({ productMain }) {
               </Swiper>
             </div>
           </div>
+
           <div className="product-infor md:w-1/2 w-full lg:pl-[15px] md:pl-2">
             <div className="flex justify-between">
               <div>
                 <div className="caption2 text-secondary font-semibold uppercase">
-                  {productMain?.businessType}
+                  {products?.businessType}
                 </div>
-                <div className="heading4 mt-1">{productMain?.name}</div>
+                <div className="heading4 mt-1">{products?.name}</div>
               </div>
               <div
                 className={`add-wishlist-btn w-12 h-12 flex items-center justify-center border border-line cursor-pointer rounded-xl duration-300 hover:bg-purple hover:text-white`}
@@ -194,26 +235,26 @@ export default function DyanamicProduct({ productMain }) {
                 <Icon.Heart size={24} />
               </div>
             </div>
-            <div className="flex items-center mt-3">
+            {/* <div className="flex items-center mt-3">
               <Rate currentRate={5} size={14} />
               <span className="caption1 text-secondary">(1.234 reviews)</span>
-            </div>
-           
+            </div> */}
+
             <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
-              <div className="product-price heading5">${productMain?.price.toFixed(2)}</div>
+              <div className="product-price heading5">${products?.price.toFixed(2)}</div>
               <div className="w-px h-4 bg-line"></div>
               <div className="product-origin-price font-normal text-purple2">
                 <del>
-                  ${(productMain?.price / (1 - productMain?.discount / 100)).toFixed(2)}
+                  ${(products?.price / (1 - products?.discount / 100)).toFixed(2)}
                 </del>
               </div>
               <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
-                -{productMain?.discount}%
+                -{products?.discount}%
               </div>
             </div>
 
             <div className="desc text-secondary mt-3">
-              {productMain?.description}
+              {products?.description}
             </div>
             <div className="list-action mt-6">
               <div className="choose-color">
@@ -222,7 +263,7 @@ export default function DyanamicProduct({ productMain }) {
                   <span className="text-title color">{activeColor}</span>
                 </div>
                 <div className="list-color flex items-center gap-2 flex-wrap mt-3">
-                  {productMain.imageURLs.map((img, index) => (
+                  {products.imageURLs.map((img, index) => (
                     <div
                       key={index}
                       className={`color-option w-8 h-8 rounded-full cursor-pointer border-2 ${activeColor === img.color.name
@@ -254,21 +295,29 @@ export default function DyanamicProduct({ productMain }) {
               <div className="text-title mt-5">Quantity:</div>
               <div className="choose-quantity flex items-center lg:justify-between gap-5 gap-y-3 mt-3">
                 <div className="quantity-block md:p-3 max-md:py-1.5 max-md:px-3 flex items-center justify-between rounded-lg border border-line sm:w-[180px] w-[120px] flex-shrink-0">
-                  <Icon.Minus size={20} className="cursor-pointer" />
+                  <Icon.Minus
+                    size={20}
+                    className="cursor-pointer"
+                    onClick={handleDecrement}
+                  />
                   <div className="body1 font-semibold">
-                    {1}
+                    {quantity}
                   </div>
-                  <Icon.Plus size={20} className="cursor-pointer" />
+                  <Icon.Plus
+                    size={20}
+                    className="cursor-pointer"
+                    onClick={handleIncrement}
+                  />
                 </div>
                 <div
                   onClick={handleAddToCart}
-                  className="button-main w-full text-center bg-white text-secondary border border-purple"
+                  className="button-main w-full text-center bg-custom-purple-color text-secondary border border-purple"
                 >
                   Add To Cart
                 </div>
               </div>
-              <div className="button-block mt-5">
-                <div className="button-main w-full text-center">Buy It Now</div>
+              <div onClick={() => handleCheckout()} className="button-block mt-5  ">
+                <div className="button-main w-full text-center  ">Buy It Now</div>
               </div>
 
               <div className="more-infor mt-6">
@@ -302,34 +351,35 @@ export default function DyanamicProduct({ productMain }) {
                     })()}
                   </span>
                 </div>
-                <div className="flex items-center gap-1 mt-3">
+                {/* <div className="flex items-center gap-1 mt-3">
                   <Icon.Eye className="body1" />
                   <div className="text-title">38</div>
                   <div className="text-secondary">
                     people viewing this product right now!
                   </div>
-                </div>
+                </div> */}
                 <div className="flex items-center gap-1 mt-3">
                   <div className="text-title">SKU:</div>
-                  <div className="text-secondary">{productMain?.sku}</div>
+                  <div className="text-secondary">{products?.sku}</div>
                 </div>
                 <div className="flex items-center gap-1 mt-3">
                   <div className="text-title">Categories:</div>
                   <div className="text-secondary">
-                    {productMain?.category?.name}, {productMain?.gender}
+                    {products?.category?.name}, {products?.gender}
                   </div>
                 </div>
                 <div className="flex items-center gap-1 mt-3">
                   <div className="text-title">Tag:</div>
                   <div className="text-secondary">
-                    {productMain?.tags?.join(", ")}
+                    {products?.tags?.join(", ")}
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
-        <OthersData PK={productMain?.PK} SK={productMain?.SK} />
+        <OthersData PK={productMain?.PK} SK={productMain?.SK} productMain={products} />
       </div>
     </div>
   );

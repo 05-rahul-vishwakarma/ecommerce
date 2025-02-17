@@ -39,6 +39,7 @@ const Login = () => {
     const payload = {
       phoneNo: phoneNo,
       otp: otp,
+      businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
     };
     try {
       const response = await axios.post(

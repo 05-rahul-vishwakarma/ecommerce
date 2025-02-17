@@ -95,7 +95,6 @@ const ModalQuickview = () => {
         >
           <div className="flex h-full max-md:flex-col gap-y-6">
             <div className="heading pb-6 px-4 flex items-center justify-between relative">
-              <div className="heading5">Quick View</div>
               <div
                 className="close-btn absolute right-0 top-0 w-6 h-6 rounded-full bg-surface flex items-center justify-center duration-300 cursor-pointer hover:bg-purple hover:text-white"
                 onClick={closeQuickview}

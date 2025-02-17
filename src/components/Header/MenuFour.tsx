@@ -113,7 +113,6 @@ const MenuFour: React.FC<Props> = ({ props }) => {
               onClick={() => {
                 Cookies.remove('accessToken');
                 router.push('/login');
-                console.log("Logout clicked");
                 setPopupContent(
                   <>
                     <Link href={"/login"} className="button-main w-full text-center">
