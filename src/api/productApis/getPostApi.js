@@ -76,7 +76,6 @@ export const getCartListData = async (payload) => {
     }
 }
 
-
 export const getReviewProductData = async (payload) => {
     try {
         const response = await axios.post(getReviewProduct, payload, {

@@ -15,6 +15,7 @@ export const blogListData = async () => {
         return [];
     }
 };
+
 export const blogListDataByPkSk = async (PK, SK) => {
     try {
         const url = getBlogListByPkSk(PK, SK);

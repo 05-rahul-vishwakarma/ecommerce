@@ -163,7 +163,7 @@ export default function OthersData({ PK, SK , productMain }) {
             <div className="heading3 text-center">Related Products</div>
             <div className="list-product hide-product-sold grid lg:grid-cols-4 grid-cols-2 md:gap-[30px] gap-5 md:mt-10 mt-6">
               {products?.slice(0, 12).map((data, i) => {
-                return <Product product={data} />;
+                return <Product product={data} key={i} />;
               })}
             </div>
           </div>

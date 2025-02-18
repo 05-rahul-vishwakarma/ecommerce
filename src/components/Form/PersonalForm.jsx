@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
-import { updateProfile, getAuthHeaders } from "@/api/baseApi";
+import { updateProfile, getAuthHeaders, getProductList } from "@/api/baseApi";
 
 export default function PersonalForm() {
   const [message, setMessage] = useState("");
@@ -18,7 +18,7 @@ export default function PersonalForm() {
   useEffect(() => {
     async function fetchProfile() {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/user/profile`, {
+        const response = await axios.get(getProductList, {
           headers: getAuthHeaders(),
         });
         if (response.data.statusCode === 200) {

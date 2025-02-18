@@ -2,19 +2,27 @@
 import useCartStore from '@/globalStore/useCartStore';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
+import { purchaseProduct } from '@/api/purchaseApis/purchasePost';
+import { toast } from 'react-toastify';
 
 export default function PaymentBar() {
     const [decodedData, setDecodedData] = useState([]);
     const [activeColors, setActiveColors] = useState({});
 
+    console.log(decodedData);
+
+
     useEffect(() => {
         const storedCart = localStorage.getItem("checkoutProduct");
-        const storedCartS = localStorage.getItem("cartData");
 
         if (storedCart) {
             try {
                 const decodedCart = JSON.parse(decodeURIComponent(storedCart));
-                setDecodedData(decodedCart);
+                const initializedData = decodedCart.map(item => ({
+                    ...item,
+                    selectedColor: item.selectedColor || item.imageURLs[0]?.color.name
+                }));
+                setDecodedData(initializedData);
             } catch (error) {
                 console.error("Error parsing cart data:", error);
             }
@@ -29,20 +37,60 @@ export default function PaymentBar() {
         return total + price * quantity;
     }, 0);
 
-    const updateCartItem = (pk, sk, newQty, newColor) => {
+
+    const updateCartItem = (pk, sk, newQty, newColor, sizeKey, newSize) => {
         setDecodedData(prevData =>
             prevData.map(item =>
                 item.PK === pk && item.SK === sk
                     ? {
                         ...item,
                         itemQty: newQty,
+                        selectedColor: newColor,
+                        selectedSizes: {
+                            ...item.selectedSizes,
+                            ...(sizeKey && newSize ? { [sizeKey]: newSize } : {})
+                        },
                         img: item.imageURLs.find(img => img.color.name === newColor)?.img || item.img
                     }
                     : item
             )
         );
-        setActiveColors(prevColors => ({ ...prevColors, [pk + sk]: newColor }));
     };
+
+    const handlePlaceOrder = async () => {
+        const orderPayload = {
+            businessType: 'SUBHI_E_LTD',
+            productIds: decodedData.map(item => ({
+                PK: item.PK,
+                SK: item.SK,
+                quantity: item.itemQty,
+            })),
+            amount: totalAmount * 100, // Convert to cents if needed
+            size: decodedData[0]?.selectedSizes
+                ? Object.entries(decodedData[0].selectedSizes).map(([key, value]) => `${key}: ${value}`).join(', ')
+                : 'size',
+            color: decodedData[0]?.selectedColor || 'colorname'
+        };
+
+        try {
+            const response = await purchaseProduct(orderPayload);
+
+            if (response?.response?.data?.statusCode === 200) {
+                toast.success('Purchase successful');
+                router.push('/orders');
+            } else {
+                const errorMessage = response?.response?.data?.message || 'Purchase failed. Please try again.';
+                throw new Error(errorMessage);
+            }
+        } catch (error) {
+            // Handle network errors and server errors
+            const errorMessage = error.response?.data?.message ||
+                error.message ||
+                'An unexpected error occurred';
+            toast.error(errorMessage);
+        }
+    };
+
 
     return (
         <div className="right md:w-5/12 w-full ml-5">
@@ -86,7 +134,9 @@ export default function PaymentBar() {
                             </div>
 
                             <div className="choose-color mt-4">
-                                <p className="text-lg font-semibold text-gray-700">Color: <span className="text-purple-600">{activeColors[item.PK + item.SK] || item.imageURLs[0]?.color.name}</span></p>
+                                <p className="text-lg font-semibold text-gray-700">
+                                    Color: <span className="text-purple-600">{item.selectedColor}</span>
+                                </p>
                                 <div className="list-color flex items-center gap-2 flex-wrap mt-3">
                                     {item.imageURLs.map((image, idx) => (
                                         <button
@@ -107,6 +157,37 @@ export default function PaymentBar() {
                                 </div>
                             </div>
 
+                            <div className="choose-size mt-5">
+                                {item.additionalInformation?.map((info, infoIndex) => {
+                                    const values = info.value.replace(/\s/g, '').split(',');
+                                    const formattedValues = values.map(value =>
+                                        info.key === "width" ? value + "mm" : value + "cm"
+                                    );
+
+                                    return (
+                                        <div key={infoIndex} className="size-option mb-4">
+                                            <div className="text-title">
+                                                {info.key.charAt(0).toUpperCase() + info.key.slice(1)} Sizes:
+                                            </div>
+                                            <div className="list-size flex items-center gap-2 flex-wrap mt-2">
+                                                {formattedValues.map((size, sizeIndex) => (
+                                                    <div
+                                                        key={sizeIndex}
+                                                        className={`size-btn px-3 py-1 rounded-full border cursor-pointer ${item.selectedSizes?.[info.key] === size
+                                                            ? 'border-purple bg-purple text-white'
+                                                            : 'border-line hover:border-purple'
+                                                            }`}
+                                                        onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, item.selectedColor, info.key, size)}
+                                                    >
+                                                        {size}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
                             <div className="flex items-center justify-between w-full space-x-4">
                                 <div
                                     className="remove-cart-btn text-sm font-semibold text-red-500 underline cursor-pointer hover:text-red-700"
@@ -123,8 +204,10 @@ export default function PaymentBar() {
                     <div className="heading5 total-cart text-xl font-bold text-purple-600">${totalAmount.toFixed(2)}</div>
                 </div>
             </div>
+
             <button
                 className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
+                onClick={handlePlaceOrder}
             >
                 Place Order
             </button>

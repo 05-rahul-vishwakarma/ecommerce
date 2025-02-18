@@ -187,7 +187,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   </Link>
                 </li>
 
-                <li className="h-full">
+                <li className="h-full hidden ">
                   <Link
                     href="/shop"
                     className="text-white text-button-uppercase duration-300 h-full flex items-center justify-center"

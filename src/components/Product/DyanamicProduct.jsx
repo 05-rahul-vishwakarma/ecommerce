@@ -14,6 +14,9 @@ import { useWishlist } from "@/context/WishlistContext";
 import { useModalWishlistContext } from "@/context/ModalWishlistContext";
 import OthersData from "./OthersData";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie"; // Install js-cookie: npm install js-cookie
+import { toast } from "react-toastify";
+import { handleAddToCart } from "@/services/carts";
 
 SwiperCore.use([Navigation, Thumbs]);
 
@@ -28,6 +31,8 @@ export default function DyanamicProduct({ productMain }) {
   const { openModalWishlist } = useModalWishlistContext();
   const [products, setProducts] = useState(productMain);
   const [quantity, setQuantity] = useState(1);
+  const [selectedSizes, setSelectedSizes] = useState({});
+
   const router = useRouter();
 
   const handleSwiper = (swiper) => {
@@ -67,17 +72,17 @@ export default function DyanamicProduct({ productMain }) {
     setQuantity(prev => prev + 1);
   };
 
-  const handleAddToCart = () => {
+  const handleCart = () => {
     const accessToken = Cookies.get("accessToken");
     if (!accessToken) {
-      console.log('token is not avilable');
-      toast.error("Please log in to add items to the cart.");
-      router.push("/login");
-      return;
+        console.log('token is not avilable');
+        toast.error("Please log in to add items to the cart.");
+        router.push("/login");
+        return;
     } else {
-      handleAddToCart(products, openModalCart);
+        handleAddToCart(products, openModalCart);
     }
-  }
+}
 
 
   useEffect(() => {
@@ -97,6 +102,7 @@ export default function DyanamicProduct({ productMain }) {
       ...products,
       itemQty: quantity,
       selectedColor: activeColor,
+      selectedSizes: selectedSizes,
     }];
 
     localStorage.setItem('checkoutProduct',
@@ -114,7 +120,28 @@ export default function DyanamicProduct({ productMain }) {
       .join(', ')
   }));
 
+  useEffect(() => {
+    if (productMain?.additionalInformation) {
+      const initialSizes = {};
+      productMain.additionalInformation.forEach(info => {
+        const values = info.value.replace(/\s/g, '').split(',');
+        if (values.length > 0) {
+          const formattedValues = values.map(value =>
+            info.key === "width" ? value + "mm" : value + "cm"
+          );
+          initialSizes[info.key] = formattedValues[0];
+        }
+      });
+      setSelectedSizes(initialSizes);
+    }
+  }, [productMain]);
 
+  const handleSizeSelect = (key, size) => {
+    setSelectedSizes(prev => ({
+      ...prev,
+      [key]: size
+    }));
+  };
 
   return (
     <div className="product-detail default">
@@ -284,11 +311,29 @@ export default function DyanamicProduct({ productMain }) {
                 <div className="heading flex items-center justify-between">
                   <div className="text-title">
                     Size:{" "}
-                    {formattedData?.map((item, index) => (
-                      <p key={index}>
-                        {item.key.charAt(0).toUpperCase() + item.key.slice(1)} Sizes: {item.values}
-                      </p>
-                    ))}
+                    <div className="choose-size mt-5">
+                      {formattedData?.map((item, index) => (
+                        <div key={index} className="size-option mb-4">
+                          <div className="text-title">
+                            {item.key.charAt(0).toUpperCase() + item.key.slice(1)} Sizes:
+                          </div>
+                          <div className="list-size flex items-center gap-2 flex-wrap mt-2">
+                            {item.values.split(', ').map((size, sizeIndex) => (
+                              <div
+                                key={sizeIndex}
+                                className={`size-btn px-3 py-1 rounded-full border cursor-pointer ${selectedSizes[item.key] === size
+                                    ? 'border-purple bg-purple text-white'
+                                    : 'border-line hover:border-purple'
+                                  }`}
+                                onClick={() => handleSizeSelect(item.key, size)}
+                              >
+                                {size}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -310,7 +355,7 @@ export default function DyanamicProduct({ productMain }) {
                   />
                 </div>
                 <div
-                  onClick={handleAddToCart}
+                  onClick={handleCart}
                   className="button-main w-full text-center bg-custom-purple-color text-secondary border border-purple"
                 >
                   Add To Cart

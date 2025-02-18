@@ -6,7 +6,7 @@ export const purchaseProduct = async (payload) => {
         const response = await axios.post(buyProduct, payload, {
             headers: getAuthHeaders()
         })
-        return response;
+        return response?.data;
     } catch (error) {
         return error;
     }
