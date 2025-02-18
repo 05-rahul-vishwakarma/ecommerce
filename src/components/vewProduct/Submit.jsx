@@ -9,7 +9,7 @@ export default function Submit({PK,SK}) {
 
     const sendProductData = async () => {
         const {
-            productWidth, productMeter,
+            productWidth, productLength,
         } = useProductStore.getState();
 
         const payload = {
@@ -20,7 +20,7 @@ export default function Submit({PK,SK}) {
                 },
                 {
                     key: "length",
-                    value: productMeter,
+                    value: productLength,
                 },
             ],
         };

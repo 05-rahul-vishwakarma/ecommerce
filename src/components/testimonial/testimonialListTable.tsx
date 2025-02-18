@@ -60,7 +60,7 @@ const TestimonialTable: React.FC<TestimonialTableProps> = ({ data: initialData }
           </thead>
           <tbody>
             {data?.map((item, index) => (
-              <tr key={item.sku} className="transition-colors duration-300 hover:bg-gray-100 dark:bg-[#0000002a] dark:shadow-card dark:hover:bg-gray-600">
+              <tr key={index} className="transition-colors duration-300 hover:bg-gray-100 dark:bg-[#0000002a] dark:shadow-card dark:hover:bg-gray-600">
                 <td className="px-4 py-2 text-center">{index + 1}</td>
                 <td className="px-4 py-2 text-left">{item.name}</td>
                 <td className="px-4 py-2 text-center">{item.rating}</td>

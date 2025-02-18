@@ -48,7 +48,7 @@ export default function Page() {
     setImageURLs,
     setProductType,
     setProductWidth,
-    setProductMeter,
+    setProductLength,
   } = useProductStore();
 
   useEffect(() => {
@@ -84,7 +84,7 @@ export default function Page() {
         setImageURLs(productData.imageURLs || []); // Updated to match the object field
         setProductType(productData.productType || ''); // Updated to match the object field
         setProductWidth(productData.productWidth || ''); // Assuming this field exists in the object
-        setProductMeter(productData.productMeter || ''); // Assuming this field exists in the object
+        setProductLength(productData.productLength || ''); // Assuming this field exists in the object
       } catch (error) {
         console.error('Error fetching product data:', error);
       }
@@ -120,7 +120,7 @@ export default function Page() {
     setImageURLs,
     setProductType,
     setProductWidth,
-    setProductMeter,
+    setProductLength,
   ]);
   return (
     <section className='rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card'>
