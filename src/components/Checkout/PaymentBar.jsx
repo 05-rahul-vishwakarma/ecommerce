@@ -9,9 +9,6 @@ export default function PaymentBar() {
     const [decodedData, setDecodedData] = useState([]);
     const [activeColors, setActiveColors] = useState({});
 
-    console.log(decodedData);
-
-
     useEffect(() => {
         const storedCart = localStorage.getItem("checkoutProduct");
 
@@ -59,7 +56,7 @@ export default function PaymentBar() {
 
     const handlePlaceOrder = async () => {
         const orderPayload = {
-            businessType: 'SUBHI_E_LTD',
+            businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
             productIds: decodedData.map(item => ({
                 PK: item.PK,
                 SK: item.SK,
@@ -74,7 +71,6 @@ export default function PaymentBar() {
 
         try {
             const response = await purchaseProduct(orderPayload);
-
             if (response?.response?.data?.statusCode === 200) {
                 toast.success('Purchase successful');
                 router.push('/orders');

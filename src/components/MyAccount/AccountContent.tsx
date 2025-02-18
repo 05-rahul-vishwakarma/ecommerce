@@ -34,15 +34,6 @@ const AccountContent = ({ initialProfile }: AccountContentProps) => {
           <div className="left md:w-1/3 w-full xl:pr-[3.125rem] lg:pr-[28px] md:pr-[16px]">
             <div className="user-infor bg-surface lg:px-7 px-4 lg:py-10 py-5 md:rounded-[20px] rounded-xl">
               <div className="heading flex flex-col items-center justify-center">
-                <div className="avatar">
-                  <Image
-                    src={"/images/avatar/1.png"}
-                    width={300}
-                    height={300}
-                    alt="avatar"
-                    className="md:w-[140px] w-[120px] md:h-[140px] h-[120px] rounded-full"
-                  />
-                </div>
                 <div className="name heading6 mt-4 text-center">
                   {profile?.firstName}
                 </div>

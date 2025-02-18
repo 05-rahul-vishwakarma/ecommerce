@@ -23,9 +23,8 @@ const Checkout = () => {
       <div className="cart-block md:py-20 py-10">
         <div className="container">
           <div className="content-main flex flex-col md:flex-row justify-between gap-5">
-            {/* Login Section */}
             <div className="left md:w-1/2 w-full">
-              {/* <PersonalForm /> */}
+              <PersonalForm />
             </div>
             <PaymentBar />
           </div>
