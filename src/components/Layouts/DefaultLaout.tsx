@@ -2,6 +2,7 @@
 import React, { useState, ReactNode } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
+import { useRouter } from "next/navigation";
 
 export default function DefaultLayout({
   Children,
@@ -9,6 +10,13 @@ export default function DefaultLayout({
   Children: React.ReactNode;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const accessToken = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
+  const router = useRouter();
+
+  if (!accessToken) {
+    router.push('/auth/signin')
+  }
+
   return (
     <>
       <div className="flex h-screen overflow-hidden">

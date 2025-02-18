@@ -7,7 +7,7 @@ import Image from "next/image";
 import SidebarItem from "@/components/Sidebar/SidebarItem";
 import ClickOutside from "@/components/ClickOutside";
 import useLocalStorage from "@/hooks/useLocalStorage";
-import {menuGroups , othersGrps} from '@/static/sidebardata'
+import { menuGroups } from '@/static/sidebardata'
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -91,24 +91,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </div>
             ))}
 
-            {othersGrps?.map((group, groupIndex) => (
-              <div key={groupIndex}>
-                <h3 className="mb-5 text-sm font-medium text-dark-4 dark:text-dark-6">
-                  {group.name}
-                </h3>
 
-                <ul className="mb-6 flex flex-col gap-2">
-                  {group?.menuItems?.map((menuItem, menuIndex) => (
-                    <SidebarItem
-                      key={menuIndex}
-                      item={menuItem}
-                      pageName={pageName}
-                      setPageName={setPageName}
-                    />
-                  ))}
-                </ul>
-              </div>
-            ))}
           </nav>
 
         </div>

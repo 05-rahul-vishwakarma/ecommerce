@@ -46,7 +46,7 @@ export default function SigninWithPassword() {
         if (formData.remember) {
           // Implement remember me functionality if needed
         }
-        router.push('/dashboard'); // Redirect to dashboard after login
+        router.push('/'); // Redirect to dashboard after login
       } else {
         setError(data.message || 'Login failed. Please check your credentials.');
       }
