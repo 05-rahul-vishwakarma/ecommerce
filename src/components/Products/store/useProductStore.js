@@ -49,6 +49,14 @@ export const useProductStore = create((set, get) => ({
 
     productWidth: '',
     productLength: '',
+    sizes: [],
+    addSize: (newSize) =>
+        set((state) => ({ sizes: [...state.sizes, newSize] })),
+    removeSize: (index) =>
+        set((state) => ({
+            sizes: state.sizes.filter((_, i) => i !== index),
+        })),
+
     setProductWidth: (state) => set({ productWidth: state }),
     setProductLength: (state) => set({ productLength: state }),
 

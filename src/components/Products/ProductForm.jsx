@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from "react";
 import { useProductStore } from "./store/useProductStore";
 
 const ProductForm = () => {
@@ -33,7 +34,7 @@ const ProductForm = () => {
         productLength,
         setProductWidth,
         setProductLength,
-        subType,
+        subType,sizes, addSize, removeSize,
         setSubType
 
     } = useProductStore();
@@ -41,6 +42,15 @@ const ProductForm = () => {
     const handleSubTypeChange = (e) => {
         setSubType(e.target.value)
     }
+
+    const [inputValue, setInputValue] = useState("");
+  
+    const handleAddSize = () => {
+      if (inputValue.trim() !== "") {
+        addSize(inputValue.trim());
+        setInputValue(""); // Clear input after adding
+      }
+    };
 
 
     return (
@@ -291,6 +301,45 @@ const ProductForm = () => {
                         required
                     />
                 </div>
+
+                <div className="mb-4">
+      <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+        Length <span className="text-red">*</span>
+      </label>
+
+      {/* Input Field */}
+      <div className="flex gap-2">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Enter length (e.g., 2m, 30cm)"
+          className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition placeholder:text-dark-6 focus:border-primary active:border-primary disabled:cursor-default dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+          required
+        />
+        <button
+          onClick={handleAddSize}
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        >
+          Add
+        </button>
+      </div>
+
+      {/* Display Added Sizes */}
+      <div className="mt-3 space-y-2">
+        {sizes?.map((size, index) => (
+          <div key={index} className="flex items-center justify-between p-2 bg-gray-100 rounded-md dark:bg-dark-3">
+            <span>{size}</span>
+            <button
+              onClick={() => removeSize(index)}
+              className="text-red-500 hover:text-red-700"
+            >
+              ✖
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
             </div>
         </div>
     );

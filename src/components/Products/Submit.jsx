@@ -33,7 +33,7 @@ export default function Submit() {
             productImage, subType, productCategoryId,
             productWidth,
             productLength,  // Changed from productMeter
-            imageURLs, isFeatured
+            imageURLs, isFeatured,sizes
         } = useProductStore.getState();
 
         const payload = {
@@ -79,16 +79,7 @@ export default function Submit() {
             featured: isFeatured,
             description: description,
             tags: tags.split(','), // Assuming tags are comma-separated
-            // size: [  // Changed to size array with key/value pairs
-            //     {
-            //         key: "width",
-            //         value: productWidth,
-            //     },
-            //     {
-            //         key: "length",
-            //         value: productLength,  // Changed from productMeter
-            //     },
-            // ],
+            size: sizes
         };
 
 
