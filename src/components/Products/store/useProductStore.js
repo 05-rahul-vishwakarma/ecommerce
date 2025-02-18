@@ -48,9 +48,9 @@ export const useProductStore = create((set, get) => ({
     productType: '',
 
     productWidth: '',
-    productMeter: '',
+    productLength: '',
     setProductWidth: (state) => set({ productWidth: state }),
-    setProductMeter: (state) => set({ productMeter: state }),
+    setProductLength: (state) => set({ productLength: state }),
 
     setProductType: (value) => set({ productType: value }),
     setProductName: (value) => set({ productName: value }),

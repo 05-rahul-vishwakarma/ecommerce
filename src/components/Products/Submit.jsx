@@ -30,8 +30,10 @@ export default function Submit() {
             status,
             description,
             tags, design,
-            productImage, subType, productWidth, productMeter, productCategoryId,
-            imageURLs,isFeatured
+            productImage, subType, productCategoryId,
+            productWidth,
+            productLength,  // Changed from productMeter
+            imageURLs, isFeatured
         } = useProductStore.getState();
 
         const payload = {
@@ -69,18 +71,27 @@ export default function Submit() {
                 },
                 {
                     key: "length",
-                    value: productMeter,
+                    value: productLength,
                 },
             ],
             status: status,
             productType: productType,
-            featured:isFeatured,
+            featured: isFeatured,
             description: description,
             tags: tags.split(','), // Assuming tags are comma-separated
+            size: [  // Changed to size array with key/value pairs
+                {
+                    key: "width",
+                    value: productWidth,
+                },
+                {
+                    key: "length",
+                    value: productLength,  // Changed from productMeter
+                },
+            ],
         };
 
 
-        console.log(payload);
 
 
         const token = localStorage.getItem('accessToken');
@@ -91,7 +102,7 @@ export default function Submit() {
         }
 
         console.log(payload);
-        
+
 
         try {
             const response = await axios.post(
