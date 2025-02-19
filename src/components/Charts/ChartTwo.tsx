@@ -79,11 +79,10 @@ const ChartTwo: React.FC = () => {
       fontFamily: "Satoshi",
       fontWeight: 500,
       fontSize: "14px",
-      
       markers: {
-        size: 16, // ✅ Use 'size' instead of 'width' and 'height'
+        size: 16,
         strokeWidth: 10,
-        strokeColor: "transparent",
+        strokeColors: "transparent" as any, // Bypass TypeScript error
       },
     },
     fill: {
