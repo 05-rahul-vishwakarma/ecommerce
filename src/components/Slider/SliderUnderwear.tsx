@@ -32,7 +32,7 @@ const SliderUnderwear = () => {
             </div>
             <div className="text-center">
               <Link
-                href="/shop/breadcrumb1"
+                href="/product"
                 // where does it comming from
                 className="button-main md:mt-8 mt-3 "
               >

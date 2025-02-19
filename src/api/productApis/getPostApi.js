@@ -1,10 +1,11 @@
 import axios from "axios";
-import { getWishList, getAuthHeaders, getCartList, getProductList, getProductListBySK, productList, getFilteredProductList, getReviewProduct } from '@/api/baseApi'
+import { getWishList, getAuthHeaders, getCartList, getProductList, getProductListBySK, productList, getFilteredProductList, getReviewProduct, category } from '@/api/baseApi'
+import { getServerAuthHeaders } from '@/api/server';
 
 export const productListData = async () => {
     try {
         const response = await axios.post(productList, {}, {
-            headers: getAuthHeaders(),
+            headers: getServerAuthHeaders(),
         });
         return response?.data?.data?.items;
     } catch (error) {
@@ -21,7 +22,7 @@ export const productListDataByFilter = async (data) => {
         return response.data;
     } catch (error) {
         console.error('Error fetching product list data:', error);
-        throw error; 
+        throw error;
     }
 }
 
@@ -87,7 +88,20 @@ export const getReviewProductData = async (payload) => {
     }
 }
 
-
+export const productCategory = async () => {
+    try {
+        const response = await axios.post(category, {
+            keys: [
+                "name"
+            ]
+        }, {
+            headers: getServerAuthHeaders()
+        })
+        return response?.data?.data?.items;
+    } catch (error) {
+        return error;
+    }
+}
 
 
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 import axios from "axios";
 import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
@@ -9,6 +9,7 @@ import "swiper/css/bundle";
 import { useModalCartContext } from "@/context/ModalCartContext";
 import { useRouter } from "next/navigation";
 import { handleAddToCart } from "@/services/carts";
+import SizeSelector from './SizeSelector';
 
 interface ImageURL {
   img: string;
@@ -18,6 +19,8 @@ interface ImageURL {
 }
 
 interface Product {
+  size: any;
+  unit: string;
   id: string;
   name: string;
   productType: string;
@@ -32,65 +35,53 @@ interface Product {
   }>;
 }
 
-const FeaturedProduct: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => {
+  const [products, setProducts] = useState<Product[]>(data);
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const [activeColor, setActiveColor] = useState<string>("");
   const [activeImage, setActiveImage] = useState<string>("");
   const [colorQuantities, setColorQuantities] = useState<Record<string, number>>({});
   const { openModalCart } = useModalCartContext();
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   const router = useRouter();
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`
-        );
-        setProducts(response?.data?.data?.items || []);
-      } catch (error) {
-        console.error("Error fetching products", error);
-      }
-    };
-    fetchProducts();
-  }, []);
+  const product = useMemo(() => products[1], [products]);
 
   useEffect(() => {
-    if (products.length > 0) {
-      const defaultColor = products[1]?.imageURLs[0]?.color?.name;
+    if (product) {
+      const defaultColor = product.imageURLs[0]?.color?.name;
       setActiveColor(defaultColor);
-      setActiveImage(products[1]?.imageURLs[0]?.img);
+      setActiveImage(product.imageURLs[0]?.img);
 
-      // Initialize quantity tracking per color
       const initialQuantities: Record<string, number> = {};
-      products[1]?.imageURLs.forEach((img) => {
+      product.imageURLs.forEach((img) => {
         initialQuantities[img.color.name] = 0;
       });
       setColorQuantities(initialQuantities);
     }
-  }, [products]);
+  }, [product]);
 
-  const handleActiveColor = (color: string) => {
+  const handleActiveColor = useCallback((color: string) => {
     setActiveColor(color);
-    const selectedImage = products[1]?.imageURLs.find(
+    const selectedImage = product?.imageURLs.find(
       (item) => item.color.name === color
     )?.img;
     setActiveImage(selectedImage || "");
 
-    // Reset quantity when a new color is selected
     setColorQuantities((prev) => ({ ...prev, [color]: 0 }));
-  };
+  }, [product]);
 
-  if (!products.length) return null;
-
-  const product = products[1];
-
-  const checkouthandler = () => {
+  const checkouthandler = useCallback(() => {
     const itemQty = colorQuantities[activeColor] || 0;
 
     if (!product || itemQty <= 0) {
       alert("Select a quantity before checkout.");
+      return;
+    }
+
+    if (!selectedSize) {
+      alert("Please select a size before checkout.");
       return;
     }
 
@@ -99,23 +90,16 @@ const FeaturedProduct: React.FC = () => {
         ...product,
         itemQty,
         selectedColor: activeColor,
+        selectedSize: selectedSize,
       },
     ];
 
     const encodedProduct = encodeURIComponent(JSON.stringify(checkoutProduct));
     localStorage.setItem("checkoutProduct", encodedProduct);
     router.push("/checkout");
-  };
+  }, [product, colorQuantities, activeColor, selectedSize, router]);
 
-
-  const formattedData = product?.additionalInformation?.map(info => ({
-    key: info.key,
-    values: info.value
-      .replace(/\s/g, '') // Removing spaces
-      .split(',')
-      .map(value => value + (info.key === "width" ? "mm" : "cm"))
-      .join(', ')
-  }));
+  if (!products.length) return null;
 
   return (
     <div className="featured-product underwear md:py-20 py-14">
@@ -135,6 +119,7 @@ const FeaturedProduct: React.FC = () => {
                 height={1000}
                 alt="Product Image"
                 className="w-full aspect-[3/4] object-cover"
+                priority
               />
             </SwiperSlide>
           </Swiper>
@@ -157,6 +142,7 @@ const FeaturedProduct: React.FC = () => {
                   alt={`Thumbnail ${idx + 1}`}
                   className="w-full aspect-[3/4] object-cover rounded-xl"
                   onClick={() => setActiveImage(image.img)}
+                  loading="lazy"
                 />
               </SwiperSlide>
             ))}
@@ -202,6 +188,7 @@ const FeaturedProduct: React.FC = () => {
                       width={48}
                       height={48}
                       className="rounded-xl object-cover"
+                      loading="lazy"
                     />
                   </button>
                 ))}
@@ -209,15 +196,21 @@ const FeaturedProduct: React.FC = () => {
             </div>
 
             <div className="choose-size mt-5">
-              <div className="heading flex items-center justify-between">
-                <div className="text-title">
-                  Size:{" "}
-                  {formattedData?.map((item:any, index:any) => (
-                    <p key={index}>
-                      {item.key.charAt(0).toUpperCase() + item.key.slice(1)} Sizes: {item.values}
-                    </p>
+              Size:{" "}
+              <div className="heading flex items-center space-x-2 ">
+                {product?.size &&
+                  product.size.map((size: any) => (
+                    <button
+                      key={size}
+                      className={`size-button px-4 py-2 rounded-md border border-line ${selectedSize === size
+                        ? "bg-purple text-white border-purple"
+                        : "bg-white text-secondary2"
+                        }`}
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size} {product.unit}
+                    </button>
                   ))}
-                </div>
               </div>
             </div>
 
@@ -262,6 +255,6 @@ const FeaturedProduct: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default FeaturedProduct;

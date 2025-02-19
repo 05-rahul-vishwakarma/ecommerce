@@ -37,9 +37,6 @@ export default function BreadCrumb1() {
     fetchProducts();
   }, [fetchProducts]);
 
- 
-
-
   return (
     <>
       <div id="header" className="relative w-full">

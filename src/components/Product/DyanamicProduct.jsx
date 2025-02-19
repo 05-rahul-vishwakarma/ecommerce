@@ -116,7 +116,7 @@ export default function DyanamicProduct({ productMain }) {
     values: info.value
       .replace(/\s/g, '') // Removing spaces
       .split(',')
-      .map(value => value + (info.key === "width" ? "mm" : "cm"))
+      .map(value => value + (info.key === "width" ? "" : ""))
       .join(', ')
   }));
 
@@ -127,7 +127,7 @@ export default function DyanamicProduct({ productMain }) {
         const values = info.value.replace(/\s/g, '').split(',');
         if (values.length > 0) {
           const formattedValues = values.map(value =>
-            info.key === "width" ? value + "mm" : value + "cm"
+            info.key === "width" ? value + "" : value + ""
           );
           initialSizes[info.key] = formattedValues[0];
         }

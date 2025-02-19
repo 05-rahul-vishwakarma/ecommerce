@@ -38,3 +38,5 @@ export const getReviewProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/rev
 
 export const getBlogList = `${process.env.NEXT_PUBLIC_BASE_URL}/meta-content/blog/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`;
 export const getBlogListByPkSk = (PK, SK) => `${process.env.NEXT_PUBLIC_BASE_URL}/meta-content/blog/get?PK=${encodeURIComponent(PK)}&SK=${encodeURIComponent(SK)}`;
+
+export const category = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/category/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`

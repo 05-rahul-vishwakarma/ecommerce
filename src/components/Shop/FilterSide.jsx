@@ -8,12 +8,10 @@ import { useProductStore } from "../Product/store/useProduct";
 export default function FilterSide({ sidebarData, products }) {
   const { filteredProductsByFilter , fetchProducts } = useProductStore();
 
-  // State for selected filters
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [selectedSizes, setSelectedSizes] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
 
-  // Handle filter selection
   const toggleFilter = (filterType, value) => {
     switch (filterType) {
       case 'type':
@@ -70,7 +68,7 @@ export default function FilterSide({ sidebarData, products }) {
             </div>
 
             {/* Size Filter */}
-            <div className="filter-size pb-8 border-b border-line mt-8">
+            <div className="filter-size pb-8 border-b border-line mt-8 hidden ">
               <div className="heading6">Size</div>
               <div className="list-size flex items-center flex-wrap gap-3 gap-y-4 mt-4">
                 {["XS", "S", "M", "L", "XL", "2XL", "3XL"].map((item, index) => (
@@ -92,8 +90,8 @@ export default function FilterSide({ sidebarData, products }) {
             </div>
 
             {/* Colors Filter */}
-            <div className="filter-color pb-8 border-b border-line mt-8">
-              <div className="heading6">Colors</div>
+            <div className="filter-color pb-8 border-b border-line mt-8  ">
+              {/* <div className="heading6">Colors</div>
               <div className="list-color flex items-center flex-wrap gap-3 gap-y-4 mt-4">
                 {[
                   { color: "#F4C5BF", name: "Pink" },
@@ -110,7 +108,7 @@ export default function FilterSide({ sidebarData, products }) {
                     <div className="caption1 capitalize">{item.name}</div>
                   </div>
                 ))}
-              </div>
+              </div> */}
               <div className="reset-filter mt-4">
                 <button
                   onClick={resetFilters}

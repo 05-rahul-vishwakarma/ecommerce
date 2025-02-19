@@ -14,6 +14,8 @@ import Footer from '@/components/Footer/Footer'
 import ModalNewsletter from '@/components/Modal/ModalNewsletter'
 import TopNavThree from '@/components/Header/TopNav/TopNavThree'
 import MenuFour from '@/components/Header/MenuFour'
+import FeaturedServer from '@/components/Underwear/FeaturedServer'
+import TrendingServer from '@/components/Underwear/TrendingServer'
 import DyanamicProduct from '@/components/Product/DyanamicProduct'
 
 export default function Home() {
@@ -25,8 +27,8 @@ export default function Home() {
                 <SliderUnderwear />
             </div>
             <Collection />
-            <FeaturedProduct />
-            <TrendingProduct start={0} limit={8} />
+            <FeaturedServer />
+            <TrendingServer />
             <Testimonial />
             <OurBlog />
             <Instagram />

@@ -11,9 +11,8 @@ interface ProductType {
 }
 
 const Collection = async () => {
-    const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&limit=4`)
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&limit=4&parent=round`)
     const data = response?.data?.data?.items;
-    
     return (
         <div className="list-collection grid lg:grid-cols-4 grid-cols-2 gap-8 md:mt-20 mt-20 px-20">
             {data?.map((product: any, index: any) => (

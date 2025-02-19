@@ -391,7 +391,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   >
                     <a
                       href={"/shop"}
-                      className="text-xl text-white font-semibold flex items-center justify-between mt-5"
+                      className="text-xl text-white hidden font-semibold flex items-center justify-between mt-5"
                     >
                       Shop
                       <span className="text-right">

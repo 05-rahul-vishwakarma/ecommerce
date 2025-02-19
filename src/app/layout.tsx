@@ -16,10 +16,20 @@ const serverTimeLeft: CountdownTimeType = countdownTime();
 
 const instrument = Instrument_Sans({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'The Ribbon Pack',
-  description: 'Multipurpose eCommerce Template',
+export const metadata = {
+  title: 'Buy Ribbons Online | The Ribbon Pack - Wide Selection & Fast Shipping', // More specific title
+  description: 'Shop The Ribbon Pack for a huge selection of high-quality ribbons for crafts, decorations, and more. Fast shipping and great prices on satin, grosgrain, and decorative ribbons.', // Improved description
+  keywords: 'ribbons, ribbon, satin ribbon, grosgrain ribbon, decorative ribbon, craft ribbon, wholesale ribbons, buy ribbons online, ribbon shop, ribbon store, fabric ribbon', // Added keywords
+  openGraph: {
+    title: 'Buy Ribbons Online | The Ribbon Pack',
+    description: 'Shop The Ribbon Pack for a huge selection of high-quality ribbons for crafts, decorations, and more. Fast shipping and great prices on satin, grosgrain, and decorative ribbons.',
+    images: ['/logo2.png'], // Replace with your actual OG image URL
+    siteName: 'The Ribbon Pack',
+    type: 'website',
+  },
+  canonical: 'https://www.theribbonpack.com/',
 };
+
 
 export default function RootLayout({
   children,
