@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import axios from 'axios';
 import { productListDataByFilter } from '@/api/productApis/getPostApi';
 
+
 interface Product {
     productDetails: any;
     SK: string;
@@ -35,22 +36,38 @@ interface ProductStore {
     products: Product[];
     productDetails: ProductDetail[];
     filteredProducts: Product[];
-    fetchProducts: () => Promise<void>;
-    filteredProductsByFilter: (data: string) => Promise<void>;
+    lastEvaluatedKey: string | null; // Add lastEvaluatedKey
+    totalCount: number; // Add totalCount
+    fetchProducts: (lastKey?: string | null) => Promise<void>; // Update fetchProducts to accept lastKey
+    filteredProductsByFilter: (data: string, lastKey?: string | null) => Promise<void>; // Update filteredProductsByFilter to accept lastKey
 }
+
 
 export const useProductStore = create<ProductStore>((set, get) => ({
     products: [],
     productDetails: [],
     filteredProducts: [],
+    lastEvaluatedKey: null,
+    totalCount: 0,
 
-    fetchProducts: async () => {
+
+    fetchProducts: async (lastKey: string | null = null) => {
         try {
-            const response = await axios.post<{ data: { items: Product[] } }>(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&limit=100`
+            const response = await axios.post<{ 
+                data: { 
+                    items: Product[]; 
+                    lastEvaluatedKey: string | null; 
+                    count: number; 
+                    scannedCount: number 
+                } 
+            }>(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}${
+                    lastKey ? `&lastEvaluatedKey=${encodeURIComponent(JSON.stringify(lastKey))}` : ''
+                }`
             );
+            
 
-            console.log(response);
+            console.log(response?.data?.data);
 
             const uniqueData = new Set<string>();
             const allUniqueData: ProductDetail[] = [];
@@ -71,8 +88,9 @@ export const useProductStore = create<ProductStore>((set, get) => ({
             });
 
             set({
-                productDetails: allUniqueData,
                 products: response?.data?.data?.items || [],
+                lastEvaluatedKey: response?.data?.data?.lastEvaluatedKey || null,
+                totalCount: response?.data?.data?.scannedCount || 0
             });
         } catch (error) {
             console.error("Error on Fetching Products", error);

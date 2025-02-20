@@ -1,14 +1,23 @@
-'use client'
+'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
+import { useProductStore } from '../Product/store/useProduct';
 
 interface Props {
-    pageCount: number
     onPageChange: (selected: number) => void;
 }
 
-const HandlePagination: React.FC<Props> = ({ pageCount, onPageChange }) => {
+const HandlePagination: React.FC<Props> = ({ onPageChange }) => {
+    const { fetchProducts, lastEvaluatedKey } = useProductStore();
+    const [pageCount, setPageCount] = useState(2); // Initially show 1 and 2 pages
+
+    useEffect(() => {
+        if (!lastEvaluatedKey) {
+            setPageCount((prev) => prev + 1); // Add a new page if lastEvaluatedKey exists
+        }
+    }, [lastEvaluatedKey]);
+
     return (
         <ReactPaginate
             previousLabel="<"
@@ -16,9 +25,14 @@ const HandlePagination: React.FC<Props> = ({ pageCount, onPageChange }) => {
             pageCount={pageCount}
             pageRangeDisplayed={3}
             marginPagesDisplayed={2}
-            onPageChange={(selectedItem) => onPageChange(selectedItem.selected)}
-            containerClassName={'pagination'}
-            activeClassName={'active'}
+            onPageChange={({ selected }) => {
+                if (selected === 1 && lastEvaluatedKey !== null) {
+                    fetchProducts(lastEvaluatedKey);
+                }
+                onPageChange(selected);
+            }}
+            containerClassName="pagination"
+            activeClassName="active"
         />
     );
 };

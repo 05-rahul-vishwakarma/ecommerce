@@ -131,6 +131,7 @@ export default function FilterSide({ sidebarData, products }) {
             <div className="list-pagination flex items-center md:mt-10 mt-7">
               {/* Pagination Component */}
               <HandlePagination pageCount={5} onPageChange={(page) => console.log("Page changed:", page)} />
+         
             </div>
           </div>
         </div>

@@ -80,11 +80,6 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
       return;
     }
 
-    if (!selectedSize) {
-      alert("Please select a size before checkout.");
-      return;
-    }
-
     const checkoutProduct = [
       {
         ...product,
