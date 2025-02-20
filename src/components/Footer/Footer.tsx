@@ -65,31 +65,25 @@ const Footer = () => {
                     </Link>
                     {/* <Link className='caption1 has-line-before duration-300 w-fit pt-2' href={'/pages/faqs'}>FAQs</Link> */}
                   </div>
-                  <div className="item flex flex-col basis-1/3 hidden ">
+                  <div className="item flex flex-col basis-1/3  ">
                     <div className="text-button-uppercase pb-3">Quick Shop</div>
                     <Link
                       className="caption1 has-line-before duration-300 w-fit"
-                      href={"/shop/breadcrumb1"}
+                      href={"/product"}
                     >
                       Custom Printed Ribbon
                     </Link>
                     <Link
                       className="caption1 has-line-before duration-300 w-fit pt-2"
-                      href={"/shop/breadcrumb1"}
+                      href={"/product"}
                     >
                       Premium Satin Ribbon
                     </Link>
                     <Link
                       className="caption1 has-line-before duration-300 w-fit pt-2"
-                      href={"/shop/breadcrumb1"}
+                      href={"/product"}
                     >
                       Foil Printed
-                    </Link>
-                    <Link
-                      className="caption1 has-line-before duration-300 w-fit pt-2"
-                      href={"/shop/breadcrumb1"}
-                    >
-                      Accessories
                     </Link>
                     <Link
                       className="caption1 has-line-before duration-300 w-fit pt-2"
@@ -102,18 +96,18 @@ const Footer = () => {
                     <div className="text-button-uppercase pb-3">
                       Customer Services
                     </div>
-                    <Link
+                    {/* <Link
                       className="caption1 has-line-before duration-300 w-fit"
                       href={"/pages/faqs"}
                     >
                       Orders FAQs
-                    </Link>
-                    <Link
+                    </Link> */}
+                    {/* <Link
                       className="caption1 has-line-before duration-300 w-fit pt-2"
                       href={"/pages/faqs"}
                     >
                       Shipping
-                    </Link>
+                    </Link> */}
                     <Link
                       className="caption1 has-line-before duration-300 w-fit pt-2"
                       href={"/pages/faqs"}
@@ -124,22 +118,11 @@ const Footer = () => {
                       className="caption1 has-line-before duration-300 w-fit pt-2"
                       href={"/order-tracking"}
                     >
-                      Return & Refund
+                      Not Refundable
                     </Link>
                   </div>
                 </div>
                 <div className="newsletter basis-1/3 pl-7 max-md:basis-full max-md:pl-0 flex justify-center">
-                  {/* <div className="text-button-uppercase">Newletter</div>
-                                    <div className="caption1 mt-3">Sign up for our newsletter and get 10% off your first purchase</div> */}
-                  {/* <div className="input-block w-full h-[52px] ">
-                                        <form className='w-full h-full relative' action="post">
-                                            <input type="email" placeholder='Enter your e-mail' className='caption1 w-full h-full pl-4 pr-14 rounded-xl border border-line' required />
-                                            <button className='w-[44px] h-[44px]  flex items-center justify-center bg-custom-purple-color hover:bg-purple rounded-xl absolute top-1 right-1'>
-                                                <Icon.ArrowRight size={24} color='#fff' />
-                                            </button>
-                                        </form>
-                                    </div> */}
-
                   <div className="list-social flex items-center gap-6 mt-4">
                     <div>
                       {" "}
@@ -168,7 +151,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="footer-bottom py-3 flex items-center justify-between gap-5 max-lg:justify-center max-lg:flex-col border-t border-line">
-              <div className="left flex items-center gap-8">
+              <div className="left flex items-center gap-8 hidden ">
                 <div className="copyright caption1 text-secondary">
                   <span>Developer Email: - </span>
                   <a
@@ -179,89 +162,6 @@ const Footer = () => {
                   >
                     rahul930vishwakarma@gmail.com
                   </a>
-                </div>
-                {/* <div className="select-block flex items-center gap-5 max-md:hidden">
-                  <div className="choose-language flex items-center gap-1.5">
-                    <select
-                      name="language"
-                      id="chooseLanguageFooter"
-                      className="caption2 bg-transparent"
-                    >
-                      <option value="English">English</option>
-                      <option value="Espana">Espana</option>
-                      <option value="France">France</option>
-                    </select>
-                    <Icon.CaretDown size={12} color="#1F1F1F" />
-                  </div>
-                  <div className="choose-currency flex items-center gap-1.5">
-                    <select
-                      name="currency"
-                      id="chooseCurrencyFooter"
-                      className="caption2 bg-transparent"
-                    >
-                      <option value="USD">USD</option>
-                      <option value="EUR">EUR</option>
-                      <option value="GBP">GBP</option>
-                    </select>
-                    <Icon.CaretDown size={12} color="#1F1F1F" />
-                  </div>
-                </div> */}
-              </div>
-              <div className="right flex items-center gap-2">
-                <div className="caption1 text-secondary">Payment:</div>
-                <div className="payment-img">
-                  <Image
-                    src={"/images/payment/payment1.png"}
-                    width={500}
-                    height={500}
-                    alt={"payment"}
-                    className="w-9"
-                  />
-                </div>
-                <div className="payment-img">
-                  <Image
-                    src={"/images/payment/payment1.png"}
-                    width={500}
-                    height={500}
-                    alt={"payment"}
-                    className="w-9"
-                  />
-                </div>
-                <div className="payment-img">
-                  <Image
-                    src={"/images/payment/payment1.png"}
-                    width={500}
-                    height={500}
-                    alt={"payment"}
-                    className="w-9"
-                  />
-                </div>
-                <div className="payment-img">
-                  <Image
-                    src={"/images/payment/payment1.png"}
-                    width={500}
-                    height={500}
-                    alt={"payment"}
-                    className="w-9"
-                  />
-                </div>
-                <div className="payment-img">
-                  <Image
-                    src={"/images/payment/payment1.png"}
-                    width={500}
-                    height={500}
-                    alt={"payment"}
-                    className="w-9"
-                  />
-                </div>
-                <div className="payment-img">
-                  <Image
-                    src={"/images/payment/payment1.png"}
-                    width={500}
-                    height={500}
-                    alt={"payment"}
-                    className="w-9"
-                  />
                 </div>
               </div>
             </div>

@@ -17,7 +17,7 @@ const TopNavThree: React.FC<Props> = ({ props }) => {
   return (
     <>
       <div
-        className={`top-nav md:h-[44px] h-[30px] border-b border-line ${props}`}
+        className={`top-nav md:h-[44px] h-[30px] border-b border-line hidden ${props}`}
       >
         <div className="container mx-auto h-full">
           <div className="top-nav-main flex justify-between max-md:justify-center h-full">

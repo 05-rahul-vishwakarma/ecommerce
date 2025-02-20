@@ -240,7 +240,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                           Contact Us
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link
                           href="/pages/client-contact"
                           className={`text-secondary duration-300 ${pathname === "/pages/client-contact" ? "active" : ""
@@ -248,7 +248,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         >
                           Client Contact
                         </Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link
                           href="/pages/privacy-policy"
@@ -285,7 +285,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                           Coming Soon
                         </Link>
                       </li> */}
-                      <li>
+                      {/* <li>
                         <Link
                           href="/pages/customer-feedbacks"
                           className={`text-secondary duration-300 ${pathname === "/pages/customer-feedbacks"
@@ -295,7 +295,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                         >
                           Customer Feedbacks
                         </Link>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </li>
