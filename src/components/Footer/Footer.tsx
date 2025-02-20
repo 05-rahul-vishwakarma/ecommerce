@@ -2,10 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
-import { productCategory } from "@/api/productApis/getPostApi";
 
-const Footer = async() => {
-   const category = await productCategory();
+const Footer = () => {
    
   return (
     <>

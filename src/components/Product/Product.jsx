@@ -15,7 +15,6 @@ import { toast } from 'react-toastify'
 
 
 const Product = ({ product }) => {
-
     const { openModalCart } = useModalCartContext()
     const { openModalWishlist } = useModalWishlistContext()
     const { openQuickview } = useModalQuickviewContext()

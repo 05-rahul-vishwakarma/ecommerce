@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import HandlePagination from "../Other/HandlePagination";
 import Link from "next/link";

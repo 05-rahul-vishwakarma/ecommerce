@@ -2,7 +2,6 @@
 
 import Footer from "@/components/Footer/Footer";
 import MenuFour from "@/components/Header/MenuFour";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import ShopBreadCrumb from '@/components/Shop/ShopBreadCrumb';
 import { useProductStore } from "@/components/Product/store/useProduct";
@@ -34,7 +33,7 @@ export default function BreadCrumb1() {
   const { products, productDetails, fetchProducts } = useProductStore();
 
   useEffect(() => {
-    fetchProducts();
+    fetchProducts().catch((err) => console.error("Error fetching products:", err));
   }, [fetchProducts]);
 
   return (
