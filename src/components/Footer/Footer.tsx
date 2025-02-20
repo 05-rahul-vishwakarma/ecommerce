@@ -2,8 +2,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
+import { productCategory } from "@/api/productApis/getPostApi";
 
-const Footer = () => {
+const Footer = async() => {
+   const category = await productCategory();
+   
   return (
     <>
       <div id="footer" className="footer">
@@ -49,12 +52,7 @@ const Footer = () => {
                     >
                       Contact us
                     </Link>
-                    <Link
-                      className="caption1 has-line-before duration-300 w-fit pt-2"
-                      href={"#!"}
-                    >
-                      Career
-                    </Link>
+                  
                     <Link
                       className="caption1 has-line-before duration-300 w-fit pt-2"
                       href={"/my-account"}
@@ -69,7 +67,7 @@ const Footer = () => {
                     </Link>
                     {/* <Link className='caption1 has-line-before duration-300 w-fit pt-2' href={'/pages/faqs'}>FAQs</Link> */}
                   </div>
-                  <div className="item flex flex-col basis-1/3 ">
+                  <div className="item flex flex-col basis-1/3 hidden ">
                     <div className="text-button-uppercase pb-3">Quick Shop</div>
                     <Link
                       className="caption1 has-line-before duration-300 w-fit"

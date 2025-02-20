@@ -145,7 +145,7 @@ const Login = () => {
                     />
                   </div>
                 )}
-                <div className="flex items-center justify-between mt-5">
+                {/* <div className="flex items-center justify-between mt-5">
                   <div className="flex items-center">
                     <div className="block-input">
                       <input type="checkbox" name="remember" id="remember" />
@@ -165,7 +165,7 @@ const Login = () => {
                   >
                     Forgot Your Password?
                   </Link>
-                </div>
+                </div> */}
                 <div className="block-button md:mt-7 mt-4">
                   <button
                     className="button-main"
@@ -178,7 +178,7 @@ const Login = () => {
                 {success && <p className="text-green-500 mt-3">{success}</p>}
               </form>
             </div>
-            <div className="right md:w-1/2 w-full lg:pl-[60px] md:pl-[40px] flex items-center">
+            {/* <div className="right md:w-1/2 w-full lg:pl-[60px] md:pl-[40px] flex items-center">
               <div className="text-content">
                 <div className="heading4">New Customer</div>
                 <div className="mt-2 text-secondary2">
@@ -192,7 +192,7 @@ const Login = () => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
