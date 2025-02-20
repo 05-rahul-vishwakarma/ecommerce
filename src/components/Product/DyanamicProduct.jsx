@@ -2,8 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import Rate from "@/components/Other/Rate";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, Scrollbar } from "swiper/modules";
 import "swiper/css/bundle";
@@ -32,6 +30,8 @@ export default function DyanamicProduct({ productMain }) {
   const [products, setProducts] = useState(productMain);
   const [quantity, setQuantity] = useState(1);
   const [selectedSizes, setSelectedSizes] = useState({});
+  const [selectedSize, setSelectedSize] = useState(null);
+
 
   const router = useRouter();
 
@@ -75,14 +75,14 @@ export default function DyanamicProduct({ productMain }) {
   const handleCart = () => {
     const accessToken = Cookies.get("accessToken");
     if (!accessToken) {
-        console.log('token is not avilable');
-        toast.error("Please log in to add items to the cart.");
-        router.push("/login");
-        return;
+      console.log('token is not avilable');
+      toast.error("Please log in to add items to the cart.");
+      router.push("/login");
+      return;
     } else {
-        handleAddToCart(products, openModalCart);
+      handleAddToCart(products, openModalCart);
     }
-}
+  }
 
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export default function DyanamicProduct({ productMain }) {
       ...products,
       itemQty: quantity,
       selectedColor: activeColor,
-      selectedSizes: selectedSizes,
+      selectedSizes: selectedSize,
     }];
 
     localStorage.setItem('checkoutProduct',
@@ -290,7 +290,7 @@ export default function DyanamicProduct({ productMain }) {
                   <span className="text-title color">{activeColor}</span>
                 </div>
                 <div className="list-color flex items-center gap-2 flex-wrap mt-3">
-                  {products.imageURLs.map((img, index) => (
+                  {products?.imageURLs.map((img, index) => (
                     <div
                       key={index}
                       className={`color-option w-8 h-8 rounded-full cursor-pointer border-2 ${activeColor === img.color.name
@@ -308,32 +308,22 @@ export default function DyanamicProduct({ productMain }) {
                 </div>
               </div>
               <div className="choose-size mt-5">
-                <div className="heading flex items-center justify-between">
-                  <div className="text-title">
-                    Size:{" "}
-                    <div className="choose-size mt-5">
-                      {formattedData?.map((item, index) => (
-                        <div key={index} className="size-option mb-4">
-                          <div className="text-title">
-                            {item.key.charAt(0).toUpperCase() + item.key.slice(1)} Sizes:
-                          </div>
-                          <div className="list-size flex items-center gap-2 flex-wrap mt-2">
-                            {item.values.split(', ').map((size, sizeIndex) => (
-                              <div
-                                key={sizeIndex}
-                                className={`size-btn px-3 py-1 rounded-full border cursor-pointer ${selectedSizes[item.key] === size
-                                    ? 'border-purple bg-purple text-white'
-                                    : 'border-line hover:border-purple'
-                                  }`}
-                                onClick={() => handleSizeSelect(item.key, size)}
-                              >
-                                {size}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
+                <div className="choose-size mt-5">
+                  Size:{" "}
+                  <div className="heading flex items-center space-x-2 ">
+                    {products?.size &&
+                      products?.size?.map((size) => (
+                        <button
+                          key={size}
+                          className={`size-button px-4 py-2 rounded-md border border-line ${selectedSize === size
+                            ? "bg-purple text-white border-purple"
+                            : "bg-white text-secondary2"
+                            }`}
+                          onClick={() => setSelectedSize(size)}
+                        >
+                          {size} {products.unit}
+                        </button>
                       ))}
-                    </div>
                   </div>
                 </div>
               </div>

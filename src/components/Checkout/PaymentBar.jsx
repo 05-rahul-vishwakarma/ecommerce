@@ -1,13 +1,17 @@
 'use client';
 import useCartStore from '@/globalStore/useCartStore';
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react'; // useCallback added
 import { purchaseProduct } from '@/api/purchaseApis/purchasePost';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation'; // Import useRouter
 
 export default function PaymentBar() {
     const [decodedData, setDecodedData] = useState([]);
-    const [activeColors, setActiveColors] = useState({});
+    const [loading, setLoading] = useState(false); // Add loading state
+    const router = useRouter(); // Initialize useRouter
+
+    const { removeProductFromCart } = useCartStore();
 
     useEffect(() => {
         const storedCart = localStorage.getItem("checkoutProduct");
@@ -15,18 +19,16 @@ export default function PaymentBar() {
         if (storedCart) {
             try {
                 const decodedCart = JSON.parse(decodeURIComponent(storedCart));
-                const initializedData = decodedCart.map(item => ({
+                setDecodedData(decodedCart.map(item => ({
                     ...item,
                     selectedColor: item.selectedColor || item.imageURLs[0]?.color.name
-                }));
-                setDecodedData(initializedData);
+                })));
             } catch (error) {
                 console.error("Error parsing cart data:", error);
+                toast.error("Error loading cart data. Please refresh the page."); // User-friendly error
             }
         }
     }, []);
-
-    const { removeProductFromCart } = useCartStore();
 
     const totalAmount = decodedData.reduce((total, item) => {
         const price = parseFloat(item.price) || 0;
@@ -34,8 +36,8 @@ export default function PaymentBar() {
         return total + price * quantity;
     }, 0);
 
-
-    const updateCartItem = (pk, sk, newQty, newColor, sizeKey, newSize) => {
+    // Use useCallback to memoize the updateCartItem function. This prevents unnecessary re-renders.
+    const updateCartItem = useCallback((pk, sk, newQty, newColor, sizeKey, newSize) => {
         setDecodedData(prevData =>
             prevData.map(item =>
                 item.PK === pk && item.SK === sk
@@ -43,18 +45,18 @@ export default function PaymentBar() {
                         ...item,
                         itemQty: newQty,
                         selectedColor: newColor,
-                        selectedSizes: {
-                            ...item.selectedSizes,
-                            ...(sizeKey && newSize ? { [sizeKey]: newSize } : {})
-                        },
+                        selectedSizes: newSize,
                         img: item.imageURLs.find(img => img.color.name === newColor)?.img || item.img
                     }
                     : item
             )
         );
-    };
+    }, []);
 
     const handlePlaceOrder = async () => {
+        if (loading) return; // Prevent multiple requests
+        setLoading(true); // Set loading state
+
         const orderPayload = {
             businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
             productIds: decodedData.map(item => ({
@@ -62,7 +64,7 @@ export default function PaymentBar() {
                 SK: item.SK,
                 quantity: item.itemQty,
             })),
-            amount: totalAmount * 100, // Convert to cents if needed
+            amount: totalAmount * 100,
             size: decodedData[0]?.selectedSizes
                 ? Object.entries(decodedData[0].selectedSizes).map(([key, value]) => `${key}: ${value}`).join(', ')
                 : 'size',
@@ -73,20 +75,27 @@ export default function PaymentBar() {
             const response = await purchaseProduct(orderPayload);
             if (response?.response?.data?.statusCode === 200) {
                 toast.success('Purchase successful');
+                // Clear localStorage
+                localStorage.removeItem('checkoutProduct');
+                // Update the cart store after a successful purchase to remove all the item from the cart
+                decodedData.forEach(item => {
+                    removeProductFromCart(item.PK, item.SK);
+                });
+
                 router.push('/orders');
             } else {
                 const errorMessage = response?.response?.data?.message || 'Purchase failed. Please try again.';
                 throw new Error(errorMessage);
             }
         } catch (error) {
-            // Handle network errors and server errors
             const errorMessage = error.response?.data?.message ||
                 error.message ||
                 'An unexpected error occurred';
             toast.error(errorMessage);
+        } finally {
+            setLoading(false); // Reset loading state whether success or failure
         }
     };
-
 
     return (
         <div className="right md:w-5/12 w-full ml-5">
@@ -120,7 +129,7 @@ export default function PaymentBar() {
                                             type="number"
                                             value={item.itemQty}
                                             min="1"
-                                            onChange={(e) => updateCartItem(item.PK, item.SK, e.target.value, activeColors[item.PK + item.SK] || item.imageURLs[0]?.color.name)}
+                                            onChange={(e) => updateCartItem(item.PK, item.SK, e.target.value, item.selectedColor || item.imageURLs[0]?.color.name)}
                                             className="w-12 text-center border border-gray-300 rounded"
                                         />
                                         <span className="px-1">x</span>
@@ -137,7 +146,7 @@ export default function PaymentBar() {
                                     {item.imageURLs.map((image, idx) => (
                                         <button
                                             key={idx}
-                                            className={`color-item w-12 h-12 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow ${activeColors[item.PK + item.SK] === image.color.name ? "border-2 border-purple-600" : "border-2 border-transparent"
+                                            className={`color-item w-12 h-12 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow ${item.selectedColor === image.color.name ? "border-2 border-purple-600" : "border-2 border-transparent"
                                                 }`}
                                             onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, image.color.name)}
                                         >
@@ -154,34 +163,24 @@ export default function PaymentBar() {
                             </div>
 
                             <div className="choose-size mt-5">
-                                {item.additionalInformation?.map((info, infoIndex) => {
-                                    const values = info.value.replace(/\s/g, '').split(',');
-                                    const formattedValues = values.map(value =>
-                                        info.key === "width" ? value + "mm" : value + "cm"
-                                    );
-
-                                    return (
-                                        <div key={infoIndex} className="size-option mb-4">
-                                            <div className="text-title">
-                                                {info.key.charAt(0).toUpperCase() + info.key.slice(1)} Sizes:
-                                            </div>
-                                            <div className="list-size flex items-center gap-2 flex-wrap mt-2">
-                                                {formattedValues.map((size, sizeIndex) => (
-                                                    <div
-                                                        key={sizeIndex}
-                                                        className={`size-btn px-3 py-1 rounded-full border cursor-pointer ${item.selectedSizes?.[info.key] === size
-                                                            ? 'border-purple bg-purple text-white'
-                                                            : 'border-line hover:border-purple'
-                                                            }`}
-                                                        onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, item.selectedColor, info.key, size)}
-                                                    >
-                                                        {size}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    );
-                                })}
+                                <p className="text-lg font-semibold text-gray-700">
+                                    Size: <span className="text-purple-600">{item.selectedSizes || "No Size Selected"}</span>
+                                </p>
+                                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                                    {Array.isArray(item.size) ? (
+                                        item.size.map((sz, idx) => (
+                                            <button
+                                                key={idx}
+                                                className={`size-item px-3 py-2 rounded-md border ${item.selectedSizes === sz ? "border-purple-600 bg-purple-500" : "border-gray-300"}`}
+                                                onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, item.selectedColor, "selectedSizes", sz)}
+                                            >
+                                                {sz} {item?.unit}
+                                            </button>
+                                        ))
+                                    ) : (
+                                        <p className="text-sm text-gray-500">No sizes available</p>
+                                    )}
+                                </div>
                             </div>
 
                             <div className="flex items-center justify-between w-full space-x-4">
@@ -204,8 +203,9 @@ export default function PaymentBar() {
             <button
                 className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
                 onClick={handlePlaceOrder}
+                disabled={loading} // Disable the button while loading
             >
-                Place Order
+                {loading ? 'Placing Order...' : 'Place Order'}
             </button>
         </div>
     );
