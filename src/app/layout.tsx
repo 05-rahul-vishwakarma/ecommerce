@@ -1,3 +1,4 @@
+import Script from "next/script";
 import type { Metadata } from 'next';
 import { Instrument_Sans } from 'next/font/google';
 import '@/styles/styles.scss';
@@ -39,9 +40,12 @@ export default function RootLayout({
   return (
     <GlobalProvider>
       <html lang="en">
+        <head>
+          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
+        </head>
         <body className={instrument.className}>
           {children}
-          <ModalCart/>
+          <ModalCart />
           <ModalWishlist />
           <ModalSearch />
           <ModalQuickview />

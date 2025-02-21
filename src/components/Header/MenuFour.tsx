@@ -16,6 +16,7 @@ import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
 import useCartStore from "@/globalStore/useCartStore";
 import Cookies from "js-cookie";
+import { useWishlist } from "@/context/WishlistContext";
 
 interface Props {
   props: string;
@@ -34,6 +35,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
   const router = useRouter();
   const { mergedCart } = useCartStore();
   const [openDropdown, setOpenDropdown] = useState(false);
+  const { wishlistState } = useWishlist();
 
 
   const handleSearch = (value: string) => {
@@ -118,7 +120,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     <Link href={"/login"} className="button-main w-full text-center">
                       Login
                     </Link>
-                    <div className="text-secondary text-center mt-3 pb-4">
+                    {/* <div className="text-secondary text-center mt-3 pb-4">
                       Don’t have an account?
                       <Link
                         href={"/register"}
@@ -126,7 +128,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       >
                         Register
                       </Link>
-                    </div>
+                    </div> */}
                     <div className="bottom pt-4 border-t border-line"></div>
                     <Link href={"#!"} className="body1 hover:underline">
                       Support
@@ -314,7 +316,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     className={`login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-sm 
                     ${openLoginPopup ? "open" : ""}`}
                   >
-                  {popupContent}
+                    {popupContent}
                   </div>
                 </div>
 
@@ -323,6 +325,9 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   onClick={openModalWishlist}
                 >
                   <Icon.Heart size={24} color="white" />
+                  <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-black bg-white w-4 h-4 flex items-center justify-center rounded-full">
+                    {wishlistState?.wishlistArray?.length}
+                  </span>
                 </div>
                 <div
                   className="cart-icon flex items-center relative cursor-pointer"

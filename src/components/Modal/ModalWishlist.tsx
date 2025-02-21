@@ -11,6 +11,7 @@ const ModalWishlist = () => {
   const { isModalOpen, closeModalWishlist } = useModalWishlistContext();
   const { wishlistState, removeFromWishlist } = useWishlist();
 
+
   return (
     <>
       <div
@@ -76,7 +77,7 @@ const ModalWishlist = () => {
               );
             })}
           </div>
-          <div className="footer-modal p-6 border-t bg-white border-line absolute bottom-0 left-0 w-full text-center">
+          {/* <div className="footer-modal p-6 border-t bg-white border-line absolute bottom-0 left-0 w-full text-center">
             <Link
               href={"/wishlist"}
               onClick={closeModalWishlist}
@@ -90,7 +91,7 @@ const ModalWishlist = () => {
             >
               Or continue shopping
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

@@ -4,8 +4,6 @@ import { blogListData } from "@/api/blogApis/getBlog";
 
 const OurBlog = async () => {
   const fetchBlogs = await blogListData(); // Server-side fetching
-  console.log(fetchBlogs);
-
   return (
     <div className="news-block md:pt-20 pt-10">
       <div className="container">

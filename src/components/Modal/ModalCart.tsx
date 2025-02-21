@@ -176,6 +176,7 @@ const ModalCart = () => {
                               type="number"
                               value={product?.qty || ''}
                               min="1"
+                              readOnly
                               // onChange={(e) => updateCartItemQty(item.PK, item.SK, e.target.value)}
                               className="w-12 text-center border border-gray-300 rounded"
                             />

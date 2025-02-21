@@ -73,7 +73,7 @@ export const getCartListData = async (payload) => {
         })
         return response?.data;
     } catch (error) {
-        return error;
+        return error?.response?.data || { message: "Something went wrong" };
     }
 }
 

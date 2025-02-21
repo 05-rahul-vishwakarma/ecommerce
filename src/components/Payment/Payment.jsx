@@ -11,7 +11,7 @@ const PaymentComponent = () => {
 
     const handlePayment = () => {
         const options = {
-            key: 'OaBgyQKiGhaaIO', // Your Razorpay Key
+            key: 'rzp_test_f2GUXkhf7ipbqz', // Your Razorpay Key
             amount: 1000, // Amount in paise (INR)
             currency: 'INR',
             name: 'Test Payment',

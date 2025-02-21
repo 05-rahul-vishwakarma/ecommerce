@@ -112,29 +112,39 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 SK: item?.SK,
             },
         };
-
+    
+        // Optimistically update the state before the API call
+        // const optimisticItem: WishlistItem = {
+        //     ...item,
+        //     productId: {
+        //         PK: item.PK,
+        //         SK: item.SK,
+        //     },
+        //     productDetails: [], // Assume empty initially
+        // };
+    
+        // dispatchOptimistic({ type: 'ADD_TO_WISHLIST', payload: optimisticItem });
+    
         try {
             const data = await addWishListProduct(payload);
-
-            // Fetch product details for the newly added item
-            const productDetails = await getProductListData({
-                businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
-                PK: data?.data?.productId?.PK,
-                SK: data?.data?.productId?.SK,
-            });
-
+            
+            const productDetails = await getProductListData(
+                data?.productId?.PK,
+                data?.productId?.SK,
+            );
+            
             const mergedData = {
-                ...data?.data,
-                productDetails: productDetails?.data?.items, // Merge product details
+                ...data,
+                productDetails: productDetails?.data, // Merge product details
             };
-
-            dispatchActual({ type: 'ADD_TO_WISHLIST', payload: mergedData });
+            dispatchOptimistic({ type: 'ADD_TO_WISHLIST', payload: mergedData });
+            // dispatchActual({ type: 'ADD_TO_WISHLIST', payload: mergedData });
         } catch (error) {
             console.error('Failed to add item to wishlist:', error);
-            fetchWishlistData(); // Refresh the wishlist data on error
+            fetchWishlistData(); // Refresh if error occurs
         }
     };
-
+    
     const removeFromWishlist = async (pk: string, sk: string) => {
         dispatchOptimistic({ type: 'REMOVE_FROM_WISHLIST', payload: { pk, sk } });
 
