@@ -68,19 +68,19 @@ const ModalCart = () => {
                       />
                     </div>
                     <div>
-                      <div className="name text-button">{product.name}</div>
+                      <div className="name text-button">{product?.name}</div>
                       <div className="flex items-center gap-2 mt-2">
                         <div className="product-price text-title">
-                          ${product.price}.00
+                          ${product?.price}.00
                         </div>
-                        {product.discount && (
+                        {product?.discount && (
                           <div className="product-origin-price text-title text-purple2">
                             <del>
                               $
                               {(
-                                product.price /
-                                (1 - product.discount / 100)
-                              ).toFixed(2)}
+                                product?.price /
+                                (1 - product?.discount / 100)
+                              )?.toFixed(2)}
                             </del>
                           </div>
                         )}
@@ -141,7 +141,7 @@ const ModalCart = () => {
                             </div>
                             <div className="choose-color mt-4">
                               <div className="list-color flex items-center gap-2 flex-wrap mt-3">
-                                {product?.productDetails?.imageURLs.map((image: any, idx: any) => (
+                                {product?.productDetails?.imageURLs?.map((image: any, idx: any) => (
                                   <button
                                     key={idx}
                                     className={`color-item rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow`}

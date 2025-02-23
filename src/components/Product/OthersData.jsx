@@ -48,7 +48,7 @@ export default function OthersData({ PK, SK , productMain }) {
   return (
     <div>
       {/* Product Carousel Section */}
-      <div className="list-product hide-product-sold menu-main mt-6 mx-[2rem] ">
+      <div className="list-product hide-product-sold menu-main mt-6 mx-[2rem] max-sm:hidden block ">
         <div className="heading5 pb-4">You'll love this too</div>
         <Swiper
           spaceBetween={4}
@@ -64,7 +64,7 @@ export default function OthersData({ PK, SK , productMain }) {
         >
           {products?.map((data, i) => {
             return (
-              <SwiperSlide key={i} >
+              <SwiperSlide key={i}>
                 <Product product={data} />
               </SwiperSlide>
             );
@@ -197,7 +197,7 @@ const Reviews = ({ reviews, productMain }) => {
       <div className="top-overview flex justify-between py-6 max-md:flex-col gap-y-6">
         <div className="rating lg:w-1/4 md:w-[30%] lg:pr-[75px] md:pr-[35px]">
           <div className="heading flex items-center justify-center flex-wrap gap-3 gap-y-4">
-            <div className="text-display">{averageRating.toFixed(1)}</div>
+            <div className="text-display">{averageRating?.toFixed(1)}</div>
             <div className="flex flex-col items-center">
               <Rate currentRate={Math.round(averageRating)} size={18} />
               <div className="text-secondary text-center mt-1">

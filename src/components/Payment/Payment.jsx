@@ -21,12 +21,9 @@ const PaymentComponent = () => {
                 alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
             },
             prefill: {
-                name: 'John Doe',
-                email: 'johndoe@example.com',
-                contact: '9999999999',
-            },
-            notes: {
-                address: 'Hello World',
+                name: 'Rahul Vishwakarma',
+                email: 'rahul930vishwakarma@example.com',
+                contact: '9304411522',
             },
             theme: {
                 color: '#F37254',
