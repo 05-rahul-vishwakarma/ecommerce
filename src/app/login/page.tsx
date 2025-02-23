@@ -46,9 +46,10 @@ const Login = () => {
         `${process.env.NEXT_PUBLIC_BASE_URL}/user/verifyOtp`,
         payload
       );
+      console.log(response?.data?.data);
       Cookies.set("accessToken", response?.data?.data?.accessToken, {
-        'max-age': 60 * 60 * 24 * 30, // 30 days in seconds
-      });
+        expires: 30, // Expires in 30 days
+    });
       toast.success("User Loged In");
     } catch (error: unknown) {
       const errorMessage =
@@ -79,7 +80,7 @@ const Login = () => {
     setSuccess("OTP verified successfully!");
     setPhoneNo("");
     setOtp("");
-    router.push("/");
+    // router.push("/");
   };
 
   return (
