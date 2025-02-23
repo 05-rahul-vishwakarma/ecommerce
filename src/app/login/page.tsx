@@ -80,7 +80,7 @@ const Login = () => {
     setSuccess("OTP verified successfully!");
     setPhoneNo("");
     setOtp("");
-    // router.push("/");
+    router.push("/");
   };
 
   return (
