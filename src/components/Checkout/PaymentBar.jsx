@@ -98,7 +98,7 @@ export default function PaymentBar() {
     };
 
     return (
-        <div className="right md:w-5/12 w-full ml-5">
+        <div className="right md:w-5/12 w-full ">
             <div className="checkout-block bg-white p-6 rounded-lg shadow-lg">
                 <div className="heading5 pb-3 text-2xl font-bold text-gray-800">Your Order</div>
                 <div className="list-product-checkout">
@@ -143,7 +143,7 @@ export default function PaymentBar() {
                                     Color: <span className="text-purple-600">{item.selectedColor}</span>
                                 </p>
                                 <div className="list-color flex items-center gap-2 flex-wrap mt-3">
-                                    {item.imageURLs.map((image, idx) => (
+                                    {item?.imageURLs?.map((image, idx) => (
                                         <button
                                             key={idx}
                                             className={`color-item w-12 h-12 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow ${item.selectedColor === image.color.name ? "border-2 border-purple-600" : "border-2 border-transparent"
@@ -151,8 +151,8 @@ export default function PaymentBar() {
                                             onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, image.color.name)}
                                         >
                                             <Image
-                                                src={image.img}
-                                                alt={image.color.name}
+                                                src={image?.img}
+                                                alt={image?.color?.name}
                                                 width={48}
                                                 height={48}
                                                 className="w-full h-full object-cover"
@@ -164,11 +164,11 @@ export default function PaymentBar() {
 
                             <div className="choose-size mt-5">
                                 <p className="text-lg font-semibold text-gray-700">
-                                    Size: <span className="text-purple-600">{item.selectedSizes || "No Size Selected"}</span>
+                                    Size: <span className="text-purple-600">{item?.selectedSizes || "No Size Selected"}</span>
                                 </p>
                                 <div className="list-size flex items-center gap-2 flex-wrap mt-3">
                                     {Array.isArray(item.size) ? (
-                                        item.size.map((sz, idx) => (
+                                        item?.size?.map((sz, idx) => (
                                             <button
                                                 key={idx}
                                                 className={`size-item px-3 py-2 rounded-md border ${item.selectedSizes === sz ? "border-purple-600 bg-purple-500" : "border-gray-300"}`}
