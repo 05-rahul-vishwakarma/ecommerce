@@ -12,6 +12,7 @@ import CountdownTimeType from '@/type/CountdownType';
 import { countdownTime } from '@/store/countdownTime';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NetworkStatus from '@/components/NetworkStatus';
 
 const serverTimeLeft: CountdownTimeType = countdownTime();
 
@@ -44,6 +45,7 @@ export default function RootLayout({
           <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
         </head>
         <body className={instrument.className}>
+          <NetworkStatus />
           {children}
           <ModalCart />
           <ModalWishlist />
