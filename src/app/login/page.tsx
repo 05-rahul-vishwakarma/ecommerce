@@ -47,8 +47,8 @@ const Login = () => {
         payload
       );
       Cookies.set("accessToken", response?.data?.data?.accessToken, {
-        expires: 1,
-      }); 
+        'max-age': 60 * 60 * 24 * 30, // 30 days in seconds
+      });
       toast.success("User Loged In");
     } catch (error: unknown) {
       const errorMessage =
