@@ -324,10 +324,10 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   className="max-md:hidden wishlist-icon flex items-center cursor-pointer"
                   onClick={openModalWishlist}
                 >
-                  <Icon.Heart size={24} color="white" />
+                  {/* <Icon.Heart size={24} color="white" />
                   <span className="quantity cart-quantity absolute -right-1.5 -top-1.5 text-xs text-black bg-white w-4 h-4 flex items-center justify-center rounded-full">
                     {wishlistState?.wishlistArray?.length}
-                  </span>
+                  </span> */}
                 </div>
                 <div
                   className="cart-icon flex items-center relative cursor-pointer"
