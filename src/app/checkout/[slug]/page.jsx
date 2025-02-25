@@ -1,15 +1,34 @@
 "use client";
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import TopNavOne from "@/components/Header/TopNav/TopNavOne";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";
 import MenuFour from "@/components/Header/MenuFour";
 import PersonalForm from "@/components/Form/PersonalForm";
 import PaymentBarTwo from "../../../components/Checkout/PaymentBar2";
+import { useSearchParams } from "next/navigation";
 
 const Page = () => {
+    const searchParams = useSearchParams();
+    const [cartData, setCartData] = useState(null);
+
+    useEffect(() => {
+        const cartDataParam = searchParams.get('cartData');
+        console.log(searchParams);
+        
+        if (cartDataParam) {
+            try {
+                const decodedCartData = JSON.parse(decodeURIComponent(cartDataParam));
+                setCartData(decodedCartData);
+            } catch (error) {
+                console.error("Error parsing cart data:", error);
+            }
+        }
+    }, [searchParams]);
+
+    console.log(cartData,'cartData');
+    
+
     return (
         <>
             <TopNavOne
@@ -55,7 +74,7 @@ const Page = () => {
                             </div>
                             <PersonalForm />
                         </div>
-                        <PaymentBarTwo />
+                        {cartData && <PaymentBarTwo cartData={cartData} />}
                     </div>
                 </div>
             </div>

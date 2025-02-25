@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, Scrollbar } from "swiper/modules";
@@ -19,7 +19,7 @@ import { handleAddToCart } from "@/services/carts";
 SwiperCore.use([Navigation, Thumbs]);
 
 export default function DyanamicProduct({ productMain }) {
-  const swiperRef = useRef(null); // Initialize swiperRef with null
+  const swiperRef = useRef(null); 
   const [productImage, setProductImage] = useState();
   const [openPopupImg, setOpenPopupImg] = useState(false);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -31,7 +31,8 @@ export default function DyanamicProduct({ productMain }) {
   const [quantity, setQuantity] = useState(1);
   const [selectedSizes, setSelectedSizes] = useState({});
   const [selectedSize, setSelectedSize] = useState(null);
-
+  const [activeWidth, setActiveWidth] = useState(null);
+  const [activeLength, setActiveLength] = useState(null);
 
   const router = useRouter();
 
@@ -136,12 +137,16 @@ export default function DyanamicProduct({ productMain }) {
     }
   }, [productMain]);
 
-  const handleSizeSelect = (key, size) => {
-    setSelectedSizes(prev => ({
-      ...prev,
-      [key]: size
-    }));
-  };
+  const widths = useMemo(() => {
+    const widthInfo = products?.additionalInformation?.find((info) => info.key === "width");
+    return widthInfo ? widthInfo.value.split(",") : [];
+  }, [products?.additionalInformation]);
+
+  const lengths = useMemo(() => {
+    const lengthInfo = products?.additionalInformation?.find((info) => info.key === "length");
+    return lengthInfo ? lengthInfo.value.split(",") : [];
+  }, [products?.additionalInformation]);
+
 
   return (
     <div className="product-detail default">
@@ -307,7 +312,7 @@ export default function DyanamicProduct({ productMain }) {
                   ))}
                 </div>
               </div>
-              <div className="choose-size mt-5">
+              {/* <div className="choose-size mt-5">
                 <div className="choose-size mt-5">
                   Size:{" "}
                   <div className="heading flex items-center space-x-2 ">
@@ -326,7 +331,42 @@ export default function DyanamicProduct({ productMain }) {
                       ))}
                   </div>
                 </div>
+              </div> */}
+
+              <div className="choose-size mt-5">
+                <div className="heading flex items-center justify-between">
+                  <div className="text-title">Width:</div>
+                </div>
+                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                  {widths.map((width) => (
+                    <button
+                      key={width}
+                      className={`size-button ${activeWidth === width ? "active" : ""}`}
+                      onClick={() => setActiveWidth(width)}
+                    >
+                      {width}
+                    </button>
+                  ))}
+                </div>
               </div>
+
+              <div className="choose-size mt-5">
+                <div className="heading flex items-center justify-between">
+                  <div className="text-title">Length:</div>
+                </div>
+                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                  {lengths.map((length) => (
+                    <button
+                      key={length}
+                      className={`size-button ${activeLength === length ? "active" : ""}`}
+                      onClick={() => setActiveLength(length)}
+                    >
+                      {length}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div className="text-title mt-5">Quantity:</div>
               <div className="choose-quantity flex items-center lg:justify-between gap-5 gap-y-3 mt-3">
                 <div className="quantity-block md:p-3 max-md:py-1.5 max-md:px-3 flex items-center justify-between rounded-lg border border-line sm:w-[180px] w-[120px] flex-shrink-0">

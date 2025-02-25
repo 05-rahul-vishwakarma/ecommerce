@@ -1,15 +1,15 @@
 'use client';
 import useCartStore from '@/globalStore/useCartStore';
 import Image from 'next/image';
-import React, { useState, useEffect, useCallback } from 'react'; // useCallback added
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { purchaseProduct } from '@/api/purchaseApis/purchasePost';
 import { toast } from 'react-toastify';
-import { useRouter } from 'next/navigation'; // Import useRouter
+import { useRouter } from 'next/navigation';
 
 export default function PaymentBar() {
     const [decodedData, setDecodedData] = useState([]);
-    const [loading, setLoading] = useState(false); // Add loading state
-    const router = useRouter(); // Initialize useRouter
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const { removeProductFromCart } = useCartStore();
 
@@ -25,7 +25,7 @@ export default function PaymentBar() {
                 })));
             } catch (error) {
                 console.error("Error parsing cart data:", error);
-                toast.error("Error loading cart data. Please refresh the page."); // User-friendly error
+                toast.error("Error loading cart data. Please refresh the page.");
             }
         }
     }, []);
@@ -36,8 +36,7 @@ export default function PaymentBar() {
         return total + price * quantity;
     }, 0);
 
-    // Use useCallback to memoize the updateCartItem function. This prevents unnecessary re-renders.
-    const updateCartItem = useCallback((pk, sk, newQty, newColor, sizeKey, newSize) => {
+    const updateCartItem = useCallback((pk, sk, newQty, newColor, newWidth, newLength) => {
         setDecodedData(prevData =>
             prevData.map(item =>
                 item.PK === pk && item.SK === sk
@@ -45,7 +44,8 @@ export default function PaymentBar() {
                         ...item,
                         itemQty: newQty,
                         selectedColor: newColor,
-                        selectedSizes: newSize,
+                        selectedWidth: newWidth,
+                        selectedLength: newLength,
                         img: item.imageURLs.find(img => img.color.name === newColor)?.img || item.img
                     }
                     : item
@@ -54,8 +54,8 @@ export default function PaymentBar() {
     }, []);
 
     const handlePlaceOrder = async () => {
-        if (loading) return; // Prevent multiple requests
-        setLoading(true); // Set loading state
+        if (loading) return;
+        setLoading(true);
 
         const orderPayload = {
             businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
@@ -65,9 +65,7 @@ export default function PaymentBar() {
                 quantity: item.itemQty,
             })),
             amount: totalAmount * 100,
-            size: decodedData[0]?.selectedSizes
-                ? Object.entries(decodedData[0].selectedSizes).map(([key, value]) => `${key}: ${value}`).join(', ')
-                : 'size',
+            size: `Width: ${decodedData[0]?.selectedWidth || 'N/A'}, Length: ${decodedData[0]?.selectedLength || 'N/A'}`, //Concatenate width and length
             color: decodedData[0]?.selectedColor || 'colorname'
         };
 
@@ -75,9 +73,7 @@ export default function PaymentBar() {
             const response = await purchaseProduct(orderPayload);
             if (response?.response?.data?.statusCode === 200) {
                 toast.success('Purchase successful');
-                // Clear localStorage
                 localStorage.removeItem('checkoutProduct');
-                // Update the cart store after a successful purchase to remove all the item from the cart
                 decodedData.forEach(item => {
                     removeProductFromCart(item.PK, item.SK);
                 });
@@ -93,9 +89,25 @@ export default function PaymentBar() {
                 'An unexpected error occurred';
             toast.error(errorMessage);
         } finally {
-            setLoading(false); // Reset loading state whether success or failure
+            setLoading(false);
         }
     };
+
+    const widths = useMemo(() => {
+        const widthInfo = decodedData?.[0]?.additionalInformation?.find((info) => info.key === "width");
+        return widthInfo ? widthInfo.value.split(",") : [];
+    }, [decodedData?.[0]?.additionalInformation]);
+
+    const lengths = useMemo(() => {
+        const lengthInfo = decodedData?.[0]?.additionalInformation?.find((info) => info.key === "length");
+        return lengthInfo ? lengthInfo.value.split(",") : [];
+    }, [decodedData?.[0]?.additionalInformation]);
+
+    const handleRemoveFromCart = (pk, sk) => {
+        removeProductFromCart(pk, sk); //remove from zustand store
+        setDecodedData(prevData => prevData.filter(item => !(item.PK === pk && item.SK === sk))); // Remove from local state
+    };
+
 
     return (
         <div className="right md:w-5/12 w-full ">
@@ -123,13 +135,18 @@ export default function PaymentBar() {
                                             <span>/</span>
                                             <span className="color capitalize">{item.status || "No Status"}</span>
                                         </div>
+                                        <div className="text-sm text-gray-500 mt-2">
+                                            <span className="font-semibold">Width:</span> {item.selectedWidth || 'N/A'}
+                                            <span>/</span>
+                                            <span className="font-semibold">Length:</span> {item.selectedLength || 'N/A'}
+                                        </div>
                                     </div>
                                     <div className="quantity-block md:p-3 p-2 flex items-center justify-between rounded-lg border border-line w-[140px] flex-shrink-0">
                                         <input
                                             type="number"
                                             value={item.itemQty}
                                             min="1"
-                                            onChange={(e) => updateCartItem(item.PK, item.SK, e.target.value, item.selectedColor || item.imageURLs[0]?.color.name)}
+                                            onChange={(e) => updateCartItem(item.PK, item.SK, e.target.value, item.selectedColor || item.imageURLs[0]?.color.name, item.selectedWidth, item.selectedLength)}
                                             className="w-12 text-center border border-gray-300 rounded"
                                         />
                                         <span className="px-1">x</span>
@@ -148,7 +165,7 @@ export default function PaymentBar() {
                                             key={idx}
                                             className={`color-item w-12 h-12 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow ${item.selectedColor === image.color.name ? "border-2 border-purple-600" : "border-2 border-transparent"
                                                 }`}
-                                            onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, image.color.name)}
+                                            onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, image.color.name, item.selectedWidth, item.selectedLength)}
                                         >
                                             <Image
                                                 src={image?.img}
@@ -162,24 +179,38 @@ export default function PaymentBar() {
                                 </div>
                             </div>
 
+
                             <div className="choose-size mt-5">
-                                <p className="text-lg font-semibold text-gray-700">
-                                    Size: <span className="text-purple-600">{item?.selectedSizes || "No Size Selected"}</span>
-                                </p>
+                                <div className="heading flex items-center justify-between">
+                                    <div className="text-title">Width:</div>
+                                </div>
                                 <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                                    {Array.isArray(item.size) ? (
-                                        item?.size?.map((sz, idx) => (
-                                            <button
-                                                key={idx}
-                                                className={`size-item px-3 py-2 rounded-md border ${item.selectedSizes === sz ? "border-purple-600 bg-purple-500" : "border-gray-300"}`}
-                                                onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, item.selectedColor, "selectedSizes", sz)}
-                                            >
-                                                {sz} {item?.unit}
-                                            </button>
-                                        ))
-                                    ) : (
-                                        <p className="text-sm text-gray-500">No sizes available</p>
-                                    )}
+                                    {widths.map((width) => (
+                                        <button
+                                            key={width}
+                                            className={`size-button ${item.selectedWidth === width ? "active" : ""}`}
+                                            onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, item.selectedColor, width, item.selectedLength)}
+                                        >
+                                            {width}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="choose-size mt-5">
+                                <div className="heading flex items-center justify-between">
+                                    <div className="text-title">Length:</div>
+                                </div>
+                                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                                    {lengths.map((length) => (
+                                        <button
+                                            key={length}
+                                            className={`size-button ${item.selectedLength === length ? "active" : ""}`}
+                                            onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, item.selectedColor, item.selectedWidth, length)}
+                                        >
+                                            {length}
+                                        </button>
+                                    ))}
                                 </div>
                             </div>
 
@@ -203,7 +234,7 @@ export default function PaymentBar() {
             <button
                 className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
                 onClick={handlePlaceOrder}
-                disabled={loading} // Disable the button while loading
+                disabled={loading}
             >
                 {loading ? 'Placing Order...' : 'Place Order'}
             </button>

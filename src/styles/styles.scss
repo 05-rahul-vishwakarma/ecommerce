@@ -97,3 +97,25 @@
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-in-out;
 }
+
+.size-button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+.size-button.active {
+  background-color: #e2d4ff; /* light purple */
+  border-color: #9c88ff; /* purple */
+}
+
+.size-button:hover {
+  background-color: #eee;
+}
+
+.button-main.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

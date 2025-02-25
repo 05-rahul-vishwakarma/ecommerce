@@ -1,15 +1,18 @@
 "use client";
 
-import React, { useEffect, useState, useMemo, useCallback } from "react";
+import React, {
+  useEffect,
+  useState,
+  useMemo,
+  useCallback,
+} from "react";
 import Image from "next/image";
-import axios from "axios";
 import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
-import { Navigation, Thumbs, FreeMode } from "swiper/modules";
+import { Navigation, Thumbs, FreeMode, Autoplay } from "swiper/modules";
 import "swiper/css/bundle";
 import { useModalCartContext } from "@/context/ModalCartContext";
 import { useRouter } from "next/navigation";
 import { handleAddToCart } from "@/services/carts";
-import SizeSelector from './SizeSelector';
 
 interface ImageURL {
   img: string;
@@ -36,15 +39,15 @@ interface Product {
 }
 
 const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => {
-  const [products, setProducts] = useState<Product[]>(data);
+  const [products] = useState<Product[]>(data);
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const [activeColor, setActiveColor] = useState<string>("");
   const [activeImage, setActiveImage] = useState<string>("");
   const [colorQuantities, setColorQuantities] = useState<Record<string, number>>({});
   const { openModalCart } = useModalCartContext();
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
-
   const router = useRouter();
+  const [activeWidth, setActiveWidth] = useState<string | null>(null);
+  const [activeLength, setActiveLength] = useState<string | null>(null);
 
   const product = useMemo(() => products[1], [products]);
 
@@ -68,11 +71,32 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
       (item) => item.color.name === color
     )?.img;
     setActiveImage(selectedImage || "");
-
     setColorQuantities((prev) => ({ ...prev, [color]: 0 }));
   }, [product]);
 
-  const checkouthandler = useCallback(() => {
+  const widths = useMemo(() => {
+    const widthInfo = product?.additionalInformation?.find((info) => info.key === "width");
+    return widthInfo ? widthInfo.value.split(",") : [];
+  }, [product?.additionalInformation]);
+
+  const lengths = useMemo(() => {
+    const lengthInfo = product?.additionalInformation?.find((info) => info.key === "length");
+    return lengthInfo ? lengthInfo.value.split(",") : [];
+  }, [product?.additionalInformation]);
+
+  const handleQuantityChange = useCallback(
+    (color: string, change: number) => {
+      setColorQuantities((prev) => {
+        const newQuantity = Math.max(0, (prev[color] || 0) + change);
+        return { ...prev, [color]: newQuantity };
+      });
+    },
+    []
+  );
+
+  if (!products.length) return null;
+
+  const checkoutHandler = useCallback(() => {
     const itemQty = colorQuantities[activeColor] || 0;
 
     if (!product || itemQty <= 0) {
@@ -85,16 +109,15 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
         ...product,
         itemQty,
         selectedColor: activeColor,
-        selectedSize: selectedSize,
+        selectedWidth: activeWidth,
+        selectedLength: activeLength
       },
     ];
 
-    const encodedProduct = encodeURIComponent(JSON.stringify(checkoutProduct));
-    localStorage.setItem("checkoutProduct", encodedProduct);
-    router.push("/checkout");
-  }, [product, colorQuantities, activeColor, selectedSize, router]);
+    const cartDataParam = encodeURIComponent(JSON.stringify(checkoutProduct));
+    router.push(`/checkout?cartData=${cartDataParam}`);
 
-  if (!products.length) return null;
+  }, [product, colorQuantities, activeColor, activeWidth, activeLength, router]);
 
   return (
     <div className="featured-product underwear md:py-20 py-14">
@@ -104,8 +127,13 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
             slidesPerView={1}
             spaceBetween={0}
             thumbs={{ swiper: thumbsSwiper }}
-            modules={[Thumbs]}
+            modules={[Thumbs, Autoplay]}
             className="mySwiper2 rounded-2xl overflow-hidden"
+            autoplay={{  // ADD AUTOPLAY HERE
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            loop
           >
             <SwiperSlide>
               <Image
@@ -191,21 +219,36 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
             </div>
 
             <div className="choose-size mt-5">
-              Size:{" "}
-              <div className="heading flex items-center space-x-2 ">
-                {product?.size &&
-                  product.size.map((size: any) => (
-                    <button
-                      key={size}
-                      className={`size-button px-4 py-2 rounded-md border border-line ${selectedSize === size
-                        ? "bg-purple text-white border-purple"
-                        : "bg-white text-secondary2"
-                        }`}
-                      onClick={() => setSelectedSize(size)}
-                    >
-                      {size} {product.unit}
-                    </button>
-                  ))}
+              <div className="heading flex items-center justify-between">
+                <div className="text-title">Width:</div>
+              </div>
+              <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                {widths.map((width: any) => (
+                  <button
+                    key={width}
+                    className={`size-button ${activeWidth === width ? "active" : ""}`}
+                    onClick={() => setActiveWidth(width)}
+                  >
+                    {width}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="choose-size mt-5">
+              <div className="heading flex items-center justify-between">
+                <div className="text-title">Length:</div>
+              </div>
+              <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                {lengths.map((length: any) => (
+                  <button
+                    key={length}
+                    className={`size-button ${activeLength === length ? "active" : ""}`}
+                    onClick={() => setActiveLength(length)}
+                  >
+                    {length}
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -213,23 +256,13 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
             <div className="choose-quantity flex items-center gap-5 mt-5">
               <div className="quantity-block md:p-3 p-2 flex items-center justify-between rounded-lg border border-line w-[140px] flex-shrink-0">
                 <button
-                  onClick={() =>
-                    setColorQuantities((prev) => ({
-                      ...prev,
-                      [activeColor]: Math.max(0, prev[activeColor] - 1),
-                    }))
-                  }
+                  onClick={() => handleQuantityChange(activeColor, -1)}
                 >
                   -
                 </button>
-                <span>{colorQuantities[activeColor]}</span>
+                <span>{colorQuantities[activeColor] || 0}</span>
                 <button
-                  onClick={() =>
-                    setColorQuantities((prev) => ({
-                      ...prev,
-                      [activeColor]: prev[activeColor] + 1,
-                    }))
-                  }
+                  onClick={() => handleQuantityChange(activeColor, 1)}
                 >
                   +
                 </button>
@@ -242,7 +275,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
               </button>
             </div>
 
-            <button className="button-main w-full mt-5" onClick={checkouthandler}>
+            <button className="button-main w-full mt-5" onClick={checkoutHandler}>
               Buy It Now
             </button>
           </div>
