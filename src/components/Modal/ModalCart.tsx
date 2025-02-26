@@ -35,10 +35,17 @@ const ModalCart = () => {
         return `/checkout/${`cart`}?cartData=${cartDataParam}`;
     }, [mergedCart]);
 
+    // const checkoutHandler = useCallback(() => {
+    //     closeModalCart();
+    //     router.push(checkoutUrl);
+    // }, [closeModalCart, router, checkoutUrl]);
+
     const checkoutHandler = useCallback(() => {
+        const cartId = `cart_${new Date().getTime()}`;
+        sessionStorage.setItem(cartId, JSON.stringify(mergedCart));
         closeModalCart();
-        router.push(checkoutUrl);
-    }, [closeModalCart, router, checkoutUrl]);
+        router.push(`/checkout/${cartId}`);
+    }, [closeModalCart, router, mergedCart]);
 
     return (
         <>

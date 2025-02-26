@@ -3,7 +3,7 @@ import useCartStore from "@/globalStore/useCartStore";
 import { toast } from 'react-toastify';
 import { getCartListData, getProductListData } from '@/api/productApis/getPostApi';
 
-async function cart(product, itemQty, openModalCart) {
+async function cart(product, itemQty, openModalCart , activeColor, activeWidth , activeLength) {
     try {
         openModalCart();
 
@@ -15,6 +15,7 @@ async function cart(product, itemQty, openModalCart) {
             },
             qty: itemQty || 1,
             totalAmount: (product?.price || 0) * (itemQty || 1), // Ensure price calculation is correct
+            selectedSize:`${activeWidth},${activeLength}`
         };
 
         const response = await addCart(payload);
@@ -39,14 +40,13 @@ async function cart(product, itemQty, openModalCart) {
 }
 
 
-export const handleAddToCart = (product, openModalCart, itemQty = 1, activeColor) => {
+export const handleAddToCart = (product, openModalCart, itemQty = 1, activeColor, activeWidth, activeLength) => {
     // Ensure quantity is provided and is greater than 0
     if (itemQty <= 0) {
         toast.error('Please select a valid quantity.');
         return;
     }
-
-    cart(product, itemQty, openModalCart, activeColor); // Pass activeColor too
+    cart(product, itemQty, openModalCart, activeColor , activeWidth , activeLength); // Pass activeColor too
 };
 
 

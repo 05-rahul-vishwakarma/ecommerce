@@ -1,34 +1,43 @@
-"use client";  // Only use this if ABSOLUTELY necessary
+"use client";
 
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import TopNavOne from "@/components/Header/TopNav/TopNavOne";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";
 import MenuFour from "@/components/Header/MenuFour";
 import PersonalForm from "@/components/Form/PersonalForm";
 import PaymentBarTwo from "../../../components/Checkout/PaymentBar2";
-import { useSearchParams } from "next/navigation";
 
-const CheckoutContent = () => {
-    const searchParams = useSearchParams();
-    const [cartData, setCartData] = useState(null);
+const CheckoutContent = ({ params }) => {
+    // Unwrap the params object using React.use()
+    const unwrappedParams = React.use(params);
+    const { slug: cartId } = unwrappedParams; // Access the dynamic route parameter (cartId)
+
+    const [cartData, setCartData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const cartDataParam = searchParams.get('cartData');
-        console.log(searchParams);
-
-        if (cartDataParam) {
-            try {
-                const decodedCartData = JSON.parse(decodeURIComponent(cartDataParam));
-                setCartData(decodedCartData);
-            } catch (error) {
-                console.error("Error parsing cart data:", error);
+        if (cartId) {
+            // Fetch cart data from sessionStorage
+            const data = sessionStorage.getItem(cartId);
+            if (data) {
+                setCartData(JSON.parse(data));
+            } else {
+                console.error("Cart data not found in sessionStorage");
             }
+            setIsLoading(false);
         }
-    }, [searchParams]);
+    }, [cartId]);
 
-    console.log(cartData,'cartData');
-    
+    // Handle loading state
+    if (isLoading) {
+        return <div>Loading cart data...</div>;
+    }
+
+    // Handle case where cart data is not found
+    if (!cartData || cartData.length === 0) {
+        return <div>No items in the cart.</div>;
+    }
 
     return (
         <>
@@ -75,7 +84,7 @@ const CheckoutContent = () => {
     );
 };
 
-const Page = () => {
+const Page = ({ params }) => {
     return (
         <>
             <TopNavOne
@@ -86,9 +95,7 @@ const Page = () => {
                 <MenuFour props="bg-transparent" />
                 <Breadcrumb heading="Shopping cart" subHeading="Shopping cart" />
             </div>
-            <Suspense fallback={<div>Loading checkout...</div>}>
-                <CheckoutContent />
-            </Suspense>
+            <CheckoutContent params={params} />
             <Footer />
         </>
     );

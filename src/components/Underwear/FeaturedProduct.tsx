@@ -268,7 +268,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
               </div>
               <button
                 className="button-main w-full text-center bg-white text-purple border border-purple"
-                onClick={() => handleAddToCart(product, openModalCart, colorQuantities[activeColor], activeColor)}
+                onClick={() => handleAddToCart(product, openModalCart, colorQuantities[activeColor], activeColor,activeWidth,activeLength)}
               >
                 Add To Cart
               </button>

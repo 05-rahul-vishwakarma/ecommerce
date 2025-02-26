@@ -50,6 +50,9 @@ const Product = ({ product }) => {
         }
     }
 
+    console.log(product,'product');
+    
+
 
     return (
         <div onClick={() =>
