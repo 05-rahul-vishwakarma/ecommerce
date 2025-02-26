@@ -1,5 +1,6 @@
-"use client";
-import React, { useEffect, useState } from "react";
+"use client";  // Only use this if ABSOLUTELY necessary
+
+import React, { useEffect, useState, Suspense } from "react";
 import TopNavOne from "@/components/Header/TopNav/TopNavOne";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";
@@ -8,14 +9,14 @@ import PersonalForm from "@/components/Form/PersonalForm";
 import PaymentBarTwo from "../../../components/Checkout/PaymentBar2";
 import { useSearchParams } from "next/navigation";
 
-const Page = () => {
+const CheckoutContent = () => {
     const searchParams = useSearchParams();
     const [cartData, setCartData] = useState(null);
 
     useEffect(() => {
         const cartDataParam = searchParams.get('cartData');
         console.log(searchParams);
-        
+
         if (cartDataParam) {
             try {
                 const decodedCartData = JSON.parse(decodeURIComponent(cartDataParam));
@@ -26,19 +27,10 @@ const Page = () => {
         }
     }, [searchParams]);
 
-    console.log(cartData,'cartData');
-    
+    console.log(cartData, 'cartData');
 
     return (
         <>
-            <TopNavOne
-                props="style-one bg-white"
-                slogan="New customers save 10% with the code GET10"
-            />
-            <div id="header" className="relative w-full text-secondary">
-                <MenuFour props="bg-transparent" />
-                <Breadcrumb heading="Shopping cart" subHeading="Shopping cart" />
-            </div>
             <div className="cart-block md:py-20 py-10">
                 <div className="container">
                     <div className="content-main flex flex-col md:flex-row justify-between gap-5">
@@ -78,6 +70,24 @@ const Page = () => {
                     </div>
                 </div>
             </div>
+        </>
+    );
+};
+
+const Page = () => {
+    return (
+        <>
+            <TopNavOne
+                props="style-one bg-white"
+                slogan="New customers save 10% with the code GET10"
+            />
+            <div id="header" className="relative w-full text-secondary">
+                <MenuFour props="bg-transparent" />
+                <Breadcrumb heading="Shopping cart" subHeading="Shopping cart" />
+            </div>
+            <Suspense fallback={<div>Loading checkout...</div>}>
+                <CheckoutContent />
+            </Suspense>
             <Footer />
         </>
     );
