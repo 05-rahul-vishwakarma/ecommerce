@@ -27,7 +27,8 @@ const CheckoutContent = () => {
         }
     }, [searchParams]);
 
-    console.log(cartData, 'cartData');
+    console.log(cartData,'cartData');
+    
 
     return (
         <>

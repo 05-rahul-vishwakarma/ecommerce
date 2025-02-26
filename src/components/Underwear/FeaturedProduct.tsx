@@ -114,9 +114,8 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
       },
     ];
 
-    const cartDataParam = encodeURIComponent(JSON.stringify(checkoutProduct));
-    router.push(`/checkout?cartData=${cartDataParam}`);
-
+    localStorage.setItem("checkoutProduct", JSON.stringify(checkoutProduct));
+    router.push("/checkout");
   }, [product, colorQuantities, activeColor, activeWidth, activeLength, router]);
 
   return (

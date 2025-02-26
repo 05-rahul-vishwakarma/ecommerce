@@ -8,8 +8,25 @@ import Footer from "@/components/Footer/Footer";
 import MenuFour from "@/components/Header/MenuFour";
 import PersonalForm from "@/components/Form/PersonalForm";
 import PaymentBar from '@/components/Checkout/PaymentBar';
+import { useSearchParams } from "next/navigation";
 
 const Checkout = () => {
+    const searchParams = useSearchParams();
+    const [cartData, setCartData] = useState(null);
+
+    useEffect(() => {
+        const cartDataParam = searchParams.get('cartData');
+        console.log(searchParams);
+
+        if (cartDataParam) {
+            try {
+                const decodedCartData = JSON.parse(decodeURIComponent(cartDataParam));
+                setCartData(decodedCartData);
+            } catch (error) {
+                console.error("Error parsing cart data:", error);
+            }
+        }
+    }, [searchParams]);
 
   return (
     <>
