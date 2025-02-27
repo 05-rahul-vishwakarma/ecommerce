@@ -150,7 +150,7 @@ export default function PaymentBar() {
                                             className="w-12 text-center border border-gray-300 rounded"
                                         />
                                         <span className="px-1">x</span>
-                                        <span>${item.price || 0}.00</span>
+                                        <span>₹{item.price || 0}.00</span>
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +227,7 @@ export default function PaymentBar() {
                 </div>
                 <div className="total-cart-block pt-6 flex justify-between border-t border-gray-200">
                     <div className="heading5 text-xl font-bold text-gray-800">Total</div>
-                    <div className="heading5 total-cart text-xl font-bold text-purple-600">${totalAmount.toFixed(2)}</div>
+                    <div className="heading5 total-cart text-xl font-bold text-purple-600">₹{totalAmount.toFixed(2)}</div>
                 </div>
             </div>
 

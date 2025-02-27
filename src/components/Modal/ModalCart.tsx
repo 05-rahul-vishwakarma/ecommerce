@@ -78,12 +78,12 @@ const ModalCart = () => {
                                             <div className="name text-button">{product?.name}</div>
                                             <div className="flex items-center gap-2 mt-2">
                                                 <div className="product-price text-title">
-                                                    ${product?.price}.00
+                                                    ₹{product?.price}.00
                                                 </div>
                                                 {product?.discount && (
                                                     <div className="product-origin-price text-title text-purple2">
                                                         <del>
-                                                            $
+                                                            ₹
                                                             {(
                                                                 product?.price /
                                                                 (1 - product?.discount / 100)
@@ -182,7 +182,7 @@ const ModalCart = () => {
                                                             className="w-12 text-center border border-gray-300 rounded"
                                                         />
                                                         <span className="">x</span>
-                                                        ${product?.totalAmount}.00
+                                                        ₹{product?.totalAmount}.00
                                                     </div>
                                                 </div>
                                             </div>

@@ -57,11 +57,11 @@ const ModalWishlist = () => {
                       </div>
                       <div className="flex items-center gap-2 mt-2">
                         <div className="product-price text-title">
-                          ${productDetail?.price}.00
+                        ₹{productDetail?.price}.00
                         </div>
                         {productDetail?.originPrice && (
                           <div className="product-origin-price text-title text-purple2">
-                            <del>${productDetail?.originPrice}.00</del>
+                            <del>₹{productDetail?.originPrice}.00</del>
                           </div>
                         )}
                       </div>

@@ -50,9 +50,6 @@ const Product = ({ product }) => {
         }
     }
 
-    console.log(product,'product');
-    
-
 
     return (
         <div onClick={() =>
@@ -72,7 +69,6 @@ const Product = ({ product }) => {
                         Sale
                     </div>
                 )}
-
                 <div onClick={(e) => {
                     e.stopPropagation();
                     handleWishList(product);
@@ -175,11 +171,11 @@ const Product = ({ product }) => {
                     ))}
                 </div>
                 <div className="product-price-block flex items-center gap-2 flex-wrap mt-1 duration-300 relative z-[1]">
-                    <div className="product-price text-title">${product?.price}</div>
+                    <div className="product-price text-title">₹{product?.price}</div>
                     {product?.discount > 0 && (
                         <>
                             <div className="product-origin-price caption1 text-secondary2">
-                                <del>${product?.price + 10}</del>
+                                <del>₹{product?.price + 10}</del>
                             </div>
                             <div className="product-sale caption1 font-medium bg-green px-3 py-0.5 rounded-[5px] text-white">
                                 {product?.discount}% OFF

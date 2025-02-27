@@ -180,7 +180,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                   <Link
                     href="/"
                     className={` text-white text-button-uppercase duration-300 h-full flex items-center justify-center gap-1 
-                                            ${pathname.includes("/homepages")
+                        ${pathname.includes("/homepages")
                         ? "active"
                         : ""
                       }`}

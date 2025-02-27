@@ -149,7 +149,7 @@ export default function PaymentBar({ cartData }) {
                                             <span className="color capitalize">{item?.productDetails?.quantity == 0 ? <p className='text-[red]'> Out Of Stock </p> : item?.productDetails?.status}</span>
                                         </div>
                                         <div className="text-sm text-gray-500 mt-2">
-                                            <span className="font-semibold">Price:</span> ${item?.productDetails?.price || 0}
+                                            <span className="font-semibold">Price:</span> ₹{item?.productDetails?.price || 0}
                                         </div>
                                         <div className="text-sm text-gray-500 mt-2">
                                             <span className="font-semibold">Discount:</span> {item?.productDetails?.discount}%
@@ -164,7 +164,7 @@ export default function PaymentBar({ cartData }) {
                                             className="w-12 text-center border border-gray-300 rounded"
                                         />
                                         <span className="px-1">x</span>
-                                        <span>${(item?.productDetails?.price * (1 - item?.productDetails?.discount / 100)).toFixed(2)}</span>
+                                        <span>₹{(item?.productDetails?.price * (1 - item?.productDetails?.discount / 100)).toFixed(2)}</span>
                                     </div>
                                 </div>
                             </div>

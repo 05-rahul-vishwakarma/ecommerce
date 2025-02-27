@@ -38,7 +38,7 @@ const CartItem = ({ product }) => {
         <div className="text-title">{product?.productDetails?.[0]?.name}</div>
       </div>
       <div className="w-1/12 text-center text-title">
-        ${product.totalAmount}.00
+      ₹{product.totalAmount}.00
       </div>
       <div className="w-1/6 flex justify-center">
         <div className="quantity-block bg-surface p-3 flex items-center justify-between rounded-lg border border-line md:w-[100px] w-20">
@@ -48,7 +48,7 @@ const CartItem = ({ product }) => {
         </div>
       </div>
       <div className="w-1/6 text-center text-title">
-        ${product.totalAmount}.00
+      ₹{product.totalAmount}.00
       </div>
       <div
         onClick={() => removeProductFromCart(product?.PK, product?.SK)}
@@ -105,7 +105,7 @@ const Cart = () => {
                 <div className="heading5">Order Summary</div>
                 <div className="py-5 flex justify-between border-b border-line">
                   <div className="text-title">Subtotal</div>
-                  <div className="text-title">${subtotal}.00</div>
+                  <div className="text-title">₹{subtotal}.00</div>
                 </div>
                 <div className="py-5 flex justify-between border-b border-line">
                   <div className="text-title">Shipping</div>
@@ -129,7 +129,7 @@ const Cart = () => {
                     <div className="right">
                       {shippingOptions.map(({ id, price }) => (
                         <div key={id} className="text-on-surface-variant1 mt-1">
-                          ${price}.00
+                          ₹{price}.00
                         </div>
                       ))}
                     </div>
@@ -137,7 +137,7 @@ const Cart = () => {
                 </div>
                 <div className="pt-4 pb-4 flex justify-between">
                   <div className="heading5">Total</div>
-                  <div className="heading5">${subtotal}.00</div>
+                  <div className="heading5">₹{subtotal}.00</div>
                 </div>
                 <div className="flex flex-col items-center gap-y-4 mt-5">
                   <button
