@@ -128,7 +128,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
             thumbs={{ swiper: thumbsSwiper }}
             modules={[Thumbs, Autoplay]}
             className="mySwiper2 rounded-2xl overflow-hidden"
-            autoplay={{  // ADD AUTOPLAY HERE
+            autoplay={{  
               delay: 3000,
               disableOnInteraction: false,
             }}
@@ -136,7 +136,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
           >
             <SwiperSlide>
               <Image
-                src={activeImage || product.imageURLs[0]?.img}
+                src={activeImage || product?.imageURLs[0]?.img}
                 width={1000}
                 height={1000}
                 alt="Product Image"
@@ -155,7 +155,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
             modules={[Navigation, Thumbs, FreeMode]}
             className="mySwiper"
           >
-            {product.imageURLs.map((image, idx) => (
+            {product?.imageURLs?.map((image, idx) => (
               <SwiperSlide key={`thumb-${idx}`}>
                 <Image
                   src={image.img}
@@ -174,24 +174,24 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
         {/* Product Info Section */}
         <div className="product-info md:w-1/2 w-full lg:pl-16 md:pl-6">
           <div className="caption2 text-secondary2 font-semibold uppercase">
-            {product.productType}
+            {product?.productType}
           </div>
-          <h2 className="heading4 mt-1">{product.name}</h2>
+          <h2 className="heading4 mt-1">{product?.name}</h2>
 
           <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
-            <div className="product-price heading5">₹{product.price.toFixed(2)}</div>
+            <div className="product-price heading5">₹{product?.price?.toFixed(2)}</div>
             <div className="w-px h-4 bg-line"></div>
             <div className="product-origin-price font-normal text-purple2">
               <del>
-              ₹{(product.price / (1 - product.discount / 100)).toFixed(2)}
+              ₹{(product?.price / (1 - product?.discount / 100))?.toFixed(2)}
               </del>
             </div>
             <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
-              -{product.discount}%
+              -{product?.discount}%
             </div>
           </div>
 
-          <p className="desc text-secondary2 mt-3">{product.description}</p>
+          <p className="desc text-secondary2 mt-3">{product?.description}</p>
 
           <div className="list-action mt-6">
             {/* Color Selection */}
@@ -205,8 +205,8 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
                     onClick={() => handleActiveColor(item.color.name)}
                   >
                     <Image
-                      src={item.img}
-                      alt={item.color.name}
+                      src={item?.img}
+                      alt={item?.color?.name}
                       width={48}
                       height={48}
                       className="rounded-xl object-cover"
@@ -239,7 +239,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
                 <div className="text-title">Length:</div>
               </div>
               <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                {lengths.map((length: any) => (
+                {lengths?.map((length: any) => (
                   <button
                     key={length}
                     className={`size-button ${activeLength === length ? "active" : ""}`}
