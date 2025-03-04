@@ -5,6 +5,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { purchaseProduct } from '@/api/purchaseApis/purchasePost';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import PaymentComponent from '../Payment/Payment';
 
 export default function PaymentBar() {
     const [decodedData, setDecodedData] = useState([]);
@@ -231,13 +232,18 @@ export default function PaymentBar() {
                 </div>
             </div>
 
-            <button
+            <PaymentComponent amount={totalAmount} onSuccess={() => {
+                toast.success('Payment successful!');
+                router.push('/orders'); // or another appropriate page
+            }}/>
+
+            {/* <button
                 className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
                 onClick={handlePlaceOrder}
                 disabled={loading}
             >
                 {loading ? 'Placing Order...' : 'Place Order'}
-            </button>
+            </button> */}
         </div>
     );
 }

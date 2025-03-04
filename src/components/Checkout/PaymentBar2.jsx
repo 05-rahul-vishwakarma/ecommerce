@@ -5,6 +5,17 @@ import useCartStore from '@/globalStore/useCartStore';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import PaymentComponent from '../Payment/Payment'; // Make sure path is correct
+
+// Utility function to prevent errors
+const safeParseInt = (value) => {
+    try {
+        return parseInt(value, 10);
+    } catch (error) {
+        console.error("Error parsing integer:", error);
+        return 1; // Default value
+    }
+};
 
 export default function PaymentBar({ cartData }) {
     const [decodedData, setDecodedData] = useState([]);
@@ -39,7 +50,7 @@ export default function PaymentBar({ cartData }) {
         setDecodedData(prevData => {
             return prevData.map(item => {
                 if (item.PK === PK && item.SK === SK) {
-                    const parsedQty = parseInt(newQty, 10);
+                    const parsedQty = safeParseInt(newQty); // Use safeParseInt
                     return { ...item, qty: isNaN(parsedQty) ? 1 : Math.max(1, parsedQty) };
                 }
                 return item;
@@ -87,6 +98,11 @@ export default function PaymentBar({ cartData }) {
                 defaultSize = item.productDetails.size[0]; // Choose the first size as default
             }
 
+            // Calculate the discounted price for the item
+            const price = item.productDetails.price || 0;
+            const discount = item.productDetails.discount || 0;
+            const discountedPrice = price * (1 - discount / 100);
+
             return {
                 businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
                 productIds: [{
@@ -94,9 +110,10 @@ export default function PaymentBar({ cartData }) {
                     SK: item.SK,
                     quantity: item.qty,
                 }],
-                amount: item.productDetails.price * item.qty * 100,
+                amount: discountedPrice * item.qty * 100,  // Use discounted price and convert to paise
                 size: item?.selectedSizes || defaultSize, // Use the selected size or default size
-                color: item?.selectedColor || activeColors[item.PK + item.SK]
+                color: item?.selectedColor || activeColors[item.PK + item.SK],
+                productName: item?.productDetails?.name // Add product name for better logging/tracking
             };
         });
     }, [decodedData, activeColors]);
@@ -110,10 +127,34 @@ export default function PaymentBar({ cartData }) {
 
         try {
             // Simulate API Call
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+            // await new Promise((resolve) => setTimeout(resolve, 1000));
+
             console.log("Order Payload:", orderPayload);
-            toast.success('Order Placed Successfully!');
-            router.push('/orders');
+
+            // ** IMPORTANT: Integrate with your actual payment/order API here! **
+            //  This is where you'd send the orderPayload to your backend to process
+            //  the order and payment.  The example below is just a placeholder.
+
+            // Replace this with your actual API call to create the order
+            // const response = await fetch('/api/create-order', {  // Example API endpoint
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(orderPayload),
+            // });
+            //
+            // if (!response.ok) {
+            //     throw new Error('Failed to create order');
+            // }
+            //
+            // const orderData = await response.json();
+            // console.log("Order created:", orderData);
+            // toast.success('Order Placed Successfully!');
+            // router.push('/orders');
+
+            // Placeholder success:
+            toast.success('Order details logged to console (no actual order placed).');
 
         } catch (error) {
             console.error("Order Placement Error:", error);
@@ -143,6 +184,12 @@ export default function PaymentBar({ cartData }) {
                 <div className="list-product-checkout">
                     {decodedData?.map((item, index) => {
                         const { widths, lengths } = itemDetails[index];
+
+                        // Calculate discounted price for this specific item
+                        const price = item?.productDetails?.price || 0;
+                        const discount = item?.productDetails?.discount || 0;
+                        const discountedPrice = price * (1 - discount / 100);
+
 
                         return (
                             <div key={index} className="border-b border-gray-200 pb-6 mb-6">
@@ -180,7 +227,7 @@ export default function PaymentBar({ cartData }) {
                                                 className="w-12 text-center border border-gray-300 rounded"
                                             />
                                             <span className="px-1">x</span>
-                                            <span>₹{(item?.productDetails?.price * (1 - item?.productDetails?.discount / 100)).toFixed(2)}</span>
+                                            <span>₹{discountedPrice.toFixed(2)}</span> {/* Display discounted price */}
                                         </div>
                                     </div>
                                 </div>
@@ -207,40 +254,44 @@ export default function PaymentBar({ cartData }) {
                                     </div>
                                 </div>
 
-                                {/* Uncomment if you want to use width and length selection */}
-                                <div className="choose-size mt-5">
-                                    <div className="heading flex items-center justify-between">
-                                        <div className="text-title">Width:</div>
+                                {/* Width and Length selection - consider making these dynamic as well! */}
+                                {widths.length > 0 && (
+                                    <div className="choose-size mt-5">
+                                        <div className="heading flex items-center justify-between">
+                                            <div className="text-title">Width:</div>
+                                        </div>
+                                        <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                                            {widths.map((width) => (
+                                                <button
+                                                    key={width}
+                                                    className={`size-button ${activeWidth === width ? "active" : ""}`}
+                                                    onClick={() => setActiveWidth(width)}
+                                                >
+                                                    {width}
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
-                                    <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                                        {widths.map((width) => (
-                                            <button
-                                                key={width}
-                                                className={`size-button ${activeWidth === width ? "active" : ""}`}
-                                                onClick={() => setActiveWidth(width)}
-                                            >
-                                                {width}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
+                                )}
 
-                                <div className="choose-size my-5">
-                                    <div className="heading flex items-center justify-between">
-                                        <div className="text-title">Length:</div>
+                                {lengths.length > 0 && (
+                                    <div className="choose-size my-5">
+                                        <div className="heading flex items-center justify-between">
+                                            <div className="text-title">Length:</div>
+                                        </div>
+                                        <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                                            {lengths.map((length) => (
+                                                <button
+                                                    key={length}
+                                                    className={`size-button ${activeLength === length ? "active" : ""}`}
+                                                    onClick={() => setActiveLength(length)}
+                                                >
+                                                    {length}
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
-                                    <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                                        {lengths.map((length) => (
-                                            <button
-                                                key={length}
-                                                className={`size-button ${activeLength === length ? "active" : ""}`}
-                                                onClick={() => setActiveLength(length)}
-                                            >
-                                                {length}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
+                                )}
 
                                 <div className="flex justify-end w-full text-[red]">
                                     <div
@@ -259,13 +310,19 @@ export default function PaymentBar({ cartData }) {
                     <div className="heading5 total-cart text-xl font-bold text-purple-600">₹ {totalAmount.toFixed(2)}</div>
                 </div>
             </div>
-            <button
+            {/*  Passing the totalAmount to the PaymentComponent as a prop  */}
+            <PaymentComponent amount={totalAmount} onSuccess={() => {
+                toast.success('Payment successful!');
+                router.push('/orders'); // or another appropriate page
+            }}/>
+
+            {/* <button
                 className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
                 onClick={handlePlaceOrder}
                 disabled={loading}
             >
                 {loading ? 'Placing Order...' : 'Place Order'}
-            </button>
+            </button> */}
         </div>
     );
 }
