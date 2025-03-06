@@ -81,13 +81,13 @@ const TopNavOne: React.FC<Props> = ({ props, slogan }) => {
               {slogan}
             </div>
             <div className="right-content flex items-center gap-5 max-md:hidden">
-              <Link href={"https://www.facebook.com/"} target="_blank">
+              <Link href={"https://www.facebook.com/share/17Sdc7UBVT/?mibextid=wwXIfr"} target="_blank">
                 <i className="icon-facebook text-secondary "></i>
               </Link>
-              <Link href={"https://www.instagram.com/"} target="_blank">
+              <Link href={"https://www.instagram.com/theribbonpack_?igsh=MWxxbnhrZjZ0bnJ3/"} target="_blank">
                 <i className="icon-instagram text-secondary "></i>
               </Link>
-              <Link href={"https://www.youtube.com/"} target="_blank">
+              <Link href={"https://youtube.com/@theribbonpack3241?si=0VSECWeGhEjo9OYc"} target="_blank">
                 <i className="icon-youtube text-secondary "></i>
               </Link>
             </div>

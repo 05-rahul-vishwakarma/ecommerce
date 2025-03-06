@@ -24,15 +24,15 @@ const Footer = () => {
                   <div className="flex flex-col ">
                     <span className="pt-px caption1">
                       <a
-                        href="https://mail.google.com/mail/?view=cm&fs=1&to=salestheribbonpack@gmail.com"
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=Support@theribbonpack.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="has-line-before text-secondary"
                       >
-                        salestheribbonpack@gmail.com
+                        Support@theribbonpack.com
                       </a>
                     </span>
-                    <span className="mt-3 caption1">1-333-345-6868</span>
+                    <span className="mt-3 caption1">+91 9821472627</span>
                     <span className="mt-3 pt-px caption1">
                       Shop No-105 1st Floor Aggarwal Tower Pocket O & P Dilshad
                       Garden Near in font of Punjab National Bank  Delhi 110095
@@ -138,10 +138,10 @@ const Footer = () => {
                       </Link>
                     </div>
 
-                    <Link href={"https://www.facebook.com/"} target="_blank">
+                    <Link href={"https://www.facebook.com/share/17Sdc7UBVT/?mibextid=wwXIfr"} target="_blank">
                       <div className="icon-facebook text-2xl text-custom-purple-color"></div>
                     </Link>
-                    <Link href={"https://www.instagram.com/"} target="_blank">
+                    <Link href={"https://www.instagram.com/theribbonpack_?igsh=MWxxbnhrZjZ0bnJ3"} target="_blank">
                       <div className="icon-instagram text-2xl text-custom-purple-color"></div>
                     </Link>
 
