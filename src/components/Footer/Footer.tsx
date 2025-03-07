@@ -144,6 +144,9 @@ const Footer = () => {
                     <Link href={"https://www.instagram.com/theribbonpack_?igsh=MWxxbnhrZjZ0bnJ3"} target="_blank">
                       <div className="icon-instagram text-2xl text-custom-purple-color"></div>
                     </Link>
+                    <Link href={"https://wa.me/919821472627"} target="_blank">
+                    <Icon.WhatsappLogo className="text-2xl text-custom-purple-color" />
+                    </Link>
 
                     {/*  */}
                   </div>
