@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import Cookies from "js-cookie";
 
 const PaymentComponent = ({ amount, onSuccess }) => {
+    console.log(amount,'amount from the payment component');
+    
     const [loading, setLoading] = useState(false);
     const router = useRouter(); // Use useRouter to get the router
     const accessToken = Cookies.get('accessToken');

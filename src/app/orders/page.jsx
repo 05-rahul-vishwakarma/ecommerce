@@ -51,8 +51,8 @@ export default function OrdersPage() {
           <p className="text-gray-500 text-center">You have no orders yet.</p>
         ) : (
           <div className="space-y-6">
-            {orders.map((order) => (
-              <DefaultOrder key={order.id} order={order} />
+            {orders.map((order,i) => (
+              <DefaultOrder key={i} order={order} />
             ))}
           </div>
         )}
