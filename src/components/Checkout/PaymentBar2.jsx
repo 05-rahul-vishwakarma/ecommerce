@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import PaymentComponent from '../Payment/Payment'; // Make sure path is correct
+import Cookies from 'js-cookie';
 
 // Utility function to prevent errors
 const safeParseInt = (value) => {
@@ -26,6 +27,11 @@ export default function PaymentBar({ cartData }) {
     const [loading, setLoading] = useState(false);
     const [activeWidth, setActiveWidth] = useState(null);
     const [activeLength, setActiveLength] = useState(null);
+    const [showPayment, setShowPayment] = useState(false);
+    const [paymentCallback, setPaymentCallback] = useState({
+        onSuccess: () => {},
+        onError: () => {}
+    });
 
     // Initialize decodedData from props
     useEffect(() => {
@@ -123,42 +129,54 @@ export default function PaymentBar({ cartData }) {
         if (loading) return;
         setLoading(true);
 
-        const orderPayload = generateOrderPayloads();
-
         try {
-            // Simulate API Call
-            // await new Promise((resolve) => setTimeout(resolve, 1000));
+            const orderPayloads = generateOrderPayloads();
+            
+            // Show payment component and wait for payment completion
+            const paymentResult = await new Promise((resolve, reject) => {
+                setShowPayment(true);
+                setPaymentCallback({
+                    onSuccess: (response) => resolve(response),
+                    onError: (error) => reject(error)
+                });
+            });
 
-            console.log("Order Payload:", orderPayload);
+            // If payment is successful, proceed with order placement
+            if (paymentResult) {
+                // Place order for each item
+                for (const payload of orderPayloads) {
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/orders/create`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${Cookies.get('accessToken')}`
+                        },
+                        body: JSON.stringify({
+                            ...payload,
+                            paymentId: paymentResult.razorpay_payment_id,
+                            orderId: paymentResult.razorpay_order_id
+                        })
+                    });
 
-            // ** IMPORTANT: Integrate with your actual payment/order API here! **
-            //  This is where you'd send the orderPayload to your backend to process
-            //  the order and payment.  The example below is just a placeholder.
+                    if (!response.ok) {
+                        throw new Error('Failed to place order');
+                    }
 
-            // Replace this with your actual API call to create the order
-            // const response = await fetch('/api/create-order', {  // Example API endpoint
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(orderPayload),
-            // });
-            //
-            // if (!response.ok) {
-            //     throw new Error('Failed to create order');
-            // }
-            //
-            // const orderData = await response.json();
-            // console.log("Order created:", orderData);
-            // toast.success('Order Placed Successfully!');
-            // router.push('/orders');
+                    // Remove item from cart after successful order placement
+                    const { PK, SK } = payload.productIds[0];
+                    removeProductFromCart(PK, SK);
+                }
 
-            // Placeholder success:
-            toast.success('Order details logged to console (no actual order placed).');
-
+                // Clear local storage
+                localStorage.removeItem('checkoutProduct');
+                
+                toast.success('Order placed successfully!');
+                router.push('/orders');
+            }
         } catch (error) {
             console.error("Order Placement Error:", error);
-            toast.error('Failed to place order. Please try again.');
+            toast.error(error.message || 'Failed to place order. Please try again.');
+            setShowPayment(false);
         } finally {
             setLoading(false);
         }
@@ -310,19 +328,29 @@ export default function PaymentBar({ cartData }) {
                     <div className="heading5 total-cart text-xl font-bold text-purple-600">₹ {totalAmount.toFixed(2)}</div>
                 </div>
             </div>
-            {/*  Passing the totalAmount to the PaymentComponent as a prop  */}
-            <PaymentComponent amount={totalAmount} onSuccess={() => {
-                toast.success('Payment successful!');
-                router.push('/orders'); // or another appropriate page
-            }}/>
 
-            {/* <button
-                className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
-                onClick={handlePlaceOrder}
-                disabled={loading}
-            >
-                {loading ? 'Placing Order...' : 'Place Order'}
-            </button> */}
+            {showPayment ? (
+                <PaymentComponent 
+                    amount={totalAmount} 
+                    onSuccess={(response) => {
+                        paymentCallback.onSuccess(response);
+                        setShowPayment(false);
+                    }}
+                    onError={(error) => {
+                        paymentCallback.onError(error);
+                        setShowPayment(false);
+                    }}
+                    isMultipleProducts={true}
+                />
+            ) : (
+                <button
+                    className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
+                    onClick={handlePlaceOrder}
+                    disabled={loading}
+                >
+                    {loading ? 'Processing...' : 'Place Order'}
+                </button>
+            )}
         </div>
     );
 }

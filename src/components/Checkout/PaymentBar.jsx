@@ -66,22 +66,35 @@ export default function PaymentBar() {
                 quantity: item.itemQty,
             })),
             amount: totalAmount * 100,
-            size: `Width: ${decodedData[0]?.selectedWidth || 'N/A'}, Length: ${decodedData[0]?.selectedLength || 'N/A'}`, //Concatenate width and length
+            size: `Width: ${decodedData[0]?.selectedWidth || 'N/A'}, Length: ${decodedData[0]?.selectedLength || 'N/A'}`,
             color: decodedData[0]?.selectedColor || 'colorname'
         };
 
         try {
+            // First handle the payment
+            const paymentResult = await new Promise((resolve, reject) => {
+                setShowPayment(true);
+                setPaymentCallback({
+                    onSuccess: () => resolve(true),
+                    onError: (error) => reject(error)
+                });
+            });
+
+            if (!paymentResult) {
+                throw new Error('Payment failed or was cancelled');
+            }
+
+            // If payment is successful, proceed with order placement
             const response = await purchaseProduct(orderPayload);
             if (response?.response?.data?.statusCode === 200) {
-                toast.success('Purchase successful');
+                toast.success('Order placed successfully');
                 localStorage.removeItem('checkoutProduct');
                 decodedData.forEach(item => {
                     removeProductFromCart(item.PK, item.SK);
                 });
-
                 router.push('/orders');
             } else {
-                const errorMessage = response?.response?.data?.message || 'Purchase failed. Please try again.';
+                const errorMessage = response?.response?.data?.message || 'Order placement failed. Please contact support.';
                 throw new Error(errorMessage);
             }
         } catch (error) {
@@ -89,10 +102,18 @@ export default function PaymentBar() {
                 error.message ||
                 'An unexpected error occurred';
             toast.error(errorMessage);
+            setShowPayment(false);
         } finally {
             setLoading(false);
         }
     };
+
+    // Add state for payment handling
+    const [showPayment, setShowPayment] = useState(false);
+    const [paymentCallback, setPaymentCallback] = useState({
+        onSuccess: () => {},
+        onError: () => {}
+    });
 
     const widths = useMemo(() => {
         const widthInfo = decodedData?.[0]?.additionalInformation?.find((info) => info.key === "width");
@@ -232,18 +253,28 @@ export default function PaymentBar() {
                 </div>
             </div>
 
-            <PaymentComponent amount={totalAmount} onSuccess={() => {
-                toast.success('Payment successful!');
-                router.push('/orders'); // or another appropriate page
-            }}/>
-
-            {/* <button
-                className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
-                onClick={handlePlaceOrder}
-                disabled={loading}
-            >
-                {loading ? 'Placing Order...' : 'Place Order'}
-            </button> */}
+            {showPayment ? (
+                <PaymentComponent 
+                    amount={totalAmount} 
+                    onSuccess={() => {
+                        paymentCallback.onSuccess();
+                        setShowPayment(false);
+                    }}
+                    onError={(error) => {
+                        paymentCallback.onError(error);
+                        setShowPayment(false);
+                    }}
+                    isMultipleProducts={false}
+                />
+            ) : (
+                <button
+                    className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
+                    onClick={handlePlaceOrder}
+                    disabled={loading}
+                >
+                    {loading ? 'Processing...' : 'Place Order'}
+                </button>
+            )}
         </div>
     );
 }

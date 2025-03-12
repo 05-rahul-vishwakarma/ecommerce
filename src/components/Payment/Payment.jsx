@@ -7,13 +7,13 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import Cookies from "js-cookie";
 
-const PaymentComponent = ({ amount, onSuccess }) => {
+const PaymentComponent = ({ amount, onSuccess, onError, isMultipleProducts = false }) => {
     console.log(amount,'amount from the payment component');
     
     const [loading, setLoading] = useState(false);
-    const router = useRouter(); // Use useRouter to get the router
+    const router = useRouter();
     const accessToken = Cookies.get('accessToken');
-    const [userDetails, setUserDetails] = useState(null); // State to store user details
+    const [userDetails, setUserDetails] = useState(null);
 
     // Function to fetch user profile
     const fetchUserProfile = async () => {
@@ -76,16 +76,19 @@ const PaymentComponent = ({ amount, onSuccess }) => {
         setLoading(true);
 
         try {
-            // 1. Create an order on your server
-            const orderResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/payment/CreateOrder`, { // Use the correct API endpoint
+            // Ensure amount is properly formatted for Razorpay (in paise)
+            const amountInPaise = Math.round(amount * 100);
+
+            const orderResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/payment/CreateOrder`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${accessToken}`,
                 },
                 body: JSON.stringify({
-                    amount: amount, // Send the actual amount
+                    amount: amountInPaise,
                     currency: 'INR',
+                    isMultipleProducts: isMultipleProducts // Add this flag to backend
                 }),
             });
 
@@ -95,79 +98,126 @@ const PaymentComponent = ({ amount, onSuccess }) => {
             }
 
             const orderData = await orderResponse.json();
-            const { order, key } = orderData.data; // Extract order and key from the response
+            const { order, key } = orderData.data;
 
-            // 2. Configure Razorpay options
             const options = {
-                key: key, // Get the key from your server
-                amount: order.amount, //  Amount in paise
+                key: key,
+                amount: order.amount,
                 currency: order.currency,
                 name: 'The Ribbon Pack',
-                description: 'Payment for your order',
-                order_id: order.id, // Get the order ID from your server
+                description: isMultipleProducts ? 'Payment for multiple items' : 'Payment for your order',
+                order_id: order.id,
                 handler: async function (response) {
-                    // 3. Verify the payment on your server
-                    const verificationResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/payment/VerifyPayment`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Authorization: `Bearer ${accessToken}`,
-                        },
-                        body: JSON.stringify(response),
-                    });
+                    try {
+                        // Ensure we have a valid payment response
+                        if (!response.razorpay_payment_id || !response.razorpay_order_id || !response.razorpay_signature) {
+                            throw new Error('Invalid payment response');
+                        }
 
-                    if (!verificationResponse.ok) {
-                        const errorData = await verificationResponse.json();
-                        throw new Error(errorData.message || 'Payment verification failed');
-                    }
+                        const verificationResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/payment/VerifyPayment`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Authorization: `Bearer ${accessToken}`,
+                            },
+                            body: JSON.stringify({
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_signature: response.razorpay_signature,
+                                isMultipleProducts: isMultipleProducts
+                            }),
+                        });
 
-                    // Payment is successful
-                    toast.success('Payment successful!');
-                    if (onSuccess) {
-                        onSuccess(); // Call the onSuccess callback if provided
-                    } else {
-                        router.push('/orders');
+                        if (!verificationResponse.ok) {
+                            const errorData = await verificationResponse.json();
+                            throw new Error(errorData.message || 'Payment verification failed');
+                        }
+
+                        const verificationData = await verificationResponse.json();
+                        if (verificationData.statusCode !== 200) {
+                            throw new Error(verificationData.message || 'Payment verification failed');
+                        }
+
+                        toast.success('Payment successful!');
+                        if (onSuccess) {
+                            onSuccess(response);
+                        }
+                    } catch (error) {
+                        console.error("Payment verification failed:", error);
+                        toast.error(error.message || 'Payment verification failed');
+                        if (onError) {
+                            onError(error);
+                        }
                     }
                 },
-                prefill: {  // Optional, but good for UX
-                    name: userDetails?.firstName || userDetails?.phoneNo || '', // Use user's name from profile
-                    email: '', //  Add email from profile if available
-                    contact: userDetails?.phoneNo || '', // Use user's phone number from profile
+                prefill: {
+                    name: userDetails?.firstName || userDetails?.phoneNo || '',
+                    email: userDetails?.email || '',
+                    contact: userDetails?.phoneNo || '',
                 },
                 theme: {
-                    color: '#F37254',
+                    color: '#592dbb',
                 },
+                modal: {
+                    ondismiss: function() {
+                        if (onError) {
+                            onError(new Error('Payment cancelled by user'));
+                        }
+                    },
+                    escape: false,
+                    confirm_close: true
+                },
+                retry: {
+                    enabled: true,
+                    max_count: 3
+                },
+                notes: {
+                    isMultipleProducts: isMultipleProducts ? 'true' : 'false'
+                }
             };
 
-            // 4. Open Razorpay checkout
             const razorpay = new window.Razorpay(options);
+            
+            // Add event listeners before opening the payment
+            razorpay.on('payment.failed', function (response) {
+                const error = response.error || {};
+                const errorMessage = error.description || error.reason || error.message || 'Payment failed';
+                console.error("Payment failed:", error);
+                toast.error(errorMessage);
+                if (onError) {
+                    onError(new Error(errorMessage));
+                }
+            });
+
+            razorpay.on('payment.error', function (error) {
+                const errorMessage = error?.description || error?.message || 'Payment error occurred';
+                console.error("Payment error:", error);
+                toast.error(errorMessage);
+                if (onError) {
+                    onError(new Error(errorMessage));
+                }
+            });
+
+            // Open the payment modal
             razorpay.open();
 
-            razorpay.on('payment.failed', function (response) {
-                console.error("Payment failed:", response);
-                toast.error('Payment failed. Please try again.');
-                setLoading(false);  // Ensure loading is set to false on failure
-            });
         } catch (error) {
             console.error("Payment Error:", error);
-            toast.error(error.message || 'Failed to initiate payment. Please try again.');
-            setLoading(false);  // Ensure loading is set to false on failure
+            toast.error(error.message || 'Failed to initiate payment');
+            if (onError) {
+                onError(error);
+            }
         } finally {
             setLoading(false);
         }
     };
 
-    return (
-        <div>
-            <button
-                onClick={handlePayment}
-                disabled={loading}
-                className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
-            >
-                {loading ? 'Processing Payment...' : `Pay ₹${amount.toFixed(2)}`}
-            </button>
-        </div>
-    );
+    // Automatically trigger payment when component mounts
+    useEffect(() => {
+        handlePayment();
+    }, []); // Empty dependency array means this runs once when component mounts
+
+    return null; // No need for a button as payment is triggered automatically
 };
 
 export default PaymentComponent;
