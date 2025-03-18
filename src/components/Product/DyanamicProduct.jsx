@@ -19,7 +19,7 @@ import { handleAddToCart } from "@/services/carts";
 SwiperCore.use([Navigation, Thumbs]);
 
 export default function DyanamicProduct({ productMain }) {
-  const swiperRef = useRef(null); 
+  const swiperRef = useRef(null);
   const [productImage, setProductImage] = useState();
   const [openPopupImg, setOpenPopupImg] = useState(false);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -255,9 +255,9 @@ export default function DyanamicProduct({ productMain }) {
           <div className="product-infor md:w-1/2 w-full lg:pl-[15px] md:pl-2">
             <div className="flex justify-between">
               <div>
-                <div className="caption2 text-secondary font-semibold uppercase">
+                {/* <div className="caption2 text-secondary font-semibold uppercase">
                   {products?.businessType}
-                </div>
+                </div> */}
                 <div className="heading4 mt-1">{products?.name}</div>
               </div>
               <div
@@ -272,17 +272,24 @@ export default function DyanamicProduct({ productMain }) {
               <span className="caption1 text-secondary">(1.234 reviews)</span>
             </div> */}
 
+            <div className="text-sm text-gray-500  flex">
+              <span className="size capitalize">{products?.unit || "No Unit"}</span>
+              <span>/</span>
+              <span className="color capitalize">{products?.quantity == 0 ? <p className='text-[red]'> Out Of Stock </p> : products?.status}</span>
+            </div>
+
             <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
               <div className="product-price heading5">₹{products?.price.toFixed(2)}</div>
               <div className="w-px h-4 bg-line"></div>
               <div className="product-origin-price font-normal text-purple2">
                 <del>
-                ₹{(products?.price / (1 - products?.discount / 100)).toFixed(2)}
+                  ₹{(products?.price / (1 - products?.discount / 100)).toFixed(2)}
                 </del>
               </div>
               <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
                 -{products?.discount}%
               </div>
+
             </div>
 
             <div className="desc text-secondary mt-3">

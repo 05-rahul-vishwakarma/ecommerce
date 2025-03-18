@@ -18,7 +18,6 @@ const CheckoutContent = ({ params }) => {
 
     useEffect(() => {
         if (cartId) {
-            // Fetch cart data from sessionStorage
             const data = sessionStorage.getItem(cartId);
             if (data) {
                 setCartData(JSON.parse(data));

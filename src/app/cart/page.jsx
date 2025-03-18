@@ -107,7 +107,7 @@ const Cart = () => {
                   <div className="text-title">Subtotal</div>
                   <div className="text-title">₹{subtotal}.00</div>
                 </div>
-                <div className="py-5 flex justify-between border-b border-line">
+                {/* <div className="py-5 flex justify-between border-b border-line">
                   <div className="text-title">Shipping</div>
                   <div className="choose-type flex gap-12">
                     <div className="left">
@@ -134,7 +134,7 @@ const Cart = () => {
                       ))}
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="pt-4 pb-4 flex justify-between">
                   <div className="heading5">Total</div>
                   <div className="heading5">₹{subtotal}.00</div>

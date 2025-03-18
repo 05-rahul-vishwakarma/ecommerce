@@ -1,340 +1,322 @@
-<div className="shop-product breadcrumb1 lg:py-20 md:py-14 py-10">
-  <div className="container">
-    <div className="flex max-md:flex-wrap max-md:flex-col-reverse gap-y-8">
-      <div className="sidebar lg:w-1/4 md:w-1/3 w-full md:pr-12">
-        <div className="filter-type pb-8 border-b border-line">
-          <div className="heading6">Products Type</div>
-          <div className="list-type mt-4">
-            {[
-              "Foil Printed Ribbon",
-              "Embossed Satin Ribbon",
-              "Custom Printed Ribbon",
-              "Cotton Printed Ribbon",
-              "Digital Printed Ribbon",
-              "Grossgrain Printed Ribbon",
-              "Silk Ribbon",
-              "Traditional Ribbon",
-            ]?.map((item, index) => (
-              <div
-                key={index}
-                className={`item flex items-center justify-between cursor-pointer ${
-                  dataType === item ? "active" : ""
-                }`}
-                onClick={() => handleType(item)}
-              >
-                <div className="text-secondary has-line-before capitalize">
-                  {item}
-                </div>
-                <div className="text-purple2">
-                  (
-                  {
-                    data.filter(
-                      (dataItem) =>
-                        dataItem.type === item &&
-                        dataItem.category === "fashion"
-                    ).length
-                  }
-                  )
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="filter-size pb-8 border-b border-line  mt-8">
-          <div className="heading6">Size</div>
-          <div className="list-size flex items-center flex-wrap gap-3 gap-y-4 mt-4 ">
-            {["XS", "S", "M", "L", "XL", "2XL", "3XL"]?.map((item, index) => (
-              <div
-                key={index}
-                className={`size-item text-button w-[44px] h-[44px] flex items-center justify-center rounded-full border border-purple   ${
-                  size === item ? "active" : ""
-                }`}
-                onClick={() => handleSize(item)}
-              >
-                {item}
-              </div>
-            ))}
-            <div
-              className={`size-item text-button px-4 py-2 flex items-center justify-center rounded-full border border-purple ${
-                size === "freesize" ? "active" : ""
-              }`}
-              onClick={() => handleSize("freesize")}
-            >
-              Freesize
-            </div>
-          </div>
-        </div>
-        <div className="filter-price pb-8 border-b border-line mt-8">
-          <div className="heading6">Price Range</div>
-          <Slider
-            range
-            defaultValue={[0, 100]}
-            min={0}
-            max={100}
-            onChange={handlePriceChange}
-            className="mt-5"
-          />
-          <div className="price-block flex items-center justify-between flex-wrap mt-4">
-            <div className="min flex items-center gap-1">
-              <div>Min price:</div>
-              <div className="price-min">
-                $<span>{priceRange.min}</span>
-              </div>
-            </div>
-            <div className="min flex items-center gap-1">
-              <div>Max price:</div>
-              <div className="price-max">
-                $<span>{priceRange.max}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="filter-color pb-8 border-b border-line mt-8">
-          <div className="heading6">colors</div>
-          <div className="list-color flex items-center flex-wrap gap-3 gap-y-4 mt-4">
-            <div
-              className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${
-                color === "pink" ? "active" : ""
-              }`}
-              onClick={() => handleColor("pink")}
-            >
-              <div className="color bg-[#F4C5BF] w-5 h-5 rounded-full"></div>
-              <div className="caption1 capitalize">pink</div>
-            </div>
-            <div
-              className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${
-                color === "red" ? "active" : ""
-              }`}
-              onClick={() => handleColor("red")}
-            >
-              <div className="color bg-red w-5 h-5 rounded-full"></div>
-              <div className="caption1 capitalize">red</div>
-            </div>
-            <div
-              className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${
-                color === "green" ? "active" : ""
-              }`}
-              onClick={() => handleColor("green")}
-            >
-              <div className="color bg-green w-5 h-5 rounded-full"></div>
-              <div className="caption1 capitalize">green</div>
-            </div>
-            <div
-              className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${
-                color === "yellow" ? "active" : ""
-              }`}
-              onClick={() => handleColor("yellow")}
-            >
-              <div className="color bg-yellow w-5 h-5 rounded-full"></div>
-              <div className="caption1 capitalize">yellow</div>
-            </div>
-            <div
-              className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${
-                color === "purple" ? "active" : ""
-              }`}
-              onClick={() => handleColor("purple")}
-            >
-              <div className="color bg-purple w-5 h-5 rounded-full"></div>
-              <div className="caption1 capitalize">purple</div>
-            </div>
-            <div
-              className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${
-                color === "black" ? "active" : ""
-              }`}
-              onClick={() => handleColor("black")}
-            >
-              <div className="color bg-black w-5 h-5 rounded-full"></div>
-              <div className="caption1 capitalize">black</div>
-            </div>
-            <div
-              className={`color-item px-3 py-[5px] flex items-center justify-center gap-2 rounded-full border border-line ${
-                color === "white" ? "active" : ""
-              }`}
-              onClick={() => handleColor("white")}
-            >
-              <div className="color bg-[#F6EFDD] w-5 h-5 rounded-full"></div>
-              <div className="caption1 capitalize">white</div>
-            </div>
-          </div>
-        </div>
-        {/* <div className="filter-brand mt-8">
-                        <div className="heading6">Brands</div>
-                        <div className="list-brand mt-4">
-                            {['adidas', 'hermes', 'zara', 'nike', 'gucci'].map((item, index) => (
-                                <div key={index} className="brand-item flex items-center justify-between">
-                                    <div className="left flex items-center cursor-pointer">
-                                        <div className="block-input">
-                                            <input
-                                                type="checkbox"
-                                                name={item}
-                                                id={item}
-                                                checked={brand === item}
-                                                onChange={() => handleBrand(item)} />
-                                            <Icon.CheckSquare size={20} weight='fill' className='icon-checkbox' />
-                                        </div>
-                                        <label htmlFor={item} className="brand-name capitalize pl-2 cursor-pointer">{item}</label>
-                                    </div>
-                                    <div className='text-purple2'>
-                                        ({data.filter(dataItem => dataItem.brand === item && dataItem.category === 'fashion').length})
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div> */}
-      </div>
+"use client";
 
-      <div className="list-product-block lg:w-3/4 md:w-2/3 w-full md:pl-3">
-        <div className="hidden">
-          <div className="filter-heading flex items-center justify-between gap-5 flex-wrap">
-            <div className="left flex has-line items-center flex-wrap gap-5">
-              <div className="choose-layout flex items-center gap-2">
-                <div className="item three-col w-8 h-8 border border-line rounded flex items-center justify-center cursor-pointer active">
-                  <div className="flex items-center gap-0.5">
-                    <span className="w-[3px] h-4 bg-secondary2 rounded-sm"></span>
-                    <span className="w-[3px] h-4 bg-secondary2 rounded-sm"></span>
-                    <span className="w-[3px] h-4 bg-secondary2 rounded-sm"></span>
-                  </div>
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import useCartStore from '@/globalStore/useCartStore';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
+import PaymentComponent from '../Payment/Payment'; // Ensure the path is correct
+import { purchaseProduct } from '@/api/purchaseApis/purchasePost';
+
+// Utility function to prevent errors
+const safeParseInt = (value) => {
+    try {
+        return parseInt(value, 10);
+    } catch (error) {
+        console.error("Error parsing integer:", error);
+        return 1; // Default value
+    }
+};
+
+// Reusable function to calculate discounted price
+const calculateDiscountedPrice = (price, discount, qty) => {
+    const discountedPrice = price * (1 - discount / 100);
+    return discountedPrice * qty;
+};
+
+export default function PaymentBar({ cartData }) {
+    const [decodedData, setDecodedData] = useState([]);
+    const [activeColors, setActiveColors] = useState({});
+    const [activeImages, setActiveImages] = useState({});
+    const { removeProductFromCart } = useCartStore();
+    const router = useRouter();
+    const [loading, setLoading] = useState(false);
+    const [showPayment, setShowPayment] = useState(false);
+    const [paymentCallback, setPaymentCallback] = useState({
+        onSuccess: () => { },
+        onError: () => { }
+    });
+
+    // Initialize decodedData from props
+    useEffect(() => {
+        if (cartData) {
+            setDecodedData(cartData);
+        }
+    }, [cartData]);
+
+    // Calculate total amount
+    const totalAmount = useMemo(() => {
+        return decodedData.reduce((total, item) => {
+            const price = parseFloat(item.productDetails.price) || 0;
+            const discount = parseFloat(item.productDetails.discount) || 0;
+            const qty = parseInt(item.qty) || 1;
+            return total + calculateDiscountedPrice(price, discount, qty);
+        }, 0);
+    }, [decodedData]);
+
+    // Update cart item quantity
+    const updateCartItemQty = useCallback((PK, SK, newQty) => {
+        setDecodedData(prevData => prevData.map(item =>
+            item.PK === PK && item.SK === SK
+                ? { ...item, qty: Math.max(1, safeParseInt(newQty)) }
+                : item
+        ));
+    }, []);
+
+    // Handle remove item from cart
+    const handleRemoveFromCart = useCallback((PK, SK) => {
+        setDecodedData(prevData => prevData.filter(item => !(item.PK === PK && item.SK === SK)));
+        removeProductFromCart(PK, SK);
+        toast.success('Item removed from cart successfully!');
+    }, [removeProductFromCart]);
+
+    // Handle color selection
+    const handleColorSelection = useCallback((PK, SK, colorName, imageUrl) => {
+        setActiveColors(prevState => ({ ...prevState, [PK + SK]: colorName }));
+        setActiveImages(prevState => ({ ...prevState, [PK + SK]: imageUrl }));
+        setDecodedData(prevData => prevData.map(item =>
+            item.PK === PK && item.SK === SK
+                ? { ...item, selectedColor: colorName, img: imageUrl }
+                : item
+        ));
+    }, []);
+
+    // Generate order payload
+    const generateOrderPayloads = useCallback(() => {
+        return decodedData.map(item => {
+            const price = parseFloat(item.productDetails.price) || 0;
+            const discount = parseFloat(item.productDetails.discount) || 0;
+            const qty = parseInt(item.qty) || 1;
+            const finalAmount = Math.round(calculateDiscountedPrice(price, discount, qty) * 100); 
+
+            return {
+                businessType: process.env.NEXT_PUBLIC_BUSINESS_NAME,
+                productIds: [{
+                    PK: item?.productId?.PK,
+                    SK: item?.productId?.SK,
+                    quantity: qty,
+                }],
+                amount: finalAmount,
+            };
+        });
+    }, [decodedData]);
+
+    // Place order handler
+    const handlePlaceOrder = async () => {
+        if (loading) return;
+        setLoading(true);
+
+        try {
+            const orderPayloads = generateOrderPayloads();
+
+            // Validate cart data
+            if (orderPayloads.length === 0) {
+                throw new Error('Your cart is empty. Please add items to proceed.');
+            }
+
+            const paymentResult = await new Promise((resolve, reject) => {
+                setShowPayment(true);
+                setPaymentCallback({
+                    onSuccess: (response) => resolve(response),
+                    onError: (error) => reject(error)
+                });
+            });
+
+            if (paymentResult) {
+                for (const payload of orderPayloads) {
+                    const response = await purchaseProduct(payload);
+
+                    if (response?.response?.data?.statusCode === 200) {
+                        const { PK, SK } = payload.productIds[0];
+                        removeProductFromCart(PK, SK);
+                    } else {
+                        throw new Error(response?.response?.data?.message || 'Failed to place order');
+                    }
+                }
+
+                localStorage.removeItem('checkoutProduct');
+                toast.success('Order placed successfully! Redirecting to orders page...');
+                router.push('/orders');
+            }
+        } catch (error) {
+            console.error("Order Placement Error:", error);
+            toast.error(error.message || 'Failed to place order. Please try again.');
+        } finally {
+            setLoading(false);
+            setShowPayment(false);
+        }
+    };
+
+    // Precompute widths and lengths for each item
+    const itemDetails = useMemo(() => {
+        return decodedData.map(item => {
+            const widthInfo = item?.productDetails?.additionalInformation?.find((info) => info.key === "width");
+            const lengthInfo = item?.productDetails?.additionalInformation?.find((info) => info.key === "length");
+
+            return {
+                widths: widthInfo ? widthInfo.value.split(",") : [],
+                lengths: lengthInfo ? lengthInfo.value.split(",") : [],
+            };
+        });
+    }, [decodedData]);
+
+    return (
+        <div className="right md:w-5/12 w-full">
+            <div className="checkout-block bg-white p-6 rounded-lg shadow-lg">
+                <div className="heading5 pb-3 text-2xl font-bold text-gray-800">Your Order</div>
+                <div className="list-product-checkout">
+                    {decodedData.map((item, index) => (
+                        <CartItem
+                            key={index}
+                            item={item}
+                            activeImages={activeImages}
+                            activeColors={activeColors}
+                            itemDetails={itemDetails[index]}
+                            updateCartItemQty={updateCartItemQty}
+                            handleColorSelection={handleColorSelection}
+                            handleRemoveFromCart={handleRemoveFromCart}
+                        />
+                    ))}
                 </div>
-                <Link
-                  href={"/shop/sidebar-list"}
-                  className="item row w-8 h-8 border border-line rounded flex items-center justify-center cursor-pointer"
-                >
-                  <div className="flex flex-col items-center gap-0.5">
-                    <span className="w-4 h-[3px] bg-secondary2 rounded-sm"></span>
-                    <span className="w-4 h-[3px] bg-secondary2 rounded-sm"></span>
-                    <span className="w-4 h-[3px] bg-secondary2 rounded-sm"></span>
-                  </div>
-                </Link>
-              </div>
-              <div className="check-sale flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  name="filterSale"
-                  id="filter-sale"
-                  className="border-line"
-                  onChange={handleShowOnlySale}
+                <div className="total-cart-block pt-6 flex justify-between border-t border-gray-200">
+                    <div className="heading5 text-xl font-bold text-gray-800">Total</div>
+                    <div className="heading5 total-cart text-xl font-bold text-purple-600">₹ {totalAmount.toFixed(2)}</div>
+                </div>
+            </div>
+
+            {showPayment ? (
+                <PaymentComponent
+                    amount={totalAmount}
+                    onSuccess={paymentCallback.onSuccess}
+                    onError={paymentCallback.onError}
+                    isMultipleProducts={true}
                 />
-                <label htmlFor="filter-sale" className="cation1 cursor-pointer">
-                  Show only products on sale
-                </label>
-              </div>
-            </div>
-            <div className="right flex items-center gap-3">
-              <div className="select-block relative">
-                <select
-                  id="select-filter"
-                  name="select-filter"
-                  className="caption1 py-2 pl-3 md:pr-20 pr-10 rounded-lg border border-line"
-                  onChange={(e) => {
-                    handleSortChange(e.target.value);
-                  }}
-                  defaultValue={"Sorting"}
-                >
-                  <option value="Sorting" disabled>
-                    Sorting
-                  </option>
-                  <option value="soldQuantityHighToLow">Best Selling</option>
-                  <option value="discountHighToLow">Best Discount</option>
-                  <option value="priceHighToLow">Price High To Low</option>
-                  <option value="priceLowToHigh">Price Low To High</option>
-                </select>
-                <Icon.CaretDown
-                  size={12}
-                  className="absolute top-1/2 -translate-y-1/2 md:right-4 right-2"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="list-filtered flex items-center gap-3 mt-4">
-          <div className="total-product">
-            {totalProducts}
-            <span className="text-secondary pl-1">Products Found</span>
-          </div>
-          {(selectedType || selectedSize || selectedColor || selectedBrand) && (
-            <>
-              <div className="list flex items-center gap-3">
-                <div className="w-px h-4 bg-line"></div>
-                {selectedType && (
-                  <div
-                    className="item flex items-center px-2 py-1 gap-1 bg-linear rounded-full capitalize"
-                    onClick={() => {
-                      setType(null);
-                    }}
-                  >
-                    <Icon.X className="cursor-pointer" />
-                    <span>{selectedType}</span>
-                  </div>
-                )}
-                {selectedSize && (
-                  <div
-                    className="item flex items-center px-2 py-1 gap-1 bg-linear rounded-full capitalize"
-                    onClick={() => {
-                      setSize(null);
-                    }}
-                  >
-                    <Icon.X className="cursor-pointer" />
-                    <span>{selectedSize}</span>
-                  </div>
-                )}
-                {selectedColor && (
-                  <div
-                    className="item flex items-center px-2 py-1 gap-1 bg-linear rounded-full capitalize"
-                    onClick={() => {
-                      setColor(null);
-                    }}
-                  >
-                    <Icon.X className="cursor-pointer" />
-                    <span>{selectedColor}</span>
-                  </div>
-                )}
-                {selectedBrand && (
-                  <div
-                    className="item flex items-center px-2 py-1 gap-1 bg-linear rounded-full capitalize"
-                    onClick={() => {
-                      setBrand(null);
-                    }}
-                  >
-                    <Icon.X className="cursor-pointer" />
-                    <span>{selectedBrand}</span>
-                  </div>
-                )}
-              </div>
-              <div
-                className="clear-btn flex items-center px-2 py-1 gap-1 rounded-full border border-red cursor-pointer"
-                onClick={handleClearAll}
-              >
-                <Icon.X color="rgb(219, 68, 68)" className="cursor-pointer" />
-                <span className="text-button-uppercase text-red">
-                  Clear All
-                </span>
-              </div>
-            </>
-          )}
-        </div>
-
-        <div className="list-product hide-product-sold grid lg:grid-cols-3 grid-cols-2 sm:gap-[30px] gap-[20px] mt-7">
-          {currentProducts?.map((item) =>
-            item.id === "no-data" ? (
-              <div key={item.id} className="no-data-product">
-                No products match the selected criteria.
-              </div>
             ) : (
-              <Product key={item.id} data={item} type="grid" />
-            )
-          )}
+                <button
+                    className="w-full bg-[black] font-semibold text-white py-3 rounded-lg mt-4 hover:bg-[#000000e0] transition duration-300"
+                    onClick={handlePlaceOrder}
+                    disabled={loading}
+                >
+                    {loading ? 'Processing...' : 'Place Order'}
+                </button>
+            )}
         </div>
+    );
+}
 
-        {pageCount > 1 && (
-          <div className="list-pagination flex items-center md:mt-10 mt-7">
-            <HandlePagination
-              pageCount={pageCount}
-              onPageChange={handlePageChange}
-            />
-          </div>
-        )}
-      </div>
+// Reusable CartItem component
+const CartItem = React.memo(({
+    item,
+    activeImages,
+    activeColors,
+    itemDetails,
+    updateCartItemQty,
+    handleColorSelection,
+    handleRemoveFromCart,
+}) => {
+    const { widths, lengths } = itemDetails;
+    const price = item?.productDetails?.price || 0;
+    const discount = item?.productDetails?.discount || 0;
+    const discountedPrice = price * (1 - discount / 100);
+
+    return (
+        <div className="border-b border-gray-200 pb-6 mb-6">
+            <div className="name text-lg font-semibold text-gray-700">{item?.productDetails?.name || 'No Name'}</div>
+            <div className="item flex flex-col md:flex-row items-center justify-between w-full gap-6">
+                <div className="bg-img w-[100px] aspect-square flex-shrink-0 rounded-lg overflow-hidden shadow-md">
+                    <Image
+                        src={activeImages[item.PK + item.SK] || item?.productDetails?.img || '/image3.png'}
+                        width={500}
+                        height={500}
+                        alt="Product Image"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+                <div className="flex items-center justify-between w-full">
+                    <div>
+                        <div className="text-sm text-gray-500 mt-2 flex">
+                            <span className="size capitalize">{item?.productDetails?.unit || "No Unit"}</span>
+                            <span>/</span>
+                            <span className="color capitalize">{item?.productDetails?.quantity == 0 ? <p className='text-[red]'> Out Of Stock </p> : item?.productDetails?.status}</span>
+                        </div>
+                        <div className="text-sm text-gray-500 mt-2">
+                            <span className="font-semibold">Price:</span> ₹{price}
+                        </div>
+                        <div className="text-sm text-gray-500 mt-2">
+                            <span className="font-semibold">Discount:</span> {discount}%
+                        </div>
+                    </div>
+                    <div className="quantity-block md:p-3 p-2 flex items-center justify-between rounded-lg border border-gray-300 w-[140px] flex-shrink-0">
+                        <input
+                            type="number"
+                            value={item?.qty || ''}
+                            min="1"
+                            onChange={(e) => updateCartItemQty(item.PK, item.SK, e.target.value)}
+                            className="w-12 text-center border border-gray-300 rounded"
+                        />
+                        <span className="px-1">x</span>
+                        <span>₹{discountedPrice.toFixed(2)}</span>
+                    </div>
+                </div>
+            </div>
+            <div className="choose-color mt-4">
+                <p className="text-lg font-semibold text-gray-700">
+                    Color: <span className="text-purple-600">{item.selectedColor || "No Color Selected"}</span>
+                </p>
+                <div className="list-color flex items-center gap-2 flex-wrap mt-3">
+                    {item?.productDetails?.imageURLs?.map((image, idx) => (
+                        <button
+                            key={idx}
+                            className={`color-item w-12 h-12 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow ${activeColors[item.PK + item.SK] === image.color.name ? "border-2 border-purple-600" : "border-2 border-transparent"}`}
+                            onClick={() => handleColorSelection(item.PK, item.SK, image.color.name, image.img)}
+                        >
+                            <Image
+                                src={image.img}
+                                alt={image.color.name}
+                                width={48}
+                                height={48}
+                                className="w-full h-full object-cover"
+                            />
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            {widths.length > 0 && (
+                <SizeSelection title="Width" sizes={widths} />
+            )}
+
+            {lengths.length > 0 && (
+                <SizeSelection title="Length" sizes={lengths} />
+            )}
+
+            <div className="flex justify-end w-full text-[red]">
+                <div
+                    className="remove-cart-btn text-sm font-semibold text-red-500 underline cursor-pointer hover:text-red-700"
+                    onClick={() => handleRemoveFromCart(item.PK, item.SK)}
+                >
+                    Remove
+                </div>
+            </div>
+        </div>
+    );
+});
+
+// Reusable SizeSelection component
+const SizeSelection = ({ title, sizes }) => (
+    <div className="choose-size mt-5">
+        <div className="heading flex items-center justify-between">
+            <div className="text-title">{title}:</div>
+        </div>
+        <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+            {sizes.map((size) => (
+                <button
+                    key={size}
+                    className="size-button"
+                >
+                    {size}
+                </button>
+            ))}
+        </div>
     </div>
-  </div>
-</div>;
+);
