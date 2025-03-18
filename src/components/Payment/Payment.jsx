@@ -77,7 +77,17 @@ const PaymentComponent = ({ amount, onSuccess, onError, isMultipleProducts = fal
 
         try {
             // Ensure amount is properly formatted for Razorpay (in paise)
-            const amountInPaise = Math.round(amount * 100);
+            const amountInPaise = Math.round(parseFloat(amount) * 100);
+
+            if (isNaN(amountInPaise)) {
+                console.error('Invalid amount:', amount);
+                throw new Error('Invalid amount');
+            }
+
+            console.log('Payment amount calculation:', {
+                originalAmount: amount,
+                amountInPaise: amountInPaise
+            });
 
             const orderResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/payment/CreateOrder`, {
                 method: 'POST',
@@ -88,7 +98,7 @@ const PaymentComponent = ({ amount, onSuccess, onError, isMultipleProducts = fal
                 body: JSON.stringify({
                     amount: amountInPaise,
                     currency: 'INR',
-                    isMultipleProducts: isMultipleProducts // Add this flag to backend
+                    isMultipleProducts: isMultipleProducts
                 }),
             });
 
