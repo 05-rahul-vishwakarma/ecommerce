@@ -31,19 +31,18 @@ export const metadata = {
   canonical: 'https://www.theribbonpack.com/',
 };
 
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <GlobalProvider>
-      <html lang="en">
-        <head>
-          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
-        </head>
-        <body className={instrument.className}>
+    <html lang="en">
+      <head>
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
+      </head>
+      <body className={instrument.className} suppressHydrationWarning={true}>
+        <GlobalProvider>
           <NetworkStatus />
           {children}
           <ModalCart />
@@ -61,8 +60,8 @@ export default function RootLayout({
             draggable
             theme="colored"
           />
-        </body>
-      </html>
-    </GlobalProvider>
+        </GlobalProvider>
+      </body>
+    </html>
   );
 }

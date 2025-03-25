@@ -219,7 +219,7 @@ const ModalQuickview = () => {
                   </div>
                 </div>
 
-                <div className="choose-size my-5">
+                <div className="choose-size mt-5">
                   <div className="heading flex items-center justify-between">
                     <div className="text-title">Length:</div>
                   </div>

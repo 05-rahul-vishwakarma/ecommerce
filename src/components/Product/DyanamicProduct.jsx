@@ -261,7 +261,7 @@ export default function DyanamicProduct({ productMain }) {
                 <div className="heading4 mt-1">{products?.name}</div>
               </div>
               <div
-                className={`add-wishlist-btn w-12 h-12 flex items-center justify-center border border-line cursor-pointer rounded-xl duration-300 hover:bg-purple hover:text-white`}
+                className={`hidden add-wishlist-btn w-12 h-12 flex items-center justify-center border border-line cursor-pointer rounded-xl duration-300 hover:bg-purple hover:text-white`}
                 onClick={handleAddToWishlist}
               >
                 <Icon.Heart size={24} />
@@ -340,37 +340,37 @@ export default function DyanamicProduct({ productMain }) {
                 </div>
               </div> */}
 
-              <div className="choose-size mt-5">
-                <div className="heading flex items-center justify-between">
-                  <div className="text-title">Width:</div>
-                </div>
-                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                  {widths.map((width) => (
-                    <button
-                      key={width}
-                      className={`size-button ${activeWidth === width ? "active" : ""}`}
-                      onClick={() => setActiveWidth(width)}
-                    >
-                      {width}
-                    </button>
-                  ))}
-                </div>
+              <div className="heading flex items-center justify-between mt-[1rem] ">
+                <div className="text-title">size:</div>
               </div>
 
-              <div className="choose-size mt-5">
-                <div className="heading flex items-center justify-between">
-                  <div className="text-title">Length:</div>
+              <div className="flex space-x-2 place-items-center ">
+                <div className="">
+                  <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                    {widths.map((width) => (
+                      <button
+                        key={width}
+                        className={`size-button ${activeWidth === width ? "active" : ""}`}
+                        onClick={() => setActiveWidth(width)}
+                      >
+                        {width}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                  {lengths.map((length) => (
-                    <button
-                      key={length}
-                      className={`size-button ${activeLength === length ? "active" : ""}`}
-                      onClick={() => setActiveLength(length)}
-                    >
-                      {length}
-                    </button>
-                  ))}
+                <div className="mx-2 mt-1.5 text-secondary2"> X </div>
+                <div className="">
+                  <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                    {lengths?.map((length) => (
+                      <button
+                        key={length}
+                        className={`size-button ${activeLength === length ? "active" : ""}`}
+                        onClick={() => setActiveLength(length)}
+                      >
+                        {length}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 

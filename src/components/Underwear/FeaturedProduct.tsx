@@ -128,7 +128,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
             thumbs={{ swiper: thumbsSwiper }}
             modules={[Thumbs, Autoplay]}
             className="mySwiper2 rounded-2xl overflow-hidden"
-            autoplay={{  
+            autoplay={{
               delay: 3000,
               disableOnInteraction: false,
             }}
@@ -183,7 +183,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
             <div className="w-px h-4 bg-line"></div>
             <div className="product-origin-price font-normal text-purple2">
               <del>
-              ₹{(product?.price / (1 - product?.discount / 100))?.toFixed(2)}
+                ₹{(product?.price / (1 - product?.discount / 100))?.toFixed(2)}
               </del>
             </div>
             <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
@@ -217,37 +217,38 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
               </div>
             </div>
 
-            <div className="choose-size mt-5">
-              <div className="heading flex items-center justify-between">
-                <div className="text-title">Width:</div>
-              </div>
-              <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                {widths.map((width: any) => (
-                  <button
-                    key={width}
-                    className={`size-button ${activeWidth === width ? "active" : ""}`}
-                    onClick={() => setActiveWidth(width)}
-                  >
-                    {width}
-                  </button>
-                ))}
-              </div>
+
+            <div className="heading flex items-center justify-between mt-[1rem] ">
+              <div className="text-title">size:</div>
             </div>
 
-            <div className="choose-size mt-5">
-              <div className="heading flex items-center justify-between">
-                <div className="text-title">Length:</div>
+            <div className="flex space-x-2 place-items-center ">
+              <div className="">
+                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                  {widths.map((width: any) => (
+                    <button
+                      key={width}
+                      className={`size-button ${activeWidth === width ? "active" : ""}`}
+                      onClick={() => setActiveWidth(width)}
+                    >
+                      {width}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                {lengths?.map((length: any) => (
-                  <button
-                    key={length}
-                    className={`size-button ${activeLength === length ? "active" : ""}`}
-                    onClick={() => setActiveLength(length)}
-                  >
-                    {length}
-                  </button>
-                ))}
+               <div className="mx-2 mt-1.5 text-secondary2"> X </div>
+              <div className="">
+                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                  {lengths?.map((length: any) => (
+                    <button
+                      key={length}
+                      className={`size-button ${activeLength === length ? "active" : ""}`}
+                      onClick={() => setActiveLength(length)}
+                    >
+                      {length}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -268,7 +269,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
               </div>
               <button
                 className="button-main w-full text-center bg-white text-purple border border-purple"
-                onClick={() => handleAddToCart(product, openModalCart, colorQuantities[activeColor], activeColor,activeWidth,activeLength)}
+                onClick={() => handleAddToCart(product, openModalCart, colorQuantities[activeColor], activeColor, activeWidth, activeLength)}
               >
                 Add To Cart
               </button>

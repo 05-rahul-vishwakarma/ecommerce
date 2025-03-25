@@ -151,3 +151,39 @@
         }
     }
 }
+
+.featured-product {
+    .choose-size {
+        .heading {
+            margin-bottom: 0.5rem;
+            
+            .text-title {
+                font-weight: 600;
+                color: var(--secondary);
+            }
+        }
+
+        .list-size {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+
+            .size-button {
+                padding: 0.5rem 1rem;
+                border: 1px solid var(--line);
+                border-radius: 0.5rem;
+                transition: all 0.3s;
+                
+                &.active {
+                    background-color: var(--purple);
+                    color: var(--white);
+                    border-color: var(--purple);
+                }
+
+                &:hover:not(.active) {
+                    border-color: var(--purple);
+                }
+            }
+        }
+    }
+}
