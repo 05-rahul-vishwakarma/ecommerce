@@ -15,8 +15,10 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = 'md', fullScreen
   };
 
   const spinner = (
-    <div className={`${sizeClasses[size]} animate-spin`}>
-      <div className="h-full w-full border-4 border-gray-200 rounded-full border-t-purple"></div>
+    <div className="flex items-center justify-center h-screen">
+      <div className={`${sizeClasses[size]} animate-spin`}>
+        <div className="h-full w-full border-4 border-gray-200 rounded-full border-t-purple"></div>
+      </div>
     </div>
   );
 

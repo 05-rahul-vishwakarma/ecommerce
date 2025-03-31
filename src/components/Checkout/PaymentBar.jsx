@@ -56,6 +56,14 @@ export default function PaymentBar() {
 
     const handlePlaceOrder = async () => {
         if (loading) return;
+        
+        // Check if any product is out of stock
+        const outOfStockItems = decodedData.filter(item => item.quantity === 0);
+        if (outOfStockItems.length > 0) {
+            toast.error('Some items in your cart are out of stock. Please remove them before proceeding.');
+            return;
+        }
+
         setLoading(true);
 
         const orderPayload = {
@@ -86,21 +94,20 @@ export default function PaymentBar() {
 
             // If payment is successful, proceed with order placement
             const response = await purchaseProduct(orderPayload);
-            if (response?.response?.data?.statusCode === 200) {
-                toast.success('Order placed successfully');
+            console.log(response, 'response');
+            
+            if (response?.statusCode === 200) {
+                toast.success(response?.message || 'Order placed successfully');
                 localStorage.removeItem('checkoutProduct');
                 decodedData.forEach(item => {
                     removeProductFromCart(item.PK, item.SK);
                 });
                 router.push('/orders');
             } else {
-                const errorMessage = response?.response?.data?.message || 'Order placement failed. Please contact support.';
-                throw new Error(errorMessage);
+                throw new Error(response?.response?.data?.message);
             }
         } catch (error) {
-            const errorMessage = error.response?.data?.message ||
-                error.message ||
-                'An unexpected error occurred';
+            const errorMessage = error.response?.data?.message || error.message;
             toast.error(errorMessage);
             setShowPayment(false);
         } finally {
@@ -111,8 +118,8 @@ export default function PaymentBar() {
     // Add state for payment handling
     const [showPayment, setShowPayment] = useState(false);
     const [paymentCallback, setPaymentCallback] = useState({
-        onSuccess: () => {},
-        onError: () => {}
+        onSuccess: () => { },
+        onError: () => { }
     });
 
     const widths = useMemo(() => {
@@ -129,6 +136,8 @@ export default function PaymentBar() {
         removeProductFromCart(pk, sk); //remove from zustand store
         setDecodedData(prevData => prevData.filter(item => !(item.PK === pk && item.SK === sk))); // Remove from local state
     };
+
+
 
 
     return (
@@ -155,12 +164,9 @@ export default function PaymentBar() {
                                         <div className="text-sm text-gray-500 mt-2">
                                             <span className="size capitalize">{item.unit || "No Unit"}</span>
                                             <span>/</span>
-                                            <span className="color capitalize">{item.status || "No Status"}</span>
-                                        </div>
-                                        <div className="text-sm text-gray-500 mt-2">
-                                            <span className="font-semibold">Width:</span> {item.selectedWidth || 'N/A'}
-                                            <span>/</span>
-                                            <span className="font-semibold">Length:</span> {item.selectedLength || 'N/A'}
+                                            <span className={`${item?.quantity === 0 ? 'text-red-500' : 'text-green-500'}`}>
+                                                {item?.quantity === 0 ? 'Out of Stock' : 'In Stock'}
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="quantity-block md:p-3 p-2 flex items-center justify-between rounded-lg border border-line w-[140px] flex-shrink-0">
@@ -201,38 +207,33 @@ export default function PaymentBar() {
                                 </div>
                             </div>
 
-
-                            <div className="choose-size mt-5">
-                                <div className="heading flex items-center justify-between">
-                                    <div className="text-title">Width:</div>
+                            <div className="flex space-x-2 place-items-center ">
+                                <div className="">
+                                    <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                                        {widths.map((width) => (
+                                            <button
+                                                key={width}
+                                                className={`size-button ${item.selectedWidth === width ? "active" : ""}`}
+                                                onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, item.selectedColor, width, item.selectedLength)}
+                                            >
+                                                {width}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
-                                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                                    {widths.map((width) => (
-                                        <button
-                                            key={width}
-                                            className={`size-button ${item.selectedWidth === width ? "active" : ""}`}
-                                            onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, item.selectedColor, width, item.selectedLength)}
-                                        >
-                                            {width}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="choose-size mt-5">
-                                <div className="heading flex items-center justify-between">
-                                    <div className="text-title">Length:</div>
-                                </div>
-                                <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                                    {lengths.map((length) => (
-                                        <button
-                                            key={length}
-                                            className={`size-button ${item.selectedLength === length ? "active" : ""}`}
-                                            onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, item.selectedColor, item.selectedWidth, length)}
-                                        >
-                                            {length}
-                                        </button>
-                                    ))}
+                                <div className="mx-2 mt-1.5 text-secondary2"> X </div>
+                                <div className="">
+                                    <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                                        {lengths?.map((length) => (
+                                            <button
+                                                key={length}
+                                                className={`size-button ${item.selectedLength === length ? "active" : ""}`}
+                                                onClick={() => updateCartItem(item.PK, item.SK, item.itemQty, item.selectedColor, item.selectedWidth, length)}
+                                            >
+                                                {length}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
@@ -254,8 +255,8 @@ export default function PaymentBar() {
             </div>
 
             {showPayment ? (
-                <PaymentComponent 
-                    amount={totalAmount} 
+                <PaymentComponent
+                    amount={totalAmount}
                     onSuccess={() => {
                         paymentCallback.onSuccess();
                         setShowPayment(false);

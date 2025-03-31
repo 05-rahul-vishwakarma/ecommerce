@@ -77,7 +77,7 @@ const PaymentComponent = ({ amount, onSuccess, onError, isMultipleProducts = fal
 
         try {
             // Ensure amount is properly formatted for Razorpay (in paise)
-            const amountInPaise = Math.round(parseFloat(amount) * 100);
+            const amountInPaise = Math.round(parseFloat(amount));
 
             if (isNaN(amountInPaise)) {
                 console.error('Invalid amount:', amount);
