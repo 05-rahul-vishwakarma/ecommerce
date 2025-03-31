@@ -104,7 +104,7 @@ export default function PaymentBar() {
                 });
                 router.push('/orders');
             } else {
-                throw new Error(response?.response?.data?.message);
+                throw new Error(response.data?.message);
             }
         } catch (error) {
             const errorMessage = error.response?.data?.message || error.message;
