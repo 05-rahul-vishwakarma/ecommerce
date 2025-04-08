@@ -55,6 +55,13 @@ const ModalQuickview = () => {
   const { openModalWishlist } = useModalWishlistContext();
   const router = useRouter();
 
+  // Calculate discounted price
+  const calculateDiscountedPrice = useCallback((price: number, discount: number) => {
+    return price - (price * discount / 100);
+  }, []);
+
+  const discountedPrice = selectedProduct ? calculateDiscountedPrice(selectedProduct.price, selectedProduct.discount || 0) : 0;
+
   const handleCart = useCallback(
     (product: any) => {
       const accessToken = accesstToken;
@@ -112,9 +119,8 @@ const ModalQuickview = () => {
   return (
     <div className={`modal-quickview-block`} onClick={closeQuickview}>
       <div
-        className={`modal-quickview-main py-6 ${
-          selectedProduct !== null ? "open" : ""
-        }`}
+        className={`modal-quickview-main py-6 ${selectedProduct !== null ? "open" : ""
+          }`}
         onClick={(e) => {
           e.stopPropagation();
         }}
@@ -152,14 +158,14 @@ const ModalQuickview = () => {
               <div className="flex justify-between">
                 <div>
                   <div className="caption2 text-secondary font-semibold uppercase">
-                    {selectedProduct.type}
+                    {/* {selectedProduct.type} */}
                   </div>
                   <div className="heading4 mt-1">{selectedProduct.name}</div>
                 </div>
                 <div
                   className={`add-wishlist-btn w-10 h-10 flex items-center justify-center border border-line cursor-pointer rounded-lg duration-300 flex-shrink-0 hover:bg-purple hover:text-white `}
                 >
-                  <Icon.Heart size={20} weight="fill" className="text-red" />
+                  {/* <Icon.Heart size={20} weight="fill" className="text-red" /> */}
                 </div>
               </div>
               <div className="flex items-center mt-3">
@@ -167,17 +173,26 @@ const ModalQuickview = () => {
                 <span className="caption1 text-secondary">(1.234 reviews)</span>
               </div>
               <div className="flex items-center gap-3 flex-wrap mt-5 pb-6 border-b border-line">
-                <div className="product-price heading5">₹{selectedProduct.price}.00</div>
+                <div className="product-price heading5">₹{discountedPrice.toFixed(2)}</div>
                 <div className="w-px h-4 bg-line"></div>
                 <div className="product-origin-price font-normal text-purple2">
-                  <del>₹{selectedProduct.price}.00</del>
+                  <del>₹{selectedProduct.price.toFixed(2)}</del>
                 </div>
                 {selectedProduct.discount && (
                   <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
                     -{selectedProduct.discount}%
                   </div>
                 )}
-                <div className="desc text-secondary mt-3">{selectedProduct.description}</div>
+                {/* <div className="desc text-secondary mt-3">{selectedProduct.description}</div> */}
+
+                <div className="desc text-secondary mt-3 space-y-2">
+                  {selectedProduct?.description?.split('\n').map((line, index) => (
+                    <p key={index} className="text-base leading-relaxed">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+
               </div>
               <div className="list-action mt-6">
                 <div className="choose-color">
@@ -188,9 +203,8 @@ const ModalQuickview = () => {
                     {selectedProduct.imageURLs.map((image, index) => (
                       <div
                         key={index}
-                        className={`color-item w-8 h-8 rounded-[10px] duration-300 relative ${
-                          activeColor === image.color.name ? "ring-2 ring-purple" : ""
-                        }`}
+                        className={`color-item w-8 h-8 rounded-[10px] duration-300 relative ${activeColor === image.color.name ? "ring-2 ring-purple" : ""
+                          }`}
                         style={{ backgroundColor: image.color.clrCode }}
                         onClick={() => setActiveColor(image.color.name)}
                       >
@@ -202,46 +216,50 @@ const ModalQuickview = () => {
                   </div>
                 </div>
 
-                <div className="choose-size mt-5">
-                  <div className="heading flex items-center justify-between">
-                    <div className="text-title">Width:</div>
-                  </div>
-                  <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                    {widths.map((width) => (
-                      <button
-                        key={width}
-                        className={`size-button ${activeWidth === width ? "active" : ""}`}
-                        onClick={() => setActiveWidth(width)}
-                      >
-                        {width}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                <div className="my-[8px] ">
+                  <h3> Size: </h3>
+                  <div className="flex items-center gap-3  ">
+                    <div className="choose-size">
+                      <div className="heading flex items-center justify-between">
+                        <div className="text-title"></div>
+                      </div>
+                      <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                        {widths.map((width) => (
+                          <button
+                            key={width}
+                            className={`size-button ${activeWidth === width ? "active" : ""}`}
+                            onClick={() => setActiveWidth(width)}
+                          >
+                            {width}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
 
-                <div className="choose-size mt-5">
-                  <div className="heading flex items-center justify-between">
-                    <div className="text-title">Length:</div>
-                  </div>
-                  <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                    {lengths.map((length) => (
-                      <button
-                        key={length}
-                        className={`size-button ${activeLength === length ? "active" : ""}`}
-                        onClick={() => setActiveLength(length)}
-                      >
-                        {length}
-                      </button>
-                    ))}
+                    <div className="choose-size">
+                      <div className="heading flex items-center justify-between">
+                        <div className="text-title"></div>
+                      </div>
+                      <div className="list-size flex items-center gap-2 flex-wrap mt-3">
+                        {lengths.map((length) => (
+                          <button
+                            key={length}
+                            className={`size-button ${activeLength === length ? "active" : ""}`}
+                            onClick={() => setActiveLength(length)}
+                          >
+                            {length}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 {/* Changed div to a button element */}
                 <button
                   onClick={handleAddToCartClick}
-                  className={`button-main bg-custom-purple-color w-full text-center  text-secondary border border-purple mb-3 ${
-                    canAddToCart ? "" : "disabled"
-                  }`}
+                  className={`button-main bg-custom-purple-color mt-4 w-full text-center  text-secondary border border-purple mb-3 ${canAddToCart ? "" : "disabled"
+                    }`}
                   disabled={!canAddToCart}  // Correctly use disabled on a button
                 >
                   Add To Cart

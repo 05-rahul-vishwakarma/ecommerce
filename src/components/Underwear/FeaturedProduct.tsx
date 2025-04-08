@@ -191,7 +191,13 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
             </div>
           </div>
 
-          <p className="desc text-secondary2 mt-3">{product?.description}</p>
+          <div className="desc text-secondary mt-3 space-y-2">
+              {product?.description?.split('\n').map((line, index) => (
+                <p key={index} className="text-base leading-relaxed">
+                  {line}
+                </p>
+              ))}
+            </div>
 
           <div className="list-action mt-6">
             {/* Color Selection */}

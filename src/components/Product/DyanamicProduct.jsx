@@ -289,36 +289,20 @@ export default function DyanamicProduct({ productMain }) {
               <div className="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
                 -{products?.discount}%
               </div>
-
             </div>
 
-            <div className="desc text-secondary mt-3">
-              {products?.description}
+
+
+            <div className="desc text-secondary mt-3 space-y-2">
+              {products?.description?.split('\n').map((line, index) => (
+                <p key={index} className="text-base leading-relaxed">
+                  {line}
+                </p>
+              ))}
             </div>
+
             <div className="list-action mt-6">
-              <div className="choose-color">
-                <div className="text-title">
-                  Colors:{" "}
-                  <span className="text-title color">{activeColor}</span>
-                </div>
-                <div className="list-color flex items-center gap-2 flex-wrap mt-3">
-                  {products?.imageURLs.map((img, index) => (
-                    <div
-                      key={index}
-                      className={`color-option w-8 h-8 rounded-full cursor-pointer border-2 ${activeColor === img.color.name
-                        ? "border-purple"
-                        : "border-transparent"
-                        }`}
-                      style={{ backgroundColor: img.color.clrCode }}
-                      onClick={() => handleActiveColor(img.color.name)}
-                      onMouseEnter={() =>
-                        handleActiveColor(img.color.name, true)
-                      } // Handle hover
-                      onMouseLeave={() => handleActiveColor(activeColor, true)} // Revert to the active color on mouse leave
-                    ></div>
-                  ))}
-                </div>
-              </div>
+
               {/* <div className="choose-size mt-5">
                 <div className="choose-size mt-5">
                   Size:{" "}
@@ -340,35 +324,72 @@ export default function DyanamicProduct({ productMain }) {
                 </div>
               </div> */}
 
-              <div className="heading flex items-center justify-between mt-[1rem] ">
-                <div className="text-title">size:</div>
-              </div>
 
-              <div className="flex space-x-2 place-items-center ">
-                <div className="">
-                  <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                    {widths.map((width) => (
-                      <button
-                        key={width}
-                        className={`size-button ${activeWidth === width ? "active" : ""}`}
-                        onClick={() => setActiveWidth(width)}
-                      >
-                        {width}
-                      </button>
-                    ))}
+
+              {/* Product Highlights Section */}
+              <div className="product-highlights mt-6 border-b border-line pb-6">
+                <div className="heading flex items-center justify-between mt-4">
+                  <div className="text-sm text-secondary flex items-center gap-2">
+                    <Icon.Ruler size={18} />
+                    Size
                   </div>
                 </div>
-                <div className="mx-2 mt-1.5 text-secondary2"> X </div>
-                <div className="">
-                  <div className="list-size flex items-center gap-2 flex-wrap mt-3">
-                    {lengths?.map((length) => (
-                      <button
-                        key={length}
-                        className={`size-button ${activeLength === length ? "active" : ""}`}
-                        onClick={() => setActiveLength(length)}
-                      >
-                        {length}
-                      </button>
+
+                <div className="flex space-x-2 place-items-center mt-2">
+                  <div className="">
+                    <div className="list-size flex items-center gap-2 flex-wrap">
+                      {widths.map((width) => (
+                        <button
+                          key={width}
+                          className={`size-button text-sm px-3 py-1.5 rounded-md border transition-all duration-200 ${activeWidth === width
+                              ? "bg-purple text-white border-purple"
+                              : "border-line hover:border-purple"
+                            }`}
+                          onClick={() => setActiveWidth(width)}
+                        >
+                          {width}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mx-2 text-secondary2 text-sm"></div>
+                  <div className="">
+                    <div className="list-size flex items-center gap-2 flex-wrap">
+                      {lengths?.map((length) => (
+                        <button
+                          key={length}
+                          className={`size-button text-sm px-3 py-1.5 rounded-md border transition-all duration-200 ${activeLength === length
+                              ? "bg-purple text-white border-purple"
+                              : "border-line hover:border-purple"
+                            }`}
+                          onClick={() => setActiveLength(length)}
+                        >
+                          {length}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="choose-color mt-4">
+                  <div className="text-sm text-secondary flex items-center gap-2">
+                    <Icon.Palette size={18} />
+                    Colors:{" "}
+                    <span className="text-purple">{activeColor}</span>
+                  </div>
+                  <div className="list-color flex items-center gap-2 flex-wrap mt-3">
+                    {products?.imageURLs.map((img, index) => (
+                      <div
+                        key={index}
+                        className={`color-option w-7 h-7 rounded-full cursor-pointer border-2 transition-all duration-200 ${activeColor === img.color.name
+                            ? "border-purple scale-110"
+                            : "border-transparent hover:scale-105"
+                          }`}
+                        style={{ backgroundColor: img.color.clrCode }}
+                        onClick={() => handleActiveColor(img.color.name)}
+                        onMouseEnter={() => handleActiveColor(img.color.name, true)}
+                        onMouseLeave={() => handleActiveColor(activeColor, true)}
+                      ></div>
                     ))}
                   </div>
                 </div>
@@ -458,6 +479,8 @@ export default function DyanamicProduct({ productMain }) {
                 </div>
               </div>
             </div>
+
+
           </div>
 
         </div>
