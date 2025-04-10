@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -19,7 +19,7 @@ const shippingOptions = [
 ];
 
 const CartItem = ({ product }) => {
-  const { removeProductFromCart , decreaseCartItemQuantity , increaseCartItemQuantity} = useCartStore();
+  const { removeProductFromCart, decreaseCartItemQuantity, increaseCartItemQuantity } = useCartStore();
   return (
     <div
       className="item flex md:mt-7 md:pb-7 mt-5 pb-5 border-b border-line w-full"
@@ -27,18 +27,24 @@ const CartItem = ({ product }) => {
     >
       <div className="w-1/2 flex items-center gap-6">
         <div className="bg-img md:w-[100px] w-20 aspect-[3/4]">
-          <Image
-            src={product?.productDetails?.img || ""}
-            width={1000}
-            height={1000}
-            alt={product?.productDetails?.name}
-            className="w-full h-full object-cover rounded-lg"
-          />
+          {product?.productDetails?.img ? (
+            <Image
+              src={product.productDetails.img}
+              width={1000}
+              height={1000}
+              alt={product?.productDetails?.name || "Product image"}
+              className="w-full h-full object-cover rounded-lg"
+            />
+          ) : (
+            <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center">
+              <Icon.Image className="text-gray-400 text-3xl" />
+            </div>
+          )}
         </div>
         <div className="text-title">{product?.productDetails?.[0]?.name}</div>
       </div>
       <div className="w-1/12 text-center text-title">
-      ₹{product.totalAmount}.00
+        ₹{product.totalAmount}.00
       </div>
       <div className="w-1/6 flex justify-center">
         <div className="quantity-block bg-surface p-3 flex items-center justify-between rounded-lg border border-line md:w-[100px] w-20">
@@ -48,7 +54,7 @@ const CartItem = ({ product }) => {
         </div>
       </div>
       <div className="w-1/6 text-center text-title">
-      ₹{product.totalAmount}.00
+        ₹{product.totalAmount}.00
       </div>
       <div
         onClick={() => removeProductFromCart(product?.PK, product?.SK)}
@@ -67,6 +73,15 @@ const Cart = () => {
     (total, item) => total + item.totalAmount * item.qty,
     0
   );
+
+
+
+  const checkoutHandler = useCallback(() => {
+    const cartId = `cart_${new Date().getTime()}`;
+    sessionStorage.setItem(cartId, JSON.stringify(mergedCart));
+    router.push(`/checkout/${cartId}`);
+  }, [mergedCart]);
+
   return (
     <>
       <TopNavOne
@@ -93,7 +108,7 @@ const Cart = () => {
                   </div>
                 </div>
                 <div className="list-product-main w-full mt-3">
-                  {mergedCart.map((product,i) => (
+                  {mergedCart.map((product, i) => (
                     <CartItem key={i} product={product} />
                   ))}
                 </div>
@@ -142,7 +157,7 @@ const Cart = () => {
                 <div className="flex flex-col items-center gap-y-4 mt-5">
                   <button
                     className="checkout-btn button-main text-center w-full"
-                    onClick={() => router.push("/checkout/true")}
+                    onClick={() => checkoutHandler()}
                   >
                     Process To Checkout
                   </button>

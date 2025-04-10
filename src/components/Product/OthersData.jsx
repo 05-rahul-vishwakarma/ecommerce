@@ -148,7 +148,7 @@ export default function OthersData({ PK, SK , productMain }) {
       </div> */}
 
       <div className="review-block md:py-20 py-10 bg-surface  ">
-        <div className="container">
+        <div className="container hidden ">
           <Reviews
             reviews={reviewsData}
             productMain={productMain}

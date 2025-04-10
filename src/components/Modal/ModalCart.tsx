@@ -194,7 +194,7 @@ const ModalCart = () => {
                         <div className="footer-modal bg-white absolute bottom-0 left-0 w-full">
                             <div className="flex items-center justify-between pt-6 px-6">
                                 <div className="heading5">Subtotal</div>
-                                <div className="heading5">${subtotal}.00</div>
+                                <div className="heading5">₹{subtotal}.00</div>
                             </div>
                             <div className="block-button text-center p-6">
                                 <div className="flex items-center gap-4">

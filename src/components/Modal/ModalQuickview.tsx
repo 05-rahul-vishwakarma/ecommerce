@@ -55,6 +55,9 @@ const ModalQuickview = () => {
   const { openModalWishlist } = useModalWishlistContext();
   const router = useRouter();
 
+  console.log(selectedProduct,'selectedProduct');
+  
+
   // Calculate discounted price
   const calculateDiscountedPrice = useCallback((price: number, discount: number) => {
     return price - (price * discount / 100);
@@ -115,6 +118,9 @@ const ModalQuickview = () => {
       toast.error("Please select both width and length before adding to cart.");
     }
   };
+
+  console.log(selectedProduct,'selectedProduct');
+  
 
   return (
     <div className={`modal-quickview-block`} onClick={closeQuickview}>
