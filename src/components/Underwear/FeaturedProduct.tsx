@@ -135,14 +135,18 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
             loop
           >
             <SwiperSlide>
-              <Image
-                src={activeImage || product?.imageURLs[0]?.img}
-                width={1000}
-                height={1000}
-                alt="Product Image"
-                className="w-full aspect-[3/4] object-cover"
-                priority
-              />
+              {activeImage || product?.imageURLs[0]?.img ? (
+                <Image
+                  src={activeImage || product?.imageURLs[0]?.img}
+                  width={1000}
+                  height={1000}
+                  alt="Product Image"
+                  className="w-full aspect-[3/4] object-cover"
+                  priority
+                />
+              ) : (
+                <p>No image available</p>
+              )}
             </SwiperSlide>
           </Swiper>
 
@@ -204,22 +208,26 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
             <div className="choose-color">
               <p className="text-title">Color: <span>{activeColor}</span></p>
               <div className="list-color flex items-center gap-2 flex-wrap mt-3">
-                {product.imageURLs.map((item, index) => (
-                  <button
-                    key={index}
-                    className={`color-item w-12 h-12 rounded-xl ${activeColor === item.color.name ? "border-2 border-purple" : ""}`}
-                    onClick={() => handleActiveColor(item.color.name)}
-                  >
-                    <Image
-                      src={item?.img}
-                      alt={item?.color?.name}
-                      width={48}
-                      height={48}
-                      className="rounded-xl object-cover"
-                      loading="lazy"
-                    />
-                  </button>
-                ))}
+                {product?.imageURLs ? (
+                  product.imageURLs.map((item, index) => (
+                    <button
+                      key={index}
+                      className={`color-item w-12 h-12 rounded-xl ${activeColor === item.color.name ? "border-2 border-purple" : ""}`}
+                      onClick={() => handleActiveColor(item.color.name)}
+                    >
+                      <Image
+                        src={item?.img}
+                        alt={item?.color?.name}
+                        width={48}
+                        height={48}
+                        className="rounded-xl object-cover"
+                        loading="lazy"
+                      />
+                    </button>
+                  ))
+                ) : (
+                  <p>No images available</p>
+                )}
               </div>
             </div>
 
