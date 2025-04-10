@@ -3,8 +3,6 @@ import Image from 'next/image';
 
 export default function DefaultOrder({ order }) {
 
-    console.log(order);
-
 
     return (
         <div key={order.SK} className="item flex flex-col gap-4 p-6 bg-white shadow-md rounded-lg mb-6">
@@ -15,7 +13,7 @@ export default function DefaultOrder({ order }) {
                     <p className="text-sm text-gray-500">Ordered on: {new Date(order.createdAt).toLocaleDateString()}</p>
                 </div>
                 <div className="text-right">
-                    <p className="text-lg font-bold">₹{(order.amount / 100).toFixed(2)}</p>
+                    <p className="text-lg font-bold">₹{(order.amount).toFixed(2)}</p>
                     <p className="text-sm text-gray-500">Quantity: {order.quantity}</p>
                 </div>
             </div>

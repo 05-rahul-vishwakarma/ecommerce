@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import PaymentComponent from '../Payment/Payment'; // Ensure the path is correct
-import { purchaseProduct } from '@/api/purchaseApis/purchasePost';
+import { purchaseProduct } from '.././../api/purchaseApis/purchasePost';
 
 // Utility function to prevent errors
 const safeParseInt = (value) => {
@@ -145,14 +145,12 @@ export default function PaymentBar({ cartData }) {
             const response = await purchaseProduct(payload);
   
             // Check if the response indicates success
-            if (response?.data === 200) {
+            if (response?.statusCode === 200) {
               const { PK, SK } = payload.productIds[0];
               removeProductFromCart(PK, SK);
               toast.success('Order placed successfully! Redirecting to orders page...');
             } else {
-              // Handle specific backend errors
-              const errorMessage = response?.response?.data?.message || 'Failed to place order';
-              throw new Error(errorMessage);
+              throw new Error(response.data?.message);
             }
           } catch (error) {
             // Handle API call errors

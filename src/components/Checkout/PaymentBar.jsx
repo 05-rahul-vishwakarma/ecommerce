@@ -73,9 +73,7 @@ export default function PaymentBar() {
                 SK: item.SK,
                 quantity: item.itemQty,
             })),
-            amount: totalAmount * 100,
-            size: `Width: ${decodedData[0]?.selectedWidth || 'N/A'}, Length: ${decodedData[0]?.selectedLength || 'N/A'}`,
-            color: decodedData[0]?.selectedColor || 'colorname'
+            amount: totalAmount,
         };
 
         try {
@@ -92,16 +90,12 @@ export default function PaymentBar() {
                 throw new Error('Payment failed or was cancelled');
             }
 
+
             // If payment is successful, proceed with order placement
             const response = await purchaseProduct(orderPayload);
-            console.log(response, 'response');
-            
             if (response?.statusCode === 200) {
                 toast.success(response?.message || 'Order placed successfully');
                 localStorage.removeItem('checkoutProduct');
-                decodedData.forEach(item => {
-                    removeProductFromCart(item.PK, item.SK);
-                });
                 router.push('/orders');
             } else {
                 throw new Error(response.data?.message);
