@@ -21,7 +21,7 @@ const SliderUnderwear = () => {
             />
           </div>
           <div className="text-content w-fit">
-            <div className="text-sub-display text-center">
+            <div className="text-sub-display text-center hidden ">
               Sale! Up To 50% Off!
             </div>
             <div className="text-display text-center md:mt-4 mt-2">
