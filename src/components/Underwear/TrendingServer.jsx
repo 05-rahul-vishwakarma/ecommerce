@@ -4,7 +4,10 @@ import TrendingProduct from './TrendingProduct'
 
 export default async function TrendingServer() {
     const category = await productCategory()
-    return (
-        <TrendingProduct category={category} start={0} limit={8} />
-    )
+
+    if (!category || category.length === 0) {
+        return <div>No trending categories found.</div>
+    }
+
+    return <TrendingProduct category={category} start={0} limit={8} />
 }

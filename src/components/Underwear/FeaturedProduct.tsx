@@ -49,7 +49,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
   const [activeWidth, setActiveWidth] = useState<string | null>(null);
   const [activeLength, setActiveLength] = useState<string | null>(null);
 
-  const product = useMemo(() => products[1], [products]);
+  const product = useMemo(() => products[0], [products]);
 
   useEffect(() => {
     if (product) {
