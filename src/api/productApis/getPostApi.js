@@ -103,5 +103,69 @@ export const productCategory = async () => {
     }
 }
 
+export const searchProducts = async (params) => {
+    const { query = '', category = '', productType = '', minPrice = 0, maxPrice = 0, sort = '', page = 1, limit = 8 } = params;
+    
+    try {
+        // Use the main product list endpoint instead of filtered endpoint
+        const url = productList;
+        
+        // Create a payload structure that matches what the API expects
+        const payload = {};
+        
+        // Add search parameters only if they are provided
+        if (query && query.trim() !== '') {
+            // Most APIs expect a 'search' or 'q' parameter for search
+            payload.search = query.trim();
+        }
+        
+        // Add category filter if provided
+        if (category && category !== 'All') {
+            payload.filters = payload.filters || {};
+            payload.filters.category = category;
+        }
+        
+        // Add product type filter if provided
+        if (productType && productType !== 'All') {
+            payload.filters = payload.filters || {};
+            payload.filters.productType = productType;
+        }
+        
+        // Add price range if min or max price is provided
+        if (minPrice > 0 || maxPrice > 0) {
+            payload.filters = payload.filters || {};
+            payload.filters.price = {
+                min: minPrice || 0,
+                max: maxPrice || 999999 // A high number as default max
+            };
+        }
+        
+        // Add pagination parameters
+        if (page > 0 && limit > 0) {
+            payload.pagination = {
+                page: page,
+                limit: limit
+            };
+        }
+        
+        // Add sorting if provided
+        if (sort) {
+            payload.sort = sort;
+        }
+        
+        // Make API request with proper headers
+        const response = await axios.post(url, payload, {
+            headers: getServerAuthHeaders(),
+        });
+        
+        // Return the items array or an empty array if null
+        return response?.data?.data?.items || [];
+    } catch (error) {
+        console.error('Error searching products:', error);
+        // Return empty array on error rather than throwing
+        return [];
+    }
+}
+
 
 

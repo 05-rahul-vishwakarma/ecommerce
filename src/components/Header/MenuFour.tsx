@@ -220,9 +220,9 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                     href="#!"
                     className="text-white text-button-uppercase duration-300 h-full flex items-center justify-center"
                   >
-                    Pages
+                    Company Profile
                   </Link>
-                  <div className="sub-menu py-3 px-5 -left-10 absolute  rounded-b-xl backdrop-blur">
+                  <div className="sub-menu py-3 px-5  absolute  rounded-b-xl backdrop-blur">
                     <ul className="w-full">
                       <li>
                         <Link
@@ -443,7 +443,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       href={"#!"}
                       className="text-xl text-white font-semibold flex items-center justify-between mt-5"
                     >
-                      Pages
+                      Company Profile
                       <span
                         className={`${openMenuMobile ? "open" : ""
                           } tesxt-right`}
