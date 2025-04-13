@@ -156,7 +156,7 @@ const Product = ({ product }) => {
                         </div>
                     </div>
                 </div>
-                <div className="product-name text-title duration-300">{product?.name}</div>
+                <div className="product-name text-title duration-300">{product?.title}</div>
                 <div className="list-color py-2 max-md:hidden flex items-center gap-3 flex-wrap duration-500">
                     {product?.imageURLs?.map((image, index) => (
                         <div
