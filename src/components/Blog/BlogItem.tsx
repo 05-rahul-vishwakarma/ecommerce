@@ -38,15 +38,15 @@ const BlogItem: React.FC<BlogProps> = ({ data, type }) => {
           <div className="blog-infor mt-7">
 
             <div className=" blog-title mt-3 duration-300 text-black font-medium leading-normal tracking-[0.8px]">
-              {data.title}
+              {data?.title}
             </div>
             <div className="flex items-center gap-2 mt-2 ">
               <div className="blog-author caption1 text-secondary">
-                by {data.author}
+                by {data?.author}
               </div>
               <span className="w-[20px] h-[1px] bg-black"></span>
               <div className="blog-date caption1 text-secondary">
-                {data.createdAt}
+                {data?.createdAt}
               </div>
             </div>
           </div>

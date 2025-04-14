@@ -9,7 +9,7 @@ export default async function page({ params }) {
 
     const fetcher = await blogListDataByPkSk(id, id2);
 
-    if (!fetcher || !fetcher.data || fetcher.data.length === 0) {
+    if (!fetcher || !fetcher.data || fetcher?.data?.length === 0) {
         return <div>No blog data found.</div>;
     }
 
@@ -18,7 +18,7 @@ export default async function page({ params }) {
             <div id="header" className="relative w-full">
                 <MenuFour props="bg-transparent" />
             </div>
-            <BlogDyanamicPage data={fetcher.data[0]} />
+            <BlogDyanamicPage data={fetcher?.data[0]} />
             <Footer />
         </>
     );
