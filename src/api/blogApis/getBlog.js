@@ -16,15 +16,13 @@ export const blogListData = async () => {
     }
 };
 
-export const blogListDataByPkSk = async (PK, SK) => {
+export async function blogListDataByPkSk(id, id2) {
     try {
-        const url = getBlogListByPkSk(PK, SK);
-        const response = await axios.post(url, {
-            headers: getAuthHeaders(),
-        });
-        return response.data;
+        const response = await fetch(`/api/blog?id=${id}&id2=${id2}`);
+        const data = await response.json();
+        return data;
     } catch (error) {
-        console.error('Error fetching product list data:', error);
-        throw error;
+        console.error("Error fetching blog data:", error);
+        return null;
     }
-};
+}
