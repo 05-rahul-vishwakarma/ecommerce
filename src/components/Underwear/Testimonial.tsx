@@ -43,8 +43,13 @@ const Testimonial = () => {
     getTestimonial();
   }, []);
 
+  
+
   return (
     <>
+    !testimonial ? <>
+      
+    </> :
       <div className="testimonial-block style-four bg-[#fffdfd] md:mt-20 mt-10 md:py-20 py-14">
         <div className="container flex items-center justify-between flex-wrap gap-y-6 max-md:flex-col-reverse">
           <div className="md:w-1/2 w-full list-testimonial section-swiper-navigation style-small-border">
