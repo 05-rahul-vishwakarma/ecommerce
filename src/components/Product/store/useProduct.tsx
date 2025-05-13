@@ -42,11 +42,19 @@ interface ProductStore {
     productDetails: ProductDetail[];
     filteredProducts: Product[];
     categories: Category[];
-    fetchProducts: () => Promise<void>;
+    fetchProducts: (lastKey?: string | null) => Promise<void>;
     filteredProductsByFilter: (data: string) => Promise<void>;
     fetchCategories: () => Promise<void>;
     fetchProductsByCategory: (categoryId: string) => Promise<void>;
     lastEvaluatedKey: string | null;
+    // Stack-based pagination
+    nextKeyStack: (string | null)[];
+    prevKeyStack: (string | null)[];
+    pushNextKey: (key: string | null) => void;
+    popNextKey: () => string | null;
+    pushPrevKey: (key: string | null) => void;
+    popPrevKey: () => string | null;
+    resetPaginationStacks: () => void;
 }
 
 
@@ -56,8 +64,26 @@ export const useProductStore = create<ProductStore>((set, get) => ({
     filteredProducts: [],
     categories: [],
     lastEvaluatedKey: null,
-
-
+    // Stack-based pagination
+    nextKeyStack: [],
+    prevKeyStack: [],
+    pushNextKey: (key) => set(state => ({ nextKeyStack: [...state.nextKeyStack, key] })),
+    popNextKey: () => {
+        const stack = get().nextKeyStack;
+        if (stack.length === 0) return null;
+        const key = stack[stack.length - 1];
+        set({ nextKeyStack: stack.slice(0, -1) });
+        return key;
+    },
+    pushPrevKey: (key) => set(state => ({ prevKeyStack: [...state.prevKeyStack, key] })),
+    popPrevKey: () => {
+        const stack = get().prevKeyStack;
+        if (stack.length === 0) return null;
+        const key = stack[stack.length - 1];
+        set({ prevKeyStack: stack.slice(0, -1) });
+        return key;
+    },
+    resetPaginationStacks: () => set({ nextKeyStack: [], prevKeyStack: [] }),
 
     fetchProducts: async (lastKey: string | null = null) => {
         try {

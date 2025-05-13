@@ -1,37 +1,37 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import ReactPaginate from 'react-paginate';
+import React, { useState } from 'react';
 import { useProductStore } from '../Product/store/useProduct';
 
-
-
-const HandlePagination = ({ onPageChange }) => {
-    const { fetchProducts, lastEvaluatedKey } = useProductStore();
-    const [pageCount, setPageCount] = useState(2); // Initially show 1 and 2 pages
-
-    useEffect(() => {
-        if (!lastEvaluatedKey) {
-            setPageCount((prev) => prev + 1); // Add a new page if lastEvaluatedKey exists
-        }
-    }, [lastEvaluatedKey]);
+const HandlePagination = ({ onPageChange, currentPage }) => {
+    const { fetchProducts, lastEvaluatedKey, pushPrevKey, popPrevKey, prevKeyStack } = useProductStore();
 
     return (
-        <ReactPaginate
-            previousLabel="<"
-            nextLabel=">"
-            pageCount={pageCount}
-            pageRangeDisplayed={3}
-            marginPagesDisplayed={2}
-            onPageChange={({ selected }) => {
-                if (selected === 1 && lastEvaluatedKey !== null) {
+        <div className="pagination flex gap-2 justify-center">
+            <button
+                onClick={() => {
+                    const prevKey = popPrevKey();
+                    fetchProducts(prevKey);
+                    onPageChange(currentPage - 1);
+                }}
+                disabled={prevKeyStack.length === 0}
+                className={`px-4 py-2 border rounded ${prevKeyStack.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+                Previous
+            </button>
+            <span className="px-4 py-2">{currentPage + 1}</span>
+            <button
+                onClick={() => {
+                    pushPrevKey(lastEvaluatedKey);
                     fetchProducts(lastEvaluatedKey);
-                }
-                onPageChange(selected);
-            }}
-            containerClassName="pagination"
-            activeClassName="active"
-        />
+                    onPageChange(currentPage + 1);
+                }}
+                disabled={lastEvaluatedKey === null || lastEvaluatedKey === 'null'}
+                className={`px-4 py-2 border rounded ${(lastEvaluatedKey === null || lastEvaluatedKey === 'null') ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+                Next
+            </button>
+        </div>
     );
 };
 

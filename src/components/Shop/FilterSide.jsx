@@ -9,7 +9,7 @@ import { Puff } from 'react-loader-spinner'; // Import the loader
 export default function FilterSide({ sidebarData, products: initialProducts }) {
 
 
-    const { filteredProductsByFilter, fetchProducts, setProducts } = useProductStore();
+    const { filteredProductsByFilter, fetchProducts, setProducts, products } = useProductStore();
     const [selectedTypes, setSelectedTypes] = useState([]);
     const [selectedSizes, setSelectedSizes] = useState([]);
     const [selectedColors, setSelectedColors] = useState([]);
@@ -21,8 +21,8 @@ export default function FilterSide({ sidebarData, products: initialProducts }) {
     const [localProducts, setLocalProducts] = useState(initialProducts || []);
 
     useEffect(() => {
-        setLocalProducts(initialProducts);
-    }, [initialProducts]);
+        setLocalProducts(products);
+    }, [products]);
 
 
     // useCallback for toggleFilter
@@ -56,6 +56,10 @@ export default function FilterSide({ sidebarData, products: initialProducts }) {
         setSelectedColors([]);
         setCurrentPage(1);
         fetchProducts();
+        // Reset pagination stacks
+        if (typeof useProductStore.getState().resetPaginationStacks === 'function') {
+            useProductStore.getState().resetPaginationStacks();
+        }
     }, [fetchProducts]);
 
 
@@ -120,6 +124,10 @@ export default function FilterSide({ sidebarData, products: initialProducts }) {
                     await fetchProducts();
                 }
                 setCurrentPage(1); // Reset page on filter change
+                // Reset pagination stacks
+                if (typeof useProductStore.getState().resetPaginationStacks === 'function') {
+                    useProductStore.getState().resetPaginationStacks();
+                }
             } finally {
                 setIsLoading(false); // End loading
             }
