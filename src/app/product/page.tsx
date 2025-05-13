@@ -30,18 +30,24 @@ interface ProductDetail {
 }
 
 export default function BreadCrumb1() {
-  const { products, productDetails, fetchProducts } = useProductStore();
+  const { products, productDetails, fetchProducts , categories, fetchCategories} = useProductStore();
 
   useEffect(() => {
     fetchProducts().catch((err) => console.error("Error fetching products:", err));
-  }, [fetchProducts]);
+  }, [fetchProducts,categories]);
+
+  useEffect(() => {
+    fetchCategories(); // Fetch categories on mount
+  }, []);
+
+  console.log(products,'products from product page')
 
   return (
     <>
       <div id="header" className="relative w-full">
         <MenuFour props="bg-transparent" />
       </div>
-      <ShopBreadCrumb products={products} productDetails={productDetails} />
+      <ShopBreadCrumb products={products} productDetails={categories} />
       <Footer />
     </>
   );

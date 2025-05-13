@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import axios from 'axios';
 import { productListDataByFilter } from '@/api/productApis/getPostApi';
+import { category as categoryApi, getProductListByCategory } from '@/api/baseApi';
 
 interface Product {
     productDetails: any;
@@ -31,13 +32,21 @@ interface ProductDetail {
     brand: string;
 }
 
+interface Category {
+    id: string;
+    name: string;
+}
+
 interface ProductStore {
     products: Product[];
     productDetails: ProductDetail[];
     filteredProducts: Product[];
+    categories: Category[];
     fetchProducts: () => Promise<void>;
     filteredProductsByFilter: (data: string) => Promise<void>;
-    lastEvaluatedKey: string | null; // Add lastEvaluatedKey
+    fetchCategories: () => Promise<void>;
+    fetchProductsByCategory: (categoryId: string) => Promise<void>;
+    lastEvaluatedKey: string | null;
 }
 
 
@@ -45,20 +54,22 @@ export const useProductStore = create<ProductStore>((set, get) => ({
     products: [],
     productDetails: [],
     filteredProducts: [],
-    lastEvaluatedKey:null,
+    categories: [],
+    lastEvaluatedKey: null,
+
+
 
     fetchProducts: async (lastKey: string | null = null) => {
         try {
-            const response = await axios.post<{ 
-                data: { 
-                    items: Product[]; 
-                    lastEvaluatedKey: string | null; 
-                    count: number; 
-                    scannedCount: number 
-                } 
+            const response = await axios.post<{
+                data: {
+                    items: Product[];
+                    lastEvaluatedKey: string | null;
+                    count: number;
+                    scannedCount: number
+                }
             }>(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}${
-                    lastKey ? `&lastEvaluatedKey=${encodeURIComponent(JSON.stringify(lastKey))}` : ''
+                `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}${lastKey ? `&lastEvaluatedKey=${encodeURIComponent(JSON.stringify(lastKey))}` : ''
                 }`
             );
 
@@ -103,6 +114,27 @@ export const useProductStore = create<ProductStore>((set, get) => ({
             });
         } catch (error) {
             console.error("Error on Fetching Filtered Products", error);
+        }
+    },
+
+    fetchCategories: async () => {
+        try {
+            const response = await axios.post(categoryApi, {
+                "keys": ["name", "PK", "SK"]
+            });
+            set({ categories: response?.data?.data?.items || [] });
+        } catch (error) {
+            console.error('Error fetching categories', error);
+        }
+    },
+
+    fetchProductsByCategory: async (categoryId: string) => {
+        try {
+            const url = getProductListByCategory(categoryId);
+            const response = await axios.post(url);
+            set({ filteredProducts: response?.data?.data?.items || [] });
+        } catch (error) {
+            console.error('Error fetching products by category', error);
         }
     },
 

@@ -7,6 +7,8 @@ import { useProductStore } from "../Product/store/useProduct";
 import { Puff } from 'react-loader-spinner'; // Import the loader
 
 export default function FilterSide({ sidebarData, products: initialProducts }) {
+
+
     const { filteredProductsByFilter, fetchProducts, setProducts } = useProductStore();
     const [selectedTypes, setSelectedTypes] = useState([]);
     const [selectedSizes, setSelectedSizes] = useState([]);
@@ -59,16 +61,17 @@ export default function FilterSide({ sidebarData, products: initialProducts }) {
 
     // useCallback for renderProductTypes
     const renderProductTypes = useCallback(() => {
-        const uniqueTypes = [...new Set(sidebarData.map((item) => item?.productType))];
-        return uniqueTypes.map((type, index) => (
+        // Use the 'PK' property for value, 'name' for display
+        const uniqueTypes = [...new Map(sidebarData.map((item) => [item.PK, item])).values()];
+        return uniqueTypes.map((cat, index) => (
             <div
-                key={index}
+                key={cat.PK}
                 onClick={() => {
-                    toggleFilter('type', type);
+                    toggleFilter('type', cat.PK);
                 }}
-                className={`item flex items-center justify-between cursor-pointer capitalize ${selectedTypes.includes(type) ? 'text-primary font-bold' : 'text-secondary'}`}
+                className={`item flex items-center justify-between cursor-pointer capitalize ${selectedTypes.includes(cat.PK) ? 'text-primary font-bold' : 'text-secondary'}`}
             >
-                {type}
+                {cat.name}
             </div>
         ));
     }, [sidebarData, selectedTypes, toggleFilter]);
@@ -79,13 +82,13 @@ export default function FilterSide({ sidebarData, products: initialProducts }) {
         let result = localProducts;
 
         if (selectedTypes.length > 0) {
-            result = result.filter(product => selectedTypes.includes(product.productType)); // Assuming product has a 'type' property
+            result = result.filter(product => selectedTypes.includes(product.category?.id));
         }
         if (selectedSizes.length > 0) {
-            result = result.filter(product => selectedSizes.includes(product.size)); // Assuming product has a 'size' property
+            result = result.filter(product => selectedSizes.includes(product.size));
         }
         if (selectedColors.length > 0) {
-            result = result.filter(product => selectedColors.includes(product.color)); // Assuming product has a 'color' property
+            result = result.filter(product => selectedColors.includes(product.color));
         }
 
         return result;

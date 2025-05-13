@@ -14,9 +14,11 @@ export const sendOtp = `${process.env.NEXT_PUBLIC_BASE_URL}/user/login`;
 
 
 export const productList = `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`;
-export const getFilteredProductList = (data) => `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&productType=${encodeURIComponent(data)}`;
+export const getFilteredProductList = (data) => `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&category.id=${encodeURIComponent(data)}`;
 export const getProductList = (PK, SK) => `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&PK=${encodeURIComponent(PK)}&SK=${encodeURIComponent(SK)}`;
 export const getProductListBySK = (SK) => `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&SK=${encodeURIComponent(SK)}`;
+
+export const getProductListByCategory = (categoryId) => `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&category.id=${encodeURIComponent(categoryId)}`;
 
 
 export const addWishList = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/wishlist`;
@@ -39,4 +41,4 @@ export const getReviewProduct = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/rev
 export const getBlogList = `${process.env.NEXT_PUBLIC_BASE_URL}/meta-content/blog/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`;
 export const getBlogListByPkSk = (PK, SK) => `${process.env.NEXT_PUBLIC_BASE_URL}/meta-content/blog/get?PK=${encodeURIComponent(PK)}&SK=${encodeURIComponent(SK)}`;
 
-export const category = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/category/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}`
+export const category = `${process.env.NEXT_PUBLIC_BASE_URL}/catalog/category/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&limit=100`
