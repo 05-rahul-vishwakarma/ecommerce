@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import axios from 'axios';
-import { productListDataByFilter } from '@/api/productApis/getPostApi';
 import { category as categoryApi, getProductListByCategory } from '@/api/baseApi';
 
 interface Product {
@@ -40,52 +39,22 @@ interface Category {
 interface ProductStore {
     products: Product[];
     productDetails: ProductDetail[];
-    filteredProducts: Product[];
     categories: Category[];
-    fetchProducts: (lastKey?: string | null) => Promise<void>;
-    filteredProductsByFilter: (data: string) => Promise<void>;
+    lastEvaluatedKey: any;
+    fetchProducts: () => Promise<void>;
     fetchCategories: () => Promise<void>;
     fetchProductsByCategory: (categoryId: string) => Promise<void>;
-    lastEvaluatedKey: string | null;
-    // Stack-based pagination
-    nextKeyStack: (string | null)[];
-    prevKeyStack: (string | null)[];
-    pushNextKey: (key: string | null) => void;
-    popNextKey: () => string | null;
-    pushPrevKey: (key: string | null) => void;
-    popPrevKey: () => string | null;
-    resetPaginationStacks: () => void;
+    fetchMoreProducts: (lastEvaluatedKey: any) => Promise<void>;
 }
-
 
 export const useProductStore = create<ProductStore>((set, get) => ({
     products: [],
     productDetails: [],
-    filteredProducts: [],
     categories: [],
-    lastEvaluatedKey: null,
-    // Stack-based pagination
-    nextKeyStack: [],
-    prevKeyStack: [],
-    pushNextKey: (key) => set(state => ({ nextKeyStack: [...state.nextKeyStack, key] })),
-    popNextKey: () => {
-        const stack = get().nextKeyStack;
-        if (stack.length === 0) return null;
-        const key = stack[stack.length - 1];
-        set({ nextKeyStack: stack.slice(0, -1) });
-        return key;
-    },
-    pushPrevKey: (key) => set(state => ({ prevKeyStack: [...state.prevKeyStack, key] })),
-    popPrevKey: () => {
-        const stack = get().prevKeyStack;
-        if (stack.length === 0) return null;
-        const key = stack[stack.length - 1];
-        set({ prevKeyStack: stack.slice(0, -1) });
-        return key;
-    },
-    resetPaginationStacks: () => set({ nextKeyStack: [], prevKeyStack: [] }),
+    lastEvaluatedKey:[],
 
-    fetchProducts: async (lastKey: string | null = null) => {
+
+    fetchProducts: async () => {
         try {
             const response = await axios.post<{
                 data: {
@@ -95,51 +64,18 @@ export const useProductStore = create<ProductStore>((set, get) => ({
                     scannedCount: number
                 }
             }>(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}${lastKey ? `&lastEvaluatedKey=${encodeURIComponent(JSON.stringify(lastKey))}` : ''
-                }`
+                `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&limit=12`
             );
 
-            const uniqueData = new Set<string>();
-            const allUniqueData: ProductDetail[] = [];
 
-            response?.data?.data?.items?.forEach((data: Product) => {
-                const { category, productType, price, brand } = data;
-                const uniqueKey = productType;
-
-                if (!uniqueData.has(uniqueKey)) {
-                    uniqueData.add(uniqueKey);
-                    allUniqueData.push({
-                        category: category?.name,
-                        productType,
-                        price,
-                        brand: brand?.name,
-                    });
-                }
-            });
-
+         
             set({
-                productDetails: allUniqueData,
-                lastEvaluatedKey: response?.data?.data?.lastEvaluatedKey || null,
                 products: response?.data?.data?.items || [],
+                lastEvaluatedKey:response?.data?.data?.lastEvaluatedKey || ''
             });
+
         } catch (error) {
             console.error("Error on Fetching Products", error);
-        }
-    },
-
-    filteredProductsByFilter: async (filterData: string) => {
-        try {
-            if (filterData === "") {
-                set({ filteredProducts: get().products }); // Reset to show all products
-                return;
-            }
-
-            const response = await productListDataByFilter(filterData);
-            set({
-                products: response?.data?.items || [],
-            });
-        } catch (error) {
-            console.error("Error on Fetching Filtered Products", error);
         }
     },
 
@@ -158,9 +94,32 @@ export const useProductStore = create<ProductStore>((set, get) => ({
         try {
             const url = getProductListByCategory(categoryId);
             const response = await axios.post(url);
-            set({ filteredProducts: response?.data?.data?.items || [] });
+            set({ products: response?.data?.data?.items || [] });
         } catch (error) {
             console.error('Error fetching products by category', error);
+        }
+    },
+
+    fetchMoreProducts: async (lastEvaluatedKey: any) => {
+        try {
+            if (!lastEvaluatedKey || lastEvaluatedKey === 'null') return;
+
+            const response = await axios.post<{
+                data: {
+                    items: Product[];
+                    lastEvaluatedKey: string | null;
+                    count: number;
+                    scannedCount: number
+                }
+            }>(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&limit=12&lastEvaluatedKey=${encodeURIComponent(JSON.stringify(lastEvaluatedKey))}`
+            );
+            set((state: any) => ({
+                products: [...state.products, ...(response?.data?.data?.items || [])],
+                lastEvaluatedKey: response?.data?.data?.lastEvaluatedKey || ''
+            }));
+        } catch (error) {
+            console.error('Error fetching more products', error);
         }
     },
 

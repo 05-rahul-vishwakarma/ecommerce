@@ -34,13 +34,11 @@ export default function BreadCrumb1() {
 
   useEffect(() => {
     fetchProducts().catch((err) => console.error("Error fetching products:", err));
-  }, [fetchProducts,categories]);
+  }, [fetchCategories]);
 
   useEffect(() => {
     fetchCategories(); // Fetch categories on mount
   }, []);
-
-  console.log(products,'products from product page')
 
   return (
     <>

@@ -1,38 +1,38 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useProductStore } from '../Product/store/useProduct';
+import React from 'react'
+import { useProductStore } from '../Product/store/useProduct'
 
-const HandlePagination = ({ onPageChange, currentPage }) => {
-    const { fetchProducts, lastEvaluatedKey, pushPrevKey, popPrevKey, prevKeyStack } = useProductStore();
+export default function HandlePagination() {
+    const { lastEvaluatedKey, fetchMoreProducts } = useProductStore();
 
+    // Hide button if lastEvaluatedKey is null or empty string
+    if (!lastEvaluatedKey || lastEvaluatedKey === 'null') {
+        return null;
+    }
+    
     return (
-        <div className="pagination flex gap-2 justify-center">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '30px' }}>
+            <span style={{ fontWeight: 'bold', fontSize: '18px', marginBottom: '16px' }}></span>
             <button
-                onClick={() => {
-                    const prevKey = popPrevKey();
-                    fetchProducts(prevKey);
-                    onPageChange(currentPage - 1);
+                style={{
+                    padding: '10px 28px',
+                    borderRadius: '6px',
+                    border: 'none',
+                    background: '#1976d2',
+                    color: '#fff',
+                    fontWeight: '500',
+                    fontSize: '16px',
+                    cursor: 'pointer',
+                    transition: 'background 0.2s',
+                    boxShadow: '0 2px 8px rgba(25, 118, 210, 0.08)'
                 }}
-                disabled={prevKeyStack.length === 0}
-                className={`px-4 py-2 border rounded ${prevKeyStack.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                onClick={() => fetchMoreProducts(lastEvaluatedKey)}
+                onMouseOver={e => e.currentTarget.style.background = '#1565c0'}
+                onMouseOut={e => e.currentTarget.style.background = '#1976d2'}
             >
-                Previous
-            </button>
-            <span className="px-4 py-2">{currentPage + 1}</span>
-            <button
-                onClick={() => {
-                    pushPrevKey(lastEvaluatedKey);
-                    fetchProducts(lastEvaluatedKey);
-                    onPageChange(currentPage + 1);
-                }}
-                disabled={lastEvaluatedKey === null || lastEvaluatedKey === 'null'}
-                className={`px-4 py-2 border rounded ${(lastEvaluatedKey === null || lastEvaluatedKey === 'null') ? 'opacity-50 cursor-not-allowed' : ''}`}
-            >
-                Next
+                Load More
             </button>
         </div>
-    );
-};
-
-export default HandlePagination;
+    )
+}
