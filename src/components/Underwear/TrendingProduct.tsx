@@ -52,7 +52,7 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
   }, []);
 
   const handleTabClick = (type: string) => {
-    console.log(type,'type');
+    console.log(type, 'type');
     setActiveTab(type);
     setLoading(true);
     if (type === 'All') {
@@ -78,11 +78,11 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
       <div className="container">
         <div className="heading flex flex-col items-center text-center">
           <div className="heading3 text-center text-secondary2">Trending Products</div>
-          
-      
-          
+
+
+
           <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl mt-6">
-            {[{ name: 'All', PK: 'All' }, ...category.slice(1, 5)].map(({ name , PK }) => (
+            {[{ name: 'All', PK: 'All' }, ...category.slice(1, 5)].map(({ name, PK }) => (
               <div
                 key={PK}
                 className={`tab-item relative text-secondary2 py-2 px-5 cursor-pointer duration-500 hover:text-purple ${activeTab === PK ? 'active' : ''}`}
@@ -118,7 +118,9 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
           </div>
         )}
 
-         <button onClick={() => router.push('/shop')} className='btn-primary mt-10'> show more </button>
+        <div className='flex justify-center w-full '>
+          <button onClick={() => router.push('/shop')} className='button-main w-max px-4 py-2   mt-5'> show more </button>
+        </div>
 
       </div>
     </div>
