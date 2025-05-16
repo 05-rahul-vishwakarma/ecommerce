@@ -25,6 +25,7 @@ const PageNotFound = () => {
               width={2000}
               height={2000}
               alt="bg-img"
+              title="404-image"
               priority={true}
               className="sm:w-1/2 w-3/4"
             />

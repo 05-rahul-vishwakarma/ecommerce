@@ -32,6 +32,7 @@ const CartItem = ({ product }) => {
               src={product.productDetails.img}
               width={1000}
               height={1000}
+              title={product?.productDetails?.name || "Product image"}
               alt={product?.productDetails?.name || "Product image"}
               className="w-full h-full object-cover rounded-lg"
             />

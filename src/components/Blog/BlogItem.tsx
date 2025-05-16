@@ -32,6 +32,7 @@ const BlogItem: React.FC<BlogProps> = ({ data, type }) => {
               width={2000}
               height={1500}
               alt="blog-img"
+              title="blog-img"
               className="w-full duration-500"
             />
           </div>

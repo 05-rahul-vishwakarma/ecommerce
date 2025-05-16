@@ -49,7 +49,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
   const [activeWidth, setActiveWidth] = useState<string | null>(null);
   const [activeLength, setActiveLength] = useState<string | null>(null);
 
-  const product = useMemo(() => products[0], [products]);
+  const product = useMemo(() => products[3], [products]);
 
   useEffect(() => {
     if (product) {
@@ -143,6 +143,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
                   alt="Product Image"
                   className="w-full aspect-[3/4] object-cover"
                   priority
+                  title={(activeImage || product?.imageURLs[0]?.img)?.split('/').pop()?.split('.')[0] || ''}
                 />
               ) : (
                 <p>No image available</p>
@@ -169,6 +170,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
                   className="w-full aspect-[3/4] object-cover rounded-xl"
                   onClick={() => setActiveImage(image.img)}
                   loading="lazy"
+                  title={image.img.split('/').pop()?.split('.')[0] || ''}
                 />
               </SwiperSlide>
             ))}
@@ -222,6 +224,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
                         height={48}
                         className="rounded-xl object-cover"
                         loading="lazy"
+                        title={item?.img.split('/').pop()?.split('.')[0] || ''}
                       />
                     </button>
                   ))

@@ -68,6 +68,7 @@ const ModalCart = () => {
                                         <div className="bg-img">
                                             <Image
                                                 src={product?.img}
+                                                title={product?.name || "Product Image"}
                                                 width={300}
                                                 height={300}
                                                 alt={product.name}
@@ -131,6 +132,7 @@ const ModalCart = () => {
                                                     src={productDetail?.img || "/image3.png"}
                                                     width={1000}
                                                     height={1000}
+                                                    title={productDetail?.name || "Product Image"}
                                                     alt={productDetail?.name || "Product Image"}
                                                     className="w-full h-full object-cover rounded-lg"
                                                 />
@@ -152,6 +154,7 @@ const ModalCart = () => {
                                                                             src={image.img}
                                                                             alt={image.color.name}
                                                                             width={28}
+                                                                            title={image.color.name}
                                                                             height={28}
                                                                             className="object-cover"
                                                                         />

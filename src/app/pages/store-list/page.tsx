@@ -27,6 +27,7 @@ const StoreList = () => {
                 width={3000}
                 height={2000}
                 alt="bg-img"
+                title="storelistoffice1"
                 className="lg:absolute relative top-0 left-0 lg:bottom-0 lg:w-1/2 w-full h-full object-cover"
               />
               <div className="text-content lg:w-1/2 lg:pr-20 lg:pl-[100px] lg:py-14 sm:py-10 py-6 max-lg:px-6">
@@ -171,6 +172,7 @@ const StoreList = () => {
                 src={"/images/other/storelistoffice2.jpg"}
                 width={3000}
                 height={2000}
+                title="storelistoffice2"
                 alt="bg-img"
                 className="lg:absolute relative top-0 right-0 bottom-0 lg:bottom-0 lg:w-1/2 w-full h-full object-cover"
               />
@@ -182,6 +184,7 @@ const StoreList = () => {
                 src={"/images/other/storelistoffice3.jpg"}
                 width={3000}
                 height={2000}
+                title="storelistoffice3"
                 alt="bg-img"
                 className="lg:absolute relative top-0 left-0 lg:bottom-0 lg:w-1/2 w-full h-full object-cover"
               />

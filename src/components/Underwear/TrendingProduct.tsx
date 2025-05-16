@@ -5,6 +5,7 @@ import Product from '../Product/Product';
 import { motion } from 'framer-motion';
 import { useProductStore } from '../Product/store/useProduct';
 import { searchProducts } from '@/api/productApis/getPostApi';
+import { useRouter } from 'next/navigation';
 
 interface SearchParams {
   query: string;
@@ -69,6 +70,9 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
   };
 
 
+  const router = useRouter();
+
+
   return (
     <div className="tab-features-block style-underwear md:pt-20 pt-10">
       <div className="container">
@@ -109,10 +113,13 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center mt-10">
-            <img src="/empty-data.svg" alt="No products available" className="w-64 h-64" />
+            <img src="/empty-data.svg" alt="No products available" className="w-64 h-64" title="empty-data" />
             <p className="text-secondary2 mt-4">No products available</p>
           </div>
         )}
+
+         <button onClick={() => router.push('/shop')} className='btn-primary mt-10'> show more </button>
+
       </div>
     </div>
   );

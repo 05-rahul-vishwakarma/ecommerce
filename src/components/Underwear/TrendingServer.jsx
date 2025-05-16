@@ -19,7 +19,7 @@ export default async function TrendingServer({ searchQuery = '', category = '', 
             maxPrice: maxPrice > 0 ? maxPrice : 0,
             sort: sort,
             page: page > 0 ? page : 1,
-            limit: limit > 0 ? limit : 8
+            limit: limit > 0 ? limit : 12
         };
         
         products = await searchProducts(searchParams) || [];
