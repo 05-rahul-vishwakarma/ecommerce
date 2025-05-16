@@ -45,7 +45,7 @@ export default function BreadCrumb1() {
       <div id="header" className="relative w-full">
         <MenuFour props="bg-transparent" />
       </div>
-      <ShopBreadCrumb products={products} productDetails={productDetails} />
+      <ShopBreadCrumb />
       <Footer />
     </>
   );

@@ -92,7 +92,9 @@ export const productCategory = async () => {
     try {
         const response = await axios.post(category, {
             keys: [
-                "name"
+                "name",
+                "PK",
+                "SK"
             ]
         }, {
             headers: getServerAuthHeaders()

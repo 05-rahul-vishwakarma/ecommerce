@@ -20,22 +20,21 @@ interface SearchParams {
 interface Props {
   start: number;
   limit: number;
-  category: { name: string }[];
+  category: { PK: string; name: string }[];
   products?: any[];
   searchParams?: SearchParams;
 }
 
 const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProducts = [], searchParams = {}, start, limit }) => {
-  const { products: storeProducts, fetchProducts, filteredProductsByFilter } = useProductStore();
+  const { products: storeProducts, fetchProducts, fetchProductsByCategory } = useProductStore();
   const [activeTab, setActiveTab] = useState<string>('All');
   const [loading, setLoading] = useState<boolean>(true);
   const [displayProducts, setDisplayProducts] = useState<any[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>(searchParams.query || '');
+
+
 
   useEffect(() => {
     setLoading(true);
-    
-    // If initial products were provided (from server), use them
     if (initialProducts && initialProducts.length > 0) {
       setDisplayProducts(initialProducts);
       setLoading(false);
@@ -49,9 +48,10 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
           setLoading(false);
         });
     }
-  }, [fetchProducts, initialProducts, storeProducts]);
+  }, []);
 
   const handleTabClick = (type: string) => {
+    console.log(type,'type');
     setActiveTab(type);
     setLoading(true);
     if (type === 'All') {
@@ -63,38 +63,11 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
           setLoading(false);
         });
     } else {
-      filteredProductsByFilter(type);
-      // The store won't return the filtered products directly, so we need to get them from the store
-      setDisplayProducts(storeProducts);
+      fetchProductsByCategory(type);
       setLoading(false);
     }
   };
 
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    
-    try {
-      // Call the searchProducts with the correct parameters
-      const results = await searchProducts({
-        ...searchParams,
-        query: searchQuery,
-        category: activeTab !== 'All' ? activeTab : '',
-      });
-      
-      if (Array.isArray(results)) {
-        setDisplayProducts(results);
-      } else {
-        console.warn("Search returned non-array result:", results);
-        setDisplayProducts([]);
-      }
-    } catch (error) {
-      console.error("Error searching products:", error);
-      setDisplayProducts([]);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div className="tab-features-block style-underwear md:pt-20 pt-10">
@@ -102,34 +75,16 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
         <div className="heading flex flex-col items-center text-center">
           <div className="heading3 text-center text-secondary2">Trending Products</div>
           
-          {/* Search bar */}
-          <div className="w-full max-w-md mt-6 mb-4 hidden ">
-            <form onSubmit={handleSearch} className="flex">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search products..."
-                className="w-full px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              />
-              <button
-                type="submit"
-                className="bg-custom-purple-color text-white px-4 py-2 rounded-r-lg hover:bg-purple-600 transition duration-300"
-              >
-                Search
-              </button>
-            </form>
-          </div>
+      
           
           <div className="menu-tab flex items-center gap-2 p-1 bg-surface rounded-2xl mt-6">
-            {[{ name: 'All' }, ...category.slice(1, 5)].map(({ name }) => (
+            {[{ name: 'All', PK: 'All' }, ...category.slice(1, 5)].map(({ name , PK }) => (
               <div
-                key={name}
-                className={`tab-item relative text-secondary2 py-2 px-5 cursor-pointer duration-500 hover:text-purple ${activeTab === name ? 'active' : ''
-                  }`}
-                onClick={() => handleTabClick(name)}
+                key={PK}
+                className={`tab-item relative text-secondary2 py-2 px-5 cursor-pointer duration-500 hover:text-purple ${activeTab === PK ? 'active' : ''}`}
+                onClick={() => handleTabClick(PK)}
               >
-                {activeTab === name && (
+                {activeTab === PK && (
                   <motion.div
                     layoutId="active-pill"
                     className="absolute inset-0 rounded-2xl bg-custom-purple-color"
@@ -146,9 +101,9 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
           <div className="flex justify-center items-center h-40">
             <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-purple-500"></div>
           </div>
-        ) : displayProducts?.length > 0 ? (
+        ) : storeProducts?.length > 0 ? (
           <div className="list-product hide-product-sold grid lg:grid-cols-4 grid-cols-2 sm:gap-[30px] gap-[20px] md:mt-10 mt-6">
-            {displayProducts.slice(start, start + limit).map((product) => (
+            {storeProducts.slice(start, start + limit).map((product) => (
               <Product key={product.SK} product={product} />
             ))}
           </div>
