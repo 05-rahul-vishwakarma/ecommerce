@@ -41,10 +41,9 @@ interface ProductStore {
     productDetails: ProductDetail[];
     categories: Category[];
     lastEvaluatedKey: any;
-    fetchProducts: () => Promise<void>;
+    fetchProducts: (lastEvaluatedKey?: any) => Promise<void>;
     fetchCategories: () => Promise<void>;
     fetchProductsByCategory: (categoryId: string, lastEvaluatedKey?: any) => Promise<void>;
-    fetchMoreProducts: (lastEvaluatedKey: any) => Promise<void>;
 }
 
 export const useProductStore = create<ProductStore>((set, get) => ({
@@ -54,8 +53,13 @@ export const useProductStore = create<ProductStore>((set, get) => ({
     lastEvaluatedKey: null,
 
 
-    fetchProducts: async () => {
+    fetchProducts: async (lastEvaluatedKey?: any) => {
         try {
+            let url = `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&limit=12`;
+            if (lastEvaluatedKey) {
+                url = `${url}&lastEvaluatedKey=${encodeURIComponent(JSON.stringify(lastEvaluatedKey))}`;
+            }
+
             const response = await axios.post<{
                 data: {
                     items: Product[];
@@ -64,15 +68,15 @@ export const useProductStore = create<ProductStore>((set, get) => ({
                     scannedCount: number
                 }
             }>(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&limit=12`
+                url
             );
 
 
          
-            set({
-                products: response?.data?.data?.items || [],
-                lastEvaluatedKey:response?.data?.data?.lastEvaluatedKey || null
-            });
+            set((state) => ({
+                products: lastEvaluatedKey ? [...state.products, ...(response?.data?.data?.items || [])] : (response?.data?.data?.items || []),
+                lastEvaluatedKey: response?.data?.data?.lastEvaluatedKey || null
+            }));
 
         } catch (error) {
             console.error("Error on Fetching Products", error);
@@ -96,7 +100,7 @@ export const useProductStore = create<ProductStore>((set, get) => ({
             console.log(categoryId, 'categoryId');
             console.log(lastEvaluatedKey, 'lastEvaluatedKey');
 
-            let url = `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&category.id=${categoryId}`;
+            let url = `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&category.id=${encodeURIComponent(categoryId)}`;
             if (lastEvaluatedKey) {
                 url = `${url}&lastEvaluatedKey=${encodeURIComponent(JSON.stringify(lastEvaluatedKey))}`;
             }
@@ -107,29 +111,6 @@ export const useProductStore = create<ProductStore>((set, get) => ({
             }));
         } catch (error) {
             console.error('Error fetching products by category', error);
-        }
-    },
-
-    fetchMoreProducts: async (lastEvaluatedKey: any) => {
-        try {
-            if (!lastEvaluatedKey) return; // Check for null/undefined as well
-
-            const response = await axios.post<{
-                data: {
-                    items: Product[];
-                    lastEvaluatedKey: string | null;
-                    count: number;
-                    scannedCount: number
-                }
-            }>(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&limit=12&lastEvaluatedKey=${encodeURIComponent(JSON.stringify(lastEvaluatedKey))}`
-            );
-            set((state: any) => ({
-                products: [...state.products, ...(response?.data?.data?.items || [])],
-                lastEvaluatedKey: response?.data?.data?.lastEvaluatedKey || null
-            }));
-        } catch (error) {
-            console.error('Error fetching more products', error);
         }
     },
 

@@ -29,6 +29,7 @@ export default function FilterSide({ sidebarData }) {
         // For now, calling fetchProductsByCategory with null categoryId might not work as intended.
         // We should have a dedicated fetchMoreProducts for the main product list.
         // For this fix, we'll only enable 'Load More' for category filtered results.
+        fetchProducts(lastEvaluatedKey); // Call fetchProducts with lastEvaluatedKey
       }
     };
 
