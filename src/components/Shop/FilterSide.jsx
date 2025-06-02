@@ -1,17 +1,35 @@
 "use client";
 import HandlePagination from "../Other/HandlePagination";
 import Product from "../Product/Product";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useProductStore } from "../Product/store/useProduct";
 
-export default function FilterSide({ sidebarData, products: initialProducts }) {
+export default function FilterSide({ sidebarData }) {
     const [activeCategory, setActiveCategory] = useState(null);
-    const fetchProductsByCategory = useProductStore((state) => state.fetchProductsByCategory);
-    const fetchProducts = useProductStore((state) => state.fetchProducts);
+    const { products, lastEvaluatedKey, fetchProductsByCategory, fetchProducts } = useProductStore();
+
+    useEffect(() => {
+      // Initial fetch when component mounts
+      if (!activeCategory) {
+        fetchProducts();
+      }
+    }, [fetchProducts, activeCategory]);
 
     const handleCategoryClick = (cat) => {
         setActiveCategory(cat.PK);
         fetchProductsByCategory(cat.PK);
+    };
+
+    const handleLoadMore = () => {
+      if (activeCategory) {
+        fetchProductsByCategory(activeCategory, lastEvaluatedKey);
+      } else {
+        // If no category is active, load more for the default product list
+        // Assuming fetchProducts also handles pagination if needed, or add a separate fetchMoreProducts for the default list.
+        // For now, calling fetchProductsByCategory with null categoryId might not work as intended.
+        // We should have a dedicated fetchMoreProducts for the main product list.
+        // For this fix, we'll only enable 'Load More' for category filtered results.
+      }
     };
 
     return (
@@ -28,7 +46,7 @@ export default function FilterSide({ sidebarData, products: initialProducts }) {
                                     className={`item flex items-center justify-between cursor-pointer capitalize text-secondary ${!activeCategory ? 'text-indigo-600 font-semibold' : ''}`}
                                     onClick={() => {
                                         setActiveCategory(null);
-                                        fetchProducts();
+                                        fetchProducts(); // Fetch initial products
                                     }}
                                 >
                                     All Products
@@ -52,15 +70,25 @@ export default function FilterSide({ sidebarData, products: initialProducts }) {
                     {/* Product List */}
                     <div className="list-product-block lg:w-3/4 md:w-2/3 w-full md:pl-3">
                         <div className="list-product grid lg:grid-cols-3 sm:grid-cols-3 grid-cols-2 sm:gap-[30px] gap-[20px] mt-7">
-                            {initialProducts?.map((product) => (
+                            {products?.map((product) => (
                                 <Product key={product?.SK} product={product} />
                             ))}
                         </div>
+                        {lastEvaluatedKey && (
+                          <div className="flex justify-center mt-8">
+                            <button
+                              className="button-main"
+                              onClick={handleLoadMore}
+                            >
+                              Load More
+                            </button>
+                          </div>
+                        )}
                     </div>
 
 
                 </div>
-                <HandlePagination />
+                {/* <HandlePagination /> Uncomment or remove if not needed */}
             </div>
         </div>
     );

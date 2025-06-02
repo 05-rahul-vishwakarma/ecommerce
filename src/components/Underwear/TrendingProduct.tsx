@@ -27,7 +27,7 @@ interface Props {
 }
 
 const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProducts = [], searchParams = {}, start, limit }) => {
-  const { products: storeProducts, fetchProducts, fetchProductsByCategory } = useProductStore();
+  const { products: storeProducts, fetchProducts, fetchProductsByCategory , lastEvaluatedKey } = useProductStore();
   const [activeTab, setActiveTab] = useState<string>('All');
   const [loading, setLoading] = useState<boolean>(true);
   const [displayProducts, setDisplayProducts] = useState<any[]>([]);
@@ -64,7 +64,7 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
           setLoading(false);
         });
     } else {
-      fetchProductsByCategory(type);
+      fetchProductsByCategory(type,lastEvaluatedKey);
       setLoading(false);
     }
   };
