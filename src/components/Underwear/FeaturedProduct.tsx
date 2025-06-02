@@ -65,6 +65,25 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
     }
   }, [product]);
 
+  // Add useEffect to cache the data prop
+  useEffect(() => {
+    const cacheData = async () => {
+      if (!data || data.length === 0) {
+        return; // Don't cache empty data
+      }
+      try {
+        const cache = await caches.open('featured-products-cache');
+        const response = new Response(JSON.stringify(data));
+        cache.put('/api/featured-products-data', response);
+        console.log('Featured products data cached.');
+      } catch (error) {
+        console.error('Failed to cache featured products data:', error);
+      }
+    };
+
+    cacheData();
+  }, [data]); // Re-run effect when data prop changes
+
   const handleActiveColor = useCallback((color: string) => {
     setActiveColor(color);
     const selectedImage = product?.imageURLs.find(

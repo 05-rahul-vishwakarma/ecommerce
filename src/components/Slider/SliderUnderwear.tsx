@@ -1,10 +1,38 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const SliderUnderwear = () => {
+  const [featuredProductImage, setFeaturedProductImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchCachedData = async () => {
+      try {
+        const cache = await caches.open('featured-products-cache');
+        const response = await cache.match('/api/featured-products-data');
+
+        if (response) {
+          const data = await response.json();
+          console.log(data, 'data');
+          // Use the image from the product at index 3, if available
+          const image = data?.[3]?.imageURLs?.[0]?.img;
+          console.log(image, 'image');
+          if (image) {
+            setFeaturedProductImage(image);
+          }
+        } else {
+          console.log('Featured products data not found in cache.');
+        }
+      } catch (error) {
+        console.error('Failed to fetch featured products data from cache:', error);
+      }
+    };
+
+    fetchCachedData();
+  }, []); // Run only once on component mount
+
   return (
     <>
       <div className="slider-block style-one bg-linear xl:py-[100px] px-4 md:py-20 py-14 w-full ">
@@ -12,7 +40,7 @@ const SliderUnderwear = () => {
             
           <div className="sub-img w-[440px] max-md:w-1/2 rounded-b-full overflow-hidden max-md:hidden">
             <Image
-              src={"/images/slider/image2.jpg"}
+              src={featuredProductImage || "/images/slider/image2.jpg"}
               width={2000}
               height={1936}
               alt="bg-underwear1"
@@ -42,7 +70,7 @@ const SliderUnderwear = () => {
           </div>
           <div className="sub-img w-[440px] max-md:w-1/2 rounded-t-full overflow-hidden">
             <Image
-              src={"/images/slider/image2.jpg"}
+              src={featuredProductImage || "/images/slider/image2.jpg"}
               width={2000}
               height={1936}
               alt="bg-underwear2"
