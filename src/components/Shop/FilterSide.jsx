@@ -6,7 +6,7 @@ import { useProductStore } from "../Product/store/useProduct";
 
 export default function FilterSide({ sidebarData }) {
     const [activeCategory, setActiveCategory] = useState(null);
-    const { products, lastEvaluatedKey, fetchProductsByCategory, fetchProducts } = useProductStore();
+    const { products, lastEvaluatedKey, fetchProductsByCategory, fetchProducts , fetchMoreProducts  } = useProductStore();
 
     useEffect(() => {
       // Initial fetch when component mounts
@@ -29,7 +29,7 @@ export default function FilterSide({ sidebarData }) {
         // For now, calling fetchProductsByCategory with null categoryId might not work as intended.
         // We should have a dedicated fetchMoreProducts for the main product list.
         // For this fix, we'll only enable 'Load More' for category filtered results.
-        fetchProducts(lastEvaluatedKey); // Call fetchProducts with lastEvaluatedKey
+        fetchMoreProducts(lastEvaluatedKey); // Call fetchProducts with lastEvaluatedKey
       }
     };
 
@@ -75,7 +75,7 @@ export default function FilterSide({ sidebarData }) {
                                 <Product key={product?.SK} product={product} />
                             ))}
                         </div>
-                        {lastEvaluatedKey && (
+                        {/* {lastEvaluatedKey && (
                           <div className="flex justify-center mt-8">
                             <button
                               className="button-main"
@@ -84,12 +84,17 @@ export default function FilterSide({ sidebarData }) {
                               Load More
                             </button>
                           </div>
-                        )}
+                        )} */}
                     </div>
 
 
                 </div>
-                {/* <HandlePagination /> Uncomment or remove if not needed */}
+                <HandlePagination
+                  activeCategory={activeCategory}
+                  lastEvaluatedKey={lastEvaluatedKey}
+                  fetchMoreProducts={fetchMoreProducts}
+                  fetchProductsByCategory={fetchProductsByCategory}
+                />
             </div>
         </div>
     );

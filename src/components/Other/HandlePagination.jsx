@@ -3,8 +3,8 @@
 import React from 'react'
 import { useProductStore } from '../Product/store/useProduct'
 
-export default function HandlePagination() {
-    const { lastEvaluatedKey, fetchMoreProducts } = useProductStore();
+export default function HandlePagination({ activeCategory, lastEvaluatedKey, fetchMoreProducts, fetchProductsByCategory }) {
+    const { lastEvaluatedKey: storeLastEvaluatedKey, fetchMoreProducts: storeFetchMoreProducts } = useProductStore();
 
     // Hide button if lastEvaluatedKey is null or empty string
     if (!lastEvaluatedKey || lastEvaluatedKey === 'null') {
@@ -27,7 +27,13 @@ export default function HandlePagination() {
                     transition: 'background 0.2s',
                     boxShadow: '0 2px 8px rgba(25, 118, 210, 0.08)'
                 }}
-                onClick={() => fetchMoreProducts(lastEvaluatedKey)}
+                onClick={() => {
+                  if (activeCategory) {
+                    fetchProductsByCategory(activeCategory, lastEvaluatedKey);
+                  } else {
+                    storeFetchMoreProducts(lastEvaluatedKey);
+                  }
+                }}
                 onMouseOver={e => e.currentTarget.style.background = '#1565c0'}
                 onMouseOut={e => e.currentTarget.style.background = '#1976d2'}
             >

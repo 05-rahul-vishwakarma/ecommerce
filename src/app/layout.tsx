@@ -18,9 +18,9 @@ const serverTimeLeft: CountdownTimeType = countdownTime();
 const instrument = Instrument_Sans({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Buy Ribbons Online | The Ribbon Pack - Wide Selection & Fast Shipping',
-  description: 'Shop The Ribbon Pack for a huge selection of high-quality ribbons for crafts, decorations, and more. Fast shipping and great prices on satin, grosgrain, and decorative ribbons.',
-  keywords: 'ribbons, ribbon, satin ribbon, grosgrain ribbon, decorative ribbon, craft ribbon, wholesale ribbons, buy ribbons online, ribbon shop, ribbon store, fabric ribbon, craft supplies, DIY materials, bookbinding supplies, crafting materials',
+  title: 'Buy Ribbons Online for Crafts & Decor | Wide Selection - The Ribbon Pack',
+  description: 'Shop The Ribbon Pack for premium quality ribbons for all your crafting and decoration needs. Find satin, grosgrain, and decorative ribbons with fast shipping and great prices. Perfect for DIY, sewing, gift wrapping, and more.',
+  keywords: 'buy ribbons online, satin ribbon, grosgrain ribbon, decorative ribbon, craft ribbon, wholesale ribbons, ribbon shop, fabric ribbon, craft supplies, DIY materials, bookbinding supplies, crafting materials, gift wrapping ribbons, sewing ribbons, floral ribbons, ribbon for hair bows',
   openGraph: {
     title: 'Buy Ribbons Online | The Ribbon Pack',
     description: 'Shop The Ribbon Pack for a huge selection of high-quality ribbons for crafts, decorations, and more. Fast shipping and great prices on satin, grosgrain, and decorative ribbons.',

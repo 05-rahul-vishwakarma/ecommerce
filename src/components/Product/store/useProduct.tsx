@@ -43,7 +43,7 @@ interface ProductStore {
     lastEvaluatedKey: any;
     fetchProducts: () => Promise<void>;
     fetchCategories: () => Promise<void>;
-    fetchProductsByCategory: (categoryId: string) => Promise<void>;
+    fetchProductsByCategory: (categoryId: string, lastEvaluatedKey?: any) => Promise<void>;
     fetchMoreProducts: (lastEvaluatedKey: any) => Promise<void>;
 }
 
@@ -90,17 +90,27 @@ export const useProductStore = create<ProductStore>((set, get) => ({
         }
     },
 
-    fetchProductsByCategory: async (categoryId: string) => {
+    fetchProductsByCategory: async (categoryId: string, lastEvaluatedKey?: any) => {
         try {
             const url = getProductListByCategory(categoryId);
-            const response = await axios.post(url);
-            set({ products: response?.data?.data?.items || [] });
+            let apiUrl = url;
+            if (lastEvaluatedKey) {
+                apiUrl = `${url}&lastEvaluatedKey=${encodeURIComponent(JSON.stringify(lastEvaluatedKey))}`;
+            }
+            const response = await axios.post(apiUrl);
+            set((state: any) => ({
+              products: lastEvaluatedKey
+                ? [...state.products, ...(response?.data?.data?.items || [])]
+                : response?.data?.data?.items || [],
+              lastEvaluatedKey: response?.data?.data?.lastEvaluatedKey || ''
+            }));
         } catch (error) {
             console.error('Error fetching products by category', error);
         }
     },
 
     fetchMoreProducts: async (lastEvaluatedKey: any) => {
+        console.log(lastEvaluatedKey,'lastEvaluatedKey')
         try {
             if (!lastEvaluatedKey || lastEvaluatedKey === 'null') return;
 
