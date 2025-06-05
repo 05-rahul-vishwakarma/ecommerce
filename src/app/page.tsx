@@ -24,11 +24,11 @@ const jsonLd = {
     name: 'The Ribbon Pack',
     url: 'https://www.theribbonpack.com',
     // Add potentialAction if you have a site-specific search feature
-    // 'potentialAction': {
-    //   '@type': 'SearchAction',
-    //   'target': 'https://www.theribbonpack.com/search?q={search_term_string}',
-    //   'query-input': 'required name=search_term_string'
-    // }
+    'potentialAction': {
+      '@type': 'SearchAction',
+      'target': 'https://www.theribbonpack.com/search?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
 };
 
 export default function Home() {

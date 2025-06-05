@@ -46,7 +46,6 @@ const Login = () => {
         `${process.env.NEXT_PUBLIC_BASE_URL}/user/verifyOtp`,
         payload
       );
-      console.log(response?.data?.data);
       Cookies.set("accessToken", response?.data?.data?.accessToken, {
         expires: 30, // Expires in 30 days
     });

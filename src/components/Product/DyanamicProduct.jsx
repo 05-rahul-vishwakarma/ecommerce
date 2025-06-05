@@ -37,7 +37,6 @@ export default function DyanamicProduct({ productMain }) {
   const router = useRouter();
 
   const handleSwiper = (swiper) => {
-    console.log(swiper, "swiper");
     setThumbsSwiper(swiper);
   };
 
@@ -76,7 +75,6 @@ export default function DyanamicProduct({ productMain }) {
   const handleCart = () => {
     const accessToken = Cookies.get("accessToken");
     if (!accessToken) {
-      console.log('token is not avilable');
       toast.error("Please log in to add items to the cart.");
       router.push("/login");
       return;
@@ -97,7 +95,6 @@ export default function DyanamicProduct({ productMain }) {
   const images = productImage?.map((img) => img.img) || [];
 
   const handleCheckout = () => {
-    console.log('yes working');
 
     const checkoutProduct = [{
       ...products,

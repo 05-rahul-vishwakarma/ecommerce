@@ -15,7 +15,6 @@ export default async function FeaturedServer() {
 
     const data = await dataFetch()
 
-    console.log(data, 'data');
 
     if (!data || data.length === 0) {
         return <div>No featured products available.</div>

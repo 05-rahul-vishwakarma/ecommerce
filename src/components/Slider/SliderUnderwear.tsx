@@ -15,10 +15,8 @@ const SliderUnderwear = () => {
 
         if (response) {
           const data = await response.json();
-          console.log(data, 'data');
           // Use the image from the product at index 3, if available
           const image = data?.[3]?.imageURLs?.[0]?.img;
-          console.log(image, 'image');
           if (image) {
             setFeaturedProductImage(image);
           }

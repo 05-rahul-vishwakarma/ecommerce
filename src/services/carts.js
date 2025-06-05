@@ -61,7 +61,6 @@ export const fetchAndMergeCartData = async () => {
                     item?.productId?.PK,
                     item?.productId?.SK,
                 );
-                console.log(productDetailsResponse,'productDetailsResponse');
                 return {
                     ...item,
                     productDetails: productDetailsResponse?.data?.[0] || {},

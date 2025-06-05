@@ -28,7 +28,6 @@ const Product = ({ product }) => {
     const handleCart = () => {
         const accessToken = Cookies.get("accessToken");
         if (!accessToken) {
-            console.log('token is not avilable');
             toast.error("Please log in to add items to the cart.");
             router.push("/login");
             return;
@@ -40,7 +39,6 @@ const Product = ({ product }) => {
     const handleWishList = (product) => {
         const accessToken = Cookies.get("accessToken");
         if (!accessToken) {
-            console.log('token is not avilable');
             toast.error("Please log in to add items to the cart.");
             router.push("/login");
             return;

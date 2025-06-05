@@ -24,6 +24,8 @@ export default async function page({ params }) {
 
     const product = response?.data?.data?.items[0];
 
+    console.log(product)
+
     return (
       <section>
         <div id="header" className="relative w-full text-secondary">
