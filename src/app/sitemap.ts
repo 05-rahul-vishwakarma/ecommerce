@@ -8,10 +8,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> { // Mak
   const staticRoutes = [
     '',
     '/products',
-    '/about',
-    '/contact',
-    '/categories',
     '/blog',
+    '/checkout',
+    '/login',
+    '/orders',
+    '/pages/about',
+    '/pages/contact',
+    '/pages/privacy-policy',
+    '/product',
+    '/my-account',
+    '/cart'
   ];
 
   const staticSitemapEntries = staticRoutes.map((route) => ({
