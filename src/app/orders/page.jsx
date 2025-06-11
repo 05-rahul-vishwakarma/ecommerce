@@ -44,7 +44,7 @@ export default function OrdersPage() {
       <BreadCrumbPart pageName={"Orders"} />
 
       <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-semibold mb-6">Your Orders</h1>
+        <h1 className="text-center text-4xl font-bold mb-10">Your Order History</h1>
         {loading ? (
           <p className="text-gray-500 text-center">Loading your orders...</p>
         ) : orders.length === 0 ? (

@@ -96,6 +96,7 @@ const Cart = () => {
 
       <div className="cart-block md:py-20 py-10">
         <div className="container">
+          <h1 className="text-center text-4xl font-bold mb-10">Your Shopping Cart</h1>
           <div className="content-main flex justify-between max-xl:flex-col gap-y-8">
             {/* Cart Items Section */}
             <div className="xl:w-2/3 xl:pr-3 w-full">

@@ -44,6 +44,7 @@ export default function Home() {
                 <MenuFour props="bg-white" />
                 <SliderUnderwear />
             </div>
+            <h1 className="text-center text-3xl font-bold py-8">Explore Our Premium Ribbons for Every Occasion</h1>
             <Collection />
             <FeaturedServer />
             <TrendingServer />

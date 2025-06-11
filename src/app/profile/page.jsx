@@ -136,9 +136,7 @@ export default function ProfilePage() {
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <Card className="w-full max-w-4xl mx-auto shadow-2xl bg-white rounded-2xl overflow-hidden">
         <CardHeader className="bg-gradient-to-r from-purple to-purple text-white p-6">
-          <CardTitle className="text-3xl font-bold">
-            Personal Information
-          </CardTitle>
+          <h1 className="text-3xl font-bold">Personal Information</h1>
         </CardHeader>
         <CardContent className="p-8">
           <div className="flex justify-center mb-8">

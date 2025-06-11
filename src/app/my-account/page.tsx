@@ -59,6 +59,7 @@ export default async function MyAccount() {
       </div>
       <div className="profile-block md:py-20 py-10">
         <div className="container">
+            <h1 className="text-center text-4xl font-bold mb-10">My Account Dashboard</h1>
           <Suspense fallback={<div>Loading...</div>}>
             <AccountContent initialProfile={profileData} />
           </Suspense>

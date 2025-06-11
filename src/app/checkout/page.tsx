@@ -19,6 +19,7 @@ const Checkout = () => {
       </div>
       <div className="cart-block md:py-20 py-10">
         <div className="container">
+          <h1 className="text-center text-4xl font-bold mb-10">Complete Your Secure Checkout</h1>
           <div className="content-main flex flex-col md:flex-row justify-between gap-5">
             <div className="left md:w-1/2 w-full">
               <PersonalForm />
