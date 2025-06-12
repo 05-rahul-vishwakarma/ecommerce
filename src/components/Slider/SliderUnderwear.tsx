@@ -21,7 +21,7 @@ const SliderUnderwear = () => {
             setFeaturedProductImage(image);
           }
         } else {
-          console.log('Featured products data not found in cache.');
+          // console.log('Featured products data not found in cache.');
         }
       } catch (error) {
         console.error('Failed to fetch featured products data from cache:', error);

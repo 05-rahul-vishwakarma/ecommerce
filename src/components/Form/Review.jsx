@@ -26,7 +26,6 @@ const ReviewForm = ({ PK, SK }) => {
       const response = await axios.post(reviewProduct, reviewData, {
         headers: getAuthHeaders(),
       });
-      console.log(response.data);
       toast.success("Review Submitted Successfully ✨");
 
       // Clear input fields after successful submission

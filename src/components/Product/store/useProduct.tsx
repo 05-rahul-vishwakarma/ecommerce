@@ -110,7 +110,6 @@ export const useProductStore = create<ProductStore>((set, get) => ({
     },
 
     fetchMoreProducts: async (lastEvaluatedKey: any) => {
-        console.log(lastEvaluatedKey,'lastEvaluatedKey')
         try {
             if (!lastEvaluatedKey || lastEvaluatedKey === 'null') return;
 

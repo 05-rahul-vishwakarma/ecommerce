@@ -55,7 +55,6 @@ const PaymentComponent = ({ amount, onSuccess, onError, isMultipleProducts = fal
             script.id = 'razorpay-script'; // Add an ID to the script for checking later.
 
             script.onload = () => {
-                console.log("Razorpay SDK loaded successfully");
             };
 
             script.onerror = () => {

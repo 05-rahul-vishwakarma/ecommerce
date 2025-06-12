@@ -26,7 +26,6 @@ export default function ShippingAddress({ initialProfile }) {
                 ...formData,
             };
             const response = await updateProfileData(payload);
-            console.log('Updated Address:', response);
             // Add success notification/feedback here
         } catch (error) {
             console.error('Update failed:', error);

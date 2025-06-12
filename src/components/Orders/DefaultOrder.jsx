@@ -3,7 +3,6 @@ import Image from 'next/image';
 
 export default function DefaultOrder({ order }) {
 
-    console.log(order,'order');
     
 
     return (

@@ -5,7 +5,6 @@ import { getServerAuthHeaders } from '@/api/server';
 export const productListData = async () => {
     try {
         const response = await axios.post(productList, {});
-        console.log('yes working')
         return response?.data?.data?.items;
     } catch (error) {
         return error;

@@ -46,7 +46,6 @@ export default function PersonalForm({ profile }: PersonalFormProps) {
   }, [profile, reset]);
 
   const onSubmit = (data: any) => {
-    console.log("Submitted Data:", data);
     // Update profile logic (e.g., axios.put(...))
   };
 

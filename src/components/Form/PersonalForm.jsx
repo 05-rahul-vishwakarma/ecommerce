@@ -50,10 +50,8 @@ export default function PersonalForm() {
       pincode: data.postal,
     };
 
-    console.log('yes working');
 
     const response = await updateProfileData(payload);
-    console.log(response);
 
 
     // try {

@@ -44,7 +44,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> { // Mak
     // Continue with static routes even if product data fetching fails
   }
 
-  console.log(productSitemapEntries,'productSitemapEntries')
 
   return [...staticSitemapEntries, ...productSitemapEntries];
 } 

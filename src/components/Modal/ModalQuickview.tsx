@@ -55,7 +55,6 @@ const ModalQuickview = () => {
   const { openModalWishlist } = useModalWishlistContext();
   const router = useRouter();
 
-  console.log(selectedProduct,'selectedProduct');
   
 
   // Calculate discounted price
@@ -69,7 +68,6 @@ const ModalQuickview = () => {
     (product: any) => {
       const accessToken = accesstToken;
       if (!accessToken) {
-        console.log("token is not avilable");
         toast.error("Please log in to add items to the cart.");
         router.push("/login");
         return;
@@ -119,7 +117,6 @@ const ModalQuickview = () => {
     }
   };
 
-  console.log(selectedProduct,'selectedProduct');
   
 
   return (

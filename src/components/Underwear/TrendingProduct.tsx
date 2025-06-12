@@ -52,7 +52,6 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
   }, []);
 
   const handleTabClick = (type: string) => {
-    console.log(type, 'type');
     setActiveTab(type);
     setLoading(true);
     if (type === 'All') {

@@ -17,7 +17,6 @@ const addWishList = async (product, addToWishlist) => {
 
         // Call the API
         const response = await addWishListProduct(payload);
-        console.log(response);
 
         // Show success message
         toast.success('Successfully added to wishlist');

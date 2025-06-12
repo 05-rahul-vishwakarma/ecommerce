@@ -12,6 +12,18 @@ import ModalCompare from '@/components/Modal/ModalCompare';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NetworkStatus from '@/components/NetworkStatus';
+import axios from 'axios';
+import { headers } from 'next/headers';
+
+interface ProductType {
+  _id: string;
+  name: string;
+  image: string;
+  description: string;
+  sku: string;
+  price: string;
+  stock: number;
+}
 
 const instrument = Instrument_Sans({ subsets: ['latin'] });
 
@@ -21,7 +33,7 @@ export const metadata = {
   // title: 'Buy Ribbons Online for Crafts & Decor | Wide Selection - The Ribbon Pack',
   title:'Top Foil Printed Ribbon Manufacturer in India | The Ribbon Pack',
   
-  description:'Top Foil Printed Ribbon Manufacturer in India | Custom metallic ribbons for packing,branding & events.Vibrant foil finishes,low MOQ ,fast delivery,Get a free quote now',
+  description:'Leading manufacturer of foil printed and custom metallic ribbons in India. Perfect for packing, branding, & events. Enjoy vibrant finishes, low MOQ, and fast delivery.',
 
   keywords: 'buy ribbons online, satin ribbon, grosgrain ribbon, decorative ribbon, craft ribbon, wholesale ribbons, ribbon shop, fabric ribbon, craft supplies, DIY materials, bookbinding supplies, crafting materials, gift wrapping ribbons, sewing ribbons, floral ribbons, ribbon for hair bows, ribbon pack, buy craft ribbons, decorative ribbons for sale, ribbon online store, the ribbon pack', // <-- Added "ribbon pack" and "the ribbon pack"
   
@@ -90,10 +102,10 @@ const jsonLdOrganization = {
     areaServed: 'US',
     availableLanguage: ['English']
   },
-  sameAs: [ // ACTION: Replace with your actual social media profile URLs
-    'https://www.facebook.com/YourRibbonPackPage',
-    'https://www.instagram.com/YourRibbonPackProfile',
-    'https://www.pinterest.com/YourRibbonPackPins',
+  sameAs: [
+    'https://www.facebook.com/theribbonpack',
+    'https://www.instagram.com/theribbonpack',
+    'https://www.linkedin.com/company/ribbon-plc/',
   ]
 };
 
@@ -106,50 +118,80 @@ const jsonLdWebSite = {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: 'https://www.theribbonpack.com/search?q={search_term_string}' // ACTION: Adjust if your search URL parameter is different
+      urlTemplate: 'https://www.theribbonpack.com/search?q={search_term_string}'
     },
     'query-input': 'required name=search_term_string'
   }
 };
 
+function generateBreadcrumbs(pathname: string) {
+  const pathSegments = pathname.split('/').filter(segment => segment !== '');
+  const breadcrumbs = [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://www.theribbonpack.com/"
+  }];
+
+  pathSegments.forEach((segment, index) => {
+    const item = `https://www.theribbonpack.com/${pathSegments.slice(0, index + 1).join('/')}`;
+    const name = segment.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    breadcrumbs.push({
+      "@type": "ListItem",
+      "position": index + 2,
+      "name": name,
+      "item": item
+    });
+  });
+  return breadcrumbs;
+}
+
+async function getProductData(): Promise<ProductType[]> {
+  try {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&limit=12`);
+    return response?.data?.data?.items || [];
+  } catch (error) {
+    console.error('Error fetching product data:', error);
+    return [];
+  }
+}
+
 // This is your RootLayout component
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
-        <link rel="manifest" href="/manifest.json" /> {/* ACTION: Create public/manifest.json */}
+  const products: ProductType[] = await getProductData();
+  const headersList = await headers();
+  const pathname = headersList.get('x-pathname') || '/';
+  const breadcrumbItems = generateBreadcrumbs(pathname);
 
-        <meta name="theme-color" content="#4a90e2" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-TileColor" content="#4a90e2" />
-        <meta name="msapplication-tap-highlight" content="no" />
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbItems
+  };
 
-        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
+  const jsonLdProducts = {
+    "@context": "https://schema.org",
+    "@graph": products.map((product: ProductType) => ({
+      "@type": "Product",
+      "name": product.name,
+      "image": product.image,
+      "description": product.description,
+      "sku": product.sku,
+      "offers": {
+        "@type": "Offer",
+        "url": `https://www.theribbonpack.com/product/${product._id}`,
+        "priceCurrency": "INR",
+        "price": product.price,
+        "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+      }
+    }))
+  };
 
-        <Script
-          id="json-ld-organization"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
-        />
-        <Script
-          id="json-ld-website"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
-        />
-      </head>
-      <body className={instrument.className} suppressHydrationWarning={true}>
+  return (<html lang="en"><head><link rel="icon" href="/favicon.ico" sizes="any" /><link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" /><link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" /><link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" /><link rel="manifest" href="/manifest.json" /> {/* ACTION: Create public/manifest.json */}<meta name="theme-color" content="#4a90e2" /><meta name="apple-mobile-web-app-capable" content="yes" /><meta name="apple-mobile-web-app-status-bar-style" content="default" /><meta name="format-detection" content="telephone=no" /><meta name="mobile-web-app-capable" content="yes" /><meta name="msapplication-TileColor" content="#4a90e2" /><meta name="msapplication-tap-highlight" content="no" /><Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" /><Script id="json-ld-organization" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }} /><Script id="json-ld-website" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }} /><Script id="json-ld-products" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProducts) }} /><Script id="json-ld-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} /></head><body className={instrument.className} suppressHydrationWarning={true}>
         <GlobalProvider>
           <NetworkStatus />
           {children}
@@ -171,7 +213,5 @@ export default function RootLayout({
             theme="colored"
           />
         </GlobalProvider>
-      </body>
-    </html>
-  );
+      </body></html>);
 }

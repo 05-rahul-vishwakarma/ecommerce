@@ -110,7 +110,7 @@ const ContactUs = () => {
                 <p className="mt-1">
                   Email:{" "}
                   <span className="whitespace-nowrap">
-                  Support@theribbonpack.com
+                    <input type="text" value={'Support@theribbonpack.com'} className="border-none outline-none " />
                   </span>
                 </p>
               </div>

@@ -17,7 +17,6 @@ const useCartStore = create((set, get) => ({
   },
 
   increaseCartItemQuantity: (SK) => {
-    console.log('yes working');
     set((state) => ({
       mergedCart: state.mergedCart.map((item) =>
         item.SK === SK ? { ...item, qty: item.qty + 1 } : item
@@ -26,7 +25,6 @@ const useCartStore = create((set, get) => ({
   },
 
   decreaseCartItemQuantity: (SK) => {
-    console.log('yes working');
     set((state) => ({
       mergedCart: state.mergedCart.map((item) =>
         item.SK === SK ? { ...item, qty: Math.max(1, item.qty - 1) } : item
