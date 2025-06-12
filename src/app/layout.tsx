@@ -18,13 +18,16 @@ const instrument = Instrument_Sans({ subsets: ['latin'] });
 // This metadata object is processed by Next.js to generate <meta>, <title>, etc. tags in the <head>
 export const metadata = {
   metadataBase: new URL('https://www.theribbonpack.com'),
-  title: 'Buy Ribbons Online for Crafts & Decor | Wide Selection - The Ribbon Pack',
-  description: 'Shop The Ribbon Pack for premium quality ribbons for all your crafting and decoration needs. Find satin, grosgrain, and decorative ribbons with fast shipping and great prices. Perfect for DIY, sewing, gift wrapping, and more.',
+  // title: 'Buy Ribbons Online for Crafts & Decor | Wide Selection - The Ribbon Pack',
+  title:'Top Foil Printed Ribbon Manufacturer in India | The Ribbon Pack',
+  
+  description:'Top Foil Printed Ribbon Manufacturer in India | Custom metallic ribbons for packing,branding & events.Vibrant foil finishes,low MOQ ,fast delivery,Get a free quote now',
+
   keywords: 'buy ribbons online, satin ribbon, grosgrain ribbon, decorative ribbon, craft ribbon, wholesale ribbons, ribbon shop, fabric ribbon, craft supplies, DIY materials, bookbinding supplies, crafting materials, gift wrapping ribbons, sewing ribbons, floral ribbons, ribbon for hair bows, ribbon pack, buy craft ribbons, decorative ribbons for sale, ribbon online store, the ribbon pack', // <-- Added "ribbon pack" and "the ribbon pack"
   
   openGraph: {
     title: 'Buy Ribbons Online | Premium Craft Ribbons | The Ribbon Pack',
-    description: 'Shop The Ribbon Pack for a huge selection of high-quality ribbons for crafts, decorations, and more. Fast shipping and great prices on satin, grosgrain, and decorative ribbons.',
+    description:'Top Foil Printed Ribbon Manufacturer in India | Custom metallic ribbons for packing,branding & events.Vibrant foil finishes,low MOQ ,fast delivery,Get a free quote now',
     images: [
       {
         url: '/logo2.png',

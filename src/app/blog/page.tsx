@@ -23,6 +23,7 @@ const OurBlog = async () => {
   return (
     <div className="news-block md:pt-20 pt-10">
       <div className="container">
+        <h1 className="text-center text-3xl font-bold pb-8">Our Latest Blog Posts & Updates</h1>
         {fetchBlogs.length === 0 ? (
           <div className="text-center text-gray-500 text-lg py-10">
             No blogs present
