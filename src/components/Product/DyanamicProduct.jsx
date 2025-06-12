@@ -481,7 +481,7 @@ export default function DyanamicProduct({ productMain }) {
           </div>
 
         </div>
-        <OthersData PK={productMain?.PK} SK={productMain?.SK} productMain={products} />
+        {/* <OthersData PK={productMain?.PK} SK={productMain?.SK} productMain={products} /> */}
       </div>
     </div>
   );
