@@ -11,12 +11,6 @@ import FeaturedServer from '@/components/Underwear/FeaturedServer'
 import TrendingServer from '@/components/Underwear/TrendingServer'
 import Script from "next/script";
 
-// Page-specific metadata
-export const metadata = {
-    title: 'The Ribbon Pack | Quality Ribbons for Crafts, Decor & More',
-    description: 'Discover a wide range of high-quality ribbons including satin, grosgrain, and decorative styles for all your crafting, sewing, gift wrapping, and decoration needs. Shop The Ribbon Pack for fast shipping.',
-    keywords: 'ribbons, craft supplies, satin ribbon, grosgrain ribbon, fabric ribbon, buy ribbons online, craft ribbon, gift wrapping ribbon, sewing ribbon, DIY supplies, ribbon store, wholesale ribbons',
-};
 
 const jsonLd = {
     '@context': 'https://schema.org',
@@ -26,7 +20,6 @@ const jsonLd = {
     // Add potentialAction if you have a site-specific search feature
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': 'https://www.theribbonpack.com/search?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
 };
