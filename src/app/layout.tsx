@@ -33,7 +33,10 @@ export const metadata = {
   // title: 'Buy Ribbons Online for Crafts & Decor | Wide Selection - The Ribbon Pack',
   title:'Top Foil Printed Ribbon Manufacturer in India | The Ribbon Pack',
   
-  description:'Leading manufacturer of foil printed and custom metallic ribbons in India. Perfect for packing, branding, & events. Enjoy vibrant finishes, low MOQ, and fast delivery.',
+  // description:'Leading manufacturer of foil printed and custom metallic ribbons in India. Perfect for packing, branding, & events. Enjoy vibrant finishes, low MOQ, and fast delivery.
+  // ',
+
+  description:`Custom foil printed ribbons from India's top manufacturer. Elevate your brand with stunning logo ribbons for packing & events. Low MOQ & fast delivery. Order Today!`, 
 
   keywords: 'buy ribbons online, satin ribbon, grosgrain ribbon, decorative ribbon, craft ribbon, wholesale ribbons, ribbon shop, fabric ribbon, craft supplies, DIY materials, bookbinding supplies, crafting materials, gift wrapping ribbons, sewing ribbons, floral ribbons, ribbon for hair bows, ribbon pack, buy craft ribbons, decorative ribbons for sale, ribbon online store, the ribbon pack', // <-- Added "ribbon pack" and "the ribbon pack"
   
