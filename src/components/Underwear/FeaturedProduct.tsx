@@ -188,7 +188,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
                   alt={`Thumbnail ${idx + 1}`}
                   className="w-full aspect-[3/4] object-cover rounded-xl"
                   onClick={() => setActiveImage(image.img)}
-                  loading="lazy"
+                  // loading="lazy"
                   title={image.img.split('/').pop()?.split('.')[0] || ''}
                 />
               </SwiperSlide>
@@ -242,7 +242,7 @@ const FeaturedProduct: React.FC<{ data: Product[] }> = React.memo(({ data }) => 
                         width={48}
                         height={48}
                         className="rounded-xl object-cover"
-                        loading="lazy"
+                        // loading="lazy"
                         title={item?.img.split('/').pop()?.split('.')[0] || ''}
                       />
                     </button>

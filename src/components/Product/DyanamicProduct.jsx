@@ -204,7 +204,7 @@ export default function DyanamicProduct({ productMain }) {
                       height={533}
                       alt={`Product thumbnail ${index + 1}`}
                       className="w-full h-full object-cover"
-                      loading="lazy"
+                      // loading="lazy"
                     />
                   </SwiperSlide>
                 ))}
@@ -247,7 +247,7 @@ export default function DyanamicProduct({ productMain }) {
                           height={1600}
                           alt={`Product image ${index + 1}`}
                           className="w-full h-full object-contain"
-                          loading="lazy"
+                          // loading="lazy"
                         />
                       </div>
                     </SwiperSlide>
