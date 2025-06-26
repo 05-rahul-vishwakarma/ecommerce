@@ -112,7 +112,7 @@ const TrendingProduct: React.FC<Props> = ({ category = [], products: initialProd
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center mt-10">
-            <img src="/empty-data.svg" alt="No products available" className="w-64 h-64" title="empty-data" />
+            <img src="/empty-data.svg" alt="No products available" className="w-64 h-64" title="empty-data" width="256" height="256" />
             <p className="text-secondary2 mt-4">No products available</p>
           </div>
         )}

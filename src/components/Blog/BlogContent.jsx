@@ -7,13 +7,15 @@ export default function BlogDynamicPage({ data }) {
             <main className="container mx-auto px-4 py-8">
                 <article className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
                     {/* Blog Image Section */}
-                    <div className="relative">
+                    <div className="relative w-full pb-[56.25%] bg-gray-100">
                         <Image
-                            src={data?.BlogImage?.[1]}
-                            width={5000}
-                            height={4000}
-                            alt={data?.title}
-                            className="w-full min-[1600px]:h-[800px] xl:h-[640px] lg:h-[520px] sm:h-[380px] h-[260px] object-cover"
+                            src={data?.BlogImage?.[1] || '/images/blog/blog1.jpg'}
+                            fill
+                            alt={data?.title || "Blog image"}
+                            className="object-cover"
+                            priority
+                            sizes="(min-width: 1280px) 1200px, 100vw"
+                            quality={90}
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/70 flex items-end p-6">
                             <h1 className="text-white text-3xl font-semibold">{data?.title}</h1>

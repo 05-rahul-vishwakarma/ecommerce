@@ -75,7 +75,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
         Login
       </Link>
       <div className="text-secondary text-center mt-3 pb-4">
-        Don’t have an account?
+        Don't have an account?
         <Link
           href={"/register"}
           className="text-black pl-1 hover:underline hover:text-purple"
@@ -121,7 +121,7 @@ const MenuFour: React.FC<Props> = ({ props }) => {
                       Login
                     </Link>
                     {/* <div className="text-secondary text-center mt-3 pb-4">
-                      Don’t have an account?
+                      Don't have an account?
                       <Link
                         href={"/register"}
                         className="text-black pl-1 hover:underline hover:text-purple"
@@ -166,13 +166,16 @@ const MenuFour: React.FC<Props> = ({ props }) => {
             </div>
 
             <div className="form-search relative max-lg:hidden z-[1]">
-              <Image
-                src="/logo2.png" // Path relative to the public folder
-                alt="Company Logo"
-                width={150} // Specify width (optional for fixed sizes)
-                height={150} // Specify height (optional for fixed sizes)
-                className="h-full w-auto mr-3" // Additional styling if needed
-              />
+              <div className="w-[150px] h-[56px] flex items-center">
+                <Image
+                  src="/logo2.png"
+                  alt="Company Logo"
+                  width={150}
+                  height={56}
+                  className="w-auto h-full object-contain"
+                  priority
+                />
+              </div>
             </div>
             <div className="menu-main h-full xl:w-full flex items-center justify-center max-lg:hidden xl:absolute xl:top-1/2 xl:left-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2">
               <ul className="flex items-center gap-8 h-full">

@@ -150,102 +150,110 @@ export default function DyanamicProduct({ productMain }) {
       <div className="featured-product underwear md:py-20 py-10">
         <div className="container flex justify-between gap-y-6 flex-wrap">
           <div className="list-img md:w-1/2 md:pr-[45px] w-full">
-            <Swiper
-              slidesPerView={1}
-              spaceBetween={0}
-              thumbs={{ swiper: thumbsSwiper }}
-              modules={[Thumbs]}
-              className="mySwiper2 rounded-2xl overflow-hidden"
-              onSwiper={(swiper) => {
-                swiperRef.current = swiper; // Set swiperRef when Swiper is initialized
-              }}
-              initialSlide={selectedImageIndex} // Set initial slide to the selected image
-            >
-              {images.map((item, index) => (
-                <SwiperSlide
-                  key={index}
-                  onClick={() => {
-                    setOpenPopupImg(true);
-                  }}
-                >
-                  <Image
-                    src={item}
-                    width={1000}
-                    height={1000}
-                    alt="prd-img"
-                    className="w-full aspect-[3/4] object-cover"
-                    loading="lazy"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            <Swiper
-              onSwiper={(swiper) => {
-                handleSwiper(swiper);
-              }}
-              spaceBetween={0}
-              slidesPerView={4}
-              freeMode={true}
-              watchSlidesProgress={true}
-              modules={[Navigation, Thumbs]}
-              className="mySwiper"
-            >
-              {images.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <Image
-                    src={item}
-                    width={1000}
-                    height={1000}
-                    alt="prd-img"
-                    className="w-full aspect-[3/4] object-cover rounded-xl"
-                    loading="lazy"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            <div className={`popup-img ${openPopupImg ? "open" : ""}`}>
-              <span
-                className="close-popup-btn absolute top-4 right-4 z-[2] cursor-pointer"
-                onClick={() => {
-                  setOpenPopupImg(false);
-                }}
-              >
-                <Icon.X className="text-3xl text-white" />
-              </span>
+            {/* Main product image slider */}
+            <div className="aspect-[3/4] w-full bg-gray-100 rounded-2xl overflow-hidden">
               <Swiper
-                spaceBetween={0}
                 slidesPerView={1}
-                modules={[Navigation, Thumbs]}
-                navigation={true}
-                loop={true}
-                className="popupSwiper"
-                initialSlide={selectedImageIndex} // Set initial slide to the selected image
+                spaceBetween={0}
+                thumbs={{ swiper: thumbsSwiper }}
+                modules={[Thumbs]}
+                className="h-full"
                 onSwiper={(swiper) => {
                   swiperRef.current = swiper;
                 }}
+                initialSlide={selectedImageIndex}
               >
                 {images.map((item, index) => (
                   <SwiperSlide
                     key={index}
                     onClick={() => {
-                      setOpenPopupImg(false);
+                      setOpenPopupImg(true);
                     }}
+                    className="h-full"
                   >
                     <Image
                       src={item}
-                      width={1000}
-                      height={1000}
-                      alt="prd-img"
-                      className="w-full aspect-[3/4] object-cover rounded-xl"
-                      onClick={(e) => {
-                        e.stopPropagation(); // prevent
-                      }}
+                      width={800}
+                      height={1067}
+                      alt="Product image"
+                      className="w-full h-full object-cover"
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
                     />
                   </SwiperSlide>
                 ))}
               </Swiper>
+            </div>
+
+            {/* Thumbnail slider */}
+            <div className="mt-4">
+              <Swiper
+                onSwiper={handleSwiper}
+                spaceBetween={8}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[Navigation, Thumbs]}
+                className="h-24"
+              >
+                {images.map((item, index) => (
+                  <SwiperSlide key={index} className="aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden">
+                    <Image
+                      src={item}
+                      width={400}
+                      height={533}
+                      alt={`Product thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            {/* Popup image viewer */}
+            <div className={`popup-img fixed inset-0 z-50 bg-black/90 ${openPopupImg ? "flex" : "hidden"} items-center justify-center`}>
+              <span
+                className="close-popup-btn absolute top-4 right-4 z-[2] cursor-pointer text-white p-2 hover:bg-white/10 rounded-full"
+                onClick={() => {
+                  setOpenPopupImg(false);
+                }}
+              >
+                <Icon.X className="text-3xl" />
+              </span>
+              <div className="container max-w-4xl mx-auto px-4">
+                <Swiper
+                  spaceBetween={0}
+                  slidesPerView={1}
+                  modules={[Navigation, Thumbs]}
+                  navigation={true}
+                  loop={true}
+                  className="h-full"
+                  initialSlide={selectedImageIndex}
+                  onSwiper={(swiper) => {
+                    swiperRef.current = swiper;
+                  }}
+                >
+                  {images.map((item, index) => (
+                    <SwiperSlide
+                      key={index}
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center justify-center"
+                    >
+                      <div className="relative aspect-[3/4] w-full max-w-2xl mx-auto">
+                        <Image
+                          src={item}
+                          width={1200}
+                          height={1600}
+                          alt={`Product image ${index + 1}`}
+                          className="w-full h-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
             </div>
           </div>
 

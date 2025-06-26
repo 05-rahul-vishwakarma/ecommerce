@@ -79,14 +79,16 @@ const Product = ({ product }) => {
                 </div>
 
                 {/* Product Image */}
-                <div className="product-img w-full h-full aspect-[3/4]">
+                <div className="relative w-full pb-[133.33%] bg-gray-100">
                     <Image
                         src={product?.img || "/ribbon.png"}
-                        width={500}
-                        height={500}
-                        alt={product?.name}
-                        priority={true}
-                        className="w-full h-full object-cover duration-700"
+                        width={600}
+                        height={800}
+                        alt={product?.name || "Product image"}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        priority={false}
+                        loading="lazy"
+                        sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                     />
                 </div>
 

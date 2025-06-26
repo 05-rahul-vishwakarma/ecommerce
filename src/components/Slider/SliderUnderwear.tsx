@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 
 const SliderUnderwear = () => {
   const [featuredProductImage, setFeaturedProductImage] = useState<string | null>(null);
@@ -33,6 +34,9 @@ const SliderUnderwear = () => {
 
   return (
     <>
+      <Head>
+        <link rel="preload" as="image" href={featuredProductImage || "/images/slider/image2.jpg"} />
+      </Head>
       <div className="slider-block style-one bg-linear xl:py-[100px] px-4 md:py-20 py-14 w-full ">
         <div className="slider-main h-full w-full flex items-center  justify-center gap-10">
             
