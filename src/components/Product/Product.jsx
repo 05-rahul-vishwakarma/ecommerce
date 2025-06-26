@@ -86,8 +86,7 @@ const Product = ({ product }) => {
                         height={800}
                         alt={product?.name || "Product image"}
                         className="absolute inset-0 w-full h-full object-cover"
-                        priority={false}
-                        loading="lazy"
+                        priority={true} // 👈 Important: preloads the image
                         sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                     />
                 </div>
