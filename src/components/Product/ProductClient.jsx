@@ -9,7 +9,7 @@ import axios from "axios";
 export default function ProductClient({ slug }) {
   const fetchProduct = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&slug=${slug}`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&slug=${slug}&limit=2`,
       {}
     );
     return response?.data?.data?.items[0] || null;
