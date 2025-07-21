@@ -5,6 +5,7 @@ import MenuFour from "@/components/Header/MenuFour";
 import Footer from "@/components/Footer/Footer";
 import { useQuery } from '@tanstack/react-query';
 import axios from "axios";
+import LoadingSpinner from "@/components/Common/LoadingSpinner";
 
 export default function ProductClient({ slug }) {
   const fetchProduct = async () => {
@@ -23,7 +24,7 @@ export default function ProductClient({ slug }) {
   });
 
   if (isLoading) {
-    return <div className="text-center mt-10 text-gray-500 text-xl">Loading...</div>;
+    return <LoadingSpinner size="md" fullScreen />;
   }
 
   if (isError || !product) {
