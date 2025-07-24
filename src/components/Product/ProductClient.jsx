@@ -10,7 +10,7 @@ import LoadingSpinner from "@/components/Common/LoadingSpinner";
 export default function ProductClient({ slug }) {
   const fetchProduct = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&slug=${slug}&limit=2`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/product/get?businessType=${process.env.NEXT_PUBLIC_BUSINESS_NAME}&slug=${slug}&limit=1000`,
       {}
     );
     return response?.data?.data?.items[0] || null;
